@@ -1,0 +1,6 @@
+version: "2"
+services:
+  app:
+    image: ECR_REGISTRY/beta8:GITHUB_SHA
+    ports:
+      - "80:5000"
