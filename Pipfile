@@ -12,6 +12,7 @@ flask-sqlalchemy = "*"
 wtforms = "*"
 flask-wtf = "*"
 sqlalchemy = "*"
+boto3 = "*"
 
 [dev-packages]
 
