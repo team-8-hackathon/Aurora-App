@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db, environment, SCHEMA
 from sqlalchemy.orm import validates
 from datetime import datetime
 
@@ -25,6 +25,7 @@ class Testimonial(db.Model):
             raise ValueError(f'Invalid stars {value}')
         return value
     
+    #helper func to convert class instance to dictionary
     def to_dict(self):
         return {
             'id': self.id,

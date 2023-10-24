@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA,add_prefix_for_prod
 
+#define join table for blogs and topics
 blog_topics = db.Table(
     'blog_topics',
     db.Model.metadata,
