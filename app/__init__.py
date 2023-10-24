@@ -11,6 +11,9 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 
+@app.route("/")
+def hello():
+    return "Hello Team 8!"
 
 db.init_app(app)
 Migrate(app, db)
