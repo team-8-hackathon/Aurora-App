@@ -9,7 +9,7 @@ class Subscriber(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(200), nullable=False)
-    emale = db.Column(db.String(200), nullable=False, unique=True)
+    email = db.Column(db.String(200), nullable=False, unique=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
 
     def to_dict(self):
