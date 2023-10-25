@@ -9,8 +9,9 @@ from flask import Flask, request, session, redirect
 # from .models import db, Admin
 # from .config import Config
 
-app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+# app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
+app = Flask(__name__)
 
 # # Setup login manager
 # login = LoginManager(app)
@@ -29,6 +30,9 @@ app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 @app.route("/")
 def hello():
     return "Hello Team 8! testing!"
+
+if __name__ == "__init__":
+    app.run(host="0.0.0.0", debug=True, port=5000)
 
 # db.init_app(app)
 # Migrate(app, db)
