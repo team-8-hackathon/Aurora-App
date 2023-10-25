@@ -7,10 +7,10 @@ import { authenticate } from "./store/session";
 
 function App() {
   const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    dispatch(authenticate()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  const [isLoaded, setIsLoaded] = useState(true);
+  // useEffect(() => {
+  //   dispatch(authenticate()).then(() => setIsLoaded(true));
+  // }, [dispatch]);
 
   return (
     <>
