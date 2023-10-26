@@ -1,0 +1,12 @@
+.errors {
+    color: red;
+}
+
+
+.blog-form-container {
+    margin: auto;
+}
+
+#text-content {
+    outline: 2px solid #00283d;
+}

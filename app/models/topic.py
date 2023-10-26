@@ -19,6 +19,12 @@ class Topic(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'topic': self.topic
+            'topic': self.topic,
+            'blogs': [blog.to_dict_no_topic() for blog in self.blogs]
         }
 
+    def to_dict_no_blog(self):
+        return {
+            'id': self.id,
+            'topic': self.topic
+        }
