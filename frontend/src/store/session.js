@@ -29,14 +29,14 @@ export const authenticate = () => async (dispatch) => {
 	}
 };
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (username, password) => async (dispatch) => {
 	const response = await fetch("/api/auth/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({
-			email,
+			username,
 			password,
 		}),
 	});
@@ -48,7 +48,7 @@ export const login = (email, password) => async (dispatch) => {
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			return data;
+			return data.errors;
 		}
 	} else {
 		return ["An error occurred. Please try again."];
