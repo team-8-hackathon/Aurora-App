@@ -6,7 +6,6 @@ from app.forms import BlogForm
 from app.models import Blog, db
 from datetime import datetime
 
-
 blog_routes = Blueprint('blogs', __name__)
 
 #Get all blogs
