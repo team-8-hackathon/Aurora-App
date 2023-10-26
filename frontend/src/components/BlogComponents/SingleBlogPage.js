@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { thunkGetSingleBlog } from "../../store/blog";
+import parse from 'html-react-parser';
 
 const SingleBlogPage = () => {
     const { blogId } = useParams();
@@ -16,7 +17,9 @@ const SingleBlogPage = () => {
     console.log(blog)
     return (
         <>
-            <h1>Blog {blogId} details page</h1>
+            <img src={blog.thumbnail} alt="thumbnail" />
+            <button onClick={e=> window.alert("redirect to topic page")}>{blog.topic.topic}</button>
+            {parse(blog.body)}
         </>
     )
 }
