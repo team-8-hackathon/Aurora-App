@@ -30,6 +30,8 @@ app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
 app.register_blueprint(topic_routes, url_prefix='/api/topics')
+app.register_blueprint(blog_routes, url_prefix='/api/blogs')
+app.register_blueprint(auth_routes, url_prefix='/api/auth')
 
 
 
@@ -43,8 +45,6 @@ def hello():
 if __name__ == "__init__":
     app.run(host="0.0.0.0", debug=True, port=5000)
 
-app.register_blueprint(blog_routes, url_prefix='/api/blogs')
-app.register_blueprint(auth_routes, url_prefix='/api/auth')
 
 db.init_app(app)
 Migrate(app, db)

@@ -5,6 +5,7 @@ import { authenticate } from "./store/session";
 import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
+import BrowseBlogs from "./components/BlogComponents/BrowseBlogs";
 
 
 
@@ -22,8 +23,11 @@ function App() {
           <Route exact path='/'>
             <h1>React Home Page</h1>
           </Route>
-          <Route path='/blog/:blogId'>
+          <Route path='/blogs/:blogId'>
             <SingleBlogPage />
+          </Route>
+          <Route path='/topics/:topicId'>
+            <BrowseBlogs />
           </Route>
           <ProtectedRoute>
             <Route exact path='/admin'>
