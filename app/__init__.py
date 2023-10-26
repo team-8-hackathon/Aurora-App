@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from .seeds import seed_commands
 from .models import db, Admin
+from .api.testimonial_routes import testimonial_routes
 from .config import Config
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
@@ -25,6 +26,7 @@ def load_user(id):
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
+app.register_blueprint(testimonial_routes, url_prefix='/api/testimonials')
 
 @app.route("/")
 def hello():
