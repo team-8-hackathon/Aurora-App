@@ -28,7 +28,7 @@ const LoginModal = () => {
     }
 
     return (
-        <>
+        <div>
             <h1>Admin Login</h1>
             <form>
                 <input type="text" placeholder="username" value={username} onChange={e => setUsername(e.target.value)}/>
@@ -37,7 +37,7 @@ const LoginModal = () => {
                 <button onClick={handleCancel}>Cancel</button>
             </form>
             {errors && <p className="errors">{errors}</p>}
-        </>
+        </div>
     );
 }
 
