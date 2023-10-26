@@ -8,6 +8,10 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from .seeds import seed_commands
 from .models import db, Admin
 from .config import Config
+from .api.topic_routes import topic_routes
+
+from .api.blog_routes import blog_routes
+from .api.auth_routes import auth_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -25,13 +29,22 @@ def load_user(id):
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
+app.register_blueprint(topic_routes, url_prefix='/api/topics')
+
+
 
 @app.route("/")
 def hello():
+    # if request.method == "GET":
+    #     return ({"response": "Get Request Called"})
+    
     return "Hello Team 8! testing!"
 
 if __name__ == "__init__":
     app.run(host="0.0.0.0", debug=True, port=5000)
+
+app.register_blueprint(blog_routes, url_prefix='/api/blogs')
+app.register_blueprint(auth_routes, url_prefix='/api/auth')
 
 db.init_app(app)
 Migrate(app, db)
@@ -40,26 +53,26 @@ Migrate(app, db)
 CORS(app)
 
 
-# #any request made with http is redirected to https
-# @app.before_request
-# def https_redirect():
-#     if os.environ.get('FLASK_ENV') == 'production':
-#         if request.headers.get('X-Forwarded-Proto') == 'http':
-#             url = request.url.replace('http://', 'https://', 1)
-#             code = 301
-#             return redirect(url, code=code)
+#any request made with http is redirected to https
+@app.before_request
+def https_redirect():
+    if os.environ.get('FLASK_ENV') == 'production':
+        if request.headers.get('X-Forwarded-Proto') == 'http':
+            url = request.url.replace('http://', 'https://', 1)
+            code = 301
+            return redirect(url, code=code)
 
 
-# @app.after_request
-# def inject_csrf_token(response):
-#     response.set_cookie(
-#         'csrf_token',
-#         generate_csrf(),
-#         secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
-#         samesite='Strict' if os.environ.get(
-#             'FLASK_ENV') == 'production' else None,
-#         httponly=True)
-#     return response
+@app.after_request
+def inject_csrf_token(response):
+    response.set_cookie(
+        'csrf_token',
+        generate_csrf(),
+        secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
+        samesite='Strict' if os.environ.get(
+            'FLASK_ENV') == 'production' else None,
+        httponly=True)
+    return response
 
 
 @app.route("/api/docs")

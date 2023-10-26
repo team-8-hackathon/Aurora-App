@@ -12,6 +12,6 @@ def unseed_admin():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.admins RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM admin"))
+        db.session.execute(text("DELETE FROM admins"))
         
     db.session.commit()
