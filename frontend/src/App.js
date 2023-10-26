@@ -10,10 +10,10 @@ import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 
 function App() {
   const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(true);
-  // useEffect(() => {
-  //   dispatch(authenticate()).then(() => setIsLoaded(true));
-  // }, [dispatch]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    dispatch(authenticate()).then(() => setIsLoaded(true));
+  }, [dispatch]);
 
   return (
     <>
@@ -26,8 +26,11 @@ function App() {
             <SingleBlogPage />
           </Route>
           <ProtectedRoute>
-            <Route path='/admin'>
+            <Route exact path='/admin'>
               <h1>Admin Page</h1>
+            </Route>
+            <Route exact path='/admin/post-blog'>
+              <BlogForm />
             </Route>
           </ProtectedRoute>
         </Switch>
