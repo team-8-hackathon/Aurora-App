@@ -9,6 +9,7 @@ from .seeds import seed_commands
 from .models import db, Admin
 from .config import Config
 from .api.blog_routes import blog_routes
+from .api.auth_routes import auth_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -36,6 +37,7 @@ if __name__ == "__init__":
     app.run(host="0.0.0.0", debug=True, port=5000)
 
 app.register_blueprint(blog_routes, url_prefix='/api/blogs')
+app.register_blueprint(auth_routes, url_prefix='/api/auth')
 
 db.init_app(app)
 Migrate(app, db)
