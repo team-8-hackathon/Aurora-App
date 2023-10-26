@@ -26,6 +26,17 @@ class Blog(db.Model):
             'thumbnail': self.thumbnail,
             'title': self.title,
             'body': self.body,
+            'topic': self.topics[0].to_dict_no_blog(),
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
+        }
+    
+    def to_dict_no_topic(self):
+        return {
+            'id': self.id,
+            'thumbnail': self.thumbnail,
+            'title': self.title,
+            'body': self.body,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
