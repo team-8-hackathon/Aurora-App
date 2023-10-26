@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const TestimonialList = () => {
+function TestimonialList() {
   return (
     <div>TestimonialList</div>
-  )
+  );
 }
+
+export default TestimonialList;

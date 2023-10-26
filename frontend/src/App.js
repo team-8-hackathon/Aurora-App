@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 
 import TestimonialForm  from "./components/TestimonialComponents/Testimonial_form";
-import TestimonialList from "./components/TestimonialComponents/TestimonialList"
+import TestimonialList from "./components/TestimonialComponents/TestimonialList";
 
 
 import TopSignup from "./components/signups/top_signup";
