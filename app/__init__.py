@@ -8,8 +8,12 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from .seeds import seed_commands
 from .models import db, Admin
 from .config import Config
+<<<<<<< HEAD
 from .api.topic_routes import topic_routes
 
+=======
+from .api.blog_routes import blog_routes
+>>>>>>> 26f170b (registered blog_routes blueprint)
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -30,6 +34,7 @@ app.config.from_object(Config)
 app.register_blueprint(topic_routes, url_prefix='/api/topics')
 
 
+
 @app.route("/")
 def hello():
     # if request.method == "GET":
@@ -40,6 +45,8 @@ def hello():
 if __name__ == "__init__":
     app.run(host="0.0.0.0", debug=True, port=5000)
 
+app.register_blueprint(blog_routes, url_prefix='/api/blogs')
+
 db.init_app(app)
 Migrate(app, db)
 
@@ -47,6 +54,10 @@ Migrate(app, db)
 CORS(app)
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26f170b (registered blog_routes blueprint)
 #any request made with http is redirected to https
 @app.before_request
 def https_redirect():

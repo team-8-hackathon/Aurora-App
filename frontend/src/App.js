@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 
 
 
@@ -20,6 +21,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <h1>React Home Page</h1>
+          </Route>
+          <Route path='/blog/:blogId'>
+            <SingleBlogPage />
           </Route>
           <ProtectedRoute>
             <Route path='/admin'>
