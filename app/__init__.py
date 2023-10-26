@@ -26,7 +26,7 @@ def load_user(id):
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
-app.register_blueprint(testimonial_routes, url_prefix='/api/testimonials')
+app.register_blueprint(testimonial_routes, url_prefix='/api/testimonial')
 
 @app.route("/")
 def hello():
