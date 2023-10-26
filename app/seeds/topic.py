@@ -16,12 +16,12 @@ def seed_topics():
         topic="Workplace Wellness"
         )
         ]
-    db.session.add(topics)
+    db.session.add_all(topics)
     db.session.commit()
 
 def unseed_topics():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.admins RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.topics RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM topics"))
         
