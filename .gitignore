@@ -7,3 +7,5 @@ __pycache__/
 dev.db
 static
 appserver.pem
+cicdkeypair.pem
+.env
