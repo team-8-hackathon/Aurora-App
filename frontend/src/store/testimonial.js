@@ -47,7 +47,7 @@ export const getAllTestimonials = () => async (dispatch) => {
 const initialState = {};
 
 const testimonialReducer = (state = initialState, action) => {
-  let newState
+  let newState;
   switch(action.type) {
     case GET_ALL_TESTIMONIALS: {
       action.testimonials.forEach(testimonial => (newState[testimonial.id] = testimonial));
