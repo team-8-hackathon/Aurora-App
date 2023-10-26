@@ -1,5 +1,7 @@
 
 import { useState } from "react";
+import './app.css'
+import StarRating from "./StarRating";
 
 function TestimonialForm() {
   const [name, setName] = useState("");
@@ -16,20 +18,24 @@ function TestimonialForm() {
   return (
     <form className="form-testimonial" onSubmit={handleSubmit}>
       <h1>Testimonail Form</h1>
+      <img className="fa fa-user-circle" aria-hidden="true"></img>
       <label htmlFor="">Name</label>
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+      <StarRating onSetStars={setStars} />
       <label>Review</label>
       <textarea
         type="text"
         value={body}
-        maxlength="70"
+        maxLength="1000"
         onChange={(e) => setBody(e.target.value)}
+        placeholder="Let us know what you think!"
       />
       <button>Submit</button>
+      {console.log({ newTestimonial })}
     </form>
   );
 }
