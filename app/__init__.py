@@ -8,10 +8,8 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from .seeds import seed_commands
 from .models import db, Admin
 from .config import Config
-<<<<<<< HEAD
 from .api.topic_routes import topic_routes
 
-=======
 from .api.blog_routes import blog_routes
 from .api.auth_routes import auth_routes
 
@@ -55,10 +53,6 @@ Migrate(app, db)
 CORS(app)
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 26f170b (registered blog_routes blueprint)
 #any request made with http is redirected to https
 @app.before_request
 def https_redirect():
