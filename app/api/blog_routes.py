@@ -4,8 +4,7 @@ from app.aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_
 # from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms import BlogForm
 from app.models import Blog, db
-from datetime import datetime
-
+" "
 
 blog_routes = Blueprint('blogs', __name__)
 
