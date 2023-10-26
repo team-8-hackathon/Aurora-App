@@ -18,4 +18,22 @@ form {
 .form-testimonial{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.form-testimonial-img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-img{
+  width: 80px
+}
+
+textarea{
+  resize: none;
+  width: 400px;
+  height: 100px;
 }
