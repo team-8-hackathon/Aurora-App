@@ -30,10 +30,8 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <SplashNavBar />
-
             <TestimonialForm />
             <TestimonialList />
-
             <TopSignup />
             <BottomSignup />
             <Footer />
@@ -42,8 +40,6 @@ function App() {
             <NavBar />
             <Route path='/blogs/:blogId'>
               <SingleBlogPage />
-
-
             </Route>
             <Route path='/topics/:topicId'>
               <BrowseBlogs />
@@ -56,6 +52,7 @@ function App() {
                 <BlogForm />
               </Route>
             </ProtectedRoute>
+            <BottomSignup />
             <Footer />
           </Route>
         </Switch>
