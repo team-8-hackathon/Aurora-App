@@ -34,7 +34,7 @@ function SplashNavBar() {
                         {dropdownOpen && (
                             <div className="dropdown-menu">
                                 {allTopics.map(topic => (
-                                    <a key={topic.id} href={"/"} className="dropdown-item">
+                                    <a key={topic.id} href={`/topics/${topic.id}`} className="dropdown-item">
                                         {topic.topic}
                                     </a>
                                 ))}

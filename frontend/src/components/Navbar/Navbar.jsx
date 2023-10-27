@@ -40,7 +40,7 @@ function NavBar() {
                         {dropdownOpen && (
                             <div className="nav-dropdown-menu">
                                 {allTopics.map(topic => (
-                                    <a key={topic.id} href={"/"} className="nav-dropdown-item">
+                                    <a key={topic.id} href={`/topics/${topic.id}`} className="nav-dropdown-item">
                                         {topic.topic}
                                     </a>
                                 ))}
