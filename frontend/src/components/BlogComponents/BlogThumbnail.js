@@ -2,9 +2,13 @@ import React from "react";
 
 const BlogThumbnail = ({ topic, blog }) => {
     return (
-        <div>
+        <div
+            style={{
+                backgroundImage:`url(${blog.thumbnail})`,
+                backgroundSize: "cover"
+            }}
+        >
             <p>{topic.topic}</p>
-            <img src={blog.thumbnail} alt='thumbnail'/>
             <p>{blog.title}</p>
         </div>
     )
