@@ -28,8 +28,8 @@ const BrowseBlogs = () => {
     }
 
     return (
-        <>
-            <h2>{topic.topic}</h2>
+        <div className='browse-blogs-container'>
+            <h2 className='topic-title'>{topic.topic}</h2>
             <div className='blog-container'>
 
                 {blogs.slice(0, numArticles).map(blog => (
@@ -38,8 +38,8 @@ const BrowseBlogs = () => {
                     </Link>
                 ))}
             </div>
-            {numArticles < blogs.length && <button onClick={showMoreArticles}>Show more articles</button>}
-        </>
+            {numArticles < blogs.length && <button className='show-more-articles-button' onClick={showMoreArticles}>Show more articles</button>}
+        </div>
     )
 }
 
