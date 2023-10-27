@@ -38,7 +38,7 @@ export const thunkGetBlogs = () => async dispatch => {
     }
 }
 
-export const thunkPostBlog = (formData) = async dispatch => {
+export const thunkPostBlog = (formData) => async dispatch => {
     const response = await fetch(`/api/blogs/create`, {
         method: "POST",
         body: formData
