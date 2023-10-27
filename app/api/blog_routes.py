@@ -46,7 +46,6 @@ def post_blog():
         thumbnail = form.data['thumbnail']
         thumbnail.filename = get_unique_filename(thumbnail.filename)
         upload = upload_file_to_s3(thumbnail)
-
         if 'url' not in upload:
             return {"errors": upload}
         url = str(upload['url'])
