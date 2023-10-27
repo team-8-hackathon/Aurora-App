@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import Admin, db
-from app.forms import admin_form
+from app.forms import LoginForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
@@ -32,7 +32,7 @@ def login():
     """
     Logs a user in
     """
-    form = admin_form()
+    form = LoginForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']

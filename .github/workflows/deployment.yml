@@ -1,66 +1,66 @@
-on:
-  push:
-    branches:
-      - dev
+# on:
+#   push:
+#     branches:
+#       - dev
 
-name: Buid & Deploy (Docker)
+# name: Buid & Deploy (Docker)
 
-jobs:
-  build:
-    name: Build & Deploy
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     name: Build & Deploy
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: Check if AWS_REGION is set
-      run: |
-        if [[ -z "${{ secrets.AWS_REGION }}" ]]; then
-          echo "AWS_REGION is not set!"
-          exit 1
-        else
-          echo "AWS_REGION is set!"
-        fi
+#     - name: Check if AWS_REGION is set
+#       run: |
+#         if [[ -z "${{ secrets.AWS_REGION }}" ]]; then
+#           echo "AWS_REGION is not set!"
+#           exit 1
+#         else
+#           echo "AWS_REGION is set!"
+#         fi
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION }}
+#     - name: Configure AWS credentials
+#       uses: aws-actions/configure-aws-credentials@v1
+#       with:
+#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#         aws-region: ${{ secrets.AWS_REGION }}
 
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+#     - name: Login to Amazon ECR
+#       id: login-ecr
+#       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Build, tag, and push the image to Amazon ECR
-      id: build-image
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: beta8
-      run: |
-        # Build a docker container and push it to ECR 
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
-        echo "Pushing image to ECR..."
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
-        #echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA"
-    - name: Deploy on AWS EC2
-      env:
-        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY  }}
-        HOSTNAME: ${{ secrets.HOSTNAME  }}
-        USER_NAME: ${{ secrets.USERNAME  }}
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-      run: |
-        echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
-        ls
-        sed -i -e 's/GITHUB_SHA/'"$GITHUB_SHA"'/' ${{ github.workspace }}/docker-compose.yml
-        sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY"'/' ${{ github.workspace }}/docker-compose.yml
-        scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp 
-        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
+#     - name: Build, tag, and push the image to Amazon ECR
+#       id: build-image
+#       env:
+#         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+#         ECR_REPOSITORY: beta8
+#       run: |
+#         # Build a docker container and push it to ECR 
+#         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
+#         echo "Pushing image to ECR..."
+#         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
+#         #echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA"
+#     - name: Deploy on AWS EC2
+#       env:
+#         PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY  }}
+#         HOSTNAME: ${{ secrets.HOSTNAME  }}
+#         USER_NAME: ${{ secrets.USERNAME  }}
+#         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+#       run: |
+#         echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
+#         ls
+#         sed -i -e 's/GITHUB_SHA/'"$GITHUB_SHA"'/' ${{ github.workspace }}/docker-compose.yml
+#         sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY"'/' ${{ github.workspace }}/docker-compose.yml
+#         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp 
+#         ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
           
-          cd /tmp
-          # docker stop backend-flask
-          # docker rm backend-flask
-          docker-compose -p backend-flask up -d
-        '
+#           cd /tmp
+#           # docker stop backend-flask
+#           # docker rm backend-flask
+#           docker-compose -p backend-flask up -d
+#         '
