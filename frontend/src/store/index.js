@@ -2,7 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import blog from './blog'
+<<<<<<< HEAD
 import topic from './topic'
+=======
+import topic from './topics'
+
+
+>>>>>>> dev
 
 const rootReducer = combineReducers({
     session,

@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from .seeds import seed_commands
 from .models import db, Admin
+from .api.testimonial_routes import testimonial_routes
 from .config import Config
 from .api.topic_routes import topic_routes
 
@@ -29,9 +30,13 @@ def load_user(id):
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
+
+app.register_blueprint(testimonial_routes, url_prefix='/api/testimonial')
+
 app.register_blueprint(topic_routes, url_prefix='/api/topics')
 app.register_blueprint(blog_routes, url_prefix='/api/blogs')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+
 
 
 
