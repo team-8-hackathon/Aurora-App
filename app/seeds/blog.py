@@ -2,9 +2,8 @@ from app.models import db, Blog, Topic, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_blog():
-    thumbnail1='/images/blog_background.png'
-    title1='The Importance of Emotional Wellness'
-    body1="""<h1>The Importance of Emotional Wellness</h1>
+    title1="Understanding emotional wellness: why it's vital for a balanced life"
+    body1="""<h1>Understanding emotional wellness: why it's vital for a balanced life</h1>
     <p>Emotional wellness is a crucial component of overall well-being. It refers to our ability to understand, express, and manage our emotions effectively. When we prioritize our emotional health, we lead more balanced and fulfilling lives.</p>
 
     <p>Here are some key points to consider:</p>
@@ -34,14 +33,67 @@ def seed_blog():
     <p>Take the time to understand, express, and manage your emotions, and you'll find yourself on a path to emotional wellness and a more fulfilling life.</p>
 
 """
+    title2 = "The difference between emotional wellness and mental health"
+    body2= """
+        <h1>The difference between emotional wellness and mental health</h1>
+    <p><em>By [Your Name]</em></p>
 
-    blog1 = Blog(thumbnail=thumbnail1, title=title1, body=body1)
+    <p>Emotional wellness and mental health are terms often used interchangeably, but they refer to distinct aspects of our overall well-being. Understanding the differences between these two concepts is essential for taking a comprehensive approach to our health and happiness.</p>
 
-    db.session.add(blog1)
-    db.session.commit()
-    topic = Topic.query.get(1)
-    topic.blogs.append(blog1)
-    db.session.commit()
+    <h2>Emotional Wellness:</h2>
+
+    <p>Emotional wellness is primarily concerned with the management of our emotions and the ability to navigate our feelings in a healthy way. It encompasses:</p>
+
+    <ol>
+        <li><strong>Self-Awareness:</strong> Emotional wellness begins with recognizing and understanding our emotions. It's about being in touch with how you feel and why.</li>
+        <li><strong>Expression:</strong> It involves the healthy expression of emotions. This means finding appropriate outlets to communicate our feelings, whether through talking, writing, or artistic expression.</li>
+        <li><strong>Resilience:</strong> Emotionally well individuals are better equipped to bounce back from adversity. They can cope with setbacks and maintain a positive outlook on life.</li>
+        <li><strong>Stress Management:</strong> Effective stress management is a key component of emotional wellness. Techniques like meditation, deep breathing, and relaxation exercises help in managing emotional stress.</li>
+    </ol>
+
+    <h2>Mental Health:</h2>
+
+    <p>On the other hand, mental health is a broader term that encompasses our emotional well-being but goes beyond it. It includes:</p>
+
+    <ol>
+        <li><strong>Cognition:</strong> Mental health concerns the way we think and our cognitive abilities. It addresses issues such as memory, problem-solving, and decision-making.</li>
+        <li><strong>Diagnosable Conditions:</strong> Mental health can encompass diagnosed conditions such as depression, anxiety disorders, bipolar disorder, and schizophrenia.</li>
+        <li><strong>Treatment and Support:</strong> Mental health often requires professional treatment and support. This can include therapy, counseling, medication, or a combination of these approaches.</li>
+    </ol>
+
+    <h2>The Relationship:</h2>
+
+    <p>Emotional wellness and mental health are interconnected. Emotional well-being contributes to good mental health by promoting resilience and healthy emotional expression. At the same time, mental health conditions can affect emotional wellness.</p>
+
+    <h2>Conclusion:</h2>
+
+    <p>In summary, emotional wellness and mental health are related but distinct aspects of our well-being. Emotional wellness focuses on understanding and managing emotions, while mental health is a broader concept that includes cognitive functioning and diagnosable conditions. Both are vital for leading a fulfilling and balanced life.</p>
+
+    <p>Taking care of our emotional wellness through self-awareness, expression, and resilience can contribute to better mental health, and seeking professional support when necessary is an essential step in maintaining both emotional and mental well-being.</p>
+
+    <p><em>Remember, it's perfectly okay to seek help and support for both your emotional wellness and mental health when needed.</em></p>
+
+"""
+    for i in range(2):
+        for j in range(4):
+            topics = ['ew', 'msc', 'rw', 'ww']
+            topic = topics[j]
+            db_topic = Topic.query.get(j+1)
+            for k in range(6):
+                url = f'/images/blog-images/{topic}{k+1}.png'
+                if k % 2 == 0:
+                    title = title2
+                    body = body2
+                else:
+                    title = title1
+                    body = body1
+                blog = Blog(title=title, thumbnail=url, body=body)
+                db.session.add(blog)
+                db.session.commit()
+                db_topic.blogs.append(blog)
+                db.session.commit()
+
+
 
 def unseed_blog():
     if environment == "production":
