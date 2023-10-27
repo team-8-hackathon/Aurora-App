@@ -36,8 +36,10 @@ export const thunkCreateTestimonial = (data) => async (dispatch) => {
 export const thunkGetAllTestimonials = () => async (dispatch) => {
   const response = await fetch(`/api/testimonial`);
   if(response.ok){
+    debugger
+    console.log("----------------thunkGetAlltest data: ");
     const data = await response.json();
-
+    console.log('----------------thunkGetAlltest data: ',data)
     dispatch(loadTestimonials(data))
     return data;
   }
@@ -46,16 +48,15 @@ export const thunkGetAllTestimonials = () => async (dispatch) => {
 // state object
 const initialState = {};
 
-const testimonialReducer = (state = initialState, action) => {
+export default function reducer (state = initialState, action){
   let newState;
   switch(action.type) {
     case GET_ALL_TESTIMONIALS: {
-      action.testimonials.forEach(testimonial => (newState[testimonial.id] = testimonial));
-      return newState;
+      // action.testimonials.forEach(testimonial => (newState[testimonial.id] = testimonial));
+      // return newState;
+      return {...state, testimonials: action.testimonials}
     }
     default:
       return state;
   }
 };
-
-export default testimonialReducer;

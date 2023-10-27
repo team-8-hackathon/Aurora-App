@@ -28,6 +28,8 @@ def create_testimonial():
     db.session.add(testimonial)
     db.session.commit()
     print('Testimonial Saved')
-    return testimonial.to_dict(), 201
+    testimonials = Testimonial.query.order_by(Testimonial.stars.desc()).all()
+    return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}, 201
+    # return testimonial.to_dict(), 201
 
   return {"ErRors ": validation_errors_to_error_messages(form.errors)}, 401

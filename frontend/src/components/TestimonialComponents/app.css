@@ -19,7 +19,6 @@ form {
   align-items: center;
   gap: 1.2rem;
   font-family: "DM Sans", Times;
-
   background-color: var(--color-lightest);
   border-radius: 7px;
   border: 1px solid black;
@@ -47,6 +46,7 @@ input[type="file"] {
     border: 1px solid #003b5a;
     border-radius: 200px;
     background-color: #ffe27a;
+    font-size: 12px;
 }
 
 
@@ -61,7 +61,8 @@ input::file-selector-button {
 }
 
 .profile-img {
-  width: 80px;
+  width: 120px;
+  height: 100px;
 }
 
 input[type="text"] {
