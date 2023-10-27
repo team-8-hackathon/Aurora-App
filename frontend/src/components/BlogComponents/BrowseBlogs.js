@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams, Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { thunkGetSingleTopic } from '../../store/topic';
 import BlogThumbnail from './BlogThumbnail';
 
@@ -30,7 +30,9 @@ const BrowseBlogs = () => {
         <>
             <h2>{topic.topic}</h2>
             {blogs.slice(0,numArticles).map(blog => (
-                <BlogThumbnail topic={topic} blog={blog} />
+                <Link key={blog.id} to={`/blogs/${blog.id}`}>
+                    <BlogThumbnail topic={topic} blog={blog} />
+                </Link>
             ))}
             {numArticles < blogs.length && <button onClick={showMoreArticles}>Show more articles</button>}
         </>
