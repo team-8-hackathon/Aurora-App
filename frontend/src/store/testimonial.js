@@ -11,7 +11,7 @@ const loadTestimonials = (testimonials) => {
 
 // thunk action creator
 
-export const createTestimonial = (data) => async (dispatch) => {
+export const thunkCreateTestimonial = (data) => async (dispatch) => {
   const response = await fetch(`/api/testimonial/new`, {
     method: "POST",
     headers: {
@@ -33,7 +33,7 @@ export const createTestimonial = (data) => async (dispatch) => {
   }
 }
 
-export const getAllTestimonials = () => async (dispatch) => {
+export const thunkGetAllTestimonials = () => async (dispatch) => {
   const response = await fetch(`/api/testimonial`);
   if(response.ok){
     const data = await response.json();
