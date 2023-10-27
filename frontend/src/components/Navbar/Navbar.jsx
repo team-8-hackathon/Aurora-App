@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllTopics } from '../../store/topics';
 import { Link } from 'react-router-dom';
-import './NavBar.css';
+import './Navbar.css';
 
 function NavBar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
