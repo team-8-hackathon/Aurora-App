@@ -47,7 +47,7 @@ const BlogForm = () => {
         if (!body) validationErrors.body = "Blog body is required"
         if (!topic) validationErrors.topic = "Blog Topic is required"
         setErrors(validationErrors)
-    }, [title, thumbnail, body])
+    }, [title, thumbnail, body, topic])
 
     useEffect(() => {
         dispatch(thunkGetAllTopics())
@@ -63,6 +63,7 @@ const BlogForm = () => {
             formData.append('thumbnail', thumbnail)
             formData.append('title', title)
             formData.append('body', body.toString())
+            formData.append('topic', topic)
 
             const response = await dispatch(thunkPostBlog(formData))
             if (response.id) {
@@ -82,6 +83,7 @@ const BlogForm = () => {
                 <label htmlFor="topic">Topic</label>
                 {hasSubmitted && errors.topic && <p className="errors">{errors.topic}</p>}
                 <select onChange={e => setTopic(e.target.value)}>
+                    <option>Select a Topic...</option>
                     {topics.map(topic => (
                         <option key={topic.id} value={topic.id}>{topic.topic}</option>
                     ))}

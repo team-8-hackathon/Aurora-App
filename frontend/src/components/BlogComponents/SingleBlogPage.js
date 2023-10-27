@@ -16,12 +16,11 @@ const SingleBlogPage = () => {
         dispatch(thunkGetSingleBlog(blogId))
     }, [dispatch, blogId])
 
-    if (!blog) return null;
+    if (!blog || !blog.topic) return null;
 
     const topicRedirect = () => {
         history.push(`/topics/${blog.topic.id}`)
     }
-    
     return (
         <div>
             <img src={blog.thumbnail} alt="thumbnail" />
