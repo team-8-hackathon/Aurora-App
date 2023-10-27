@@ -27,7 +27,7 @@ function NavBar() {
             <div className="nav-content">
                 <div className="nav-brand">
                     <Link to="/">
-                    <img src={`${process.env.PUBLIC_URL}/images/icon+wordmark.png`} alt="Your Company Logo" className="nav-logo" />
+                    <img src={`${process.env.PUBLIC_URL}/images/icon+wordmark.png`} alt="Company Logo" className="nav-logo" />
                     </Link>
                 </div>
                 <div className="nav-menu-items">
