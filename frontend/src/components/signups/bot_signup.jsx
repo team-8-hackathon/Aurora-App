@@ -1,16 +1,15 @@
 import React from 'react';
 import jQuery from 'jquery';
-import butterflyIcon from './butterfly.png'; 
 
 import "./signup.css"
 
 
-const TopSignup = () => {
+const BotSignup = () => {
   return (
     <div id="mc_embed_shell">
 
        
-      <div class= "top_signup">
+      <div class= "bot_signup">
         <form
           action="https://gmail.us21.list-manage.com/subscribe/post?u=521869c3a8a0a0f310a967b1e&amp;id=8b0b556b44&amp;f_id=0000e9e6f0"
           method="post"
@@ -19,9 +18,9 @@ const TopSignup = () => {
           className="validate"
           target="_blank"
         >
-          <div className="top_signup_box1" id="mc_embed_signup_scroll">
+          <div className="bot_signup_box1" id="mc_embed_signup_scroll">
 
-            <h2 class="top_signup_text1">Become a brighter, more confident you with mini mindset shifts and daily affirmations.</h2>
+            <h2 class="bot_signup_text1">Become a brighter, more confident you with mini mindset shifts and daily affirmations.</h2>
 
             <div className="mc-field-group">
               <input
@@ -84,4 +83,4 @@ const TopSignup = () => {
   );
 };
 
-export default TopSignup;
+export default BotSignup;
