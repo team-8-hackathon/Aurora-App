@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { thunkGetSingleTopic } from '../../store/topic';
+import { thunkGetSingleTopic } from '../../store/topics';
 import BlogThumbnail from './BlogThumbnail';
 
 
