@@ -12,7 +12,8 @@ import BottomSignup from "./components/signups/bot_signup";
 import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
-import NavBar from "./components/Navbar/Navbar";
+import SplashNavBar from "./components/Navbar/SplashNavBar";
+import NavBar from "./components/Navbar/NavBar";
 import Footer from "./components/Footer/footer";
 
 
@@ -30,7 +31,7 @@ function App() {
         <Switch>
           <Route exact path='/'>
             {/* <h1>React Home Page</h1> */}
-            <NavBar/>
+            <SplashNavBar/>
 
             <TestimonialForm/>
             <TestimonialList/>
@@ -40,7 +41,10 @@ function App() {
             <Footer/>
           </Route>
           <Route path='/blog/:blogId'>
+            <NavBar/>
             <SingleBlogPage />
+            <Footer/>
+
 
           </Route>
           <ProtectedRoute>

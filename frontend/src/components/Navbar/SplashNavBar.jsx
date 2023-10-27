@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllTopics } from '../../store/topics';
-import { Link } from 'react-router-dom';
-import './NavBar.css';
+import './SplashNavBar.css';
 
-function NavBar() {
+function SplashNavBar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
 
@@ -23,31 +22,26 @@ function NavBar() {
     };
 
     return (
-        <div className="nav-container">
-            <div className="nav-content">
-                <div className="nav-brand">
-                    <Link to="/">
-                    <img src={`${process.env.PUBLIC_URL}/images/icon+wordmark.png`} alt="Your Company Logo" className="nav-logo" />
-                    </Link>
-                </div>
-                <div className="nav-menu-items">
+        <div className="navbar">
+            <div className="navbar-content">
+                <div className="menu-items">
                     <div
-                        className="nav-item"
+                        className="navbar-item"
                         onMouseEnter={showDropdown}
                         onMouseLeave={hideDropdown}
                     >
                         Article Topics
                         {dropdownOpen && (
-                            <div className="nav-dropdown-menu">
+                            <div className="dropdown-menu">
                                 {allTopics.map(topic => (
-                                    <a key={topic.id} href={"/"} className="nav-dropdown-item">
+                                    <a key={topic.id} href={"/"} className="dropdown-item">
                                         {topic.topic}
                                     </a>
                                 ))}
                             </div>
                         )}
                     </div>
-                    <div className="nav-item">
+                    <div className="navbar-item">
                         <a href="mailto:hi@aurorahelps.app?subject=Contacting Aurora&body=Hello Aurora," style={{ color: '#00283D', textDecoration: 'none' }}>
                             Contact
                         </a>
@@ -58,4 +52,7 @@ function NavBar() {
     );
 }
 
-export default NavBar;
+export default SplashNavBar;
+
+
+
