@@ -7,8 +7,8 @@ import TestimonialForm  from "./components/TestimonialComponents/Testimonial_for
 import TestimonialList from "./components/TestimonialComponents/TestimonialList"
 
 
-import TopSignup from "./components/signups/top_signup";
-import BottomSignup from "./components/signups/bot_signup";
+// import TopSignup from "./components/signups/top_signup";
+// import BottomSignup from "./components/signups/bot_signup";
 import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
@@ -32,8 +32,8 @@ function App() {
             <TestimonialForm/>
             <TestimonialList/>
 
-            <TopSignup/>
-            <BottomSignup/>
+            {/* <TopSignup/>
+            <BottomSignup/> */}
           </Route>
           <Route path='/blog/:blogId'>
             <SingleBlogPage />

@@ -20,7 +20,6 @@ function TestimonialForm() {
 
   return (
     <form className="form-testimonial" onSubmit={handleSubmit}>
-      <h1>Testimonail Form</h1>
       <div className="form-testimonial-img">
         {pic ? (
           <img className="profile-img" src={pic} alt="image" />
@@ -37,23 +36,32 @@ function TestimonialForm() {
             </g>
           </svg>
         )}
-        <label for="img">Profile image</label>
+        {/* <label for="img">Profile image</label> */}
         <input
           type="file"
           id="img"
           name="img"
           accept="image/*"
           onChange={getFile}
+          className="pic-input"
+          placeholder="Set Pic"
         />
+
+        <label for="img" class="custom-file-upload">
+          Upload Image
+        </label>
+        {/* <input id="file-upload" type="file" /> */}
       </div>
-      <label htmlFor="">Name</label>
+      {/* <label htmlFor="">Name</label> */}
       <input
+        className="name-input"
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        placeholder="Name"
       />
       <StarRating onSetStars={setStars} />
-      <label>Review</label>
+      {/* <label>Review</label> */}
       <textarea
         type="text"
         value={body}

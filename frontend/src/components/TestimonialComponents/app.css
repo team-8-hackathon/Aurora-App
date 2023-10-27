@@ -1,4 +1,11 @@
+/* 
+#003b5a - font 
+#ffe27a - background
 
+font-family: "DM Sans", Times ;
+
+
+*/
 * {
   margin: 0;
   padding: 0;
@@ -6,34 +13,85 @@
 }
 
 form {
+  color: #003b5a;
   font-size: 1.6rem;
   display: grid;
   align-items: center;
   gap: 1.2rem;
+  font-family: "DM Sans", Times;
 
   background-color: var(--color-lightest);
   border-radius: 7px;
+  border: 1px solid black;
+  width: 18em;
+  margin: 0 auto;
+  background-color: #8dc9a9;
 }
 
-.form-testimonial{
+.form-testimonial {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.form-testimonial-img{
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: 1px solid #003b5a;
+    border-radius: 200px;
+    background-color: #ffe27a;
+}
+
+
+input::file-selector-button {
+   background-color: #ffe27a;
+}
+
+.form-testimonial-img {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.profile-img{
-  width: 80px
+.profile-img {
+  width: 80px;
 }
 
-textarea{
+input[type="text"] {
+  font-family: "DM Sans", Times;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.name-input {
+  border-radius: 200px;
+  font-family: "DM Sans", Times;
+  border-radius: 200px;
+  height:40px;
+  font-family: "DM Sans", Times;
+}
+
+textarea {
+  font-size: 20px;
+  border-radius: 1%;
   resize: none;
   width: 400px;
   height: 100px;
+  font-family: "DM Sans", Times;
+  padding-left: 5px;
+}
+
+button {
+  font-size: 18px;
+  font-family: "DM Sans", Times;
+  padding: 12px 24px;
+  border-radius: 200px;
+  background-color: #ffe27a;
 }
