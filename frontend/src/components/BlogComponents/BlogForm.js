@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { thunkPostBlog } from "../../store/blog";
 import { thunkGetAllTopics } from "../../store/topics";
+import { AiFillFileImage } from 'react-icons/ai'
 
 
 const BlogForm = () => {
@@ -43,7 +44,7 @@ const BlogForm = () => {
     useEffect(() => {
         const validationErrors = {}
         if (!title || !title.length) validationErrors.title = "Blog title is required"
-        if (!thumbnail || !thumbnail.length) validationErrors.thumbnail = "Blog thumbnail is required"
+        if (!thumbnail) validationErrors.thumbnail = "Blog thumbnail is required"
         if (!body || !body.length) validationErrors.body = "Blog body is required"
         if (!topic || !topic.length) validationErrors.topic = "Blog Topic is required"
         setErrors(validationErrors)
@@ -53,7 +54,7 @@ const BlogForm = () => {
         dispatch(thunkGetAllTopics())
     }, [dispatch])
 
-    if(!topics) return null;
+    if (!topics) return null;
 
     const submitBlog = async (e) => {
         e.preventDefault();
@@ -73,28 +74,41 @@ const BlogForm = () => {
             }
         }
     }
+
+    const handleCancel = (e) => {
+        e.preventDefault();
+        history.push('/admin')
+    }
     return (
         <div className="blog-form-container">
-            <form encType="multipart/form-data" onSubmit={submitBlog}>
+            <form className="blog-form" encType="multipart/form-data" onSubmit={submitBlog}>
                 <h2>Create a Blog Post</h2>
                 <label htmlFor="title">Blog Title</label>
                 {hasSubmitted && errors.title && <p className="errors">{errors.title}</p>}
                 <input name='title' value={title} onChange={e => setTitle(e.target.value)} />
+
                 <label htmlFor="topic">Topic</label>
                 {hasSubmitted && errors.topic && <p className="errors">{errors.topic}</p>}
                 <select onChange={e => setTopic(e.target.value)}>
-                    <option>Select a Topic...</option>
+                    <option id="select-topic">Select a Topic...</option>
                     {topics.map(topic => (
                         <option key={topic.id} value={topic.id}>{topic.topic}</option>
                     ))}
                 </select>
-                <label htmlFor="thumbnail">Blog Thumbnail</label>
+
+                <label className="file-upload">
                 {hasSubmitted && errors.thumbnail && <p className="errors">{errors.thumbnail}</p>}
-                <input name="thumbnail" type='file' accept='image/*' onChange={e => setThumbnail(e.target.files[0])} />
+                <input id="file-upload" name="thumbnail" type='file' accept='image/*' onChange={e => setThumbnail(e.target.files[0])} /><AiFillFileImage style={{'color': '#00283d', 'font-size': '1.5rem'}} />&nbsp;&nbsp;{!thumbnail && <p>Add thumbnail</p>}{thumbnail && <p>{thumbnail.name}</p>}</label>
+
                 {hasSubmitted && errors.body && <p className="errors">{errors.body}</p>}
-                <EditorMenuBar editor={editor} />
-                <EditorContent id="text-content" editor={editor} />
-                <button>Post Blog</button>
+                <div className="text-editor-container">
+                    <EditorMenuBar editor={editor} />
+                    <EditorContent id="text-content" editor={editor} />
+                </div>
+                <div className="button-container">
+                    <button className='blog-post-button cancel' type='button' onClick={handleCancel}>Cancel</button>
+                    <button className="blog-post-button submit">Post Blog</button>
+                </div>
             </form>
         </div>
     )
