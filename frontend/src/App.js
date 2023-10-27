@@ -12,6 +12,7 @@ import BottomSignup from "./components/signups/bot_signup";
 import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
+import NavBar from "./components/Navbar/Navbar";
 
 
 
@@ -27,7 +28,8 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            <h1>React Home Page</h1>
+            {/* <h1>React Home Page</h1> */}
+            <NavBar/>
 
             <TestimonialForm/>
             <TestimonialList/>
