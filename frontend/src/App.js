@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 
-import TestimonialForm  from "./components/TestimonialComponents/Testimonial_form";
+import TestimonialForm from "./components/TestimonialComponents/Testimonial_form";
 import TestimonialList from "./components/TestimonialComponents/TestimonialList";
 import SplashNavBar from './components/Navbar/SplashNavBar'
 import Footer from './components/Footer/footer'
@@ -13,6 +13,7 @@ import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 import BrowseBlogs from "./components/BlogComponents/BrowseBlogs";
+import NavBar from "./components/Navbar/Navbar";
 
 
 
@@ -28,33 +29,35 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            {/* <h1>React Home Page</h1> */}
-            <SplashNavBar/>
+            <SplashNavBar />
 
-            <TestimonialForm/>
-            <TestimonialList/>
+            <TestimonialForm />
+            <TestimonialList />
 
-            <TopSignup/>
-            <BottomSignup/>
-            <Footer/>
+            <TopSignup />
+            <BottomSignup />
+            <Footer />
           </Route>
-          <Route path='/blogs/:blogId'>
-            <SingleBlogPage />
-            <Footer/>
+          <Route path='/'>
+            <NavBar />
+            <Route path='/blogs/:blogId'>
+              <SingleBlogPage />
 
 
-          </Route>
-          <Route path='/topics/:topicId'>
-            <BrowseBlogs />
-          </Route>
-          <ProtectedRoute>
-            <Route exact path='/admin'>
-              <h1>Admin Page</h1>
             </Route>
-            <Route exact path='/admin/post-blog'>
-              <BlogForm />
+            <Route path='/topics/:topicId'>
+              <BrowseBlogs />
             </Route>
-          </ProtectedRoute>
+            <ProtectedRoute>
+              <Route exact path='/admin'>
+                <h1>Admin Page</h1>
+              </Route>
+              <Route exact path='/admin/post-blog'>
+                <BlogForm />
+              </Route>
+            </ProtectedRoute>
+            <Footer />
+          </Route>
         </Switch>
       )}
     </>
