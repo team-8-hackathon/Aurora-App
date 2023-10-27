@@ -13,6 +13,7 @@ import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 import NavBar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/footer";
 
 
 
@@ -36,6 +37,7 @@ function App() {
 
             <TopSignup/>
             <BottomSignup/>
+            <Footer/>
           </Route>
           <Route path='/blog/:blogId'>
             <SingleBlogPage />
