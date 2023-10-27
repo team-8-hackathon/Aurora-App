@@ -13,7 +13,7 @@ import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 import SplashNavBar from "./components/Navbar/SplashNavBar";
-import NavBar from "./components/Navbar/NavBar";
+import NavBar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/footer";
 
 
