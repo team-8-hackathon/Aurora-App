@@ -38,6 +38,21 @@ export const thunkGetBlogs = () => async dispatch => {
     }
 }
 
+export const thunkPostBlog = (formData) => async dispatch => {
+    const response = await fetch(`/api/blogs/create`, {
+        method: "POST",
+        body: formData
+    })
+
+    if (response.ok) {
+        const newBlog = await response.json();
+        dispatch(actionGetSingleBlog(newBlog.id))
+        return newBlog
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
 
 
 

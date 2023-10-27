@@ -4,8 +4,6 @@ import session from './session'
 import blog from './blog'
 import topic from './topics'
 
-
-
 const rootReducer = combineReducers({
     session,
     blog,

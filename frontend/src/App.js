@@ -5,16 +5,14 @@ import { authenticate } from "./store/session";
 
 import TestimonialForm  from "./components/TestimonialComponents/Testimonial_form";
 import TestimonialList from "./components/TestimonialComponents/TestimonialList";
-
-
+import SplashNavBar from './components/Navbar/SplashNavBar'
+import Footer from './components/Footer/footer'
 import TopSignup from "./components/signups/top_signup";
 import BottomSignup from "./components/signups/bot_signup";
 import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
-import SplashNavBar from "./components/Navbar/SplashNavBar";
-import NavBar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/footer";
+import BrowseBlogs from "./components/BlogComponents/BrowseBlogs";
 
 
 
@@ -40,12 +38,14 @@ function App() {
             <BottomSignup/>
             <Footer/>
           </Route>
-          <Route path='/blog/:blogId'>
-            <NavBar/>
+          <Route path='/blogs/:blogId'>
             <SingleBlogPage />
             <Footer/>
 
 
+          </Route>
+          <Route path='/topics/:topicId'>
+            <BrowseBlogs />
           </Route>
           <ProtectedRoute>
             <Route exact path='/admin'>

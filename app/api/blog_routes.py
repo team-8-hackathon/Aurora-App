@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 # from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms import BlogForm
-from app.models import Blog, db
+from app.models import Blog, db, Topic
 from datetime import datetime
 
 blog_routes = Blueprint('blogs', __name__)
@@ -46,14 +46,16 @@ def post_blog():
         thumbnail = form.data['thumbnail']
         thumbnail.filename = get_unique_filename(thumbnail.filename)
         upload = upload_file_to_s3(thumbnail)
-
         if 'url' not in upload:
             return {"errors": upload}
         url = str(upload['url'])
 
         blog = Blog(title=title, thumbnail=url, body=body)
+        topic = Topic.query.get(form.data['topic'])
 
         db.session.add(blog)
+        db.session.commit()
+        blog.topics.append(topic)
         db.session.commit()
         return blog.to_dict()
     return {'errors': form.errors}, 401
