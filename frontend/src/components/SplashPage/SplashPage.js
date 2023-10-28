@@ -75,7 +75,27 @@ const SplashPage = () => {
                 <img src={`${process.env.PUBLIC_URL}/images/mood-1.svg`} alt="Mood Joy" />
             </div>
             <div className='splash-page-screens'>
-                {/* <img src='/images/screen1.png' alt='Screen 1' /> */}
+                <div className='splash-page-screen-content-container'>
+                    <img src='/images/screen1.png' alt='Screen 1' />
+                    <div className='screen-content'>
+                        <img src={`${process.env.PUBLIC_URL}/images/mood-joy.svg`} alt="Mood Joy" />
+                        <p>Get tailored support based on what's important to you.</p>
+                    </div>
+                </div>
+                <div className='splash-page-screen-content-container'>
+                    <div className='screen-content'>
+                        <img src={`${process.env.PUBLIC_URL}/images/mood-afraid.svg`} alt="Mood Afraid" />
+                        <p>Learn to identify and name emotions for improved self-awareness.</p>
+                    </div>
+                    <img src='/images/screen2.png' alt='Screen 2' />
+                </div>
+                <div className='splash-page-screen-content-container'>
+                    <img src='/images/screen3.png' alt='Screen 3' />
+                    <div className='screen-content'>
+                        <img src={`${process.env.PUBLIC_URL}/images/mood-sad.svg`} alt="Mood Sad" />
+                        <p>Need someone to talk to? Chat with Aurora anytime, anywhere.</p>
+                    </div>
+                </div>
             </div>
         </div>
     )
