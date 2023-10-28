@@ -12,10 +12,10 @@ const actionGetSingleTopic = (topic) => ({
     topic
 })
 
-const actionDeleteTopic = (topicId) => ({
-    type: DELETE_TOPIC,
-    topicId
-});
+// const actionDeleteTopic = (topicId) => ({
+//     type: DELETE_TOPIC,
+//     topicId
+// });
 
 export const thunkGetAllTopics = () => async dispatch => {
     const response = await fetch('/api/topics/')

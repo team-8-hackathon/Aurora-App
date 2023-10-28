@@ -25,22 +25,20 @@ function AdminNavbar() {
     }, [dispatch]);
 
     const handleLogout = () => {
-        dispatch(logout()); 
+        dispatch(logout());
     };
 
     const handleDeleteTopic = async (topicId) => {
         dispatch(thunkDeleteTopic(topicId))
     };
-    if(!allBlogs || !allTopics) return null;
+    if (!allBlogs || !allTopics) return null;
 
     return (
         <div className="admin-navbar-container">
             <div className="admin-navbar-content">
-                <div className="admin-navbar-brand">
-                    <Link to="/admin" className="admin-dashboard-link">Admin Dashboard</Link>
-                </div>
-                <div className="admin-navbar-menu-items">
-                    <input title="Search by title, topic, or body" type='search' onChange={(e) => searchBlogs(allBlogs, e.target.value)} placeholder='Search blogs...'/>
+                <Link to="/admin" className="admin-dashboard-link">Admin Dashboard</Link>
+                <input className="search-bar" title="Search by title, topic, or body" type='search' onChange={(e) => searchBlogs(allBlogs, e.target.value)} placeholder='Search blogs...' />
+                <div className='menu-right'>
                     <Link to="/admin/post-topic" className="admin-navbar-item">Create Topic</Link>
                     <div
                         className="admin-navbar-item"
@@ -55,22 +53,22 @@ function AdminNavbar() {
                                         <a href={`/topics/${topic.id}`} className="admin-navbar-dropdown-item">
                                             {topic.topic}
                                         </a>
-                                        <OpenModalButton 
-                                            className='edit-delete-button'
-                                            buttonText={<i className='fa fa-trash'/>}
-                                            modalComponent={<ConfirmModal 
+                                        <OpenModalButton
+                                            className='topic-delete-button'
+                                            buttonText={<i className='fa fa-trash' />}
+                                            modalComponent={<ConfirmModal
                                                 modalTitle={"Are you sure you want to delete this topic?"}
                                                 yesHandler={handleDeleteTopic}
                                                 optionalCBArg={topic.id}
-                                            />} 
+                                            />}
                                         />
-                                        
+
                                     </div>
                                 ))}
                             </div>
                         )}
                     </div>
-                    <Link to="/admin" onClick={handleLogout}>Log Out</Link>
+                    <Link className="logout-link" to="/admin" onClick={handleLogout}>Log Out</Link>
                 </div>
             </div>
         </div>

@@ -3,15 +3,40 @@
     justify-content: center;
     align-items: center;
     height: 90px;
-    background-color: #fcf3ea;
+    background-color: transparent;
+}
+
+.topic-delete-button {
+    background-color: transparent;
+    border: none;
 }
 
 .admin-navbar-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
     padding: 0 2%;
+    gap: 3rem;
+    align-items: center;
+}
+.logout-link {
+    text-decoration: none;
+    color:#00283D;
+}
+.menu-right {
+    display: flex;
+    gap: 1rem;
+}
+.search-bar {
+    width: 30rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+}
+.search-bar:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
 }
 
 .admin-navbar-brand {
@@ -20,13 +45,6 @@
     color: #00283D;
     cursor: pointer;
     flex: 1;
-}
-
-.admin-navbar-menu-items {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex: 4;
 }
 
 .admin-navbar-item,
@@ -41,6 +59,7 @@
     position: absolute;
     top: 100%;
     left: 50%;
+    z-index: 2;
     transform: translateX(-50%);
     background-color: #FFE27A;
     border: 1px solid #ddd;
@@ -76,6 +95,7 @@
 .admin-dashboard-link {
     text-decoration: none;
     color: inherit;
+    width: 15rem;
 }
 
 .nav-form {

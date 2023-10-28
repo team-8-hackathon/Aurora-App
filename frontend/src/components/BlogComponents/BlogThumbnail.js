@@ -23,7 +23,7 @@ const BlogThumbnail = ({ topic, blog, type }) => {
         history.push(`/admin/blogs/${blog.id}/edit`)
     }
     return (
-        <>
+        <div className="thumbnail-container">
             <Link id='blog-thumbnail-link' to={`/blogs/${blog.id}`} className="blog-thumbnail"
                 style={{
                     backgroundImage: `url(${blog.thumbnail})`,
@@ -33,10 +33,12 @@ const BlogThumbnail = ({ topic, blog, type }) => {
                 <p className="topic-tag" style={{ 'backgroundColor': `${color}` }}>{topic.topic}</p>
                 <p className="title-tag">{blog.title}</p>
             </Link>
-            {type === "admin" && <OpenModalButton className="edit-delete-button"title="Delete" buttonText={<FaTrashAlt />}
-                modalComponent={<ConfirmModal modalTitle={'Are you sure you want to delete your blog?'} yesHandler={handleDelete} />} />}
-            {type === "admin" && <button className="edit-delete-button" title="Edit" onClick={handleEdit}><BiEdit /></button>}
-        </>
+            <div className="edit-delete-button-container">
+                {type === "admin" && <OpenModalButton className="edit-delete-button" title="Delete" buttonText={<FaTrashAlt />}
+                    modalComponent={<ConfirmModal modalTitle={'Are you sure you want to delete your blog?'} yesHandler={handleDelete} />} />}
+                {type === "admin" && <button className="edit-delete-button" title="Edit" onClick={handleEdit}><BiEdit /></button>}
+            </div>
+        </div>
     )
 }
 

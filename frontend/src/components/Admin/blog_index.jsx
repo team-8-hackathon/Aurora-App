@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { thunkGetBlogs } from '../../store/blog';
 import BlogThumbnail from '../BlogComponents/BlogThumbnail';
 import '../BlogComponents/BrowseBlogs.css'
+import './BlogIndex.css'
 import { useSearch } from '../../context/SearchContext';
 
 const BrowseBlogs = () => {

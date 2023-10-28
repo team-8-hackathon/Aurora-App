@@ -1,4 +1,25 @@
 .edit-delete-button {
     background-color: transparent;
     border: none;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: large;
+}
+.thumbnail-container {
+    position: relative;
+}
+
+.edit-delete-button-container {
+    position:absolute;
+    top: 1rem;
+    right: 1rem;
+    /* z-index: 2; */
+    width: fit-content;
+    box-sizing: border-box;
+
+}
+
+.edit-delete-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
 }
