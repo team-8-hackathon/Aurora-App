@@ -25,10 +25,9 @@ const BrowseBlogs = () => {
             setNumArticles(numArticles + 6)
         }
     }
-    console.log(searchData.length, typeof (searchData))
 
     return (
-        <div >
+        <div className='browse-blogs-container'>
             {!searchData.length && <div className='browse-blogs-container'>
                 {resultsFound && <h4 className='topic-title'>All Blogs</h4>}{!resultsFound && <h4 className='topic-title'>No search results found</h4>}
                  <div className='blog-container'>{blogs.slice(0, numArticles).map((blog = {}) => (
