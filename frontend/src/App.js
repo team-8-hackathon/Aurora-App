@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 import BrowseBlogs from "./components/BlogComponents/BrowseBlogs";
 import NavBar from "./components/Navbar/Navbar";
+import SplashPage from "./components/SplashPage/SplashPage";
 
 
 
@@ -28,6 +29,10 @@ function App() {
     <>
       {isLoaded && (
         <Switch>
+          <Route path='/splash'>
+            <SplashNavBar />
+            <SplashPage />
+          </Route>
           <Route exact path='/'>
             <SplashNavBar />
             <TestimonialForm />
