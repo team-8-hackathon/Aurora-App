@@ -5,17 +5,23 @@ import { logout } from '../../store/session';
 import { Link } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
 import './AdminNavBar.css';
+import { thunkGetBlogs } from '../../store/blog';
+import { useSearch } from '../../context/SearchContext';
 
 function AdminNavbar() {
     const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
-    const [searchInput, setSearchInput] = useState('');
+
+    const { searchBlogs } = useSearch();
 
     const dispatch = useDispatch();
     const allTopics = useSelector((state) => state.topic.topics);
+    const allBlogs = useSelector(state => state.blog.blogs)
 
     useEffect(() => {
         dispatch(thunkGetAllTopics());
+        dispatch(thunkGetBlogs())
     }, [dispatch]);
+
 
     const showAdminDropdown = () => {
         setAdminDropdownOpen(true);
@@ -23,10 +29,6 @@ function AdminNavbar() {
 
     const hideAdminDropdown = () => {
         setAdminDropdownOpen(false);
-    };
-
-    const handleSearchInput = (e) => {
-        setSearchInput(e.target.value);
     };
 
     const handleLogout = () => {
@@ -46,6 +48,7 @@ function AdminNavbar() {
             console.error("Failed to delete the topic.");
         }
     };
+    if(!allBlogs || !allTopics) return null;
 
     return (
         <div className="admin-navbar-container">
@@ -54,20 +57,7 @@ function AdminNavbar() {
                     <Link to="/admin" className="admin-dashboard-link">Admin Dashboard</Link>
                 </div>
                 <div className="admin-navbar-menu-items">
-                    <form className='nav-form'
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            window.location.href = `/#/?search=${searchInput}`;
-                        }}
-                    >
-                        <input
-                            className="navbar-search"
-                            type="search"
-                            placeholder="Search Blogs"
-                            value={searchInput}
-                            onChange={handleSearchInput}
-                        />
-                    </form>
+                    <input title="Search by title, topic, or body" type='search' onChange={(e) => searchBlogs(allBlogs, e.target.value)} placeholder='Search blogs...'/>
                     <Link to="/admin/post-topic" className="admin-navbar-item">Create Topic</Link>
                     <div
                         className="admin-navbar-item"
