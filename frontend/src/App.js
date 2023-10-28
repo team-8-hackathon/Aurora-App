@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 import BrowseBlogs from "./components/BlogComponents/BrowseBlogs";
 import NavBar from "./components/Navbar/Navbar";
+import EditBlogForm from "./components/BlogComponents/EditBlogForm";
 import AdminNavBar from "./components/Navbar/AdminNavBar"
 import TopicForm from "./components/Topics/TopicForm"
 
@@ -61,6 +62,9 @@ function App() {
               </Route>
               <Route exact path='/admin/post-blog'>
                 <BlogForm />
+              </Route>
+              <Route exact path='/admin/edit-blog'>
+                <EditBlogForm />
               </Route>
               <Route exact path='/admin/post-topic'>
                 <TopicForm />
