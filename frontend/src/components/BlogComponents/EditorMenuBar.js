@@ -43,28 +43,28 @@ const EditorMenuBar = ({ editor }) => {
     return (
         <div className="menuBar">
             <div>
-                <button onClick={() => editor.chain().focus().toggleBold().run()} className={editor.isActive("bold") ? "is_active" : ""}
+                <button type="button" onClick={() => editor.chain().focus().toggleBold().run()} className={editor.isActive("bold") ? "is_active" : ""}
                 ><FaBold /></button>
                 <button
-                    onClick={() => editor.chain().focus().toggleItalic().run()}
+                    type="button" onClick={() => editor.chain().focus().toggleItalic().run()}
                     className={editor.isActive("italic") ? "is_active" : ""}
                 >
                     <FaItalic />
                 </button>
                 <button
-                    onClick={() => editor.chain().focus().toggleUnderline().run()}
+                    type="button" onClick={() => editor.chain().focus().toggleUnderline().run()}
                     className={editor.isActive("underline") ? "is_active" : ""}
                 >
                     <FaUnderline />
                 </button>
                 <button
-                    onClick={() => editor.chain().focus().toggleStrike().run()}
+                    type="button" onClick={() => editor.chain().focus().toggleStrike().run()}
                     className={editor.isActive("strike") ? "is_active" : ""}
                 >
                     <FaStrikethrough />
                 </button>
                 <button
-                    onClick={() =>
+                    type="button" onClick={() =>
                         editor.chain().focus().toggleHeading({ level: 2 }).run()
                     }
                     className={
@@ -74,7 +74,7 @@ const EditorMenuBar = ({ editor }) => {
                     <FaHeading />
                 </button>
                 <button
-                    onClick={() =>
+                    type="button" onClick={() =>
                         editor.chain().focus().toggleHeading({ level: 3 }).run()
                     }
                     className={
@@ -84,53 +84,53 @@ const EditorMenuBar = ({ editor }) => {
                     <FaHeading className="heading3" />
                 </button>
                 <button
-                    onClick={() => editor.chain().focus().toggleBulletList().run()}
+                    type="button" onClick={() => editor.chain().focus().toggleBulletList().run()}
                     className={editor.isActive("bulletList") ? "is_active" : ""}
                 >
                     <FaListUl />
                 </button>
                 <button
-                    onClick={() => editor.chain().focus().toggleOrderedList().run()}
+                    type="button" onClick={() => editor.chain().focus().toggleOrderedList().run()}
                     className={editor.isActive("orderedList") ? "is_active" : ""}
                 >
                     <FaListOl />
                 </button>
                 <button
-                    onClick={() => editor.chain().focus().toggleBlockquote().run()}
+                    type="button" onClick={() => editor.chain().focus().toggleBlockquote().run()}
                     className={editor.isActive("blockquote") ? "is_active" : ""}
                 >
                     <FaQuoteLeft />
                 </button>
                 <button
-                    onClick={addImage}
+                    type="button" onClick={addImage}
                 >
                     <BiImageAdd />
                 </button>
-                <button onClick={() => editor.chain().focus().toggleHighlight().run()}
+                <button type="button" onClick={() => editor.chain().focus().toggleHighlight().run()}
                     className={editor.isActive('highlight') ? 'is_active' : ''} >
                     <AiOutlineHighlight />
                 </button>
-                <button onClick={() => editor.chain().focus().setTextAlign('left').run()}
+                <button type="button" onClick={() => editor.chain().focus().setTextAlign('left').run()}
                     className={editor.isActive({ textAlign: 'left' }) ? 'is_active' : ''}>
                     <AiOutlineAlignLeft />
                 </button>
-                <button onClick={() => editor.chain().focus().setTextAlign('center').run()}
+                <button type="button" onClick={() => editor.chain().focus().setTextAlign('center').run()}
                     className={editor.isActive({ textAlign: 'center' }) ? 'is_active' : ''}>
                     <AiOutlineAlignCenter />
                 </button>
-                <button onClick={() => editor.chain().focus().setTextAlign('right').run()}
+                <button type="button" onClick={() => editor.chain().focus().setTextAlign('right').run()}
                     className={editor.isActive({ textAlign: 'right' }) ? 'is_active' : ''}>
                     <AiOutlineAlignRight />
                 </button>
-                <button onClick={addYoutubeVideo}>
+                <button type="button" onClick={addYoutubeVideo}>
                     <AiOutlineYoutube />
                 </button>
             </div>
             <div>
-                <button onClick={() => editor.chain().focus().undo().run()}>
+                <button type="button" onClick={() => editor.chain().focus().undo().run()}>
                     <FaUndo />
                 </button>
-                <button onClick={() => editor.chain().focus().redo().run()}>
+                <button type="button" onClick={() => editor.chain().focus().redo().run()}>
                     <FaRedo />
                 </button>
             </div>
