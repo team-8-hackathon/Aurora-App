@@ -66,3 +66,7 @@
     cursor: pointer;
     box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
 }
+
+.browse-blogs-container {
+    margin-bottom: 6rem;
+}

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { thunkGetSingleBlog } from "../../store/blog";
 import parse from 'html-react-parser';
+import topicColor from '../../utlils/colors';
+import './SingleBlogPage.css'
 
 
 const SingleBlogPage = () => {
@@ -21,14 +23,20 @@ const SingleBlogPage = () => {
     const topicRedirect = () => {
         history.push(`/topics/${blog.topic.id}`)
     }
+    const color = topicColor(blog.topic.id)
     return (
-        <div>
-            <img src={blog.thumbnail} alt="thumbnail" />
-            <div>
-                <p>Written by Aurora</p>
-                <button onClick={topicRedirect}>{blog.topic.topic}</button>
+        <div className="single-blog-container">
+            <img className='single-blog-thumbnail' src={blog.thumbnail} alt="thumbnail" />
+            <div className="author-topic-section">
+                <p className="author-tag"><img src='/images/blog-images/auroraAvatar.png' alt='aurora' className="author-avatar" />Written by Aurora</p>
+                <button className="topic-button" style={{ 'backgroundColor': `${color}` }} onClick={topicRedirect}>{blog.topic.topic}</button>
             </div>
-            {parse(blog.body)}
+            <div className="blog-contents-container">
+                <h1 className="blog-title">{blog.title}</h1>
+                <div className="blog-body">
+                    {parse(blog.body)}
+                </div>
+            </div>
         </div>
     )
 }
