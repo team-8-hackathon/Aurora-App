@@ -14,7 +14,6 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 import BrowseBlogs from "./components/BlogComponents/BrowseBlogs";
 import NavBar from "./components/Navbar/Navbar";
-import AdminNavBar from "./components/Navbar/AdminNavBar"
 
 
 
@@ -37,32 +36,25 @@ function App() {
             <BottomSignup />
             <Footer />
           </Route>
-
-          <Route path={['/blogs/:blogId', '/topics/:topicId']} >
+          <Route path='/'>
             <NavBar />
-            <Switch>
-              <Route path='/blogs/:blogId'>
-                <SingleBlogPage />
-              </Route>
-              <Route path='/topics/:topicId'>
-                <BrowseBlogs />
-              </Route>
-            </Switch>
-            <BottomSignup />
-            <Footer />
-          </Route>
-
-          <ProtectedRoute>
-            <Switch>
+            <Route path='/blogs/:blogId'>
+              <SingleBlogPage />
+            </Route>
+            <Route path='/topics/:topicId'>
+              <BrowseBlogs />
+            </Route>
+            <ProtectedRoute>
               <Route exact path='/admin'>
-                <AdminNavBar/>
                 <h1>Admin Page</h1>
               </Route>
               <Route exact path='/admin/post-blog'>
                 <BlogForm />
               </Route>
-            </Switch>
-          </ProtectedRoute>
+            </ProtectedRoute>
+            <BottomSignup />
+            <Footer />
+          </Route>
         </Switch>
       )}
     </>
