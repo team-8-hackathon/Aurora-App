@@ -35,6 +35,48 @@ const SplashPage = () => {
                     <p>With mindset tools</p>
                 </div>
             </div>
+            <div className='splash-page-testimonials'>
+                <img src={`${process.env.PUBLIC_URL}/images/mood-2.svg`} alt="Mood Happy" />
+                <p>What user testers are saying</p>
+                <div className='splash-page-testimonials-container'>
+                    <div className='splash-page-first-testimonial'>
+                        <img src={`${process.env.PUBLIC_URL}/images/stars.svg`} alt="Testimonial Stars" />
+                        <p>"It helps you dig deep to learn about yourself. I feel like the app really cares."</p>
+                        <div className='splash-page-testimonial-name'>
+                            <img src='/images/userImg-1.png' alt='User-Image-1' />
+                            <p>Honovi H.</p>
+                        </div>
+                    </div>
+                </div>
+                <div className='splash-page-single-testimonial'>
+                    <img src={`${process.env.PUBLIC_URL}/images/stars.svg`} alt="Testimonial Stars" />
+                    <p>"I love everything about this. I feel better already."</p>
+                    <div className='splash-page-testimonial-name'>
+                        <img src='/images/userImg-2.png' alt='User-Image-2' />
+                        <p>Tyler S.</p>
+                    </div>
+                </div>
+                <div className='splash-page-single-testimonial'>
+                    <img src={`${process.env.PUBLIC_URL}/images/stars.svg`} alt="Testimonial Stars" />
+                    <p>"This can help a lot of people. This could be a game-changer."</p>
+                    <div className='splash-page-testimonial-name'>
+                        <img src='/images/userImg-3.png' alt='User-Image-3' />
+                        <p>Ian S.</p>
+                    </div>
+                </div>
+                <div className='splash-page-single-testimonial'>
+                    <img src={`${process.env.PUBLIC_URL}/images/stars.svg`} alt="Testimonial Stars" />
+                    <p>"I feel like Aurora is my friend."</p>
+                    <div className='splash-page-testimonial-name'>
+                        <img src='/images/userImg-4.png' alt='User-Image-4' />
+                        <p>Katie G.</p>
+                    </div>
+                </div>
+                <img src={`${process.env.PUBLIC_URL}/images/mood-1.svg`} alt="Mood Joy" />
+            </div>
+            <div className='splash-page-screens'>
+                {/* <img src='/images/screen1.png' alt='Screen 1' /> */}
+            </div>
         </div>
     )
 }
