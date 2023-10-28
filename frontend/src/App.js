@@ -17,6 +17,7 @@ import NavBar from "./components/Navbar/Navbar";
 import EditBlogForm from "./components/BlogComponents/EditBlogForm";
 import AdminNavBar from "./components/Navbar/AdminNavBar"
 import TopicForm from "./components/Topics/TopicForm"
+import AdminBlogs from "./components/Admin/blog_index"
 
 
 
@@ -58,7 +59,7 @@ function App() {
             <Switch>
               <Route exact path='/admin'>
                 <AdminNavBar/>
-                <h1>Admin Page</h1>
+                <AdminBlogs/>
               </Route>
               <Route exact path='/admin/post-blog'>
                 <BlogForm />
