@@ -33,3 +33,29 @@
     border: none;
     border-radius: 2rem;
 }
+
+.splash-page-benefits {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 12em;
+    margin-left: 12em;
+    margin-top: 100px;
+    text-align: center;
+
+}
+
+.benefits-image {
+    height: 6rem;
+    margin-bottom: 20px;
+}
+
+.single-benefit-content-bold {
+    font-size: 25px;
+    color: rgb(0, 40, 61);
+    margin-bottom: 10px;
+}
+
+.single-benefit-content-small {
+    color: rgb(0, 40, 61);
+    font-size: 20px;
+}

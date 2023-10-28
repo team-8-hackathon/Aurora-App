@@ -26,20 +26,20 @@ const SplashPage = () => {
                 <TopSignup />
             </div>
             <div className='splash-page-benefits'>
-                <div className='benefits-self-awareness'>
-                    <img src='/images/benefit-1.png' alt='self-awareness' />
-                    <p>Build deeper self-awareness</p>
-                    <p>With mood tracking</p>
+                <div className='single-benefit-container'>
+                    <img className='benefits-image' src='/images/benefit-1.png' alt='self-awareness' />
+                    <p className='single-benefit-content-bold'>Build deeper self-awareness</p>
+                    <p className='single-benefit-content-small'>With personalized mood tracking</p>
                 </div>
-                <div className='benefits-self-esteem'>
-                    <img src='/images/benefit-2.png' alt='self-esteem' />
-                    <p>Improve your self-esteem</p>
-                    <p>With daily affirmations</p>
+                <div className='single-benefit-container'>
+                    <img className='benefits-image' src='/images/benefit-2.png' alt='self-esteem' />
+                    <p className='single-benefit-content-bold'>Improve your self-esteem</p>
+                    <p className='single-benefit-content-small'>With daily affirmations</p>
                 </div>
-                <div className='benefits-self-esteem'>
-                    <img src='/images/benefit-3.png' alt='positive-mindset' />
-                    <p>Cultivate a positive mindset</p>
-                    <p>With mindset tools</p>
+                <div className='single-benefit-container'>
+                    <img className='benefits-image' src='/images/benefit-3.png' alt='positive-mindset' />
+                    <p className='single-benefit-content-bold'>Cultivate a positive mindset</p>
+                    <p className='single-benefit-content-small'>With mindset tools</p>
                 </div>
             </div>
             <div className='splash-page-testimonials'>
