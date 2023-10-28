@@ -97,6 +97,17 @@ const SplashPage = () => {
                     </div>
                 </div>
             </div>
+            <div className='splash-page-meet-the-founder-container'>
+                <img src='/images/christinaImg.png' alt='Founder Image' />
+                <div className='meet-the-founder-content'>
+                    <p>Meet the Founder</p>
+                    <p>Hi there! I'm Christina, a product designer witha  passion for personal growth and mental well-being.
+                    </p>
+                    <p>
+                        I believe everyone should have access to knowledge and tools that lead to joy and fufillment in life. And that's the heart behind Aurora. I hope you lover her as much as I do 💛.
+                    </p>
+                </div>
+            </div>
         </div>
     )
 }
