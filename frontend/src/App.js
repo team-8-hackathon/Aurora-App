@@ -63,7 +63,7 @@ function App() {
               <Route exact path='/admin/post-blog'>
                 <BlogForm />
               </Route>
-              <Route exact path='/admin/edit-blog'>
+              <Route exact path='/admin/blogs/:blogId/edit'>
                 <EditBlogForm />
               </Route>
               <Route exact path='/admin/post-topic'>

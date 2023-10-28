@@ -7,12 +7,12 @@ import Highlight from "@tiptap/extension-highlight"
 import TextAlign from "@tiptap/extension-text-align"
 import YouTube from "@tiptap/extension-youtube"
 import EditorMenuBar from "./EditorMenuBar";
-import './BlogComponents.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { thunkPostBlog } from "../../store/blog";
 import { thunkGetAllTopics } from "../../store/topics";
 import { AiFillFileImage } from 'react-icons/ai'
+import './BlogComponents.css'
 
 
 const BlogForm = () => {
@@ -98,7 +98,7 @@ const BlogForm = () => {
 
                 <label className="file-upload">
                 {hasSubmitted && errors.thumbnail && <p className="errors">{errors.thumbnail}</p>}
-                <input id="file-upload" name="thumbnail" type='file' accept='image/*' onChange={e => setThumbnail(e.target.files[0])} /><AiFillFileImage style={{'color': '#00283d', 'font-size': '1.5rem'}} />&nbsp;&nbsp;{!thumbnail && <p>Add thumbnail</p>}{thumbnail && <p>{thumbnail.name}</p>}</label>
+                <input id="file-upload" name="thumbnail" type='file' accept='image/*' onChange={e => setThumbnail(e.target.files[0])} /><AiFillFileImage style={{'color': '#00283d', 'fontSize': '1.5rem'}} />&nbsp;&nbsp;{!thumbnail && <p>Add thumbnail</p>}{thumbnail && <p>{thumbnail.name}</p>}</label>
 
                 {hasSubmitted && errors.body && <p className="errors">{errors.body}</p>}
                 <div className="text-editor-container">

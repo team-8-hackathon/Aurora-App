@@ -54,6 +54,21 @@ export const thunkPostBlog = (formData) => async dispatch => {
     }
 }
 
+export const thunkEditBlog = (data, blogId) => async dispatch => {
+    const response = await fetch(`/api/blogs/${blogId}/edit`, {
+        method: "PUT",
+        body: data
+    })
+    if (response.ok) {
+        const updatedBlog = await response.json();
+        dispatch(actionGetSingleBlog(updatedBlog.id))
+        return updatedBlog
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
+
 
 
 const initialState = { blogs: null, singleBlog: null }
