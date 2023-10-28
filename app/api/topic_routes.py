@@ -45,26 +45,31 @@ def get_topic_by_id(id):
 
 #Post Topic
 @topic_routes.route('/create', methods=["POST"])
-# @login_required
+@login_required
 def post_topic():
+
+    # print("Inside post_topic function")
+
     """
     Route to create a new topic
     """
     form = TopicForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    
     if form.validate_on_submit():
         topic = form.data['topic']
 
-        topic = Topic(topic=topic) 
+        new_topic = Topic(topic=topic) 
 
-        db.session.add(topic)
+        db.session.add(new_topic)
         db.session.commit()
-        return topic.to_dict()
+        return new_topic.to_dict()
     return {'errors': form.errors}, 401
 
 #delete a topic
 @topic_routes.route('/<int:id>/delete', methods=['DELETE'])
-# @login_required
+@login_required
 def delete_topic(id):
     """
     Delete a topic by its id
@@ -81,7 +86,7 @@ def delete_topic(id):
 
 #edit a topic
 @topic_routes.route('/<int:id>/edit', methods=["PUT"])
-# @login_required
+@login_required
 def edit_topic(id):
     """
     Edit a topic by its id

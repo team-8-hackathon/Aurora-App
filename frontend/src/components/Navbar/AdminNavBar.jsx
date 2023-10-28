@@ -36,7 +36,7 @@ function AdminNavbar() {
         <div className="admin-navbar-container">
             <div className="admin-navbar-content">
                 <div className="admin-navbar-brand">
-                    <Link to="/" className="admin-dashboard-link">Admin Dashboard</Link>
+                    <Link to="/admin" className="admin-dashboard-link">Admin Dashboard</Link>
                 </div>
                 <div className="admin-navbar-menu-items">
                     <form className='nav-form'
@@ -54,7 +54,7 @@ function AdminNavbar() {
                         />
                     </form>
                     {/* need to add form */}
-                    <Link to="/admin" className="admin-navbar-item">Create Topic</Link>
+                    <Link to="/admin/post-topic" className="admin-navbar-item">Create Topic</Link>
                     <div
                         className="admin-navbar-item"
                         onMouseEnter={showAdminDropdown}

@@ -37,6 +37,22 @@ export const thunkGetSingleTopic = (id) => async dispatch => {
     }
 }
 
+export const thunkPostTopic = (formData) => async dispatch => {
+    const response = await fetch(`/api/topics/create`, {
+        method: "POST",
+        body: formData
+    })
+
+    if (response.ok) {
+        const newTopic = await response.json();
+        dispatch(actionGetSingleTopic(newTopic.id))
+        return newTopic
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
+
 
 
 
