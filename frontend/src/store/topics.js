@@ -1,5 +1,6 @@
 const GET_ALL_TOPICS = "topics/GET_ALL_TOPICS"
 const GET_SINGLE_TOPIC = "topics/GET_SINGLE_TOPIC"
+const DELETE_TOPIC = "topics/DELETE_TOPIC";
 
 const actionGetAllTopics = (topics) => ({
     type: GET_ALL_TOPICS,
@@ -10,6 +11,11 @@ const actionGetSingleTopic = (topic) => ({
     type: GET_SINGLE_TOPIC,
     topic
 })
+
+const actionDeleteTopic = (topicId) => ({
+    type: DELETE_TOPIC,
+    topicId
+});
 
 export const thunkGetAllTopics = () => async dispatch => {
     const response = await fetch('/api/topics/')
@@ -37,6 +43,37 @@ export const thunkGetSingleTopic = (id) => async dispatch => {
     }
 }
 
+export const thunkPostTopic = (formData) => async dispatch => {
+    const response = await fetch(`/api/topics/create`, {
+        method: "POST",
+        body: formData
+    })
+
+    if (response.ok) {
+        const newTopic = await response.json();
+        dispatch(actionGetSingleTopic(newTopic.id))
+        return newTopic
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
+
+export const thunkDeleteTopic = (topicId) => async (dispatch) => {
+    const response = await fetch(`/api/topics/${topicId}/delete`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        dispatch(actionDeleteTopic(topicId));  
+        return { success: true };
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+};
+
+
 
 
 
@@ -49,6 +86,11 @@ export default function reducer(state = initialState, action) {
             return { ...state, topics: action.topics }
         case GET_SINGLE_TOPIC:
             return { ...state, singleTopic: action.topic }
+        case DELETE_TOPIC:
+            return {
+                ...state,
+                topics: state.topics.filter(topic => topic.id !== action.topicId)
+            }
         default:
             return state;
     }

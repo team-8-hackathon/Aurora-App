@@ -17,7 +17,7 @@ const BrowseBlogs = () => {
     }, [dispatch, topicId])
 
 
-    if (!topic) return null;
+    if (!topic || !topic.blogs) return null;
     const blogs = topic.blogs;
 
     const showMoreArticles = () => {
@@ -32,13 +32,13 @@ const BrowseBlogs = () => {
             <h2 className='topic-title'>{topic.topic}</h2>
             <div className='blog-container'>
 
-                {blogs.slice(0, numArticles).map(blog => (
+                {blogs && blogs.slice(0, numArticles).map(blog => (
                     <Link id='blog-thumbnail-link' key={blog.id} to={`/blogs/${blog.id}`}>
                         <BlogThumbnail topic={topic} blog={blog} />
                     </Link>
                 ))}
             </div>
-            {numArticles < blogs.length && <button className='show-more-articles-button' onClick={showMoreArticles}>Show more articles</button>}
+            {blogs && numArticles < blogs.length && <button className='show-more-articles-button' onClick={showMoreArticles}>Show more articles</button>}
         </div>
     )
 }

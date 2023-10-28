@@ -88,3 +88,29 @@
     border-radius: 5px;
     width: 60%;
 }
+
+
+.admin-navbar-dropdown-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background 0.3s;
+}
+
+.admin-navbar-dropdown-item-container:hover {
+    background-color: #f2f2f2;
+}
+
+.fa-trash {
+    color: #c0392b;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-left: 10px;
+
+}
+
+.fa-trash:hover {
+    color: #e74c3c;
+}

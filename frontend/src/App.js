@@ -15,6 +15,7 @@ import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 import BrowseBlogs from "./components/BlogComponents/BrowseBlogs";
 import NavBar from "./components/Navbar/Navbar";
 import AdminNavBar from "./components/Navbar/AdminNavBar"
+import TopicForm from "./components/Topics/TopicForm"
 
 
 
@@ -60,6 +61,9 @@ function App() {
               </Route>
               <Route exact path='/admin/post-blog'>
                 <BlogForm />
+              </Route>
+              <Route exact path='/admin/post-topic'>
+                <TopicForm />
               </Route>
             </Switch>
           </ProtectedRoute>
