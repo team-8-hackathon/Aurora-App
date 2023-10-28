@@ -51,7 +51,7 @@ export const thunkPostTopic = (formData) => async dispatch => {
 
     if (response.ok) {
         const newTopic = await response.json();
-        dispatch(actionGetSingleTopic(newTopic.id))
+        dispatch(thunkGetAllTopics())
         return newTopic
     } else {
         const errors = await response.json()
@@ -65,7 +65,7 @@ export const thunkDeleteTopic = (topicId) => async (dispatch) => {
     })
 
     if (response.ok) {
-        dispatch(actionDeleteTopic(topicId));  
+        dispatch(thunkGetAllTopics());  
         return { success: true };
     } else {
         const errors = await response.json();

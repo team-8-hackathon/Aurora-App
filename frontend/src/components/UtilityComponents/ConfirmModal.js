@@ -2,13 +2,14 @@ import React from "react";
 import { useModal } from '../../context/Modal'
 import "./ConfirmModal.css";
 
-const ConfirmModal = ({ modalTitle, yesHandler }) => {
+const ConfirmModal = ({ modalTitle, yesHandler, optionalCBArg }) => {
   const { closeModal } = useModal();
 
   if (!modalTitle) return null;
 
   const handleClick = async () => {
-    await yesHandler();
+    if(optionalCBArg) await yesHandler(optionalCBArg)
+    else await yesHandler();
     closeModal();
   };
 

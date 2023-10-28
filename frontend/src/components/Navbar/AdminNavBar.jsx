@@ -7,6 +7,8 @@ import 'font-awesome/css/font-awesome.min.css';
 import './AdminNavBar.css';
 import { thunkGetBlogs } from '../../store/blog';
 import { useSearch } from '../../context/SearchContext';
+import OpenModalButton from '../UtilityComponents/OpenModalButton';
+import ConfirmModal from '../UtilityComponents/ConfirmModal';
 
 function AdminNavbar() {
     const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
@@ -22,31 +24,12 @@ function AdminNavbar() {
         dispatch(thunkGetBlogs())
     }, [dispatch]);
 
-
-    const showAdminDropdown = () => {
-        setAdminDropdownOpen(true);
-    };
-
-    const hideAdminDropdown = () => {
-        setAdminDropdownOpen(false);
-    };
-
     const handleLogout = () => {
         dispatch(logout()); 
     };
 
     const handleDeleteTopic = async (topicId) => {
-
-        const confirmation = window.confirm("Are you sure you want to delete this topic?");
-        if (!confirmation) return;
-
-        const response = await dispatch(thunkDeleteTopic(topicId));
-
-        if (response.success) {
-            dispatch(thunkGetAllTopics());
-        } else {
-            console.error("Failed to delete the topic.");
-        }
+        dispatch(thunkDeleteTopic(topicId))
     };
     if(!allBlogs || !allTopics) return null;
 
@@ -61,8 +44,8 @@ function AdminNavbar() {
                     <Link to="/admin/post-topic" className="admin-navbar-item">Create Topic</Link>
                     <div
                         className="admin-navbar-item"
-                        onMouseEnter={showAdminDropdown}
-                        onMouseLeave={hideAdminDropdown}
+                        onMouseEnter={e => setAdminDropdownOpen(true)}
+                        onMouseLeave={e => setAdminDropdownOpen(false)}
                     >
                         Article Topics
                         {adminDropdownOpen && (
@@ -72,11 +55,16 @@ function AdminNavbar() {
                                         <a href={`/topics/${topic.id}`} className="admin-navbar-dropdown-item">
                                             {topic.topic}
                                         </a>
-                                        <i
-                                            className="fa fa-trash"
-                                            onClick={() => handleDeleteTopic(topic.id)}
-                                            aria-hidden="true"
-                                        ></i>
+                                        <OpenModalButton 
+                                            className='edit-delete-button'
+                                            buttonText={<i className='fa fa-trash'/>}
+                                            modalComponent={<ConfirmModal 
+                                                modalTitle={"Are you sure you want to delete this topic?"}
+                                                yesHandler={handleDeleteTopic}
+                                                optionalCBArg={topic.id}
+                                            />} 
+                                        />
+                                        
                                     </div>
                                 ))}
                             </div>
