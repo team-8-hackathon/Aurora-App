@@ -30,7 +30,6 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path='/splash'>
-            <SplashNavBar />
             <SplashPage />
           </Route>
           <Route exact path='/'>

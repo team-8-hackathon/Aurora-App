@@ -1,0 +1,35 @@
+.splash-page-top-section {
+    display: flex;
+    gap: 300px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 100px;
+}
+
+.splash-page-nav-logo {
+    width: 300px;
+}
+
+.splash-page-hero-graphic {
+    width: 800px;
+    margin-top: -100px
+}
+
+.top-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.splash-page-top-signup {
+    display: flex;
+    justify-content: center;
+}
+
+.learn-more-button {
+    background-color: rgb(255, 226, 122);
+    height: 2.5rem;
+    width: 8rem;
+    border: none;
+    border-radius: 2rem;
+}
