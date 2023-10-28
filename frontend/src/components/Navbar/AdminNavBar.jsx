@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllTopics, thunkDeleteTopic } from '../../store/topics';
 import { logout } from '../../store/session';
 import { Link } from 'react-router-dom';
-// import 'font-awesome/css/font-awesome.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import './AdminNavBar.css';
 
 function AdminNavbar() {

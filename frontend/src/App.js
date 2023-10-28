@@ -41,7 +41,27 @@ function App() {
             <Footer />
           </Route>
 
-          <Route path={['/blogs/:blogId', '/topics/:topicId']} >
+          <Route path='/admin'>
+            <ProtectedRoute>
+              <AdminNavBar />
+              <Switch>
+                <Route exact path='/admin'>
+                  <AdminBlogs />
+                </Route>
+                <Route exact path='/admin/post-blog'>
+                  <BlogForm />
+                </Route>
+                <Route exact path='/admin/blogs/:blogId/edit'>
+                  <EditBlogForm />
+                </Route>
+                <Route exact path='/admin/post-topic'>
+                  <TopicForm />
+                </Route>
+              </Switch>
+            </ProtectedRoute>
+          </Route>
+
+          <Route>
             <NavBar />
             <Switch>
               <Route path='/blogs/:blogId'>
@@ -54,24 +74,6 @@ function App() {
             <BottomSignup />
             <Footer />
           </Route>
-
-          <ProtectedRoute>
-            <Switch>
-              <Route exact path='/admin'>
-                <AdminNavBar/>
-                <AdminBlogs/>
-              </Route>
-              <Route exact path='/admin/post-blog'>
-                <BlogForm />
-              </Route>
-              <Route exact path='/admin/blogs/:blogId/edit'>
-                <EditBlogForm />
-              </Route>
-              <Route exact path='/admin/post-topic'>
-                <TopicForm />
-              </Route>
-            </Switch>
-          </ProtectedRoute>
         </Switch>
       )}
     </>

@@ -22,17 +22,15 @@ const BrowseBlogs = () => {
         }
     }
 
-    console.log(blogs)
-
     return (
         <div className='browse-blogs-container'>
             <h2 className='topic-title'>All Blogs</h2>
             <div className='blog-container'>
                 {blogs.slice(0, numArticles).map((blog = {}) => (
-                    <Link id='blog-thumbnail-link' key={blog.id} to={`/blogs/${blog.id}`}>
-                        {blog.title}
+                    <div key={blog.id}>
+                        <BlogThumbnail topic={blog.topic} blog={blog} type="admin" />
                         
-                    </Link>
+                    </div>
                 ))}
             </div>
             {numArticles < blogs.length && <button className='show-more-articles-button' onClick={showMoreArticles}>Show more articles</button>}

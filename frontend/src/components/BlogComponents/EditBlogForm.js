@@ -59,7 +59,7 @@ const EditBlogForm = () => {
     },[dispatch, blogId])
 
     useEffect(() => {
-        if(oldBlog && topics && oldBlog.topic) {
+        if(oldBlog && topics && oldBlog.topic && editor) {
             setTitle(oldBlog.title)
             setBody(oldBlog.body)
             setTopic(oldBlog.topic.id)

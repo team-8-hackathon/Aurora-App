@@ -46,7 +46,7 @@ export const thunkPostBlog = (formData) => async dispatch => {
 
     if (response.ok) {
         const newBlog = await response.json();
-        dispatch(actionGetSingleBlog(newBlog.id))
+        dispatch(actionGetSingleBlog(newBlog))
         return newBlog
     } else {
         const errors = await response.json()
@@ -61,7 +61,7 @@ export const thunkEditBlog = (data, blogId) => async dispatch => {
     })
     if (response.ok) {
         const updatedBlog = await response.json();
-        dispatch(actionGetSingleBlog(updatedBlog.id))
+        dispatch(thunkGetSingleBlog(updatedBlog.id))
         return updatedBlog
     } else {
         const errors = await response.json()
@@ -69,7 +69,20 @@ export const thunkEditBlog = (data, blogId) => async dispatch => {
     }
 }
 
+export const thunkDeleteBlog = (blogId) => async dispatch => {
+    const response = await fetch(`/api/blogs/${blogId}/delete`, {
+        method: "DELETE"
+    })
 
+    if(response.ok){
+        const data = await response.json()
+        dispatch(thunkGetBlogs())
+        return data
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
 
 const initialState = { blogs: null, singleBlog: null }
 

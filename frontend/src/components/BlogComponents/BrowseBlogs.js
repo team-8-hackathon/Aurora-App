@@ -33,9 +33,9 @@ const BrowseBlogs = () => {
             <div className='blog-container'>
 
                 {blogs && blogs.slice(0, numArticles).map(blog => (
-                    <Link id='blog-thumbnail-link' key={blog.id} to={`/blogs/${blog.id}`}>
+                    <div id='blog-thumbnail-link' key={blog.id}>
                         <BlogThumbnail topic={topic} blog={blog} />
-                    </Link>
+                    </div>
                 ))}
             </div>
             {blogs && numArticles < blogs.length && <button className='show-more-articles-button' onClick={showMoreArticles}>Show more articles</button>}
