@@ -38,7 +38,7 @@ const BrowseBlogs = () => {
                 </div>
             </div>
             }
-            {searchData.length && resultsFound && <div className='browse-blogs-container'>
+            {!!searchData.length && resultsFound && <div className='browse-blogs-container'>
                 {searching && <h4 className='topic-title'>Search Results</h4>}
                 {!searching && <h4 className='topic-title'>All Blogs</h4>}
                  <div className='blog-container'>{searchData.slice(0, numArticles).map((blog = {}) => (
