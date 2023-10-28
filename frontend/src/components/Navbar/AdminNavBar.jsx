@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { thunkGetAllTopics } from '../../store/topics';
+import { thunkGetAllTopics, thunkDeleteTopic } from '../../store/topics';
 import { logout } from '../../store/session';
 import { Link } from 'react-router-dom';
+import 'font-awesome/css/font-awesome.min.css';
 import './AdminNavBar.css';
 
 function AdminNavbar() {
@@ -32,6 +33,20 @@ function AdminNavbar() {
         dispatch(logout()); 
     };
 
+    const handleDeleteTopic = async (topicId) => {
+
+        const confirmation = window.confirm("Are you sure you want to delete this topic?");
+        if (!confirmation) return;
+
+        const response = await dispatch(thunkDeleteTopic(topicId));
+
+        if (response.success) {
+            dispatch(thunkGetAllTopics());
+        } else {
+            console.error("Failed to delete the topic.");
+        }
+    };
+
     return (
         <div className="admin-navbar-container">
             <div className="admin-navbar-content">
@@ -53,7 +68,6 @@ function AdminNavbar() {
                             onChange={handleSearchInput}
                         />
                     </form>
-                    {/* need to add form */}
                     <Link to="/admin/post-topic" className="admin-navbar-item">Create Topic</Link>
                     <div
                         className="admin-navbar-item"
@@ -64,9 +78,16 @@ function AdminNavbar() {
                         {adminDropdownOpen && (
                             <div className="admin-navbar-dropdown-menu">
                                 {allTopics.map(topic => (
-                                    <a key={topic.id} href={`/topics/${topic.id}`} className="admin-navbar-dropdown-item">
-                                        {topic.topic}
-                                    </a>
+                                    <div key={topic.id} className="admin-navbar-dropdown-item-container">
+                                        <a href={`/topics/${topic.id}`} className="admin-navbar-dropdown-item">
+                                            {topic.topic}
+                                        </a>
+                                        <i
+                                            className="fa fa-trash"
+                                            onClick={() => handleDeleteTopic(topic.id)}
+                                            aria-hidden="true"
+                                        ></i>
+                                    </div>
                                 ))}
                             </div>
                         )}

@@ -4,6 +4,7 @@ git pull
 pipenv install
 cd frontend
 npm install
+npm install --save font-awesome ### for admin dropdown ####
 pipenv shell
 flask db init
 .env

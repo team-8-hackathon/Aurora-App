@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { thunkPostTopic } from '../../store/topics';
-import { useHistory } from 'react-router-dom';  // Importing useHistory
+import { useHistory } from 'react-router-dom';  
+import "./TopicForm.css"
 
 const TopicForm = () => {
     const [topic, setTopic] = useState('');
     const [errors, setErrors] = useState({});
-    const [hasSubmitted, setHasSubmitted] = useState(false); // Declare the missing state
+    const [hasSubmitted, setHasSubmitted] = useState(false); 
 
     const dispatch = useDispatch();
-    const history = useHistory();// Initialize useHistory
+    const history = useHistory();
 
     useEffect(() => {
         const validationErrors = {}
@@ -28,7 +29,7 @@ const TopicForm = () => {
             
             const response = await dispatch(thunkPostTopic(formData));
             if (response.id) {
-                history.push(`/topics/${response.id}`);
+                history.push(`/admin`);
                 setTopic('');
                 setHasSubmitted(false); 
                 setErrors({}); 
