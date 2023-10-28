@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TopSignup from '../signups/top_signup';
+import BottomSignup from '../signups/bot_signup';
+import Footer from '../Footer/footer';
 import './SplashPage.css';
 
 const SplashPage = () => {
@@ -108,6 +110,8 @@ const SplashPage = () => {
                     </p>
                 </div>
             </div>
+            <BottomSignup />
+            <Footer />
         </div>
     )
 }
