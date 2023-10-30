@@ -11,10 +11,12 @@ function TestimonialForm() {
 
   const [name, setName] = useState("");
   const [profile_pic, setProfile_pic] = useState("");
+  const [preview_img, setPreviewImg] = useState('');
   const [body, setBody] = useState("");
   const [stars, setStars] = useState(0);
   // onChange={e => setThumbnail(e.target.files[0])}
   function getFile(e) {
+    setPreviewImg(URL.createObjectURL(e.target.files[0]))
     setProfile_pic(e.target.files[0]);
   }
 
@@ -36,10 +38,9 @@ function TestimonialForm() {
       encType="multipart/form-data"
       onSubmit={handleSubmit}
     >
-      {console.log(profile_pic)}
       <div className="form-testimonial-img">
-        {profile_pic ? (
-          <img className="profile-img" src={profile_pic} alt="User" />
+        {preview_img ? (
+          <img className="profile-img" src={preview_img} alt="User" />
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
