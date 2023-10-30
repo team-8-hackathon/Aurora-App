@@ -1,5 +1,4 @@
 import React from "react";
-import topicColor from "../../utlils/colors";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch } from "react-redux";
 import { thunkDeleteBlog } from "../../store/blog";

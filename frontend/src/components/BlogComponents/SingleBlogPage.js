@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { thunkGetSingleBlog } from "../../store/blog";
 import parse from 'html-react-parser';
-import topicColor from '../../utlils/colors';
 import './SingleBlogPage.css'
 
 

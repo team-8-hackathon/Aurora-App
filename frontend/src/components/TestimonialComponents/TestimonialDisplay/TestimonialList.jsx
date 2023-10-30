@@ -10,15 +10,17 @@ import "./app.css";
 
 const TestimonialList = () => {
   const dispatch = useDispatch();
-  const testimonials = useSelector((state) => state.testimonial.testimonials);
+  const testimonials = useSelector((state) => state.testimonial.allTestimonials);
 
   useEffect(() => {
     dispatch(thunkGetAllTestimonials());
   }, [dispatch]);
+  
+  if(!testimonials) return null;
 
   return (
     <ul className="testimonial-list">
-      {testimonials?.map((testimonial, i) => (
+      {testimonials.map((testimonial, i) => (
         // <SwiperSlide>
         <TestimonialItem
           name={testimonial.name}

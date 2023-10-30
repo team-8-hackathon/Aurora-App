@@ -39,13 +39,11 @@ def create_testimonial():
       testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body, profile_pic=url)
       db.session.add(testimonial)
       db.session.commit()
-      testimonials = Testimonial.query.order_by(Testimonial.stars.desc()).all()
-      return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}, 201
+      return testimonial.to_dict(), 201
     testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body)
     db.session.add(testimonial)
     db.session.commit()
-    testimonials = Testimonial.query.order_by(Testimonial.stars.desc()).all()
-    return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}, 201
+    return testimonial.to_dict(), 201
     # return testimonial.to_dict(), 201
 
   return {"ERRORS ": validation_errors_to_error_messages(form.errors)}, 401

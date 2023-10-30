@@ -25,7 +25,6 @@ const BrowseBlogs = () => {
             setNumArticles(numArticles + 6)
         }
     }
-    console.log(topic)
     return (
         <div className='browse-blogs-container'>
             <h2 className='topic-title'>{topic.topic}</h2>

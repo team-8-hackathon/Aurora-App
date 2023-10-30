@@ -21,6 +21,8 @@ function SplashNavBar() {
         setDropdownOpen(false);
     };
 
+    if(!allTopics) return null;
+
     return (
         <div className="navbar">
             <div className="navbar-content">
