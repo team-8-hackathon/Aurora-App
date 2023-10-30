@@ -9,10 +9,11 @@ import "./signup.css"
 const BotSignup = () => {
   return (
     <div className='bottomContent'>
-      <img className="bot_signup_icon"src={gardenIcon} alt="Garden Icon" />
-
+      <div className='bot_signup_icon'>
+        <img src={gardenIcon} alt="Garden Icon" />
+      </div>
       <div id="mc_embed_shell">
-        <div class= "bot_signup">
+        <div className= "bot_signup">
           <form
             action="https://gmail.us21.list-manage.com/subscribe/post?u=521869c3a8a0a0f310a967b1e&amp;id=8b0b556b44&amp;f_id=0000e9e6f0"
             method="post"
@@ -23,7 +24,7 @@ const BotSignup = () => {
           >
             <div className="bot_signup_box1" id="mc_embed_signup_scroll">
 
-              <h2 class="bot_signup_text1">Become a brighter, more confident you with mini mindset shifts and daily affirmations.</h2>
+              <h2 className="bot_signup_text1">Become a brighter, more confident you with mini mindset shifts and daily affirmations.</h2>
 
               <div className="mc-field-group">
                 <input
@@ -57,11 +58,10 @@ const BotSignup = () => {
                 ></div>
               </div>
               <div aria-hidden="true" style={{ position: 'absolute', left: '-5000px' }}>
-                {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
                 <input
                   type="text"
                   name="b_521869c3a8a0a0f310a967b1e_8b0b556b44"
-                  tabindex="-1"
+                  tabIndex="-1"
                   value=""
                 />
               </div>

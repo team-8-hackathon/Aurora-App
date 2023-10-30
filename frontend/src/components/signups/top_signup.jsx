@@ -9,8 +9,9 @@ const TopSignup = () => {
   return (
     <div id="mc_embed_shell">
 
-       
-      <div class= "top_signup">
+    <div className='topContent'>
+
+      <div className= "top_signup">
         <form
           action="https://gmail.us21.list-manage.com/subscribe/post?u=521869c3a8a0a0f310a967b1e&amp;id=8b0b556b44&amp;f_id=0000e9e6f0"
           method="post"
@@ -22,8 +23,8 @@ const TopSignup = () => {
           <div className="top_signup_box1" id="mc_embed_signup_scroll">
             <img className="top_signup_icon"src={butterflyIcon} alt="Butterfly Icon" />
 
-            <h2 class="top_signup_text1">We’re working on bringing Aurora to life...</h2>
-            <h2 class="top_signup_text2">In the meantime, become a brighter, more confident you with mini mindset shifts and daily affirmations.</h2>
+            <h2 className="top_signup_text1">We’re working on bringing Aurora to life...</h2>
+            <h2 className="top_signup_text2">In the meantime, become a brighter, more confident you with mini mindset shifts and daily affirmations.</h2>
 
             <div className="mc-field-group">
               <input
@@ -42,7 +43,7 @@ const TopSignup = () => {
               <span id="mce-EMAIL-HELPERTEXT" className="helper_text"></span>
             </div>
 
-            <h3 class="top_signup_text3">Show me an example</h3>
+            <h3 className="top_signup_text3">Show me an example</h3>
 
 
             <div id="mce-responses" className="clear foot">
@@ -58,11 +59,10 @@ const TopSignup = () => {
               ></div>
             </div>
             <div aria-hidden="true" style={{ position: 'absolute', left: '-5000px' }}>
-              {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
               <input
                 type="text"
                 name="b_521869c3a8a0a0f310a967b1e_8b0b556b44"
-                tabindex="-1"
+                tabIndex="-1"
                 value=""
               />
             </div>
@@ -83,6 +83,7 @@ const TopSignup = () => {
           ftypes[0] = 'email';
         })(jQuery)}
       </script>
+      </div>
     </div>
   );
 };
