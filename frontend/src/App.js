@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 
-import TestimonialForm from "./components/TestimonialComponents/Testimonial_form";
-import TestimonialList from "./components/TestimonialComponents/TestimonialList";
+import TestimonialForm from "./components/TestimonialComponents/TestimonialForms/Testimonial_form";
+import TestimonialList from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList";
 import SplashNavBar from './components/Navbar/SplashNavBar'
 import Footer from './components/Footer/footer'
 import TopSignup from "./components/signups/top_signup";
@@ -32,29 +32,28 @@ function App() {
     <>
       {isLoaded && (
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <SplashNavBar />
-            <TestimonialForm />
-            <TestimonialList />
             <TopSignup />
+            <TestimonialList />
             <BottomSignup />
             <Footer />
           </Route>
 
-          <Route path='/admin'>
+          <Route path="/admin">
             <ProtectedRoute>
               <AdminNavBar />
               <Switch>
-                <Route exact path='/admin'>
+                <Route exact path="/admin">
                   <AdminBlogs />
                 </Route>
-                <Route exact path='/admin/post-blog'>
+                <Route exact path="/admin/post-blog">
                   <BlogForm />
                 </Route>
-                <Route exact path='/admin/blogs/:blogId/edit'>
+                <Route exact path="/admin/blogs/:blogId/edit">
                   <EditBlogForm />
                 </Route>
-                <Route exact path='/admin/post-topic'>
+                <Route exact path="/admin/post-topic">
                   <TopicForm />
                 </Route>
               </Switch>
@@ -64,11 +63,17 @@ function App() {
           <Route>
             <NavBar />
             <Switch>
-              <Route path='/blogs/:blogId'>
+              <Route path="/blogs/:blogId">
                 <SingleBlogPage />
               </Route>
-              <Route path='/topics/:topicId'>
+              <Route path="/topics/:topicId">
                 <BrowseBlogs />
+              </Route>
+              <Route path='/testimonials/new'>
+                <TestimonialForm />
+              </Route>
+              <Route>
+
               </Route>
             </Switch>
             <BottomSignup />
