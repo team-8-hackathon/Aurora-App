@@ -11,7 +11,7 @@ class Testimonial(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     #add a default url to profile pics later
-    profile_pic = db.Column(db.String(1000), default='/images/aurora.png')
+    profile_pic = db.Column(db.String(1000), default='/images/defaultUser.png')
     name = db.Column(db.String(200), nullable=False)
     stars = db.Column(db.Integer, nullable=False)
     body = db.Column(db.String(1000), nullable=False)
