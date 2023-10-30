@@ -1,0 +1,17 @@
+.sub-title {
+    text-align: center;
+    margin: 4rem;
+    font-size: 3rem;
+    font-weight: normal;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.browse-blogs-container {
+    margin: auto;
+    width: fit-content;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
