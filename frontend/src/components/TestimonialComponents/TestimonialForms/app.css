@@ -15,20 +15,20 @@ font-family: "DM Sans", Times ;
 border-radius: 10px;
 
 */
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
-html {
+/* html {
   /* Good idea to set to 10 for easy calculations */
   /* font-size: 10px; */
   /* 10px / 16px = 0.625 = 62.5% */
-  /* Percentage of user's browsers font-size setting */
+  /* Percentage of user's browsers font-size setting 
   font-size: 62.5%;
   overflow-x: hidden;
-}
+} */
 
 .form-testimonial {
   display: flex;
@@ -99,7 +99,7 @@ textarea {
   padding-left: 5px;
 }
 
-button {
+.form-btn {
   font-size: 18px;
   font-family: "DM Sans", Times;
   padding: 12px 24px;

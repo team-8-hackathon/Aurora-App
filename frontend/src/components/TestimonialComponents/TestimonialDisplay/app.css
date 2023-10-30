@@ -17,20 +17,20 @@ border-radius: 10px;
 
 */
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
-html {
+/* html { */
   /* Good idea to set to 10 for easy calculations */
   /* font-size: 10px; */
   /* 10px / 16px = 0.625 = 62.5% */
   /* Percentage of user's browsers font-size setting */
-  font-size: 62.5%;
+  /* font-size: 62.5%;
   overflow-x: hidden;
-}
+} */
 
 .testimonial-list {
   /* padding: 10px; */

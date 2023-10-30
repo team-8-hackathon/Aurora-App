@@ -15,7 +15,6 @@ def seed():
         unseed_blog()
         unseed_topics()
         unseed_admin()
-        unseed_topics()
         unseed_testimonials()
     seed_admin()
     seed_topics()

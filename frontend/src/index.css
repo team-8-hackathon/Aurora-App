@@ -2,5 +2,6 @@
 body {
     background-color: #fcf3ea;
     color: #00283d;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: "DM Sans", Times ;
 }
