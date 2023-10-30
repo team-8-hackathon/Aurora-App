@@ -39,6 +39,7 @@ function AdminNavbar() {
                 <Link to="/admin" className="admin-dashboard-link">Admin Dashboard</Link>
                 <input className="search-bar" title="Search by title, topic, or body" type='search' onChange={(e) => searchBlogs(allBlogs, e.target.value)} placeholder='Search blogs...' />
                 <div className='menu-right'>
+                    <Link to="/admin/subs" className="admin-navbar-item">Subscribers</Link>
                     <Link to="/admin/post-blog" className="admin-navbar-item">Create Blog</Link>
                     <Link to="/admin/post-topic" className="admin-navbar-item">Create Topic</Link>
                     <div
