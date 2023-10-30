@@ -9,8 +9,8 @@ from .seeds import seed_commands
 from .models import db, Admin
 from .api.testimonial_routes import testimonial_routes
 from .config import Config
+from .api.subs_routes import subs_routes
 from .api.topic_routes import topic_routes
-
 from .api.blog_routes import blog_routes
 from .api.auth_routes import auth_routes
 

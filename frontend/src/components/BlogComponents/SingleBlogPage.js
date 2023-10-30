@@ -22,7 +22,6 @@ const SingleBlogPage = () => {
     const topicRedirect = () => {
         history.push(`/topics/${blog.topic.id}`)
     }
-    console.log(blog)
     const color = blog.topic.color
     return (
         <div className="single-blog-container">
