@@ -47,7 +47,7 @@ const BlogForm = () => {
         if (!thumbnail) validationErrors.thumbnail = "Blog thumbnail is required"
         if (!body || !body.length) validationErrors.body = "Blog body is required"
         if (!topic || !topic.length) validationErrors.topic = "Blog Topic is required"
-        console.log(topic)
+
         setErrors(validationErrors)
     }, [title, thumbnail, body, topic])
 
@@ -69,7 +69,7 @@ const BlogForm = () => {
 
             const response = await dispatch(thunkPostBlog(formData))
             if (response.id) {
-                history.push(`/blogs/${response.id}`)
+                history.push(`/admin/blogs/${response.id}`)
             } else {
                 setErrors({ "serverErrors": response })
             }

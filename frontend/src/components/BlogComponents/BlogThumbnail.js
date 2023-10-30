@@ -11,7 +11,6 @@ import { BiEdit } from 'react-icons/bi'
 
 const BlogThumbnail = ({ topic, blog, type }) => {
     const color = topic.color;
-    console.log(color)
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -22,9 +21,12 @@ const BlogThumbnail = ({ topic, blog, type }) => {
     const handleEdit = () => {
         history.push(`/admin/blogs/${blog.id}/edit`)
     }
+
+    let blogPath = `/blogs/${blog.id}`
+    if(type === 'admin') blogPath = `/admin/blogs/${blog.id}`
     return (
         <div className="thumbnail-container">
-            <Link id='blog-thumbnail-link' to={`/blogs/${blog.id}`} className="blog-thumbnail"
+            <Link id='blog-thumbnail-link' to={blogPath} className="blog-thumbnail"
                 style={{
                     backgroundImage: `url(${blog.thumbnail})`,
                     backgroundSize: "cover"

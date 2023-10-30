@@ -88,7 +88,7 @@ const EditBlogForm = () => {
 
             const response = await dispatch(thunkEditBlog(formData, blogId))
             if (response.id) {
-                history.push(`/blogs/${response.id}`)
+                history.push(`/admin/blogs/${response.id}`)
             } else {
                 setErrors({ "serverErrors": response })
             }

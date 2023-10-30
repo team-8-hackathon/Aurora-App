@@ -6,7 +6,7 @@ import parse from 'html-react-parser';
 import './SingleBlogPage.css'
 
 
-const SingleBlogPage = () => {
+const SingleBlogPage = ({ type }) => {
     const { blogId } = useParams();
     const dispatch = useDispatch();
     const blog = useSelector(state => state.blog.singleBlog)
@@ -20,7 +20,8 @@ const SingleBlogPage = () => {
     if (!blog || !blog.topic) return null;
 
     const topicRedirect = () => {
-        history.push(`/topics/${blog.topic.id}`)
+        if(type==='admin') history.push(`/admin/topics/${blog.topic.id}`)
+        else history.push(`/topics/${blog.topic.id}`)
     }
     const color = blog.topic.color
     return (

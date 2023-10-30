@@ -9,10 +9,11 @@ import { thunkGetBlogs } from '../../store/blog';
 import { useSearch } from '../../context/SearchContext';
 import OpenModalButton from '../UtilityComponents/OpenModalButton';
 import ConfirmModal from '../UtilityComponents/ConfirmModal';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function AdminNavbar() {
     const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
-
+    const history = useHistory();
     const { searchBlogs } = useSearch();
 
     const dispatch = useDispatch();
@@ -31,13 +32,20 @@ function AdminNavbar() {
     const handleDeleteTopic = async (topicId) => {
         dispatch(thunkDeleteTopic(topicId))
     };
+
+    const handleSearch= (e) => {
+        if (e.key === 'Enter') {
+            history.push('/admin')
+          }
+    }
+
     if (!allBlogs || !allTopics) return null;
 
     return (
         <div className="admin-navbar-container">
             <div className="admin-navbar-content">
                 <Link to="/admin" className="admin-dashboard-link">Admin Dashboard</Link>
-                <input className="search-bar" title="Search by title, topic, or body" type='search' onChange={(e) => searchBlogs(allBlogs, e.target.value)} placeholder='Search blogs...' />
+                <input className="search-bar" title="Search by title, topic, or body" type='search' onChange={(e) => searchBlogs(allBlogs, e.target.value)} onKeyDown={handleSearch} placeholder='Search blogs...' />
                 <div className='menu-right'>
                     <Link to="/admin/subs" className="admin-navbar-item">Subscribers</Link>
                     <Link to="/admin/post-blog" className="admin-navbar-item">Create Blog</Link>
@@ -52,7 +60,7 @@ function AdminNavbar() {
                             <div className="admin-navbar-dropdown-menu">
                                 {allTopics.map(topic => (
                                     <div key={topic.id} className="admin-navbar-dropdown-item-container">
-                                        <a href={`/topics/${topic.id}`} className="admin-navbar-dropdown-item">
+                                        <a href={`/admin/topics/${topic.id}`} className="admin-navbar-dropdown-item">
                                             {topic.topic}
                                         </a>
                                         <OpenModalButton

@@ -36,7 +36,6 @@ def seed_blog():
     title2 = "The difference between emotional wellness and mental health"
     body2= """
         <h1>The difference between emotional wellness and mental health</h1>
-    <p><em>By [Your Name]</em></p>
 
     <p>Emotional wellness and mental health are terms often used interchangeably, but they refer to distinct aspects of our overall well-being. Understanding the differences between these two concepts is essential for taking a comprehensive approach to our health and happiness.</p>
 

@@ -51,8 +51,14 @@ function App() {
                 <Route exact path="/admin/post-blog">
                   <BlogForm />
                 </Route>
+                <Route exact path="/admin/blogs/:blogId">
+                  <SingleBlogPage type='admin' />
+                </Route>
                 <Route exact path="/admin/blogs/:blogId/edit">
                   <EditBlogForm />
+                </Route>
+                <Route exact path='/admin/topics/:topicId'>
+                  <BrowseBlogs />
                 </Route>
                 <Route exact path="/admin/post-topic">
                   <TopicForm />
