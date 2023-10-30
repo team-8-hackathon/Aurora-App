@@ -30,7 +30,12 @@ html {
   overflow-x: hidden;
 }
 
-form {
+.form-testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+  text-align: center;
   color: #003b5a;
   font-family: "DM Sans", Times;
   border-radius: 10px;
@@ -38,14 +43,6 @@ form {
   margin: 0 auto;
   background-color: #8dc9a9;
   padding-bottom: 2em;
-}
-
-.form-testimonial {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-  align-items: center;
-  text-align: center;
 }
 
 input[type="file"] {
