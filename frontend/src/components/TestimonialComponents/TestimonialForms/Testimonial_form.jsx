@@ -3,27 +3,28 @@ import "./app.css";
 import StarRating from "./StarRating";
 import { useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { thunkCreateTestimonial } from "../../store/testimonial";
-
+import { thunkCreateTestimonial } from "../../../store/testimonial";
 
 function TestimonialForm() {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [name, setName] = useState("");
-  const [pic, setPic] = useState("");
+  const [profile_pic, setProfile_pic] = useState("");
   const [body, setBody] = useState("");
   const [stars, setStars] = useState(0);
 
   function getFile(e) {
-    setPic(URL.createObjectURL(e.target.files[0]));
+    setProfile_pic(URL.createObjectURL(e.target.files[0]));
   }
 
-  const newTestimonial = { name, profile_pic: 'somehting', body, stars };
+  const newTestimonial = !profile_pic
+    ? { name, body, stars }
+    : { name, body, stars, profile_pic };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    console.log("testimonials::: ", newTestimonial);
     await dispatch(thunkCreateTestimonial(newTestimonial));
     history.push("/");
   };
@@ -31,8 +32,8 @@ function TestimonialForm() {
   return (
     <form className="form-testimonial" onSubmit={handleSubmit}>
       <div className="form-testimonial-img">
-        {pic ? (
-          <img className="profile-img" src={pic} alt="PiClient" />
+        {profile_pic ? (
+          <img className="profile-img" src={profile_pic} alt="User" />
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +100,9 @@ function TestimonialForm() {
         onChange={(e) => setBody(e.target.value)}
         placeholder="Let us know what you think!"
       />
-      <button>Submit</button>
+      <button className="form-btn" disabled={!name || !stars || !body}>
+        Submit
+      </button>
       {/* {console.log({ newTestimonial })} */}
     </form>
   );

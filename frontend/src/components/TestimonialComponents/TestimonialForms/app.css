@@ -1,9 +1,18 @@
 /* 
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+-- COLORS
 #003b5a - font 
 #ffe27a - background
+#8dc9a9 - testimonial box
 
 font-family: "DM Sans", Times ;
 
+border-radius: 10px;
 
 */
 * {
@@ -12,46 +21,50 @@ font-family: "DM Sans", Times ;
   box-sizing: border-box;
 }
 
+html {
+  /* Good idea to set to 10 for easy calculations */
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browsers font-size setting */
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
 form {
   color: #003b5a;
-  font-size: 1.6rem;
-  display: grid;
-  align-items: center;
-  gap: 1.2rem;
   font-family: "DM Sans", Times;
-  background-color: var(--color-lightest);
-  border-radius: 7px;
-  border: 1px solid black;
-  width: 18em;
+  border-radius: 10px;
+  max-width: 55rem;
   margin: 0 auto;
   background-color: #8dc9a9;
+  padding-bottom: 2em;
 }
 
 .form-testimonial {
   display: flex;
   flex-direction: column;
+  gap: 1.6rem;
   align-items: center;
   text-align: center;
 }
 
 input[type="file"] {
-    display: none;
+  display: none;
 }
 
 .custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    border: 1px solid #003b5a;
-    border-radius: 200px;
-    background-color: #ffe27a;
-    font-size: 12px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #003b5a;
+  border-radius: 200px;
+  background-color: #ffe27a;
+  font-size: 12px;
 }
 
-
 input::file-selector-button {
-   background-color: #ffe27a;
+  background-color: #ffe27a;
 }
 
 .form-testimonial-img {
@@ -75,7 +88,7 @@ input[type="text"] {
   border-radius: 200px;
   font-family: "DM Sans", Times;
   border-radius: 200px;
-  height:40px;
+  height: 40px;
   font-family: "DM Sans", Times;
 }
 
@@ -95,4 +108,8 @@ button {
   padding: 12px 24px;
   border-radius: 200px;
   background-color: #ffe27a;
+}
+
+.form-btn:disabled {
+  background-color: rgba(255, 226, 122, 30%);
 }
