@@ -6,6 +6,8 @@ import "./signup.css"
 
 
 const TopSignup = () => {
+  const handleFormChange = (event) => {
+};
   return (
     <div id="mc_embed_shell">
 
@@ -19,7 +21,7 @@ const TopSignup = () => {
           name="mc-embedded-subscribe-form"
           className="validate"
           target="_blank"
-        >
+          >
           <div className="top_signup_box1" id="mc_embed_signup_scroll">
             <img
               className="top_signup_icon"
@@ -38,12 +40,13 @@ const TopSignup = () => {
                 placeholder="Enter your email"
                 required=""
               />
-              <input
-                type="submit"
-                name="subscribe"
-                className="button"
-                value="Subscribe"
-              />
+                <input
+                    type="submit"
+                    name="subscribe"
+                    className="button"
+                    value="Subscribe"
+                    readOnly={true}
+                />
               <span id="mce-EMAIL-HELPERTEXT" className="helper_text"></span>
             </div>
 
@@ -67,6 +70,7 @@ const TopSignup = () => {
                 name="b_521869c3a8a0a0f310a967b1e_8b0b556b44"
                 tabIndex="-1"
                 value=""
+                onChange={handleFormChange}
               />
             </div>
             <div className="optionalParent">
