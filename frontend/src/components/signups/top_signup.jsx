@@ -8,7 +8,10 @@ import "./signup.css"
 const TopSignup = () => {
   return (
     <div id="mc_embed_shell">
-      <div className="top_signup">
+
+    <div className='topContent'>
+
+      <div className= "top_signup">
         <form
           action="https://gmail.us21.list-manage.com/subscribe/post?u=521869c3a8a0a0f310a967b1e&amp;id=8b0b556b44&amp;f_id=0000e9e6f0"
           method="post"
@@ -24,13 +27,8 @@ const TopSignup = () => {
               alt="Butterfly Icon"
             />
 
-            <h2 className="top_signup_text1">
-              We’re working on bringing Aurora to life...
-            </h2>
-            <h2 className="top_signup_text2">
-              In the meantime, become a brighter, more confident you with mini
-              mindset shifts and daily affirmations.
-            </h2>
+            <h2 className="top_signup_text1">We’re working on bringing Aurora to life...</h2>
+            <h2 className="top_signup_text2">In the meantime, become a brighter, more confident you with mini mindset shifts and daily affirmations.</h2>
 
             <div className="mc-field-group">
               <input
@@ -63,16 +61,12 @@ const TopSignup = () => {
                 style={{ display: "none" }}
               ></div>
             </div>
-            <div
-              aria-hidden="true"
-              style={{ position: "absolute", left: "-5000px" }}
-            >
-              {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-5000px' }}>
               <input
                 type="text"
                 name="b_521869c3a8a0a0f310a967b1e_8b0b556b44"
                 tabIndex="-1"
-                defaultValue=""
+                value=""
               />
             </div>
             <div className="optionalParent">
@@ -93,6 +87,7 @@ const TopSignup = () => {
           ftypes[0] = "email";
         })(jQuery)}
       </script>
+      </div>
     </div>
   );
 };

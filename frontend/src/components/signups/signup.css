@@ -8,6 +8,7 @@
     gap: 48px;
     border-radius: 16px;
     background: var(--color-brand-sky, #B1CBE2);
+
 }
 .top_signup_box1 {
     display: flex;
@@ -121,6 +122,8 @@
     gap: 48px;
     border-radius: 16px;
     background: var(--color-brand-sky, #B1CBE2);
+
+
 }
 .bot_signup_box1 {
     display: flex;
@@ -172,15 +175,47 @@
     border-radius: 100px;
 }
 
-.bottomContent {
-    width: 1440px;
+.topContent {
+    position: relative;
+    width: 100%;
     height: 741px;
     flex-shrink: 0;
+    max-width: 100%; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bottomContent {
+    position: relative;
+    width: 100%;
+    height: 741px;
+    flex-shrink: 0;
+    max-width: 100%; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .bot_signup_icon {
     width: 471px;
     height: 342px;
     flex-shrink: 0;
-    background: lightgray -42px -56px / 119.108% 122.917% no-repeat;
+
+    z-index: 1;
+    transform: translateY(95px);
+}
+
+.bot_signup_icon img {
+    
+    max-width: 100%;
+}
+.bot_signup_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
