@@ -6,7 +6,7 @@ COPY frontend/. .
 
 RUN npm install && npm run build
 
-FROM python:3.6.4-slim
+FROM python:3.9
 
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
@@ -16,11 +16,15 @@ WORKDIR /var/www
 
 COPY /requirements.txt requirements.txt
 
+RUN pip install --upgrade pip
+
 RUN pip install -r requirements.txt
 
+RUN apt-get update && apt-get install -y sqlite3 && rm -rf /var/lib/apt/lists/*
+
 COPY . .
-COPY --from=build-stage /frontend/build/ app/static/
+COPY --from=build-stage /frontend/build/ /var/www/app/static/
 
 
-CMD gunicorn app:app
+CMD gunicorn -b 0.0.0.0:5000 app:app
 EXPOSE 5000

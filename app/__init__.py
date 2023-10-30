@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, session, redirect
+from flask import Flask, request, session, redirect, send_from_directory
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -16,13 +16,11 @@ from .api.auth_routes import auth_routes
 # from .api.subs_routes import subs_routes
 
 
-app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
-
+app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
 
 # Setup login manager
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
-
 
 @login.user_loader
 def load_user(id):
@@ -34,23 +32,9 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 
 app.register_blueprint(testimonial_routes, url_prefix='/api/testimonial')
-
 app.register_blueprint(topic_routes, url_prefix='/api/topics')
 app.register_blueprint(blog_routes, url_prefix='/api/blogs')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
-
-
-
-
-@app.route("/")
-def hello():
-    # if request.method == "GET":
-    #     return ({"response": "Get Request Called"})
-    
-    return "Hello Team 8! testing!"
-
-if __name__ == "__init__":
-    app.run(host="0.0.0.0", debug=True, port=5000)
 
 
 db.init_app(app)
@@ -94,17 +78,21 @@ def api_help():
     return route_list
 
 
+
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
-    """
-    This route will direct to the public directory in our
-    react builds in the production environment for favicon
-    or index.html requests
-    """
+
     if path == 'favicon.ico':
-        return app.send_from_directory('public', 'favicon.ico')
-    return app.send_static_file('index.html')
+        return send_from_directory(app.static_folder, 'favicon.ico')
+
+
+    elif path.startswith('static/'):
+        return send_from_directory(app.static_folder, path)
+
+
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 
 @app.errorhandler(404)

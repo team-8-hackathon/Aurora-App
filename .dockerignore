@@ -1,0 +1,8 @@
+frontend/node_modules
+.venv
+Pipfile
+Pipfile.lock
+.env
+.DS_Store
+appserver.pem
+cicdkeypair.pem
