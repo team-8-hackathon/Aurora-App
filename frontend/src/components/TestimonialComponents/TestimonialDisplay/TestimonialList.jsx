@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import './app.css'
+import "./app.css";
 
 const TestimonialList = () => {
   const dispatch = useDispatch();
@@ -17,17 +17,18 @@ const TestimonialList = () => {
   }, [dispatch]);
 
   return (
-      <ul className="testimonial-list">
-        {testimonials?.map((testimonial, i) => (
-          // <SwiperSlide>
-          <TestimonialItem
-            name={testimonial.name}
-            body={testimonial.body}
-            stars={testimonial.stars}
-            profile_pic={testimonial.profile_pic}
-          />
-        ))}
-      </ul>
+    <ul className="testimonial-list">
+      {testimonials?.map((testimonial, i) => (
+        // <SwiperSlide>
+        <TestimonialItem
+          name={testimonial.name}
+          body={testimonial.body}
+          stars={testimonial.stars}
+          profile_pic={testimonial.profile_pic}
+          key={i}
+        />
+      ))}
+    </ul>
   );
 };
 

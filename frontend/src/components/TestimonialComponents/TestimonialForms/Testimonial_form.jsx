@@ -13,24 +13,30 @@ function TestimonialForm() {
   const [profile_pic, setProfile_pic] = useState("");
   const [body, setBody] = useState("");
   const [stars, setStars] = useState(0);
-
+  // onChange={e => setThumbnail(e.target.files[0])}
   function getFile(e) {
-    setProfile_pic(URL.createObjectURL(e.target.files[0]));
+    setProfile_pic(e.target.files[0]);
   }
-
-  const newTestimonial = !profile_pic
-    ? { name, body, stars }
-    : { name, body, stars, profile_pic };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("testimonials::: ", newTestimonial);
-    await dispatch(thunkCreateTestimonial(newTestimonial));
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("profile_pic", profile_pic);
+    formData.append("body", body);
+    formData.append("stars", stars);
+    console.log("testimonials::: ");
+    await dispatch(thunkCreateTestimonial(formData));
     history.push("/");
   };
 
   return (
-    <form className="form-testimonial" onSubmit={handleSubmit}>
+    <form
+      className="form-testimonial"
+      encType="multipart/form-data"
+      onSubmit={handleSubmit}
+    >
+      {console.log(profile_pic)}
       <div className="form-testimonial-img">
         {profile_pic ? (
           <img className="profile-img" src={profile_pic} alt="User" />

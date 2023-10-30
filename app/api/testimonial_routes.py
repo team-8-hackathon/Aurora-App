@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from flask_login import login_required, current_user
 from app.models import Testimonial, db
 from app.forms import TestimonialForm
 from app.api.auth_routes import validation_errors_to_error_messages
@@ -10,7 +11,7 @@ testimonial_routes = Blueprint('testimonial', __name__)
 @testimonial_routes.route('/')
 def get_testimonials():
      testimonials = Testimonial.query.order_by(Testimonial.stars.desc()).all()
-     testimonials = testimonials[0:4]
+    #  testimonials = testimonials[0:4]
      return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}, 201
 
 
@@ -24,6 +25,9 @@ def create_testimonial():
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     name = form.data['name']
+    stars = form.data['stars']
+    body = form.data['body']
+    print('---------------------------Testimonial IF statement', form.data)
     if form.data['profile_pic']:
       profile_pic = form.data['profile_pic']
       profile_pic.filename = get_unique_filename(profile_pic.filename)
@@ -31,15 +35,35 @@ def create_testimonial():
       if 'url' not in upload:
          return {"errors": upload}
       url = str(upload['url'])
-    stars = form.data['stars']
-    body = form.data['body']
 
-    testimonial = Testimonial(name=name, stars=stars, body=body, profile_pic=url)
+      testimonial = Testimonial(name=name, stars=stars, body=body, profile_pic=url)
+      db.session.add(testimonial)
+      db.session.commit()
+      testimonials = Testimonial.query.order_by(Testimonial.stars.desc()).all()
+      return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}, 201
+    testimonial = Testimonial(name=name, stars=stars, body=body)
     db.session.add(testimonial)
     db.session.commit()
-    print('----------Testimonial Saved')
     testimonials = Testimonial.query.order_by(Testimonial.stars.desc()).all()
     return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}, 201
     # return testimonial.to_dict(), 201
 
   return {"ERRORS ": validation_errors_to_error_messages(form.errors)}, 401
+
+
+@testimonial_routes.route('/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_testimonial(id):
+    """
+    Delete a tesimonial post by its id
+    """
+    testimonial = Testimonial.query.get(id)
+    if not testimonial:
+       return {"ERROR": 'Testimonial not found'}, 404
+    
+    remove_file_from_s3(testimonial.profile_pic)
+
+    db.session.delete(testimonial)
+    db.session.commit()
+
+    return {"message": f'testimonial id: {testimonial.id} was deleted'}

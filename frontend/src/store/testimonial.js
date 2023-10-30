@@ -14,15 +14,7 @@ const loadTestimonials = (testimonials) => {
 export const thunkCreateTestimonial = (data) => async (dispatch) => {
   const response = await fetch(`/api/testimonial/new`, {
     method: "POST",
-    headers: {
-      "Content-Type" : "application/json"
-    },
-    body: JSON.stringify({
-      name: data.name,
-      profile_pic: data.profile_pic,
-      stars: data.stars,
-      body: data.body
-    })
+    body: data
   })
   if(response.ok){
     const data = await response.json();
