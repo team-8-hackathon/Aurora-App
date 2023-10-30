@@ -7,6 +7,8 @@ import "./signup.css"
 
 
 const BotSignup = () => {
+  const handleFormChange = (event) => {
+  };
   return (
     <div className='bottomContent'>
       <div className='bot_signup_icon'>
@@ -63,6 +65,7 @@ const BotSignup = () => {
                   name="b_521869c3a8a0a0f310a967b1e_8b0b556b44"
                   tabIndex="-1"
                   value=""
+                  onChange={handleFormChange}
                 />
               </div>
               <div className="optionalParent">
