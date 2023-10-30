@@ -18,6 +18,7 @@ import EditBlogForm from "./components/BlogComponents/EditBlogForm";
 import AdminNavBar from "./components/Navbar/AdminNavBar"
 import TopicForm from "./components/Topics/TopicForm"
 import AdminBlogs from "./components/Admin/blog_index"
+import SubsList from "./components/Admin/subs_list";
 
 
 
@@ -55,6 +56,9 @@ function App() {
                 </Route>
                 <Route exact path="/admin/post-topic">
                   <TopicForm />
+                </Route>
+                <Route exact path="/admin/subs">
+                  <SubsList />
                 </Route>
               </Switch>
             </ProtectedRoute>

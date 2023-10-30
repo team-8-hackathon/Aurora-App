@@ -13,7 +13,8 @@ from .api.topic_routes import topic_routes
 
 from .api.blog_routes import blog_routes
 from .api.auth_routes import auth_routes
-# from .api.subs_routes import subs_routes
+from .api.subs_routes import subs_routes
+
 
 
 app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
@@ -35,6 +36,7 @@ app.register_blueprint(testimonial_routes, url_prefix='/api/testimonial')
 app.register_blueprint(topic_routes, url_prefix='/api/topics')
 app.register_blueprint(blog_routes, url_prefix='/api/blogs')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(subs_routes, url_prefix='/api/subs')
 
 
 db.init_app(app)
