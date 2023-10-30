@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
+
 import { DataGrid } from '@mui/x-data-grid';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,6 +11,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+
 
 import { setConfig, lists } from "@mailchimp/mailchimp_marketing";
 import './subs_list.css'
@@ -37,29 +40,53 @@ const SubsList = () => {
     
         fetchSubscribers();
       }, []);
+
+      const [open, setOpen] = React.useState(false);
+      const anchorRef = React.useRef(null);
+      const [selectedIndex, setSelectedIndex] = React.useState(1);
+    
+      const handleClick = () => {
+      };
+    
+      const handleMenuItemClick = (event, index) => {
+        setSelectedIndex(index);
+        setOpen(false);
+      };
+    
+      const handleToggle = () => {
+        setOpen((prevOpen) => !prevOpen);
+      };
+    
+      const handleClose = (event) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+          return;
+        }
+    
+        setOpen(false);
+      };
     
       return (
         <div className='browse-blogs-container'>
-            <h4 className='sub-title'>All Subscriber</h4>
+            <h4 className='sub-title'>All Subscribers</h4>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell>ID</TableCell>
-                            <TableCell align="right">Email</TableCell>
-                            <TableCell align="right">Full Name</TableCell>
-                            <TableCell align="right">Status</TableCell>
-                            <TableCell align="right">Action</TableCell>         
+                            <TableCell align="left">Email</TableCell>
+                            <TableCell align="left">Full Name</TableCell>
+                            <TableCell align="left">Status</TableCell>
+                            <TableCell align="left">Actions</TableCell>         
                         </TableRow>
                     </TableHead>
                     <TableBody>
                     {subscribers.map((subscriber, index) => (
                         <TableRow>
-                        <TableCell align="right" key={index}>{index + 1}</TableCell>
-                        <TableCell align="right" key={index}>{subscriber}</TableCell>
-                        <TableCell align="right" key={index}></TableCell>
-                        <TableCell align="right" key={index}>subscribed</TableCell>
-                        <TableCell align="right" key={index}>Delete</TableCell>
+                        <TableCell align="left" key={index}>{index + 1}</TableCell>
+                        <TableCell align="left" >{subscriber}</TableCell>
+                        <TableCell align="left" key={index}>''</TableCell>
+                        <TableCell align="left" key={index}>subscribed</TableCell>
+                        <Button variant="outlined">Delete</Button>
                         </TableRow>
                     ))}
                     </TableBody>
