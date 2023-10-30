@@ -1,6 +1,9 @@
-version: "2"
+version: "3"
 services:
   app:
     image: ECR_REGISTRY/beta8:GITHUB_SHA
     ports:
-      - "80:5000"
+      - "80:5001"
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      DATABASE_URL: ${DATABASE_URL}
