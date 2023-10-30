@@ -2,24 +2,11 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 # from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms import TopicForm 
-from app.models import Topic, blog_topics, Blog, db
+from app.models import Topic, Blog, db
 from datetime import datetime
 
 topic_routes = Blueprint('topics', __name__)
 
-
-#Get blogs by topic
-@topic_routes.route('/<int:topic_id>/blogs', methods=['GET'])
-def get_blogs_by_topic(topic_id):
-    """
-    Fetch all blogs related to a particular topic
-    """
-    blogs_for_topic = db.session.query(Blog).\
-        join(blog_topics, Blog.id == blog_topics.c.blog_id).\
-        join(Topic, blog_topics.c.topic_id == Topic.id).\
-        filter(Topic.id == topic_id).all()
-
-    return {'blogs': [blog.to_dict() for blog in blogs_for_topic]}
 
 #Get all topics
 @topic_routes.route('/', methods=['GET'])
@@ -59,8 +46,8 @@ def post_topic():
     
     if form.validate_on_submit():
         topic = form.data['topic']
-
-        new_topic = Topic(topic=topic) 
+        color = form.data['color']
+        new_topic = Topic(topic=topic, color=color) 
 
         db.session.add(new_topic)
         db.session.commit()

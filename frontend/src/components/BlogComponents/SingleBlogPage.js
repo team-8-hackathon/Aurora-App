@@ -23,7 +23,8 @@ const SingleBlogPage = () => {
     const topicRedirect = () => {
         history.push(`/topics/${blog.topic.id}`)
     }
-    const color = topicColor(blog.topic.id)
+    console.log(blog)
+    const color = blog.topic.color
     return (
         <div className="single-blog-container">
             <img className='single-blog-thumbnail' src={blog.thumbnail} alt="thumbnail" />

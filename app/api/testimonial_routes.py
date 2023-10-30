@@ -24,10 +24,10 @@ def create_testimonial():
   form = TestimonialForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
-    name = form.data['name']
+    first_name = form.data['first_name']
+    last_name = form.data['last_name']
     stars = form.data['stars']
     body = form.data['body']
-    print('---------------------------Testimonial IF statement', form.data)
     if form.data['profile_pic']:
       profile_pic = form.data['profile_pic']
       profile_pic.filename = get_unique_filename(profile_pic.filename)
@@ -36,12 +36,12 @@ def create_testimonial():
          return {"errors": upload}
       url = str(upload['url'])
 
-      testimonial = Testimonial(name=name, stars=stars, body=body, profile_pic=url)
+      testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body, profile_pic=url)
       db.session.add(testimonial)
       db.session.commit()
       testimonials = Testimonial.query.order_by(Testimonial.stars.desc()).all()
       return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}, 201
-    testimonial = Testimonial(name=name, stars=stars, body=body)
+    testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body)
     db.session.add(testimonial)
     db.session.commit()
     testimonials = Testimonial.query.order_by(Testimonial.stars.desc()).all()

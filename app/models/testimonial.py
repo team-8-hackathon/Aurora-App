@@ -12,7 +12,8 @@ class Testimonial(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     #add a default url to profile pics later
     profile_pic = db.Column(db.String(1000), default='/images/defaultUser.png')
-    name = db.Column(db.String(200), nullable=False)
+    first_name = db.Column(db.String(200), nullable=False)
+    last_name = db.Column(db.String(200), nullable=False)
     stars = db.Column(db.Integer, nullable=False)
     body = db.Column(db.String(1000), nullable=False)
 
@@ -30,7 +31,8 @@ class Testimonial(db.Model):
         return {
             'id': self.id,
             'profile_pic': self.profile_pic,
-            'name': self.name,
+            'first_name': self.first_name,
+            'last_name': self.last_name[0].upper() + '.',
             'stars': self.stars,
             'body': self.body,
             'created_at': self.created_at,

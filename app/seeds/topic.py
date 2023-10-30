@@ -4,16 +4,20 @@ from sqlalchemy.sql import text
 #add topic tabs
 def seed_topics():
     topics =[Topic(
-        topic="Emotional Wellness 101"
+        topic="Emotional Wellness 101",
+        color="#ffe27a"
         ),
         Topic(
-        topic="Mental Self-Care"
+        topic="Mental Self-Care",
+        color="#ec9fb8"
         ),
         Topic(
-        topic="Relationship Wellness"
+        topic="Relationship Wellness",
+        color="#9acfb1"
         ),
         Topic(
-        topic="Workplace Wellness"
+        topic="Workplace Wellness",
+        color="#f4a182"
         )
         ]
     db.session.add_all(topics)

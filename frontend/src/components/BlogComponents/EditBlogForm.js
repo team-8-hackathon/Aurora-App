@@ -25,7 +25,7 @@ const EditBlogForm = () => {
 
     const [title, setTitle] = useState(oldBlog?.title)
     const [thumbnail, setThumbnail] = useState()
-    const [topic, setTopic] = useState(oldBlog?.topic?.id)
+    const [topic, setTopic] = useState(oldBlog?.topic)
     const [body, setBody] = useState(oldBlog?.body)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [errors, setErrors] = useState({})
@@ -62,7 +62,7 @@ const EditBlogForm = () => {
         if(oldBlog && topics && oldBlog.topic && editor) {
             setTitle(oldBlog.title)
             setBody(oldBlog.body)
-            setTopic(oldBlog.topic.id)
+            setTopic(oldBlog.topic)
             editor.commands.setContent(oldBlog.body)
         }
     }, [oldBlog, topics])
@@ -71,10 +71,10 @@ const EditBlogForm = () => {
         if(title && body) setIsLoaded(true)
     }, [title, body])
     
-    if(!isLoaded || !oldBlog || !topics || !oldBlog.topic) return null
+    if(!isLoaded || !oldBlog || !topics) return null
 
     const oldThumbnail = oldBlog.thumbnail;
-    const oldTopic = oldBlog.topic?.id;
+    const oldTopic = oldBlog.topic;
 
     const editBlog = async (e) => {
         e.preventDefault()
@@ -84,7 +84,7 @@ const EditBlogForm = () => {
             if(thumbnail) formData.append('thumbnail', thumbnail)
             formData.append('title', title)
             formData.append('body', body.toString())
-            formData.append('topic', topic)
+            formData.append('topic_id', topic)
 
             const response = await dispatch(thunkEditBlog(formData, blogId))
             if (response.id) {
@@ -98,7 +98,6 @@ const EditBlogForm = () => {
         e.preventDefault();
         history.push('/admin')
     }
-
     return (
         <div className="blog-form-container">
             <form className="blog-form" encType="multipart/form-data" onSubmit={editBlog}>

@@ -8,5 +8,5 @@ class EditBlogForm(FlaskForm):
     thumbnail=FileField('thumbnail', validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
     title=StringField('title', validators=[(DataRequired())])
     body=StringField('body', validators=[DataRequired()])
-    topic=IntegerField('topic', validators=[DataRequired()])
+    topic_id=IntegerField('topic', validators=[DataRequired()])
     

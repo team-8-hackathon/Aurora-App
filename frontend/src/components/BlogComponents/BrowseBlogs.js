@@ -24,9 +24,8 @@ const BrowseBlogs = () => {
         if (numArticles < blogs.length) {
             setNumArticles(numArticles + 6)
         }
-        console.log(blogs.slice(0, numArticles))
     }
-
+    console.log(topic)
     return (
         <div className='browse-blogs-container'>
             <h2 className='topic-title'>{topic.topic}</h2>

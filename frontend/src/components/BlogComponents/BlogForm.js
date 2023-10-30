@@ -47,6 +47,7 @@ const BlogForm = () => {
         if (!thumbnail) validationErrors.thumbnail = "Blog thumbnail is required"
         if (!body || !body.length) validationErrors.body = "Blog body is required"
         if (!topic || !topic.length) validationErrors.topic = "Blog Topic is required"
+        console.log(topic)
         setErrors(validationErrors)
     }, [title, thumbnail, body, topic])
 
@@ -64,7 +65,7 @@ const BlogForm = () => {
             formData.append('thumbnail', thumbnail)
             formData.append('title', title)
             formData.append('body', body.toString())
-            formData.append('topic', topic)
+            formData.append('topic_id', topic)
 
             const response = await dispatch(thunkPostBlog(formData))
             if (response.id) {

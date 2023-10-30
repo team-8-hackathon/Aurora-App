@@ -11,7 +11,8 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { BiEdit } from 'react-icons/bi'
 
 const BlogThumbnail = ({ topic, blog, type }) => {
-    const color = topicColor(topic.id);
+    const color = topic.color;
+    console.log(color)
     const dispatch = useDispatch();
     const history = useHistory();
 

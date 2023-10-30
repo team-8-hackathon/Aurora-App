@@ -43,6 +43,7 @@ def post_blog():
     if form.validate_on_submit():
         title = form.data['title']
         body = form.data['body']
+        topic_id=form.data['topic_id']
         thumbnail = form.data['thumbnail']
         thumbnail.filename = get_unique_filename(thumbnail.filename)
         upload = upload_file_to_s3(thumbnail)
@@ -50,12 +51,9 @@ def post_blog():
             return {"errors": upload}
         url = str(upload['url'])
 
-        blog = Blog(title=title, thumbnail=url, body=body)
-        topic = Topic.query.get(form.data['topic'])
+        blog = Blog(title=title, thumbnail=url, body=body, topic_id=topic_id)
 
         db.session.add(blog)
-        db.session.commit()
-        blog.topics.append(topic)
         db.session.commit()
         return blog.to_dict()
     return {'errors': form.errors}, 401
@@ -97,7 +95,7 @@ def edit_blog(id):
     if form.validate_on_submit():
         title = form.data['title']
         body = form.data['body']
-
+        topic_id = form.data['topic_id']
         if form.data['thumbnail']:
             thumbnail = form.data['thumbnail']
             thumbnail.filename = get_unique_filename(thumbnail.filename)
@@ -108,15 +106,10 @@ def edit_blog(id):
             url = str(upload['url'])
             remove_file_from_s3(blog.thumbnail)
             blog.thumbnail = url
-        if form.data['topic']:
-            oldTopic = blog.topics[0]
-            newTopic = Topic.query.get(form.data['topic'])
-            if oldTopic.id != newTopic.id:
-                blog.topics.remove(oldTopic)
-                blog.topics.append(newTopic)
 
         blog.title = title
         blog.body = body
+        blog.topic_id = topic_id
         blog.updated_at = datetime.now()
         db.session.commit()
         return blog.to_dict()
