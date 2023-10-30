@@ -1,21 +1,21 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.forms import SubsForm
+import os
 # from app.models import Subs, db
 from app.mailchimp_api import get_subscribers
 
 subs_routes = Blueprint('subs', __name__)
 
+API_KEY = os.environ.get("API_KEY")
+SERVER_PREFIX = os.environ.get("SERVER_PREFIX")
+LIST_ID = os.environ.get("LIST_ID")
+
 #Get all Subs
 @subs_routes.route('/')
 @login_required
 def get_all_subs():
-    api_key = "4713cf3d0425545b46efab9926bdae70-us21"
-    server_prefix = "us21"
-    list_id = "8b0b556b44"
-    # Subs = Subs.query.order_by(Subs.created_at.desc()).all()
-    Subs = get_subscribers(api_key, server_prefix, list_id);
-
+    Subs = get_subscribers(API_KEY, SERVER_PREFIX, LIST_ID);
     return Subs
 
 
