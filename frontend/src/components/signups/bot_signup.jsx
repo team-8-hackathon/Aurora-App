@@ -1,6 +1,5 @@
 import React from 'react';
 import jQuery from 'jquery';
-import gardenIcon from './aurora-flower-garden_transparent.gif'; 
 
 
 import "./signup.css"
@@ -13,7 +12,7 @@ const BotSignup = () => {
   return (
     <div className='bottomContent'>
       <div className='bot_signup_icon'>
-        <img src={gardenIcon} alt="Garden Icon" />
+        <img src='/images/aurora-flower-garden_transparent.gif' alt="Garden Icon" />
       </div>
       <div id="mc_embed_shell">
         <div className= "bot_signup">

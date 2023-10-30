@@ -1,6 +1,5 @@
 import React from 'react';
 import jQuery from 'jquery';
-import butterflyIcon from './Butterfly.gif'; 
 
 import "./signup.css"
 
@@ -25,7 +24,7 @@ const TopSignup = () => {
           <div className="top_signup_box1" id="mc_embed_signup_scroll">
             <img
               className="top_signup_icon"
-              src={butterflyIcon}
+              src="/images/Butterfly.gif"
               alt="Butterfly Icon"
             />
 
