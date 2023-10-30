@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.models import Testimonial, db
 from app.forms import TestimonialForm
 from app.api.auth_routes import validation_errors_to_error_messages
+from app.aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
 
 testimonial_routes = Blueprint('testimonial', __name__)
@@ -25,10 +26,15 @@ def create_testimonial():
     name = form.data['name']
     if form.data['profile_pic']:
       profile_pic = form.data['profile_pic']
+      profile_pic.filename = get_unique_filename(profile_pic.filename)
+      upload = upload_file_to_s3(profile_pic)
+      if 'url' not in upload:
+         return {"errors": upload}
+      url = str(upload['url'])
     stars = form.data['stars']
     body = form.data['body']
 
-    testimonial = Testimonial(name=name, stars=stars, body=body, profile_pic=profile_pic)
+    testimonial = Testimonial(name=name, stars=stars, body=body, profile_pic=url)
     db.session.add(testimonial)
     db.session.commit()
     print('----------Testimonial Saved')
