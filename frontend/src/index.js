@@ -7,6 +7,7 @@ import configureStore from "./store";
 import * as sessionActions from "./store/session";
 import App from './App';
 import './index.css';
+import { SearchProvider } from './context/SearchContext';
 
 const store = configureStore();
 
@@ -17,14 +18,16 @@ if (process.env.NODE_ENV !== "production") {
 
 function Root() {
   return (
-    <ModalProvider>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-          <Modal />
-        </BrowserRouter>
-      </Provider>
-    </ModalProvider>
+    <SearchProvider>
+      <ModalProvider>
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+            <Modal />
+          </BrowserRouter>
+        </Provider>
+      </ModalProvider>
+    </SearchProvider>
   );
 }
 

@@ -38,7 +38,7 @@ def upgrade():
     )
     op.create_table('subscribers',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('name', sa.String(length=200), nullable=False),
+    # sa.Column('name', sa.String(length=200), nullable=False),
     sa.Column('email', sa.String(length=200), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),

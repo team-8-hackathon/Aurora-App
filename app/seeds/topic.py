@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 #add topic tabs
 def seed_topics():
     topics =[Topic(
-        topic="Emontional Wellness 101"
+        topic="Emotional Wellness 101"
         ),
         Topic(
         topic="Mental Self-Care"

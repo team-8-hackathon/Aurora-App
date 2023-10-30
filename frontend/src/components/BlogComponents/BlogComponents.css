@@ -1,12 +1,93 @@
 .errors {
     color: red;
+    font-size: small;
 }
 
+.text-editor-container {
+    border: 1px solid #00283d;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    background-color: white;
+}
+.file-upload {
+    display: flex;
+    align-items: center;
+}
+.file-upload:hover {
+    cursor: pointer;
+}
 
+input[type="file"] {
+    display: none;
+}
+
+.blog-form {
+    font-size: 1rem;
+    font-weight: normal;
+}
+.blog-form>input, .blog-form>select {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #00283d;
+}
+.menuBar {
+    display: flex;
+    justify-content: space-between;
+}
 .blog-form-container {
     margin: auto;
+    width: fit-content;
+    box-sizing: border-box;
+    padding: 1rem;
 }
 
-#text-content {
-    outline: 2px solid #00283d;
+.tiptap.ProseMirror {
+    /* outline: 2px solid #00283d; */
+    padding: 1rem;
+    box-sizing: border-box;
+    width: 30rem;
+}
+.tiptap.ProseMirror:focus, .blog-form>input {
+    outline: none;
+}
+.text-editor-container:focus-within, .blog-form>input:focus, .blog-form>select:focus {
+    box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
+    outline: none;
+}
+
+#select-topic {
+    color: gray;
+}
+
+.editor-menu-button {
+    background-color: transparent;
+    color:#00283d;
+    padding: 0.25rem;
+    border: 0.25px solid #00283d;
+
+}
+
+.editor-menu-button:hover, .blog-post-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
+}
+
+.button-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.blog-post-button {
+    background-color: lightgrey;
+    color: #00283d;
+    border: none;
+    /* border: 1.5px solid #00283d; */
+    padding: 0.5rem 2rem;
+    border-radius: 5rem;
+    font-weight: bold;
+}
+.blog-post-button.submit {
+    background-color: #ffe27a;
+    /* border: 1.5px solid #ffe27a; */
 }

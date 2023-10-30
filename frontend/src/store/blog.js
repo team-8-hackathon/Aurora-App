@@ -38,8 +38,51 @@ export const thunkGetBlogs = () => async dispatch => {
     }
 }
 
+export const thunkPostBlog = (formData) => async dispatch => {
+    const response = await fetch(`/api/blogs/create`, {
+        method: "POST",
+        body: formData
+    })
 
+    if (response.ok) {
+        const newBlog = await response.json();
+        dispatch(actionGetSingleBlog(newBlog))
+        return newBlog
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
 
+export const thunkEditBlog = (data, blogId) => async dispatch => {
+    const response = await fetch(`/api/blogs/${blogId}/edit`, {
+        method: "PUT",
+        body: data
+    })
+    if (response.ok) {
+        const updatedBlog = await response.json();
+        dispatch(thunkGetSingleBlog(updatedBlog.id))
+        return updatedBlog
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
+
+export const thunkDeleteBlog = (blogId) => async dispatch => {
+    const response = await fetch(`/api/blogs/${blogId}/delete`, {
+        method: "DELETE"
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(thunkGetBlogs())
+        return data
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
 
 const initialState = { blogs: null, singleBlog: null }
 

@@ -1,0 +1,47 @@
+.errors {
+    color: red;
+    font-size: small;
+}
+
+.topic-form {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.topic-form>input,
+.topic-form>select {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #00283d;
+}
+
+.topic-form-container {
+    margin: auto;
+    width: fit-content;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.button-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.topic-post-button {
+    background-color: lightgrey;
+    color: #00283d;
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 5rem;
+    font-weight: bold;
+}
+
+.topic-post-button.submit {
+    background-color: #ffe27a;
+}
+
+.topic-post-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
+}

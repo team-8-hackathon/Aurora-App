@@ -2,8 +2,8 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 # from app.api.auth_routes import validation_errors_to_error_messages
-from app.forms import BlogForm
-from app.models import Blog, db
+from app.forms import BlogForm, EditBlogForm
+from app.models import Blog, db, Topic
 from datetime import datetime
 
 blog_routes = Blueprint('blogs', __name__)
@@ -46,14 +46,16 @@ def post_blog():
         thumbnail = form.data['thumbnail']
         thumbnail.filename = get_unique_filename(thumbnail.filename)
         upload = upload_file_to_s3(thumbnail)
-
         if 'url' not in upload:
             return {"errors": upload}
         url = str(upload['url'])
 
         blog = Blog(title=title, thumbnail=url, body=body)
+        topic = Topic.query.get(form.data['topic'])
 
         db.session.add(blog)
+        db.session.commit()
+        blog.topics.append(topic)
         db.session.commit()
         return blog.to_dict()
     return {'errors': form.errors}, 401
@@ -85,11 +87,12 @@ def edit_blog(id):
     """
     Edit a blog post by its id
     """
+
     blog = Blog.query.get(id)
     if not blog:
         return {"errors": "Blog not found"}, 404
     
-    form = BlogForm()
+    form = EditBlogForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         title = form.data['title']
@@ -104,12 +107,17 @@ def edit_blog(id):
                 return {"errors": upload}
             url = str(upload['url'])
             remove_file_from_s3(blog.thumbnail)
+            blog.thumbnail = url
+        if form.data['topic']:
+            oldTopic = blog.topics[0]
+            newTopic = Topic.query.get(form.data['topic'])
+            if oldTopic.id != newTopic.id:
+                blog.topics.remove(oldTopic)
+                blog.topics.append(newTopic)
 
         blog.title = title
         blog.body = body
-        blog.thumbnail = thumbnail
         blog.updated_at = datetime.now()
         db.session.commit()
-
         return blog.to_dict()
     return {'errors': form.errors}, 401

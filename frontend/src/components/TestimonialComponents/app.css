@@ -1,0 +1,39 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+form {
+  font-size: 1.6rem;
+  display: grid;
+  align-items: center;
+  gap: 1.2rem;
+
+  background-color: var(--color-lightest);
+  border-radius: 7px;
+}
+
+.form-testimonial{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.form-testimonial-img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-img{
+  width: 80px
+}
+
+textarea{
+  resize: none;
+  width: 400px;
+  height: 100px;
+}

@@ -1,0 +1,133 @@
+.admin-navbar-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    background-color: transparent;
+}
+.admin-navbar-container a {
+    text-decoration: none;
+    color: #00283D;
+}
+
+.topic-delete-button {
+    background-color: transparent;
+    border: none;
+}
+
+.admin-navbar-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 2%;
+    gap: 3rem;
+    align-items: center;
+}
+.logout-link {
+    text-decoration: none;
+    color:#00283D;
+}
+.menu-right {
+    display: flex;
+    gap: 1rem;
+}
+.search-bar {
+    width: 30rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+}
+.search-bar:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
+}
+
+.admin-navbar-dropdown-menu {
+    position: absolute;
+    top: 70px;
+    right: 4rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFE27A;
+    border-radius: 1rem;
+}
+
+.admin-navbar-dropdown-item-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+
+.admin-navbar-item,
+.admin-navbar-item a {
+    color: #00283D;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.admin-dashboard-link {
+    text-decoration: none;
+    color: inherit;
+    width: 20rem;
+}
+
+.admin-navbar-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
+    background-color: #FFE27A;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.admin-navbar-dropdown-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-navbar-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.admin-navbar-dropdown-item:hover,
+.topic-delete-button:hover {
+    background-color: #fcf3ea;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.admin-navbar-dropdown-item-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background 0.3s;
+}
+
+/* .admin-navbar-dropdown-item-container:hover {
+    background-color: #f2f2f2;
+} */
+
+.fa-trash {
+    color: #c0392b;
+    cursor: pointer;
+    transition: color 0.3s;
+
+}
+
+.fa-trash:hover {
+    color: #e74c3c;
+} 
