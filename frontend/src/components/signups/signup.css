@@ -171,3 +171,16 @@
     gap: 8px;
     border-radius: 100px;
 }
+
+.bottomContent {
+    width: 1440px;
+    height: 741px;
+    flex-shrink: 0;
+}
+
+.bot_signup_icon {
+    width: 471px;
+    height: 342px;
+    flex-shrink: 0;
+    background: lightgray -42px -56px / 119.108% 122.917% no-repeat;
+}
