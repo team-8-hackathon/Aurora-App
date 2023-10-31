@@ -23,9 +23,9 @@ jobs:
           echo "AWS_REGION is set!"
         fi
 
-    - name: Check if SSH_PRIVATE_KEY is set
+    - name: Check if SSH_CICD_PRIVATE_KEY is set
       run: |
-        if [[ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]]; then
+        if [[ -z "${{ secrets.SSH_CICD_PRIVATE_KEY }}" ]]; then
           echo "SSH_PRIVATE_KEY is not set!"
           exit 1
         else
@@ -83,7 +83,7 @@ jobs:
 
     - name: Deploy on AWS EC2
       env:
-        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        PRIVATE_KEY: ${{ secrets.SSH_CICD_PRIVATE_KEY }}
         HOSTNAME: ${{ secrets.HOSTNAME }}
         USER_NAME: ${{ secrets.USERNAME }}
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
