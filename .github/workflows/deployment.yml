@@ -91,7 +91,15 @@ jobs:
         ECR_REGISTRY_NEW: ${{ steps.login-ecr.outputs.registry }}
         SHA_REPLACEMENT: ${{ steps.build-image.outputs.github_sha }}
       run: |
-        echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
+
+        ls
+
+        echo "$PRIVATE_KEY" > private_key.pem 
+
+        chmod 600 private_key.pem
+
+        cat private_key.pem
+
         ls
         
         cat ${{ github.workspace }}/docker-compose.yml
