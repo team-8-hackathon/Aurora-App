@@ -15,7 +15,6 @@ const SplashPage = () => {
 
     return (
         <div className='splash-page-container'>
-            <SplashNavBar />
             <div className="splash-page-top-section">
                 <div className='top-section-content'>
                     <Link to="/">
@@ -125,7 +124,6 @@ const SplashPage = () => {
             <div id="splash-page-bottom-signup">
                 <BottomSignup />
             </div>
-            <Footer />
         </div>
     )
 }

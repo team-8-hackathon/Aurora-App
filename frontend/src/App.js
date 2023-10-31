@@ -35,9 +35,9 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            {/* <SplashNavBar /> */}
+            <SplashNavBar />
             <SplashPage />
-            {/* <Footer /> */}
+            <Footer />
           </Route>
 
           <Route path="/admin">
