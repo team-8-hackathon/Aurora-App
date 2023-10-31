@@ -6,7 +6,7 @@ import BlogThumbnail from './BlogThumbnail';
 import './BrowseBlogs.css'
 
 
-const BrowseBlogs = () => {
+const BrowseBlogs = ({ type }) => {
     const { topicId } = useParams();
     const topic = useSelector(state => state.topic.singleTopic)
     const [numArticles, setNumArticles] = useState(6)
@@ -32,7 +32,7 @@ const BrowseBlogs = () => {
 
                 {blogs && blogs.slice(0, numArticles).map(blog => (
                     <div id='blog-thumbnail-link' key={blog.id}>
-                        <BlogThumbnail topic={topic} blog={blog} />
+                        <BlogThumbnail type={type} topic={topic} blog={blog} />
                     </div>
                 ))}
             </div>

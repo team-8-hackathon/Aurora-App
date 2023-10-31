@@ -19,7 +19,6 @@ const LoginModal = () => {
         e.preventDefault();
         const data = await dispatch(login(username, password));
         if (data) {
-            console.log(data)
             setErrors(data);
         } else {
             history.push('/admin')

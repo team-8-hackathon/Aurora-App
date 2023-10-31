@@ -58,7 +58,7 @@ function App() {
                   <EditBlogForm />
                 </Route>
                 <Route exact path='/admin/topics/:topicId'>
-                  <BrowseBlogs />
+                  <BrowseBlogs type='admin' />
                 </Route>
                 <Route exact path="/admin/post-topic">
                   <TopicForm />
