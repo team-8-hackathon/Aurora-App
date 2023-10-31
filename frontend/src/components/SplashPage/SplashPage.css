@@ -162,6 +162,7 @@
     display: flex;
     margin: 150px;
     gap: 3rem;
+    margin-bottom: 0px;
 }
 
 .founder-image {

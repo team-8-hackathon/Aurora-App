@@ -34,15 +34,10 @@ function App() {
     <>
       {isLoaded && (
         <Switch>
-          <Route path='/splash'>
-            <SplashPage />
-          </Route>
           <Route exact path='/'>
-            <SplashNavBar />
-            <TopSignup />
-            <TestimonialList />
-            <BottomSignup />
-            <Footer />
+            {/* <SplashNavBar /> */}
+            <SplashPage />
+            {/* <Footer /> */}
           </Route>
 
           <Route path="/admin">
