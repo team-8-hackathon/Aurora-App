@@ -3,7 +3,7 @@ on:
     branches:
       - test
 
-name: Buid & Deploy (Docker)
+name: Build & Deploy (Docker)
 
 jobs:
   build:
@@ -23,6 +23,42 @@ jobs:
           echo "AWS_REGION is set!"
         fi
 
+    - name: Check if SSH_PRIVATE_KEY is set
+      run: |
+        if [[ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]]; then
+          echo "SSH_PRIVATE_KEY is not set!"
+          exit 1
+        else
+          echo "SSH_PRIVATE_KEY is set!"
+        fi
+
+    - name: Check if HOSTNAME is set
+      run: |
+        if [[ -z "${{ secrets.HOSTNAME }}" ]]; then
+          echo "HOSTNAME is not set!"
+          exit 1
+        else
+          echo "HOSTNAME is set!"
+        fi
+
+    - name: Check if USERNAME is set
+      run: |
+        if [[ -z "${{ secrets.USERNAME }}" ]]; then
+          echo "USERNAME is not set!"
+          exit 1
+        else
+          echo "USERNAME is set!"
+        fi
+
+    - name: Check if ECR_REGISTRY is set
+      run: |
+        if [[ -z "${{ steps.login-ecr.outputs.registry }}" ]]; then
+          echo "ECR_REGISTRY is not set!"
+          exit 1
+        else
+          echo "ECR_REGISTRY is set!"
+        fi
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -40,32 +76,33 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: beta8
       run: |
-        # Build a docker container and push it to ECR 
+        # Build a Docker container and push it to ECR 
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
         echo "Pushing image to ECR..."
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
-        #echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA"
+
     - name: Deploy on AWS EC2
       env:
-        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY  }}
-        HOSTNAME: ${{ secrets.HOSTNAME  }}
-        USER_NAME: ${{ secrets.USERNAME  }}
+        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        HOSTNAME: ${{ secrets.HOSTNAME }}
+        USER_NAME: ${{ secrets.USERNAME }}
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
       run: |
         echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
         ls
-        sed -i "s|ECR_REGISTRY|$ECR_REGISTRY|g" ${{ github.workspace }}/docker-compose.yml
-        sed -i "s|GITHUB_SHA|$GITHUB_SHA|g" ${{ github.workspace }}/docker-compose.yml
-        scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp 
+        sed -i -e 's/GITHUB_SHA/'"$GITHUB_SHA"'/' ${{ github.workspace }}/docker-compose.yml
+        sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY"'/' ${{ github.workspace }}/docker-compose.yml
+        scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
         ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
-          
+        
           cd /tmp
           # docker stop backend-flask
           # docker rm backend-flask
           docker-compose -p backend-flask up -d
-        '-
+        '
 
-
-
-# # sed -i -e 's/GITHUB_SHA/'"$GITHUB_SHA"'/' ${{ github.workspace }}/docker-compose.yml
-# # sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY"'/' ${{ github.workspace }}/docker-compose.yml
+            
+            
+            
+# sed -i "s|ECR_REGISTRY|$ECR_REGISTRY|g" ${{ github.workspace }}/docker-compose.yml
+# sed -i "s|GITHUB_SHA|$GITHUB_SHA|g" ${{ github.workspace }}/docker-compose.yml
