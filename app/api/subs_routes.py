@@ -1,8 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.forms import SubsForm
 import os
-# from app.models import Subs, db
 from app.mailchimp_api import get_subscribers
 
 subs_routes = Blueprint('subs', __name__)

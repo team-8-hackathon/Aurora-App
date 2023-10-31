@@ -17,9 +17,9 @@ def get_subscribers(api_key, server_prefix, list_id):
             "server": server_prefix
         })
 
-        response = client.lists.get_list_members_info(list_id)
-        email_addresses = [member['email_address'] for member in response['members']]
-        return email_addresses
+        data = client.lists.get_list_members_info(list_id)
+        # data = [member['email_address'] for member in response['members']]
+        return data
     except ApiClientError as error:
         return f"Error: {error.text}"
 
