@@ -113,9 +113,13 @@ jobs:
 
         cat ${{ github.workspace }}/docker-compose.yml
 
+        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME}
+
+        ls -l
+
         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
 
-        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
+       
 
           cd /tmp
           # docker stop backend-flask
