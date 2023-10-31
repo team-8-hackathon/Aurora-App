@@ -88,7 +88,7 @@ jobs:
         PRIVATE_KEY: ${{ secrets.SSH_CICD_PRIVATE_KEY }}
         HOSTNAME: ${{ secrets.HOSTNAME }}
         USER_NAME: ${{ secrets.USERNAME }}
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REGISTRY_NEW: ${{ steps.login-ecr.outputs.registry }}
         SHA_REPLACEMENT: ${{ steps.build-image.outputs.github_sha }}
       run: |
         echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
@@ -99,8 +99,11 @@ jobs:
         sed -i -e 's/GITHUB_SHA/'"$SHA_REPLACEMENT"'/' ${{ github.workspace }}/docker-compose.yml
 
         cat ${{ github.workspace }}/docker-compose.yml
+        
 
-        sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY"'/' ${{ github.workspace }}/docker-compose.yml
+        sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY_NEW"'/' ${{ github.workspace }}/docker-compose.yml
+
+        cat ${{ github.workspace }}/docker-compose.yml
 
         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
 
