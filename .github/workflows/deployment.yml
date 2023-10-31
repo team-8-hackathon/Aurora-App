@@ -50,15 +50,6 @@ jobs:
           echo "USERNAME is set!"
         fi
 
-    - name: Check if ECR_REGISTRY is set
-      run: |
-        if [[ -z "${{ steps.login-ecr.outputs.registry }}" ]]; then
-          echo "ECR_REGISTRY is not set!"
-          exit 1
-        else
-          echo "ECR_REGISTRY is set!"
-        fi
-
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -80,6 +71,15 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
         echo "Pushing image to ECR..."
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
+
+    - name: Check if ECR_REGISTRY is set
+      run: |
+        if [[ -z "${{ steps.login-ecr.outputs.registry }}" ]]; then
+          echo "ECR_REGISTRY is not set!"
+          exit 1
+        else
+          echo "ECR_REGISTRY is set!"
+        fi
 
     - name: Deploy on AWS EC2
       env:
