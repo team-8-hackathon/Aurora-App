@@ -1,0 +1,185 @@
+.splash-page-top-section {
+    display: flex;
+    margin-left: 150px;
+}
+
+.splash-page-nav-logo {
+    width: 300px;
+}
+
+.aurora-caption {
+    font-size: 3.5rem;
+}
+
+.aurora-intro {
+    font-size: 1.5rem;
+}
+
+.splash-page-hero-graphic {
+    width: 675px;
+    margin-top: -100px;
+
+}
+
+.top-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.top-section-about-aurora {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em
+}
+
+.splash-page-top-signup {
+    display: flex;
+    justify-content: center;
+}
+
+.learn-more-button {
+    background-color: rgb(255, 226, 122);
+    height: 2.5rem;
+    width: 8rem;
+    border: none;
+    border-radius: 2rem;
+}
+
+.splash-page-benefits {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15em;
+    margin-left: 15em;
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.benefits-image {
+    height: 6rem;
+    margin-bottom: 20px;
+}
+
+.single-benefit-content-bold {
+    font-size: 25px;
+    color: rgb(0, 40, 61);
+    margin-bottom: 10px;
+}
+
+.single-benefit-content-small {
+    color: rgb(0, 40, 61);
+    font-size: 20px;
+}
+
+.splash-page-testimonials {
+    display: flex;
+    margin-bottom: 7rem;
+}
+
+.splash-page-testimonials-header {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 2em;
+}
+
+.splash-page-testimonials-container {
+    display: flex;
+    margin: auto;
+    gap: 2em;
+}
+
+.splash-page-single-testimonial {
+    background-color:rgb(154, 207, 177);
+    width: 14em;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 10px;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.splash-page-testimonial-name {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    font-size: 1rem;
+}
+
+.testimonial-stars {
+    height: 1.5rem;
+}
+
+.testimonial-quote {
+    font-size: 20px;
+}
+
+.testimonial-user-image {
+    height: 50px;
+    display: flex;
+    align-items: end;
+}
+
+.testimonial-mood-happy {
+    margin-top: -300px
+}
+
+.splash-page-screens {
+    margin-left: 12em;
+    margin-right: 12em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.splash-page-screen-photo {
+    height: 40em;
+}
+
+.splash-page-screen-content-container {
+    display: flex;
+    gap: 10em
+}
+
+.screen-content {
+    font-size: 2.5em;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.screens-mood {
+    height:50px;
+}
+
+.splash-page-meet-the-founder-container {
+    display: flex;
+    margin: 150px;
+    gap: 3rem;
+}
+
+.founder-image {
+    height: 30em;
+}
+
+.meet-the-founder-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    width: 45%;
+}
+
+.meet-the-founder-header {
+    font-size: 2rem;
+}
+
+.meet-the-founder-paragraph {
+    font-size: 1rem;
+}

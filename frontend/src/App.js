@@ -19,6 +19,7 @@ import AdminNavBar from "./components/Navbar/AdminNavBar"
 import TopicForm from "./components/Topics/TopicForm"
 import AdminBlogs from "./components/Admin/blog_index"
 import SubsList from "./components/Admin/subs_list";
+import SplashPage from "./components/SplashPage/SplashPage";
 
 
 
@@ -33,7 +34,10 @@ function App() {
     <>
       {isLoaded && (
         <Switch>
-          <Route exact path="/">
+          <Route path='/splash'>
+            <SplashPage />
+          </Route>
+          <Route exact path='/'>
             <SplashNavBar />
             <TopSignup />
             <TestimonialList />
