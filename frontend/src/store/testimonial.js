@@ -35,6 +35,22 @@ export const thunkGetAllTestimonials = () => async (dispatch) => {
   }
 }
 
+export const thunkDeleteTestimonial = (testId) => async dispatch => {
+  const response = await fetch(`/api/testimonial/${testId}/delete`, {
+    method: 'DELETE'
+  })
+
+  if(response.ok){
+    const data = await response.json()
+    dispatch(thunkGetAllTestimonials())
+    return data
+  } else {
+    const errors = await response.json();
+    return errors
+  }
+
+}
+
 // state object
 const initialState = {};
 

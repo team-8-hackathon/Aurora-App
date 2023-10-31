@@ -10,6 +10,8 @@ SPACING SYSTEM (px)
 #ffe27a - background
 #8dc9a9 - testimonial box
 
+background-color: #fcf3ea - main background
+
 font-family: "DM Sans", Times ;
 
 border-radius: 10px;
@@ -23,9 +25,9 @@ border-radius: 10px;
 
 /* html {
   /* Good idea to set to 10 for easy calculations */
-  /* font-size: 10px; */
-  /* 10px / 16px = 0.625 = 62.5% */
-  /* Percentage of user's browsers font-size setting 
+/* font-size: 10px; */
+/* 10px / 16px = 0.625 = 62.5% */
+/* Percentage of user's browsers font-size setting 
   font-size: 62.5%;
   overflow-x: hidden;
 } */
@@ -33,16 +35,17 @@ border-radius: 10px;
 .form-testimonial {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 2rem;
   align-items: center;
   text-align: center;
   color: #003b5a;
   font-family: "DM Sans", Times;
   border-radius: 10px;
-  max-width: 55rem;
+  max-width: 60rem;
+  max-height: 50rem;
   margin: 0 auto;
   background-color: #8dc9a9;
-  padding-bottom: 2em;
+  padding-bottom: 15em;
 }
 
 input[type="file"] {
@@ -71,14 +74,20 @@ input::file-selector-button {
 }
 
 .profile-img {
-  width: 120px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
 }
 
-input[type="text"] {
+.picture {
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px #fff;
+  border: 2px solid #003b5a;
+}
+
+.name-input[type="text"] {
   font-family: "DM Sans", Times;
   font-size: 18px;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
 .name-input {
@@ -87,16 +96,30 @@ input[type="text"] {
   border-radius: 200px;
   height: 40px;
   font-family: "DM Sans", Times;
+  background-color: #fcf3ea;
 }
 
-textarea {
+.name-input:focus {
+  background-color: rgba(255, 226, 122);
+}
+
+.star {
+  width: 48px;
+  height: 48px;
+  display: block;
+  cursor: pointer;
+}
+
+.testimonial-form-textarea {
   font-size: 20px;
-  border-radius: 1%;
+  border-radius: 5px;
   resize: none;
   width: 400px;
   height: 100px;
   font-family: "DM Sans", Times;
-  padding-left: 5px;
+  padding-left: 20px;
+  padding-top: 10px;
+  background-color: #fcf3ea;
 }
 
 .form-btn {
