@@ -85,6 +85,10 @@ def api_help():
 @app.route('/<path:path>')
 def react_root(path):
 
+    separated_path = path.split('/')[-1]
+
+
+    print("********************************", separated_path)
     if path == 'favicon.ico':
         return send_from_directory(app.static_folder, 'favicon.ico')
 
