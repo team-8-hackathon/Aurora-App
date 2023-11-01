@@ -38,7 +38,7 @@ border-radius: 10px;
   display: grid;
   column-gap: 10px;
   row-gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, auto);
   padding-bottom: 2rem;
 }
 
