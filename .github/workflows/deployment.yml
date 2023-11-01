@@ -14,9 +14,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Copy .env File
-      run: cp hackathon/.env .env
-
     - name: Check if AWS_REGION is set
       run: |
         if [[ -z "${{ secrets.AWS_REGION }}" ]]; then
@@ -93,6 +90,8 @@ jobs:
         USER_NAME: ${{ secrets.USERNAME }}
         ECR_REGISTRY_NEW: ${{ steps.login-ecr.outputs.registry }}
         SHA_REPLACEMENT: ${{ steps.build-image.outputs.github_sha }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
       run: |
 
 
@@ -106,6 +105,10 @@ jobs:
         
 
         sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY_NEW"'/' ${{ github.workspace }}/docker-compose.yml
+
+        sed -i -e 's/SECRET_ENV_VAR/'"$SECRET_KEY"'/' docker-compose.yml
+
+        sed -i -e 's/DATABASE_ENV_VAR/'"$DATABASE_URL"'/' docker-compose.yml
 
         
         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
