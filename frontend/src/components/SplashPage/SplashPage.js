@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SplashNavBar from '../Navbar/SplashNavBar';
 import TopSignup from '../signups/top_signup';
 import BottomSignup from '../signups/bot_signup';
-import Footer from '../Footer/footer';
 import './SplashPage.css';
 
 const SplashPage = () => {
@@ -92,13 +90,13 @@ const SplashPage = () => {
                     <img src='/images/screen1.png' alt='Screen 1' className='splash-page-screen-photo' />
                     <div className='screen-content'>
                         <img src={`${process.env.PUBLIC_URL}/images/mood-joy.svg`} alt="Mood Joy" className='screens-mood' />
-                        <p>Get tailored support based on what's important to you.</p>
+                        <p className='screen-content-text'>Get tailored support based on what's important to you.</p>
                     </div>
                 </div>
                 <div className='splash-page-screen-content-container'>
                     <div className='screen-content'>
                         <img src={`${process.env.PUBLIC_URL}/images/mood-afraid.svg`} alt="Mood Afraid" className='screens-mood' />
-                        <p>Learn to identify and name emotions for improved self-awareness.</p>
+                        <p className='screen-content-text'>Learn to identify and name emotions for improved self-awareness.</p>
                     </div>
                     <img src='/images/screen2.png' alt='Screen 2' className='splash-page-screen-photo' />
                 </div>
@@ -106,7 +104,7 @@ const SplashPage = () => {
                     <img src='/images/screen3.png' alt='Screen 3' className='splash-page-screen-photo' />
                     <div className='screen-content'>
                         <img src={`${process.env.PUBLIC_URL}/images/mood-sad.svg`} alt="Mood Sad" className='screens-mood' />
-                        <p>Need someone to talk to? Chat with Aurora anytime, anywhere.</p>
+                        <p className='screen-content-text'>Need someone to talk to? Chat with Aurora anytime, anywhere.</p>
                     </div>
                 </div>
             </div>
@@ -114,7 +112,7 @@ const SplashPage = () => {
                 <img src='/images/christinaImg.png' alt='Founder Image' className='founder-image' />
                 <div className='meet-the-founder-content'>
                     <p className='meet-the-founder-header'>Meet the Founder</p>
-                    <p className='meet-the-founder-paragraph'>Hi there! I'm Christina, a product designer witha  passion for personal growth and mental well-being.
+                    <p className='meet-the-founder-paragraph'>Hi there! I'm Christina, a product designer with a passion for personal growth and mental well-being.
                     </p>
                     <p className='meet-the-founder-paragraph'>
                         I believe everyone should have access to knowledge and tools that lead to joy and fufillment in life. And that's the heart behind Aurora. I hope you lover her as much as I do 💛.

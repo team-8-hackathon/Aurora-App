@@ -24,7 +24,7 @@
 .top_signup_text1 {
     align-self: stretch;
     color: var(--primary-70, #00283D);
-    text-align: center;    
+    text-align: center;
     font-family: DM Sans;
     font-size: 35px;
     font-style: normal;
@@ -36,7 +36,7 @@
     align-self: stretch;
     color: var(--primary-70, #00283D);
     text-align: center;
-    
+
     font-family: DM Sans;
     font-size: 22px;
     font-style: normal;
@@ -67,8 +67,8 @@
     gap: 8px;
     border-radius: 100px;
     border: 1px solid var(--primary-70, #00283D);
-    background: var(--background-light-1, #FCF3EA); 
-    
+    background: var(--background-light-1, #FCF3EA);
+
 }
 #mc_embed_signup {
     background: #fff;
@@ -88,12 +88,12 @@
     line-height: 120%; /* 19.2px */
     border: 0px;
     height: 100%;
-    background: var(--background-light-1, #FCF3EA); 
+    background: var(--background-light-1, #FCF3EA);
 
 }
 .button {
     display: flex;
-    
+
     padding: 16px 32px;
     justify-content: center;
     align-items: center;
@@ -135,11 +135,12 @@
 .bot_signup_icon {
     width: 72px;
     height: 64px;
+    margin-bottom: 10px;
 }
 .bot_signup_text1 {
     align-self: stretch;
     color: var(--primary-70, #00283D);
-    text-align: center;    
+    text-align: center;
     font-family: DM Sans;
     font-size: 35px;
     font-style: normal;
@@ -151,7 +152,7 @@
     align-self: stretch;
     color: var(--primary-70, #00283D);
     text-align: center;
-    
+
     font-family: DM Sans;
     font-size: 22px;
     font-style: normal;
@@ -180,7 +181,7 @@
     width: 100%;
     height: 741px;
     flex-shrink: 0;
-    max-width: 100%; 
+    max-width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -192,7 +193,7 @@
     width: 100%;
     height: 741px;
     flex-shrink: 0;
-    max-width: 100%; 
+    max-width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -210,7 +211,7 @@
 }
 
 .bot_signup_icon img {
-    
+
     max-width: 100%;
 }
 .bot_signup_container {

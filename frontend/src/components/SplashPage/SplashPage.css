@@ -17,7 +17,7 @@
 
 .splash-page-hero-graphic {
     width: 675px;
-    margin-top: -100px;
+    margin-top: -50px;
 
 }
 
@@ -25,6 +25,12 @@
     display: flex;
     flex-direction: column;
     gap: 3em;
+}
+
+@media (min-width: 1450px) {
+    .splash-page-top-section{
+        gap: 22em
+    }
 }
 
 .top-section-about-aurora {
@@ -49,9 +55,7 @@
 
 .splash-page-benefits {
     display: flex;
-    justify-content: space-between;
-    margin-right: 15em;
-    margin-left: 15em;
+    justify-content: space-around;
     margin-top: 100px;
     text-align: center;
     margin-bottom: 100px;
@@ -90,12 +94,17 @@
     gap: 2em;
 }
 
+@media (min-width: 1450px) {
+    .splash-page-testimonials-container {
+        gap:4em
+    }
+}
+
 .splash-page-single-testimonial {
     background-color:rgb(154, 207, 177);
     width: 14em;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     border-radius: 10px;
     padding: 1rem;
     justify-content: space-between;
@@ -142,7 +151,7 @@
 
 .splash-page-screen-content-container {
     display: flex;
-    gap: 10em
+    gap: 15em
 }
 
 .screen-content {
@@ -154,13 +163,30 @@
     align-items: flex-start;
 }
 
+.screen-content-text {
+    width: 120%
+}
+
 .screens-mood {
     height:50px;
 }
 
+@media (min-width: 1450px) {
+    .splash-page-screens {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .splash-page-screen-content-container {
+        margin: 0;
+        justify-content: center;
+    }
+}
+
 .splash-page-meet-the-founder-container {
     display: flex;
-    margin: 150px;
+    justify-content: center;
+    margin-top: 150px;
     gap: 3rem;
     margin-bottom: 0px;
 }
@@ -172,7 +198,6 @@
 .meet-the-founder-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
     justify-content: center;
     width: 45%;
 }
@@ -184,3 +209,5 @@
 .meet-the-founder-paragraph {
     font-size: 1rem;
 }
+
+
