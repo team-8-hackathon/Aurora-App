@@ -6,6 +6,7 @@ import BlogThumbnail from '../BlogComponents/BlogThumbnail';
 import '../BlogComponents/BrowseBlogs.css'
 import './BlogIndex.css'
 import { useSearch } from '../../context/SearchContext';
+import EmptyBlogs from '../UtilityComponents/EmptyBlogs';
 
 const BrowseBlogs = () => {
     const { searchData, resultsFound, searching } = useSearch()
@@ -18,6 +19,7 @@ const BrowseBlogs = () => {
     }, [dispatch]);
 
     if (!blogs) return null;
+    if(!blogs.length) return <EmptyBlogs />
 
 
     const showMoreArticles = () => {
@@ -29,7 +31,7 @@ const BrowseBlogs = () => {
     return (
         <div className='browse-blogs-container'>
             {!searchData.length && <div className='browse-blogs-container'>
-                {resultsFound && <h4 className='topic-title'>all Blogs</h4>}{!resultsFound && <h4 className='topic-title'>No search results found</h4>}
+                {resultsFound && <h4 className='topic-title'>All Blogs</h4>}{!resultsFound && <h4 className='topic-title'>No search results found</h4>}
                  <div className='blog-container'>{blogs.slice(0, numArticles).map((blog = {}) => (
                     <div key={blog.id}>
                         <BlogThumbnail topic={blog.topic} blog={blog} type="admin" />

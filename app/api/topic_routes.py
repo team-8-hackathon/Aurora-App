@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-# from app.api.auth_routes import validation_errors_to_error_messages
+from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms import TopicForm 
 from app.models import Topic, Blog, db
 from datetime import datetime
@@ -52,7 +52,7 @@ def post_topic():
         db.session.add(new_topic)
         db.session.commit()
         return new_topic.to_dict()
-    return {'errors': form.errors}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #delete a topic
 @topic_routes.route('/<int:id>/delete', methods=['DELETE'])

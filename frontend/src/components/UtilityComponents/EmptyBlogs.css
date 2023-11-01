@@ -1,0 +1,11 @@
+.empty-blogs-container {
+    width: fit-content;
+    margin: auto;
+    margin-top: 4rem;
+}
+
+.empty-blogs-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    
+}

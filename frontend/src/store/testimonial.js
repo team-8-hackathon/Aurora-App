@@ -27,6 +27,23 @@ export const thunkCreateTestimonial = (data) => async (dispatch) => {
   }
 }
 
+
+export const thunkDeleteTestimonial = (testimonialId) => async (dispatch) => {
+  const response = await fetch(`/api/testimonial/${testimonialId}/delete`, {
+    method: "DELETE"
+  })
+
+  if(response.ok){
+    const data = await response.json();
+    dispatch(thunkGetAllTestimonials())
+    return data
+  } else {
+    const errors = await response.json();
+    return errors
+  }
+}
+
+
 export const thunkGetAllTestimonials = () => async (dispatch) => {
   const response = await fetch(`/api/testimonial`);
   if(response.ok){

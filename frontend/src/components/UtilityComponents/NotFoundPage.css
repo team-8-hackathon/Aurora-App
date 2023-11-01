@@ -1,0 +1,19 @@
+.not-found-page-container {
+    width:  fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.message-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.not-found-icon {
+    width: 100px;
+    height: 100px;
+}

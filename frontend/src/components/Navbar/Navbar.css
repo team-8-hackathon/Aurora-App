@@ -74,3 +74,8 @@
 .nav-dropdown-item:hover {
     background-color: #fcf3ea;
 }
+
+.no-topics:hover {
+    cursor: default;
+    background-color: transparent;
+}

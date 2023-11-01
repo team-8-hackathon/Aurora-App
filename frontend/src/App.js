@@ -19,6 +19,9 @@ import TopicForm from "./components/Topics/TopicForm"
 import AdminBlogs from "./components/Admin/blog_index"
 import SubsList from "./components/Admin/subs_list";
 import SplashPage from "./components/SplashPage/SplashPage";
+import NotFoundPage from "./components/UtilityComponents/404Page";
+import TestimonialIndex from "./components/TestimonialComponents/TestimonialIndex";
+import EditAdmin from "./components/auth/EditAdmin";
 
 
 
@@ -33,12 +36,13 @@ function App() {
     <>
       {isLoaded && (
         <Switch>
+          {/* Splash page route */}
           <Route exact path='/'>
             <SplashNavBar />
             <SplashPage />
             <Footer />
           </Route>
-
+          {/* Password protected admin routes */}
           <Route path="/admin">
             <ProtectedRoute>
               <AdminNavBar />
@@ -64,10 +68,16 @@ function App() {
                 <Route exact path="/admin/subs">
                   <SubsList />
                 </Route>
+                <Route exact path='/admin/testimonials'>
+                  <TestimonialIndex />
+                </Route>
+                <Route exact path='/admin/admin-info'>
+                  <EditAdmin />
+                </Route>
               </Switch>
             </ProtectedRoute>
           </Route>
-
+          {/* Not protected application routes */}
           <Route>
             <NavBar />
             <Switch>
@@ -81,7 +91,7 @@ function App() {
                 <TestimonialForm />
               </Route>
               <Route>
-
+                <NotFoundPage />
               </Route>
             </Switch>
             <BottomSignup />
