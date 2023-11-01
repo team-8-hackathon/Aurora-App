@@ -44,9 +44,13 @@ border-radius: 10px;
 
 .testimonial-list {
   margin: 0 auto;
-  display: flex;
-  gap: 15px;
+  /* display: flex;
+  gap: 15px; */
   max-width: 80%;
+  padding-bottom: 5rem;
+}
+
+.test-car{
   padding-bottom: 5rem;
 }
 
