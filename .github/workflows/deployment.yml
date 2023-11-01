@@ -92,29 +92,18 @@ jobs:
         SHA_REPLACEMENT: ${{ steps.build-image.outputs.github_sha }}
       run: |
 
-        ls
 
         echo "$PRIVATE_KEY" > private_key.pem 
 
         chmod 600 private_key.pem
-
-        cat private_key.pem
-
-        ls
         
-        cat ${{ github.workspace }}/docker-compose.yml
 
         sed -i -e 's/GITHUB_SHA/'"$SHA_REPLACEMENT"'/' ${{ github.workspace }}/docker-compose.yml
 
-        cat ${{ github.workspace }}/docker-compose.yml
         
 
         sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY_NEW"'/' ${{ github.workspace }}/docker-compose.yml
 
-        cat ${{ github.workspace }}/docker-compose.yml
-
-        
-        ls -l
         
         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
         
@@ -123,7 +112,3 @@ jobs:
        
 
             
-            
-# # sed -i "s|ECR_REGISTRY|$ECR_REGISTRY|g" ${{ github.workspace }}/docker-compose.yml
-# sed -i "s|GITHUB_SHA|$GITHUB_SHA|g" ${{ github.workspace }}/docker-compose.yml
-# sed -i -e 's/GITHUB_SHA/'"$GITHUB_SHA"'/' ${{ github.workspace }}/docker-compose.yml
