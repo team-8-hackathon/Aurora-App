@@ -6,7 +6,8 @@
     height: 90px;
     background-color: transparent;
 }
-.admin-navbar-container a {
+.admin-navbar-container a,
+.admin-navbar-container a:visited {
     text-decoration: none;
     color: #00283D;
 }
@@ -44,6 +45,8 @@
     box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
 }
 
+
+
 .admin-navbar-dropdown-menu {
     position: absolute;
     top: 70px;
@@ -52,6 +55,15 @@
     flex-direction: column;
     background-color: #FFE27A;
     border-radius: 1rem;
+}
+.admin-options-dropdown-item,
+.admin-options-dropdown-item:visited {
+    color: #00283D;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    width: 125px;
+    padding: 12px 16px;
 }
 
 .admin-navbar-dropdown-item-container {
@@ -75,7 +87,8 @@
     width: 20rem;
 }
 
-.admin-navbar-dropdown-menu {
+.admin-navbar-dropdown-menu,
+.admin-options-dropdown-container {
     position: absolute;
     top: 100%;
     left: 50%;
@@ -104,7 +117,8 @@
 }
 
 .admin-navbar-dropdown-item:hover,
-.topic-delete-button:hover {
+.topic-delete-button:hover,
+.admin-options-dropdown-item:hover {
     background-color: #fcf3ea;
     transition: background-color 0.3s;
     cursor: pointer;
@@ -131,3 +145,10 @@
 .fa-trash:hover {
     color: #e74c3c;
 } 
+
+.admin-options-dropdown-container{
+    width: fit-content;
+    box-sizing: border-box;
+    right: 6rem;
+    overflow: hidden;
+}

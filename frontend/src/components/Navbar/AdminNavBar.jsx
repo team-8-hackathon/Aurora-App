@@ -13,6 +13,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function AdminNavbar() {
     const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
+    const [adminOptionsDropdown, setAdminOptionsDropdown] = useState(false);
     const history = useHistory();
     const { searchBlogs } = useSearch();
 
@@ -48,9 +49,20 @@ function AdminNavbar() {
                     <Link to="/admin" className="admin-dashboard-link">Admin Dashboard</Link>
                     <input className="search-bar" title="Search by title, topic, or body" type='search' onChange={(e) => searchBlogs(allBlogs, e.target.value)} onKeyDown={handleSearch} placeholder='Search blogs...' />
                     <div className='menu-right'>
-                        <Link to="/admin/subs" className="admin-navbar-item">Subscribers</Link>
-                        <Link to="/admin/post-blog" className="admin-navbar-item">Create Blog</Link>
-                        <Link to="/admin/post-topic" className="admin-navbar-item">Create Topic</Link>
+                        <div
+                            className='admin-navbar-item options-dropdown-link'
+                            onMouseEnter={e => setAdminOptionsDropdown(true)}
+                            onMouseLeave={e => setAdminOptionsDropdown(false)}
+                        >Admin Options
+                            {adminOptionsDropdown && (<div className='admin-options-dropdown-container'>
+                                <Link to='/admin/subs' className="admin-options-dropdown-item" >Subscribers</Link>
+                                <Link to='/admin/post-blog' className="admin-options-dropdown-item" >Create a Blog</Link>
+                                <Link to='/admin/post-topic' className="admin-options-dropdown-item" >Create a Topic</Link>
+                                <Link to='/admin/testimonials' className="admin-options-dropdown-item" >Testimonials</Link>
+                                <Link to='/admin/admin-info' className="admin-options-dropdown-item" >Admin Info</Link>
+                            </div>)}
+                        </div>
+
                         <div
                             className="admin-navbar-item"
                             onMouseEnter={e => setAdminDropdownOpen(true)}

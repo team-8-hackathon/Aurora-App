@@ -66,6 +66,12 @@ function App() {
                 <Route exact path="/admin/subs">
                   <SubsList />
                 </Route>
+                <Route exact path='/admin/testimonials'>
+                  <h1>view testimonials index</h1>
+                </Route>
+                <Route exact path='/admin/admin-info'>
+                  <h1>view admin information</h1>
+                </Route>
               </Switch>
             </ProtectedRoute>
           </Route>
