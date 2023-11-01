@@ -75,7 +75,7 @@ input::file-selector-button {
   height: 100px;
 }
 
-input[type="text"] {
+.form-testimonial input[type="text"] {
   font-family: "DM Sans", Times;
   font-size: 18px;
   padding-left: 10px;

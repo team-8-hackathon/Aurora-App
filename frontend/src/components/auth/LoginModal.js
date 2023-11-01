@@ -11,7 +11,6 @@ const LoginModal = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState();
-    const { closeModal } = useModal();
     const dispatch = useDispatch();
     const history = useHistory();
 
