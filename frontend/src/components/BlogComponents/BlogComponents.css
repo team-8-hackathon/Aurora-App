@@ -75,6 +75,10 @@ input[type="file"] {
     box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
 }
 
+
+.editor-menu-button.is_active {
+    background-color: lightgray;
+}
 .button-container {
     display: flex;
     width: 100%;
