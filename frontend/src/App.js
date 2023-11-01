@@ -7,7 +7,6 @@ import TestimonialForm from "./components/TestimonialComponents/TestimonialForms
 import TestimonialList from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList";
 import SplashNavBar from './components/Navbar/SplashNavBar'
 import Footer from './components/Footer/footer'
-import TopSignup from "./components/Signups/top_signup";
 import BottomSignup from "./components/Signups/bot_signup";
 import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
