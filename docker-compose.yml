@@ -6,4 +6,4 @@ services:
       - "5000:5001"
     environment:
       - SECRET_KEY=$$SECRET_ENV_VAR
-      - DATABASE_URL=$$DATABASE_ENV_VAR
+      - DATABASE_URL=sqlite:///dev.db
