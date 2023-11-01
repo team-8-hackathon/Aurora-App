@@ -122,6 +122,9 @@ jobs:
        
 
           cd /tmp
+          ls
+          pwd
+          ls
           # docker stop backend-flask
           # docker rm backend-flask
           docker-compose -p backend-flask up -d
