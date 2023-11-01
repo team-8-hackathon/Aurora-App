@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 
 def seed_blog():
     title1="Understanding emotional wellness: why it's vital for a balanced life"
-    body1="""<h1>Understanding emotional wellness: why it's vital for a balanced life</h1>
+    body1="""
     <p>Emotional wellness is a crucial component of overall well-being. It refers to our ability to understand, express, and manage our emotions effectively. When we prioritize our emotional health, we lead more balanced and fulfilling lives.</p>
 
     <p>Here are some key points to consider:</p>
@@ -35,8 +35,6 @@ def seed_blog():
 """
     title2 = "The difference between emotional wellness and mental health"
     body2= """
-        <h1>The difference between emotional wellness and mental health</h1>
-
     <p>Emotional wellness and mental health are terms often used interchangeably, but they refer to distinct aspects of our overall well-being. Understanding the differences between these two concepts is essential for taking a comprehensive approach to our health and happiness.</p>
 
     <h2>Emotional Wellness:</h2>
