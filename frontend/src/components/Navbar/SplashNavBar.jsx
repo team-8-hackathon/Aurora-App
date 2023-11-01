@@ -20,7 +20,6 @@ function SplashNavBar() {
     const hideDropdown = () => {
         setDropdownOpen(false);
     };
-
     if(!allTopics) return null;
 
     return (
@@ -35,11 +34,11 @@ function SplashNavBar() {
                         Article Topics
                         {dropdownOpen && (
                             <div className="dropdown-menu">
-                                {allTopics.map(topic => (
+                                {allTopics.length ? allTopics.map(topic => (
                                     <a key={topic.id} href={`/topics/${topic.id}`} className="dropdown-item">
                                         {topic.topic}
                                     </a>
-                                ))}
+                                )) : <p className='dropdown-item no-topics'>No Topics Yet</p>}
                             </div>
                         )}
                     </div>

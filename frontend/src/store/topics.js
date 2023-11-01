@@ -26,7 +26,7 @@ export const thunkGetAllTopics = () => async dispatch => {
         return data
     } else {
         const errors = await response.json();
-        return errors;
+        return errors.errors;
     }
 }
 

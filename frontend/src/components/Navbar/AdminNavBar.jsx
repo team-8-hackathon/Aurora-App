@@ -59,7 +59,7 @@ function AdminNavbar() {
                             Article Topics
                             {adminDropdownOpen && (
                                 <div className="admin-navbar-dropdown-menu">
-                                    {allTopics.map(topic => (
+                                    {allTopics.length ? allTopics.map(topic => (
                                         <div key={topic.id} className="admin-navbar-dropdown-item-container">
                                             <a href={`/admin/topics/${topic.id}`} className="admin-navbar-dropdown-item">
                                                 {topic.topic}
@@ -75,7 +75,7 @@ function AdminNavbar() {
                                             />
 
                                         </div>
-                                    ))}
+                                    )) : <p className='dropdown-item no-topics'>No Topics Yet</p>}
                                 </div>
                             )}
                         </div>

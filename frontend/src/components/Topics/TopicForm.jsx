@@ -8,7 +8,7 @@ import "./TopicForm.css"
 const TopicForm = () => {
     const [topic, setTopic] = useState('');
     const [errors, setErrors] = useState({});
-    const [color, setColor] = useState({});
+    const [color, setColor] = useState('#ffe27a');
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const dispatch = useDispatch();
@@ -28,8 +28,8 @@ const TopicForm = () => {
         if (!Object.keys(errors).length) {
             const formData = new FormData();
             formData.append('topic', topic)
-            formData.append('color', color)
-
+            if(color) formData.append('color', color)
+            if(!color) formData.append('color', '#ffe27a')
             const response = await dispatch(thunkPostTopic(formData));
             if (response.id) {
                 history.push(`/admin`);
@@ -52,6 +52,7 @@ const TopicForm = () => {
         <div className="topic-form-container">
             <form className="topic-form" onSubmit={submitTopic}>
                 <h2>Create a Topic Post</h2>
+                {errors.serverErrors && <p className='errors'>{errors.serverErrors[0]}</p>}
                 <label htmlFor="title">Topic Title</label>
                 {hasSubmitted && errors.topic && <p className="errors">{errors.topic}</p>}
                 <input name='topic' value={topic} onChange={e => setTopic(e.target.value)} />

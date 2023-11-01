@@ -8,6 +8,13 @@ from .testimonial import seed_testimonials, unseed_testimonials
 seed_commands = AppGroup('seed')
 
 
+#create flask seed user command for testing with no data
+@seed_commands.command('user')
+def seed_user():
+    if environment == 'production':
+        unseed_admin()
+    seed_admin()
+
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():

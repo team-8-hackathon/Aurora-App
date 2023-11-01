@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { thunkGetSingleTopic } from '../../store/topics';
 import BlogThumbnail from './BlogThumbnail';
 import './BrowseBlogs.css'
+import EmptyBlogs from '../UtilityComponents/EmptyBlogs';
 
 
 const BrowseBlogs = ({ type }) => {
@@ -18,6 +19,7 @@ const BrowseBlogs = ({ type }) => {
 
 
     if (!topic || !topic.blogs) return null;
+    if(!topic.blogs.length) return <EmptyBlogs />
     const blogs = topic.blogs;
 
     const showMoreArticles = () => {
