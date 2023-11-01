@@ -6,13 +6,25 @@
 .topic-form {
     font-size: 1rem;
     font-weight: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
 }
 
 .topic-form>input,
-.topic-form>select {
+.topic-form>select,
+.color-picker-input{
     padding: 0.5rem;
     border-radius: 0.25rem;
     border: 1px solid #00283d;
+    width: 100%;
+}
+
+.topic-form>input:focus,
+.topic-form>select:focus {
+    outline: none;
+    box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);;
 }
 
 .topic-form-container {

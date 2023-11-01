@@ -55,12 +55,14 @@ const TopicForm = () => {
                 <label htmlFor="title">Topic Title</label>
                 {hasSubmitted && errors.topic && <p className="errors">{errors.topic}</p>}
                 <input name='topic' value={topic} onChange={e => setTopic(e.target.value)} />
-                <label htmlFor='color-picker'>Pick a color for topic tag
-                    <SketchPicker
-                        color={color}
-                        onChange={e => setColor(e.hex)}
-                    />
+                <label htmlFor='color-picker'>Pick a color for topic tag:
                 </label>
+                <SketchPicker
+                    name='color-picker'
+                    className='color-picker-input'
+                    color={color}
+                    onChange={e => setColor(e.hex)}
+                />
 
                 <div className="button-container">
                     <button className='topic-post-button cancel' type='button' onClick={handleCancel}>Cancel</button>

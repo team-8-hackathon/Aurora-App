@@ -24,6 +24,9 @@ input[type="file"] {
 .blog-form {
     font-size: 1rem;
     font-weight: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 .blog-form>input, .blog-form>select {
     padding: 0.5rem;

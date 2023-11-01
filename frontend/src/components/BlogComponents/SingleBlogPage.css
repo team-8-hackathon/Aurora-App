@@ -11,6 +11,7 @@
 .single-blog-thumbnail {
     width: 100%;
     max-height: 500px;
+    border-radius: 1rem;
 }
 
 .author-avatar {

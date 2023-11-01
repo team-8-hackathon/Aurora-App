@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin: auto;
-    width: fit-content;
+    width: 1300px;
 }
 
 .browse-blogs-container {
@@ -20,37 +20,7 @@
     margin: 4rem;
     font-size: 3rem;
     font-weight: normal;
-}
-
-.blog-thumbnail {
-    border-radius: 1rem;
-    overflow: hidden;
-    width: 646px;
-    height: 360px;
-    box-sizing: border-box;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.topic-tag {
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    width: fit-content;
-}
-
-#blog-thumbnail-link {
-    text-decoration: none;
-    color: #00283d;
-    font-size: 1rem;
-}
-
-.title-tag {
-    background-color: #fcf3ea;
-    padding: 1rem 1.5rem;
-    font-size: 2rem;
-    border-radius: 1rem;
+    text-shadow: 0px 2px 3px rgba(0, 40, 61, 0.35);
 }
 
 .show-more-articles-button {

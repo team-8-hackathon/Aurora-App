@@ -23,7 +23,7 @@ const BlogThumbnail = ({ topic, blog, type }) => {
     }
 
     let blogPath = `/blogs/${blog.id}`
-    if(type === 'admin') blogPath = `/admin/blogs/${blog.id}`
+    if (type === 'admin') blogPath = `/admin/blogs/${blog.id}`
     return (
         <div className="thumbnail-container">
             <Link id='blog-thumbnail-link' to={blogPath} className="blog-thumbnail"
@@ -32,8 +32,10 @@ const BlogThumbnail = ({ topic, blog, type }) => {
                     backgroundSize: "cover"
                 }}
             >
-                <p className="topic-tag" style={{ 'backgroundColor': `${color}` }}>{topic.topic}</p>
-                <p className="title-tag">{blog.title}</p>
+                <div className="thumbnail-contents">
+                    <p className="topic-tag" style={{ 'backgroundColor': `${color}` }}>{topic.topic}</p>
+                    <p className="title-tag">{blog.title}</p>
+                </div>
             </Link>
             <div className="edit-delete-button-container">
                 {type === "admin" && <OpenModalButton className="edit-delete-button" title="Delete" buttonText={<FaTrashAlt />}

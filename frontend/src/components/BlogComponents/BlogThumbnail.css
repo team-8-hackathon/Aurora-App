@@ -1,3 +1,43 @@
+.blog-thumbnail {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 56.25%;
+}
+
+.thumbnail-contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.topic-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    width: fit-content;
+}
+
+#blog-thumbnail-link {
+    text-decoration: none;
+    color: #00283d;
+    font-size: 1rem;
+}
+
+.title-tag {
+    background-color: #fcf3ea;
+    padding: 1rem 1.5rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+}
 .edit-delete-button {
     background-color: transparent;
     border: none;
