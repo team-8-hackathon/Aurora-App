@@ -32,7 +32,7 @@ border-radius: 10px;
   overflow-x: hidden;
 } */
 
-.testimonial-index{
+.testimonial-index {
   max-width: 120rem;
   margin: 0 auto;
   display: grid;
@@ -43,14 +43,10 @@ border-radius: 10px;
 }
 
 .testimonial-list {
-  margin: 0 auto;
-  /* display: flex;
-  gap: 15px; */
-  max-width: 80%;
-  padding-bottom: 5rem;
+  max-width: 70rem;
 }
 
-.test-car{
+.test-car {
   padding-bottom: 5rem;
 }
 
@@ -62,11 +58,12 @@ border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 13rem;
-  height: 15rem;
+  width: 14rem;
+  height: 16rem;
   border-radius: 10px;
   font-family: "DM Sans", Times;
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .testimonial-stars {
@@ -92,10 +89,15 @@ border-radius: 10px;
 }
 
 .testimonial-item-profile-img {
-  border: 6px solid #003b5a;
+  /* border: 6px solid #003b5a; */
   border-radius: 8px;
   width: 4rem;
   height: 4rem;
+  margin-left: -70px;
+}
+.scribble-box{
+  z-index: 10;
+  position: relative;
 }
 
 .testimonial-name {

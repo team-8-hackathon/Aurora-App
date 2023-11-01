@@ -89,7 +89,6 @@ function TestimonialForm() {
       <button className="form-btn" disabled={!name || !stars || !body}>
         Submit
       </button>
-      {/* {console.log({ newTestimonial })} */}
     </form>
   );
 }

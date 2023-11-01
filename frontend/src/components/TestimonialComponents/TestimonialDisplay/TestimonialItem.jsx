@@ -36,6 +36,7 @@ const TestimonialItem = ({
       </div>
       <div className="testimonial-item-bottom">
         <div>
+          <img src="/images/scribbleBorder.png" alt="scribble box" className="scribble-box"/>
           <img
             src={profile_pic}
             alt="Profile"

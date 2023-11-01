@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllTestimonials } from "../../../store/testimonial";
 import TestimonialItem from "./TestimonialItem";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css/bundle"
 import "./display.css";
+
 
 const TestimonialList = () => {
   const dispatch = useDispatch();
@@ -19,10 +19,9 @@ const TestimonialList = () => {
     <div className="test-car">
       <Swiper
         className="testimonial-list"
-        spaceBetween={1}
+        spaceBetween={5}
         slidesPerView={4}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        loop={true}
       >
         {testimonials?.map((testimonial, i) => (
           <SwiperSlide>
