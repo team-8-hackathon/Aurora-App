@@ -119,15 +119,16 @@ jobs:
         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
         
         ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME}
-       
 
-          cd /tmp
-          ls
-          pwd
-          ls
+       
+        pwd
+        cd /tmp
+        ls
+        pwd
+        ls
           # docker stop backend-flask
           # docker rm backend-flask
-          docker-compose -p backend-flask up -d
+        docker-compose -p backend-flask up -d
         '
 
             
