@@ -23,7 +23,10 @@ RUN pip install -r requirements.txt
 RUN apt-get update && apt-get install -y sqlite3 && rm -rf /var/lib/apt/lists/*
 
 COPY . .
+
 COPY --from=build-stage /frontend/build/ /var/www/app/static/
+
+COPY migrate_and_seed.sh /var/www/migrate_and_seed.sh
 
 
 CMD gunicorn -b 0.0.0.0:5001 app:app
