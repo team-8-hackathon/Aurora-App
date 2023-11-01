@@ -23,10 +23,7 @@ const TestimonialList = () => {
       {testimonials.map((testimonial, i) => (
         // <SwiperSlide>
         <TestimonialItem
-          name={testimonial.name}
-          body={testimonial.body}
-          stars={testimonial.stars}
-          profile_pic={testimonial.profile_pic}
+          testimonial={testimonial}
           key={i}
         />
       ))}

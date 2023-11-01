@@ -20,6 +20,8 @@ import AdminBlogs from "./components/Admin/blog_index"
 import SubsList from "./components/Admin/subs_list";
 import SplashPage from "./components/SplashPage/SplashPage";
 import NotFoundPage from "./components/UtilityComponents/404Page";
+import TestimonialIndex from "./components/TestimonialComponents/TestimonialIndex";
+import EditAdmin from "./components/auth/EditAdmin";
 
 
 
@@ -67,10 +69,10 @@ function App() {
                   <SubsList />
                 </Route>
                 <Route exact path='/admin/testimonials'>
-                  <h1>view testimonials index</h1>
+                  <TestimonialIndex />
                 </Route>
                 <Route exact path='/admin/admin-info'>
-                  <h1>view admin information</h1>
+                  <EditAdmin />
                 </Route>
               </Switch>
             </ProtectedRoute>

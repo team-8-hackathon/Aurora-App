@@ -40,53 +40,6 @@ border-radius: 10px;
   width: 80%;
 }
 
-.testimonial-item {
-  padding: 2em; 
-  background-color: #8dc9a9;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 26em;
-  height: 30em; 
-  border-radius: 10px;
-  font-family: "DM Sans", Times;
-  position: relative; 
-}
-
-.testimonial-stars {
-  display: flex;
-  margin-bottom: 0.5em;
-}
-
-.star {
-  height: 30px;
-  width: 30px;
-}
-
-.testimonial-body {
-  font-size: 20px;
-  line-height: 1.6;
-}
-
-.testimonial-item-bottom {
-  display: flex;
-  position: relative;
-  justify-content: start;
-}
-
-.testimonial-item-profile-img {
-  border: 6px solid #003b5a;
-  border-radius: 8px;
-  width: 7em;
-  height: 7em;
-}
-
-.testimonial-name {
-  font-size: 20px;
-  position: absolute;
-  top: 36%;
-  left: 40%;
-}
 
 /* Swiper */
 
