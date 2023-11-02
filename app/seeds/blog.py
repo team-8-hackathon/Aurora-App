@@ -91,7 +91,7 @@ def seed_blog():
 
 
 def unseed_blog():
-    table_name = f"{SCHEMA}.blogs" if environment == "production" else "blogs"
+    table_name = "blogs"
 
     with db.engine.connect() as connection:
         connection.execute(f"DELETE FROM {table_name};")

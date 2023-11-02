@@ -23,7 +23,7 @@ def seed_topics():
     db.session.commit()
 
 def unseed_topics():
-    table_name = f"{SCHEMA}.topics" if environment == "production" else "topics"
+    table_name = "topics"
 
     with db.engine.connect() as connection:
         connection.execute(f"DELETE FROM {table_name};")

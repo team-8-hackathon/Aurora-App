@@ -42,7 +42,7 @@ def seed_testimonials():
   
 
 def unseed_testimonials():
-    table_name = f"{SCHEMA}.testimonials" if environment == "production" else "testimonials"
+    table_name = "testimonials"
 
     with db.engine.connect() as connection:
         connection.execute(f"DELETE FROM {table_name};")

@@ -16,7 +16,7 @@ def seed_admin():
 # Remove demo admin and reset the 'admins' table
 def unseed_admin():
     if environment == "production":
-        reset_table(f"{SCHEMA}.admins")
+        reset_table("admins")
     else:
         reset_table('admins')
     db.session.commit()
