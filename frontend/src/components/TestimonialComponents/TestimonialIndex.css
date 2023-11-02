@@ -1,65 +1,75 @@
 .testimonial-index-container {
-    display: grid;
-    grid-template-columns: repeat(4, 4fr);
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 4fr);
+  gap: 1rem;
 }
 
-
 .testimonial-item {
-    background-color: #8dc9a9;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 10px;
-    position: relative;
-    height: 291px;
-    width: 259px;
-    padding: 1rem;
-    padding-right: 2rem;
-  }
+  background-color: #8dc9a9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  position: relative;
+  height: 291px;
+  width: 259px;
+  padding: 1rem;
+  padding-right: 2rem;
+}
 
-  .image-container {
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
+.image-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
 
-  .profile-border,
-  .profile-pic {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
+.profile-border,
+.profile-pic {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
 
-  .testimonial-item-bottom {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
+.profile-border {
+  z-index: 10;
+}
 
-  .testimonial-delete-button {
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
+.profile-pic {
+  width: 92%;
+  /* height: 95%; */
+  padding-left: 3px;
+  border-radius: 18px;
+}
 
-  .testimonial-delete-button:hover {
-    cursor: pointer;
-  }
-  
-  .star {
-    height: 30px;
-    width: 30px;
-  }
-  .testimonial-stars {
-    display: flex;
-    gap: 0.5rem;
-  }
-  .testimonial-body {
-    font-size: 20px;
-    line-height: 1.6;
-  }
+.testimonial-item-bottom {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.testimonial-delete-button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.testimonial-delete-button:hover {
+  cursor: pointer;
+}
+
+.star {
+  height: 30px;
+  width: 30px;
+}
+.testimonial-stars {
+  display: flex;
+  gap: 0.5rem;
+}
+.testimonial-body {
+  font-size: 20px;
+  line-height: 1.6;
+}

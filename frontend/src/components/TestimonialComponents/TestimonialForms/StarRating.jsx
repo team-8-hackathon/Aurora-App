@@ -25,7 +25,6 @@ export default function StarRating({
   maxRating = 5,
   color = "#003b5a",
   size = 24,
-  className = "",
   messages = [],
   defaultRating = 0,
   onSetRating,
@@ -47,7 +46,7 @@ export default function StarRating({
   };
 
   return (
-    <div style={containerStyle} className={className}>
+    <div style={containerStyle} className='star-set'>
       <div style={starContainerStyle}>
         {Array.from({ length: maxRating }, (_, i) => (
           <Star
@@ -79,12 +78,13 @@ function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
   // };
   return (
     <span
-    className="star"
+      className="form-star"
       role="button"
       // style={starStyle}
       onClick={onRate}
       onMouseEnter={onHoverIn}
       onMouseLeave={onHoverOut}
+      required
     >
       {full ? (
         <svg

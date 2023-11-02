@@ -36,7 +36,7 @@ border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  align-items: center;
+  /* align-items: center; */
   text-align: center;
   color: #003b5a;
   font-family: "DM Sans", Times;
@@ -45,7 +45,31 @@ border-radius: 10px;
   max-height: 50rem;
   margin: 0 auto;
   background-color: #8dc9a9;
-  padding-bottom: 15em;
+  padding-bottom: 2em;
+}
+
+.test-form-container {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 3em;
+}
+
+.test-form-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4em;
+}
+
+.test-form-names {
+  display: flex;
+  gap: 1rem;
+}
+
+.name-input-sec {
+  display: flex;
+  flex-direction: column;
 }
 
 input[type="file"] {
@@ -61,23 +85,42 @@ input[type="file"] {
   border-radius: 200px;
   background-color: #ffe27a;
   font-size: 12px;
+
+  font-size: 18px;
+  font-family: "DM Sans", Times;
+  padding: 12px 24px;
+  border-radius: 200px;
+  margin: 0 auto;
+  background-color: #ffe27a;
+}
+
+.custom-file-upload:hover {
+  background-color: #5d522b;
+  color: #fff;
 }
 
 input::file-selector-button {
   background-color: #ffe27a;
 }
 
-.form-testimonial-img {
+.test-form-left {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1em;
+  position: relative;
+  height: 100%;
+}
+
+.test-form-stars {
+  position: absolute;
+  top: 16em;
 }
 
 .profile-img {
   width: 10rem;
   height: 10rem;
 }
-
 
 .picture {
   border-radius: 50%;
@@ -104,7 +147,7 @@ input::file-selector-button {
   background-color: rgba(255, 226, 122);
 }
 
-.star {
+.form-star {
   width: 48px;
   height: 48px;
   display: block;
@@ -115,21 +158,27 @@ input::file-selector-button {
   font-size: 20px;
   border-radius: 5px;
   resize: none;
-  width: 400px;
-  height: 100px;
+  width: 435px;
+  height: 120px;
   font-family: "DM Sans", Times;
   padding-left: 20px;
   padding-top: 10px;
   background-color: #fcf3ea;
 }
 
-
 .form-btn {
   font-size: 18px;
   font-family: "DM Sans", Times;
   padding: 12px 24px;
   border-radius: 200px;
+  margin: 0 auto;
   background-color: #ffe27a;
+}
+
+.form-btn:hover {
+  cursor: pointer;
+  background-color: #5d522b;
+  color: #fff;
 }
 
 .form-btn:disabled {
