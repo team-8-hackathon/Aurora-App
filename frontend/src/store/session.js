@@ -30,6 +30,7 @@ export const authenticate = () => async (dispatch) => {
 };
 
 export const login = (username, password) => async (dispatch) => {
+	console.log("before response", username, password)
 	const response = await fetch("/api/auth/login", {
 		method: "POST",
 		headers: {
@@ -51,6 +52,8 @@ export const login = (username, password) => async (dispatch) => {
 			return data.errors;
 		}
 	} else {
+		const errors = await response.json()
+		console.log("in the else", errors)
 		return ["An error occurred. Please try again."];
 	}
 };
