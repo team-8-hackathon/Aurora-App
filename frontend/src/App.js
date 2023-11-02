@@ -44,7 +44,6 @@ function App() {
           </Route>
           {/* Password protected admin routes */}
           <Route path="/admin">
-            <ProtectedRoute>
               <AdminNavBar />
               <Switch>
                 <Route exact path="/admin">
@@ -75,7 +74,6 @@ function App() {
                   <EditAdmin />
                 </Route>
               </Switch>
-            </ProtectedRoute>
           </Route>
           {/* Not protected application routes */}
           <Route>
