@@ -41,7 +41,10 @@ export const login = (username, password) => async (dispatch) => {
 			password,
 		}),
 	});
-
+	
+	const errors = await response.json()
+	console.log("in the else", errors)
+	
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(setUser(data));
@@ -52,8 +55,6 @@ export const login = (username, password) => async (dispatch) => {
 			return data.errors;
 		}
 	} else {
-		const errors = await response.json()
-		console.log("in the else", errors)
 		return ["An error occurred. Please try again."];
 	}
 };
