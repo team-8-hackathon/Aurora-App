@@ -28,6 +28,8 @@ COPY --from=build-stage /frontend/build/ /var/www/app/static/
 
 COPY migrate_and_seed.sh /var/www/migrate_and_seed.sh
 
+RUN chmod +x /var/www/migrate_and_seed.sh
+
 
 CMD gunicorn -b 0.0.0.0:5001 app:app
 EXPOSE 5001
