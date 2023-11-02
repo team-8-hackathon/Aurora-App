@@ -15,6 +15,7 @@ const TestimonialIndex = () => {
     }, [dispatch])
     if (!allTestimonials) return null;
     if (!allTestimonials.length) return <EmptyTestimonials />
+    console.log('-----------------',allTestimonials)
     return (
         <div className="browse-blogs-container">
             <h4 className="topic-title">All Testimonials</h4>

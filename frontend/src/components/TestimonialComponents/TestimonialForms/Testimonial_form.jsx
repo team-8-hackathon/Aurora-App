@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./app.css";
 import "./form.css";
 import StarRating from "./StarRating";
 import { useDispatch } from "react-redux";

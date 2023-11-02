@@ -1,5 +1,5 @@
 import React from "react";
-import "./app.css";
+import "./display.css";
 import OpenModalButton from "../../UtilityComponents/OpenModalButton";
 import { FaTrashAlt } from "react-icons/fa";
 import ConfirmModal from "../../UtilityComponents/ConfirmModal";
@@ -15,9 +15,10 @@ const TestimonialItem = ({ testimonial, type }) => {
   const handleDelete = () => {
     dispatch(thunkDeleteTestimonial(testimonial.id))  
   }
-
+  console.log('-------------------',testimonial);
   return (
     <div className="testimonial-item">
+
       <div>
         <div className="testimonial-stars">
           {starsArr.slice(0, stars).map((star) => (
