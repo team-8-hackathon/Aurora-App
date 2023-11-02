@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - test
+      - cicd-test
 
 name: Build & Deploy (Docker)
 
