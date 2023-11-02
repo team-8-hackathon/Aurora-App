@@ -103,6 +103,7 @@ border-radius: 10px;
 .testimonial-name {
   font-size: 20px;
   margin-left: 1rem;
+  font-weight: 300;
 }
 
 /* Swiper */

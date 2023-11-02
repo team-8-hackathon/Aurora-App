@@ -15,12 +15,26 @@ const TestimonialList = () => {
     dispatch(thunkGetAllTestimonials());
   }, [dispatch]);
 
+    function detectMob() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        // true for mobile device
+        return true
+      } else {
+        // false for not mobile device
+       return false
+      }
+    }
+
   return (
     <div className="test-car">
       <Swiper
         className="testimonial-list"
         spaceBetween={5}
-        slidesPerView={4}
+        slidesPerView={ detectMob ? 4 : 1}
         loop={true}
       >
         {testimonials?.map((testimonial, i) => (
