@@ -138,8 +138,6 @@ jobs:
         
         #cd /tmp
         
-
-        #docker-compose -p backend-flask up -d
         
 
 
