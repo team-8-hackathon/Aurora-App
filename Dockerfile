@@ -31,5 +31,5 @@ COPY --from=build-stage /frontend/build/ /var/www/app/static/
 # RUN chmod +x /var/www/migrate_and_seed.sh
 
 
-CMD gunicorn -b 0.0.0.0:5001 app:app
-EXPOSE 5001
+CMD gunicorn -b 0.0.0.0:5000 app:app
+EXPOSE 5000
