@@ -85,6 +85,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: beta8
       run: |
+      
         # Build a Docker container and push it to ECR 
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
         echo "Pushing image to ECR..."
