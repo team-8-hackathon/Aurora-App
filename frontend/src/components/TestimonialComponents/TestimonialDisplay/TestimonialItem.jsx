@@ -17,11 +17,16 @@ const TestimonialItem = ({ testimonial, type }) => {
   }
 
   return (
-    <li className="testimonial-item">
+    <div className="testimonial-item">
       <div>
         <div className="testimonial-stars">
           {starsArr.slice(0, stars).map((star) => (
-            <img src={`/images/stars/${star}star.png`} alt='star' key={star}/>
+            <img
+              src={`/images/stars/${star}star.png`}
+              alt="star"
+              key={star}
+              className="star-item"
+            />
           ))}
         </div>
         <p className="testimonial-body">"{body}"</p>
@@ -35,7 +40,7 @@ const TestimonialItem = ({ testimonial, type }) => {
       </div>
       {type === "admin" && <OpenModalButton className="testimonial-delete-button edit-delete-button" title="Delete" buttonText={<FaTrashAlt />}
                     modalComponent={<ConfirmModal modalTitle={'Are you sure you want to delete this testimonial?'} yesHandler={handleDelete} />} />}
-    </li>
+    </div>
   );
 };
 

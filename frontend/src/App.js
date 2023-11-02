@@ -5,9 +5,11 @@ import { authenticate } from "./store/session";
 
 import TestimonialForm from "./components/TestimonialComponents/TestimonialForms/Testimonial_form";
 import TestimonialList from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList";
-import SplashNavBar from './components/Navbar/SplashNavBar'
-import Footer from './components/Footer/footer'
-import BottomSignup from "./components/Signups/bot_signup";
+import TestimonialIndex from "./components/TestimonialComponents/TestimonialDisplay/TestimonialIndex";
+import SplashNavBar from "./components/Navbar/SplashNavBar";
+import Footer from "./components/Footer/footer";
+import TopSignup from "./components/signups/top_signup";
+import BottomSignup from "./components/signups/bot_signup";
 import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
@@ -17,11 +19,6 @@ import EditBlogForm from "./components/BlogComponents/EditBlogForm";
 import AdminNavBar from "./components/Navbar/AdminNavBar"
 import TopicForm from "./components/Topics/TopicForm"
 import AdminBlogs from "./components/Admin/blog_index"
-import SubsList from "./components/Admin/subs_list";
-import SplashPage from "./components/SplashPage/SplashPage";
-import NotFoundPage from "./components/UtilityComponents/404Page";
-import TestimonialIndex from "./components/TestimonialComponents/TestimonialIndex";
-import EditAdmin from "./components/auth/EditAdmin";
 
 
 
@@ -87,11 +84,11 @@ function App() {
               <Route path="/topics/:topicId">
                 <BrowseBlogs />
               </Route>
-              <Route path='/testimonials/new'>
+              <Route path="/testimonials/new">
                 <TestimonialForm />
               </Route>
               <Route>
-                <NotFoundPage />
+
               </Route>
             </Switch>
             <BottomSignup />
