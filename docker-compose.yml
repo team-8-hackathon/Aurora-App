@@ -2,7 +2,6 @@ version: "3"
 services:
   app:
     image: ECR_REGISTRY/beta8:GITHUB_SHA
-    container_name: container5555
     ports:
       - "5000:5001"
     environment:
