@@ -1,5 +1,4 @@
 from app.models import db, Blog, environment, SCHEMA
-from sqlalchemy.sql import text
 
 def seed_blog():
     title1="Understanding emotional wellness: why it's vital for a balanced life"
@@ -90,10 +89,12 @@ def seed_blog():
 
 
 
+
 def unseed_blog():
-    if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.blogs RESTART IDENTITY CASCADE;")
-    else:
-        db.session.execute(text("DELETE FROM blogs"))
-        
+    table_name = f"{SCHEMA}.blogs" if environment == "production" else "blogs"
+
+    with db.engine.connect() as connection:
+        connection.execute(f"DELETE FROM {table_name};")
+        connection.execute(f"DELETE FROM sqlite_sequence WHERE name='{table_name}';")
+
     db.session.commit()
