@@ -41,9 +41,9 @@ export const login = (username, password) => async (dispatch) => {
 			password,
 		}),
 	});
-	
-	const errors = await response.json()
-	console.log("in the else", errors)
+
+	// const errors = await response.json()
+	// console.log("in the else", errors)
 	
 	if (response.ok) {
 		const data = await response.json();
