@@ -4,9 +4,10 @@ import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 
 import TestimonialForm from "./components/TestimonialComponents/TestimonialForms/Testimonial_form";
-import TestimonialList from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList";
-import SplashNavBar from './components/Navbar/SplashNavBar'
-import Footer from './components/Footer/footer'
+import TestimonialIndex from "./components/TestimonialComponents/TestimonialIndex";
+import SplashPage from "./components/SplashPage/SplashPage"
+import SplashNavBar from "./components/Navbar/SplashNavBar";
+import Footer from "./components/Footer/footer";
 import BottomSignup from "./components/Signups/bot_signup";
 import BlogForm from "./components/BlogComponents/BlogForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -17,11 +18,9 @@ import EditBlogForm from "./components/BlogComponents/EditBlogForm";
 import AdminNavBar from "./components/Navbar/AdminNavBar"
 import TopicForm from "./components/Topics/TopicForm"
 import AdminBlogs from "./components/Admin/blog_index"
-import SubsList from "./components/Admin/subs_list";
-import SplashPage from "./components/SplashPage/SplashPage";
-import NotFoundPage from "./components/UtilityComponents/404Page";
-import TestimonialIndex from "./components/TestimonialComponents/TestimonialIndex";
-import EditAdmin from "./components/auth/EditAdmin";
+import SubsList from "./components/Admin/subs_list"
+import EditAdmin from "./components/auth/EditAdmin"
+import TestimonialDisplay from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList"
 
 
 
@@ -37,13 +36,14 @@ function App() {
       {isLoaded && (
         <Switch>
           {/* Splash page route */}
-          <Route exact path='/'>
+          <Route exact path="/">
             <SplashNavBar />
             <SplashPage />
             <Footer />
           </Route>
           {/* Password protected admin routes */}
           <Route path="/admin">
+            <ProtectedRoute>
               <AdminNavBar />
               <Switch>
                 <Route exact path="/admin">
@@ -53,13 +53,13 @@ function App() {
                   <BlogForm />
                 </Route>
                 <Route exact path="/admin/blogs/:blogId">
-                  <SingleBlogPage type='admin' />
+                  <SingleBlogPage type="admin" />
                 </Route>
                 <Route exact path="/admin/blogs/:blogId/edit">
                   <EditBlogForm />
                 </Route>
-                <Route exact path='/admin/topics/:topicId'>
-                  <BrowseBlogs type='admin' />
+                <Route exact path="/admin/topics/:topicId">
+                  <BrowseBlogs type="admin" />
                 </Route>
                 <Route exact path="/admin/post-topic">
                   <TopicForm />
@@ -67,13 +67,14 @@ function App() {
                 <Route exact path="/admin/subs">
                   <SubsList />
                 </Route>
-                <Route exact path='/admin/testimonials'>
+                <Route exact path="/admin/testimonials">
                   <TestimonialIndex />
                 </Route>
-                <Route exact path='/admin/admin-info'>
+                <Route exact path="/admin/admin-info">
                   <EditAdmin />
                 </Route>
               </Switch>
+            </ProtectedRoute>
           </Route>
           {/* Not protected application routes */}
           <Route>
@@ -85,12 +86,10 @@ function App() {
               <Route path="/topics/:topicId">
                 <BrowseBlogs />
               </Route>
-              <Route path='/testimonials/new'>
+              <Route path="/testimonials/new">
                 <TestimonialForm />
               </Route>
-              <Route>
-                <NotFoundPage />
-              </Route>
+              <Route path="/testimonials/list"><TestimonialDisplay /></Route>
             </Switch>
             <BottomSignup />
             <Footer />
