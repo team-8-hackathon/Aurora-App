@@ -1,5 +1,4 @@
 from app.models import db, Testimonial, environment, SCHEMA
-from sqlalchemy.sql import text
 
 def seed_testimonials():
   testimonials = [ Testimonial(
@@ -41,7 +40,7 @@ def seed_testimonials():
   db.session.add_all(testimonials)
   db.session.commit()
   
-  
+
 def unseed_testimonials():
     table_name = f"{SCHEMA}.testimonials" if environment == "production" else "testimonials"
 

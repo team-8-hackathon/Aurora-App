@@ -1,5 +1,4 @@
 from app.models import db, Topic, environment, SCHEMA
-from sqlalchemy.sql import text
 
 #add topic tabs
 def seed_topics():
@@ -24,9 +23,10 @@ def seed_topics():
     db.session.commit()
 
 def unseed_topics():
-    if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.topics RESTART IDENTITY CASCADE;")
-    else:
-        db.session.execute(text("DELETE FROM topics"))
-        
+    table_name = f"{SCHEMA}.topics" if environment == "production" else "topics"
+
+    with db.engine.connect() as connection:
+        connection.execute(f"DELETE FROM {table_name};")
+        connection.execute(f"DELETE FROM sqlite_sequence WHERE name='{table_name}';")
+
     db.session.commit()
