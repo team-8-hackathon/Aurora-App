@@ -7,6 +7,6 @@ services:
     environment:
       - SECRET_KEY=$$SECRET_ENV_VAR
       - DATABASE_URL=sqlite:///dev.db
-    volumes:
-      - ./migrations:/var/www/migrations
-      - ./migrate_and_seed.sh:/var/www/migrate_and_seed.sh
+    # volumes:
+    #   - ./migrations:/var/www/migrations
+    #   - ./migrate_and_seed.sh:/var/www/migrate_and_seed.sh
