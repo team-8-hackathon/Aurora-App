@@ -15,7 +15,6 @@ const TestimonialItem = ({ testimonial, type }) => {
   const handleDelete = () => {
     dispatch(thunkDeleteTestimonial(testimonial.id))  
   }
-  console.log('-------------------',testimonial);
   return (
     <div className="testimonial-item">
 

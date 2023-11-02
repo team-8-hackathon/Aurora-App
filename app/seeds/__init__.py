@@ -15,6 +15,12 @@ def seed_user():
         unseed_admin()
     seed_admin()
 
+@seed_commands.command('test')
+def seed_user():
+    if environment == 'production':
+        unseed_testimonials()
+    seed_testimonials()
+
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():

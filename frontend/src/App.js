@@ -20,6 +20,7 @@ import TopicForm from "./components/Topics/TopicForm"
 import AdminBlogs from "./components/Admin/blog_index"
 import SubsList from "./components/Admin/subs_list"
 import EditAdmin from "./components/auth/EditAdmin"
+import TestimonialDisplay from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList"
 
 
 
@@ -35,7 +36,7 @@ function App() {
       {isLoaded && (
         <Switch>
           {/* Splash page route */}
-          <Route exact path='/'>
+          <Route exact path="/">
             <SplashNavBar />
             <SplashPage />
             <Footer />
@@ -52,13 +53,13 @@ function App() {
                   <BlogForm />
                 </Route>
                 <Route exact path="/admin/blogs/:blogId">
-                  <SingleBlogPage type='admin' />
+                  <SingleBlogPage type="admin" />
                 </Route>
                 <Route exact path="/admin/blogs/:blogId/edit">
                   <EditBlogForm />
                 </Route>
-                <Route exact path='/admin/topics/:topicId'>
-                  <BrowseBlogs type='admin' />
+                <Route exact path="/admin/topics/:topicId">
+                  <BrowseBlogs type="admin" />
                 </Route>
                 <Route exact path="/admin/post-topic">
                   <TopicForm />
@@ -66,10 +67,10 @@ function App() {
                 <Route exact path="/admin/subs">
                   <SubsList />
                 </Route>
-                <Route exact path='/admin/testimonials'>
+                <Route exact path="/admin/testimonials">
                   <TestimonialIndex />
                 </Route>
-                <Route exact path='/admin/admin-info'>
+                <Route exact path="/admin/admin-info">
                   <EditAdmin />
                 </Route>
               </Switch>
@@ -88,9 +89,7 @@ function App() {
               <Route path="/testimonials/new">
                 <TestimonialForm />
               </Route>
-              <Route>
-
-              </Route>
+              <Route path="/testimonials/list"><TestimonialDisplay/></Route>
             </Switch>
             <BottomSignup />
             <Footer />
