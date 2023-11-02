@@ -138,13 +138,6 @@ jobs:
         
         #cd /tmp
         
-        #if docker ps -a --filter "name=backend-flask" --format "{{.Names}}" | grep -q "backend-flask"; then
-         #   echo "Stopping and removing existing backend-flask container..."
-          #  docker stop backend-flask
-           # docker rm backend-flask
-        #else
-         #   echo "No existing backend-flask container found."
-        #fi
 
         #docker-compose -p backend-flask up -d
         
