@@ -31,32 +31,37 @@ export const authenticate = () => async (dispatch) => {
 
 export const login = (username, password) => async (dispatch) => {
 	console.log("before response", username, password)
-	const response = await fetch("/api/auth/login", {    
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		credentials: 'include', // Include credentials to send the CSRF token cookie
-		body: JSON.stringify({
-			username,
-			password,
-		}),
-	});
-
+	try {
+		
+		const response = await fetch("/api/auth/login", {    
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			// credentials: 'include', // Include credentials to send the CSRF token cookie
+			body: JSON.stringify({
+				username,
+				password,
+			}),
+		});
+		
+	} catch (error) {
+		console.log(error)
+	}
 
 	
-	if (response.ok) {
-		const data = await response.json();
-		dispatch(setUser(data));
-		return data;
-	} else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) {
-			return data.errors;
-		}
-	} else {
-		return ["An error occurred. Please try again."];
-	}
+	// if (response.ok) {
+	// 	const data = await response.json();
+	// 	dispatch(setUser(data));
+	// 	return data;
+	// } else if (response.status < 500) {
+	// 	const data = await response.json();
+	// 	if (data.errors) {
+	// 		return data.errors;
+	// 	}
+	// } else {
+	// 	return ["An error occurred. Please try again."];
+	// }
 };
 
 export const logout = () => async (dispatch) => {

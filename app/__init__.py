@@ -80,7 +80,7 @@ def inject_csrf_token(response):
             # httponly=True
         )
     else:
-        response.set_cookie('csrf_token', csrf_token)
+        response.set_cookie('csrf_token', csrf_token, httponly=True)
     return response
 
 
@@ -116,6 +116,13 @@ def react_root(path):
 
     else:
         return send_from_directory(app.static_folder, 'index.html')
+
+# @app.route('/', defaults={'path': ''})
+# @app.route('/<path:path>')
+# def react_root(path):
+#     if path == 'favicon.ico':
+#         return app.send_static_file('favicon.ico')
+#     return app.send_static_file('index.html')
 
 
 @app.errorhandler(404)
