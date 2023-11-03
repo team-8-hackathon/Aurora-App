@@ -18,6 +18,10 @@ if os.environ.get('FLASK_ENV') == 'production':
     app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
 else:
     app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+
+# Include CSRF protection
+csrf = CSRFProtect(app)
+
     
 # Setup login manager
 login = LoginManager(app)
