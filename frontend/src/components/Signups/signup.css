@@ -204,9 +204,9 @@
     width: 471px;
     height: 342px;
     flex-shrink: 0;
-
     z-index: 1;
     transform: translateY(95px);
+    margin-bottom: 30px;
 }
 
 .bot_signup_icon img {
