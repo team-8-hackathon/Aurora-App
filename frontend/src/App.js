@@ -10,7 +10,7 @@ import SplashNavBar from "./components/Navbar/SplashNavBar";
 import Footer from "./components/Footer/footer";
 import BottomSignup from "./components/Signups/bot_signup";
 import BlogForm from "./components/BlogComponents/BlogForm";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+// import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SingleBlogPage from "./components/BlogComponents/SingleBlogPage";
 import BrowseBlogs from "./components/BlogComponents/BrowseBlogs";
 import NavBar from "./components/Navbar/Navbar";
@@ -43,7 +43,7 @@ function App() {
           </Route>
           {/* Password protected admin routes */}
           <Route path="/admin">
-            <ProtectedRoute>
+            {/* <ProtectedRoute> */}
               <AdminNavBar />
               <Switch>
                 <Route exact path="/admin">
@@ -74,7 +74,7 @@ function App() {
                   <EditAdmin />
                 </Route>
               </Switch>
-            </ProtectedRoute>
+            {/* </ProtectedRoute> */}
           </Route>
           {/* Not protected application routes */}
           <Route>
