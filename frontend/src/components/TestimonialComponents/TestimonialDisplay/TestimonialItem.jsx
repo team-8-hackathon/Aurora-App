@@ -1,7 +1,8 @@
 import React from "react";
 import "./display.css";
 import OpenModalButton from "../../UtilityComponents/OpenModalButton";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt  } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import ConfirmModal from "../../UtilityComponents/ConfirmModal";
 import { useDispatch } from "react-redux";
 import { thunkDeleteTestimonial } from "../../../store/testimonial";
@@ -17,7 +18,6 @@ const TestimonialItem = ({ testimonial, type }) => {
   }
   return (
     <div className="testimonial-item">
-
       <div>
         <div className="testimonial-stars">
           {starsArr.slice(0, stars).map((star) => (
@@ -33,13 +33,31 @@ const TestimonialItem = ({ testimonial, type }) => {
       </div>
       <div className="testimonial-item-bottom">
         <div className="image-container">
-          <img className='profile-border' src="/images/scribbleBorder.png" alt='border'/>
-          <img className='profile-pic' src={profile_pic} alt='Profile'></img>
+          <img
+            className="profile-border"
+            src="/images/scribbleBorder.png"
+            alt="border"
+          />
+          <img className="profile-pic" src={profile_pic} alt="Profile"></img>
         </div>
-        <p className="testimonial-name">{first_name}&nbsp;&nbsp;{last_name}</p>
+        <p className="testimonial-name">
+          {first_name}&nbsp;&nbsp;{last_name}
+        </p>
       </div>
-      {type === "admin" && <OpenModalButton className="testimonial-delete-button edit-delete-button" title="Delete" buttonText={<FaTrashAlt />}
-                    modalComponent={<ConfirmModal modalTitle={'Are you sure you want to delete this testimonial?'} yesHandler={handleDelete} />} />}
+      {type === "admin" && <FaHeart/>}
+      {type === "admin" && (
+        <OpenModalButton
+          className="testimonial-delete-button edit-delete-button"
+          title="Delete"
+          buttonText={<FaTrashAlt />}
+          modalComponent={
+            <ConfirmModal
+              modalTitle={"Are you sure you want to delete this testimonial?"}
+              yesHandler={handleDelete}
+            />
+          }
+        />
+      )}
     </div>
   );
 };

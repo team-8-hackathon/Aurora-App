@@ -56,6 +56,19 @@ def create_testimonial():
   return {"ERRORS ": validation_errors_to_error_messages(form.errors)}, 401
 
 
+@testimonial_routes.route('/<int:id>/edit', methods=["PUT"])
+@login_required
+def edit_testimonial(id):
+   """
+   Edit a testimonial by its id
+   """
+
+   testimonial - Testimonial.query.get(id)
+   if not testimonial:
+      return {"errors": "Testimonial not found"},404
+   
+   
+
 @testimonial_routes.route('/<int:id>/delete', methods=['DELETE'])
 @login_required
 def delete_testimonial(id):
