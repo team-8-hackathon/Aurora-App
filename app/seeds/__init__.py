@@ -11,24 +11,15 @@ seed_commands = AppGroup('seed')
 #create flask seed user command for testing with no data
 @seed_commands.command('user')
 def seed_user():
-    if environment == 'production':
-        unseed_admin()
     seed_admin()
 
 @seed_commands.command('test')
 def seed_user():
-    if environment == 'production':
-        unseed_testimonials()
     seed_testimonials()
 
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    if environment == 'production':
-        unseed_blog()
-        unseed_topics()
-        unseed_admin()
-        unseed_testimonials()
     seed_admin()
     seed_topics()
     seed_blog()

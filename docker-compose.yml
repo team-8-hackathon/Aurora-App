@@ -3,7 +3,7 @@ services:
   app:
     image: ECR_REGISTRY/beta8:GITHUB_SHA
     ports:
-      - "5000:5001"
+      - "5001:5001"
     environment:
       - SECRET_KEY=$$SECRET_ENV_VAR
       - DATABASE_URL=sqlite:///dev.db
