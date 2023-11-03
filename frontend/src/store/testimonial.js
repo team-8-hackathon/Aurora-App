@@ -52,6 +52,21 @@ export const thunkGetAllTestimonials = () => async (dispatch) => {
   }
 }
 
+export const thunkEditTestimonial = (data ,testId) => async (dispath) => {
+  const response = await fetch(`api/testimonial/${testId}/edit`, {
+    method: "PUT",
+    body: data
+  });
+  if(response.ok) {
+    const updatedTest = await response.json();
+    dispath(thunkGetAllTestimonials);
+    return updatedTest;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
+}
+
 
 // state object
 const initialState = { allTestimonials: null };
