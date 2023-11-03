@@ -58,7 +58,7 @@ border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 14rem;
+  width: 15rem;
   height: 16rem;
   border-radius: 10px;
   font-family: "DM Sans", Times;
@@ -115,6 +115,8 @@ border-radius: 10px;
 }
 
 .swiper-slide {
+  display: flex;
+  gap: 0rem
 }
 
 .swiper-wrapper {
@@ -140,4 +142,3 @@ border-radius: 10px;
 .swiper-slide:last-child {
   margin-right: 0;
 }
-

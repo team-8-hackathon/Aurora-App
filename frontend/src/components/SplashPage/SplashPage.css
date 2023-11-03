@@ -91,11 +91,11 @@ margin-top: -5em;
     margin: auto;
 }
 
-@media (min-width: 1450px) {
+/* @media (min-width: 1450px) {
     .splash-page-testimonials-container {
         gap:4em
     }
-}
+} */
 
 /* .splash-page-single-testimonial {
     background-color:rgb(154, 207, 177);
@@ -130,7 +130,7 @@ margin-top: -5em;
 } */
 
 .testimonial-mood-happy {
-    margin-top: -20em
+    margin-top: -28em
 }
 
 .splash-page-screens {
