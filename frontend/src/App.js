@@ -43,7 +43,7 @@ function App() {
           </Route>
           {/* Password protected admin routes */}
           <Route path="/admin">
-            <ProtectedRoute>
+            {/* <ProtectedRoute> */}
               <AdminNavBar />
               <Switch>
                 <Route exact path="/admin">
@@ -74,7 +74,7 @@ function App() {
                   <EditAdmin />
                 </Route>
               </Switch>
-            </ProtectedRoute>
+            {/* </ProtectedRoute> */}
           </Route>
           {/* Not protected application routes */}
           <Route>
