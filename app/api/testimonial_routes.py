@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from app.models import Testimonial, db
-from app.forms import TestimonialForm
+from app.forms import TestimonialForm, EditTestimonial
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
@@ -63,11 +63,19 @@ def edit_testimonial(id):
    Edit a testimonial by its id
    """
 
-   testimonial - Testimonial.query.get(id)
+   testimonial = Testimonial.query.get(id)
    if not testimonial:
-      return {"errors": "Testimonial not found"},404
+      return {'errors': 'Testimonial not found'}, 404
    
+   form = EditTestimonial()
+
+   if(testimonial.validate_on_submit()):
+      testimonial.favorite = form.data['favorite']
+      db.session.commit()
+      return testimonial.to_dict(), 201
    
+   return {"Errors": validation_errors_to_error_messages(form.errors)}, 401
+      
 
 @testimonial_routes.route('/<int:id>/delete', methods=['DELETE'])
 @login_required
