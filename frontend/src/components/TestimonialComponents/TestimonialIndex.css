@@ -36,6 +36,16 @@
   z-index: 2;
 }
 
+ .profile-border,
+ .profile-pic {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+ }
+
 .profile-pic {
   width: 92%;
   /* height: 95%; */

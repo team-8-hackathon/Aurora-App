@@ -6,6 +6,13 @@
     background-color: #fcf3ea;
 }
 
+.dropdown-menu a,
+.dropdown-menu a:visited {
+    text-decoration: none;
+    color: #00283D;
+}
+
+
 .navbar-content {
     display: flex;
     justify-content: space-between;

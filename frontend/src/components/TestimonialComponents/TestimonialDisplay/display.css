@@ -1,4 +1,4 @@
-/* 
+/*
 
 FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
@@ -7,7 +7,7 @@ SPACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 
 -- COLORS
-#003b5a - font 
+#003b5a - font
 #ffe27a - background
 #8dc9a9 - testimonial box
 
@@ -131,3 +131,13 @@ border-radius: 10px;
 
 .swiper-button-next {
 }
+/* Add space between Swiper slides */
+.swiper-slide {
+  margin-right: 10px; /* Adjust the value to control the spacing */
+}
+
+/* Remove the margin from the last slide to prevent extra space */
+.swiper-slide:last-child {
+  margin-right: 0;
+}
+

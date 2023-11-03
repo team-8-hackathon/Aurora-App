@@ -4,11 +4,12 @@
 }
 
 .splash-page-nav-logo {
-    width: 300px;
+    width: 50%;
 }
 
 .aurora-caption {
     font-size: 3.5rem;
+    height: 30px;
 }
 
 .aurora-intro {
@@ -16,15 +17,14 @@
 }
 
 .splash-page-hero-graphic {
-    width: 675px;
+    width: 42em;
     margin-top: -50px;
-
 }
 
 .top-section-content {
     display: flex;
     flex-direction: column;
-    gap: 3em;
+    /* gap: 3em; */
 }
 
 @media (min-width: 1450px) {
@@ -34,15 +34,13 @@
 }
 
 .top-section-about-aurora {
-    width: 600px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2em
 }
 
 .splash-page-top-signup {
-    display: flex;
-    justify-content: center;
+margin-top: -5em;
 }
 
 .learn-more-button {
@@ -56,9 +54,9 @@
 .splash-page-benefits {
     display: flex;
     justify-content: space-around;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
 }
 
 .benefits-image {
@@ -91,7 +89,6 @@
 .splash-page-testimonials-container {
     display: flex;
     margin: auto;
-    gap: 2em;
 }
 
 @media (min-width: 1450px) {
@@ -100,7 +97,7 @@
     }
 }
 
-.splash-page-single-testimonial {
+/* .splash-page-single-testimonial {
     background-color:rgb(154, 207, 177);
     width: 14em;
     display: flex;
@@ -109,31 +106,31 @@
     padding: 1rem;
     justify-content: space-between;
     align-items: flex-start;
-}
+} */
 
-.splash-page-testimonial-name {
+/* .splash-page-testimonial-name {
     display: flex;
     align-items: center;
     gap: 1em;
     font-size: 1rem;
-}
+} */
 
-.testimonial-stars {
+/* .testimonial-stars {
     height: 1.5rem;
-}
+} */
 
-.testimonial-quote {
+/* .testimonial-quote {
     font-size: 20px;
-}
+} */
 
-.testimonial-user-image {
+/* .testimonial-user-image {
     height: 50px;
     display: flex;
     align-items: end;
-}
+} */
 
 .testimonial-mood-happy {
-    margin-top: -300px
+    margin-top: -20em
 }
 
 .splash-page-screens {
@@ -199,7 +196,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 45%;
+    width: 40%;
 }
 
 .meet-the-founder-header {
@@ -209,5 +206,3 @@
 .meet-the-founder-paragraph {
     font-size: 1rem;
 }
-
-

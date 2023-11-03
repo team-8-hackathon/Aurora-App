@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from app.aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 # from app.api.auth_routes import validation_errors_to_error_messages
@@ -7,6 +7,7 @@ from app.models import Blog, db, Topic
 from datetime import datetime
 
 blog_routes = Blueprint('blogs', __name__)
+
 
 #Get all blogs
 @blog_routes.route('/')

@@ -19,8 +19,9 @@ import AdminNavBar from "./components/Navbar/AdminNavBar"
 import TopicForm from "./components/Topics/TopicForm"
 import AdminBlogs from "./components/Admin/blog_index"
 import SubsList from "./components/Admin/subs_list"
-import EditAdmin from "./components/auth/EditAdmin"
+import AdminInfo from "./components/Admin/AdminInfo";
 import TestimonialDisplay from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList"
+import NotFoundPage from "./components/UtilityComponents/404Page";
 
 
 
@@ -71,7 +72,7 @@ function App() {
                   <TestimonialIndex />
                 </Route>
                 <Route exact path="/admin/admin-info">
-                  <EditAdmin />
+                  <AdminInfo />
                 </Route>
               </Switch>
             </ProtectedRoute>
@@ -89,7 +90,12 @@ function App() {
               <Route path="/testimonials/new">
                 <TestimonialForm />
               </Route>
-              <Route path="/testimonials/list"><TestimonialDisplay/></Route>
+              <Route path="/testimonials/list">
+                <TestimonialDisplay/>
+              </Route>
+              <Route>
+                <NotFoundPage />
+              </Route>
             </Switch>
             <BottomSignup />
             <Footer />

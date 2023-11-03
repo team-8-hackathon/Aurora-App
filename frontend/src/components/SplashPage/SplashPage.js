@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SplashNavBar from '../Navbar/SplashNavBar';
 import TopSignup from '../Signups/top_signup';
-import BottomSignup from '../Signups/bot_signup';
-import Footer from '../Footer/footer';
+import BotSignup from '../Signups/bot_signup';
+import TestimonialList from '../TestimonialComponents/TestimonialDisplay/TestimonialList';
 import './SplashPage.css';
 
 const SplashPage = () => {
@@ -52,7 +51,7 @@ const SplashPage = () => {
             <div className='splash-page-testimonials'>
                 <div className='splash-page-testimonials-container'>
                     <img src={`${process.env.PUBLIC_URL}/images/mood-2.svg`} alt="Mood Happy" className='testimonial-mood-happy' />
-                    <div className='splash-page-single-testimonial'>
+                    {/* <div className='splash-page-single-testimonial'>
                         <img src={`${process.env.PUBLIC_URL}/images/stars.svg`} alt="Testimonial Stars" className='testimonial-stars' />
                         <p className='testimonial-quote'>"It helps you dig deep to learn about yourself. I feel like the app really cares."</p>
                         <div className='splash-page-testimonial-name'>
@@ -83,7 +82,8 @@ const SplashPage = () => {
                             <img src='/images/userImg-4.png' alt='User-Image-4' className='testimonial-user-image' />
                             <p>Katie G.</p>
                         </div>
-                    </div>
+                    </div> */}
+                    <TestimonialList />
                     <img src={`${process.env.PUBLIC_URL}/images/mood-1.svg`} alt="Mood Joy" />
                 </div>
             </div>
@@ -122,7 +122,7 @@ const SplashPage = () => {
                 </div>
             </div>
             <div id="splash-page-bottom-signup">
-                <BottomSignup />
+                <BotSignup />
             </div>
         </div>
     )

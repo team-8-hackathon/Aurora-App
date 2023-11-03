@@ -12,7 +12,14 @@ testimonial_routes = Blueprint('testimonial', __name__)
 def get_testimonials():
      testimonials = Testimonial.query.order_by(Testimonial.stars.desc()).all()
     #  testimonials = testimonials[0:4]
-     return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}, 201
+     return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}, 200
+
+@testimonial_routes.route('/<int:id>')
+def get_testimonial_by_id(id):
+   testimonial = Testimonial.query.get(id)
+   if not testimonial:
+      return {"errors", "Testimonial not found"}, 404
+   return testimonial.to_dict()
 
 
 
