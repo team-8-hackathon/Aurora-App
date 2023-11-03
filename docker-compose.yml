@@ -5,5 +5,5 @@ services:
     ports:
       - "5001:5001"
     environment:
-      - SECRET_KEY=$$SECRET_ENV_VAR
+      - SECRET_KEY=rsxdgfjykuglio
       - DATABASE_URL=sqlite:///dev.db

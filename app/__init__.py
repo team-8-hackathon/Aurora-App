@@ -19,6 +19,9 @@ if os.environ.get('FLASK_ENV') == 'production':
 else:
     app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
+# Enable Flask debug mode
+app.debug = True
+
 # Include CSRF protection
 csrf = CSRFProtect(app)
 
