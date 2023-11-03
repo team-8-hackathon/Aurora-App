@@ -10,6 +10,7 @@ import { useSearch } from '../../context/SearchContext';
 import OpenModalButton from '../UtilityComponents/OpenModalButton';
 import ConfirmModal from '../UtilityComponents/ConfirmModal';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useModal } from '../../context/Modal';
 
 function AdminNavbar() {
     const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);

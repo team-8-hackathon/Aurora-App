@@ -67,6 +67,27 @@ export const logout = () => async (dispatch) => {
 	}
 };
 
+export const thunkUpdatePassword = (password) => async (dispatch) => {
+	const response = await fetch(`/api/auth/update-password`, {
+		method: 'PUT',
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			password
+		})
+	})
+
+	if (response.ok){
+		const data = await response.json()
+		dispatch(setUser(data))
+		return data
+	} else {
+		const errors = await response.json()
+		return errors
+	}
+}
+
 //signup thunk
 
 // export const signUp = (data) => async (dispatch) => {
