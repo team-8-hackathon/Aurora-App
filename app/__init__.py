@@ -77,7 +77,7 @@ def inject_csrf_token(response):
             csrf_token,
             # secure=True,
             # samesite='Strict', ##
-            httponly=True
+            # httponly=True
         )
     else:
         response.set_cookie('csrf_token', csrf_token)
