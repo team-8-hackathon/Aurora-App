@@ -6,6 +6,12 @@
     background-color: #fcf3ea;
 }
 
+.nav-container a,
+.nav-container a:visited {
+    text-decoration: none;
+    color: #00283D;
+}
+
 .nav-content {
     display: flex;
     justify-content: space-between;
