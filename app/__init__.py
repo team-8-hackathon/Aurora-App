@@ -20,7 +20,7 @@ log = get_logger(__name__)
 if os.environ.get('FLASK_ENV') == 'production':
     app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
 else:
-    app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+    app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
 
 # Enable Flask debug mode
 app.debug = True
@@ -80,8 +80,22 @@ def inject_csrf_token(response):
             # httponly=True
         )
     else:
-        response.set_cookie('csrf_token', csrf_token, httponly=True)
+        response.set_cookie('csrf_token', csrf_token)
     return response
+
+
+#### throws get errors
+
+#     @app.after_request
+# def inject_csrf_token(response):
+#     response.set_cookie(
+#         'csrf_token',
+#         generate_csrf(),
+#         secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
+#         samesite='Strict' if os.environ.get(
+#             'FLASK_ENV') == 'production' else None,
+#         httponly=True)
+#     return response
 
 
 
