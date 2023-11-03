@@ -39,7 +39,7 @@
     flex-direction: column;
 }
 
-.splash-page-top-signup {
+#splash-page-top-signup {
 margin-top: -5em;
 }
 
@@ -49,6 +49,7 @@ margin-top: -5em;
     width: 8rem;
     border: none;
     border-radius: 2rem;
+    cursor: pointer;
 }
 
 .splash-page-benefits {
@@ -89,6 +90,7 @@ margin-top: -5em;
 .splash-page-testimonials-container {
     display: flex;
     margin: auto;
+    cursor: pointer;
 }
 
 /* @media (min-width: 1450px) {

@@ -8,7 +8,7 @@ import './SplashPage.css';
 const SplashPage = () => {
 
     const scrollToTarget = () => {
-        const targetElement = document.getElementById('splash-page-bottom-signup');
+        const targetElement = document.getElementById('splash-page-top-signup');
         targetElement.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -27,7 +27,7 @@ const SplashPage = () => {
                 </div>
                 <img className="splash-page-hero-graphic" src='/images/hero-graphic.png' alt="Hero Graphic" />
             </div>
-            <div className='splash-page-top-signup'>
+            <div id='splash-page-top-signup'>
                 <TopSignup />
             </div>
             <div className='splash-page-benefits'>
@@ -83,7 +83,9 @@ const SplashPage = () => {
                             <p>Katie G.</p>
                         </div>
                     </div> */}
-                    <TestimonialList />
+                    <div className='splash-page-testimonial-container'>
+                        <TestimonialList />
+                    </div>
                     <img src={`${process.env.PUBLIC_URL}/images/mood-1.svg`} alt="Mood Joy" />
                 </div>
             </div>

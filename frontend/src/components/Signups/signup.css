@@ -109,6 +109,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 140%; /* 22.4px */
+    cursor: pointer;
 }
 
 .bot_signup {
