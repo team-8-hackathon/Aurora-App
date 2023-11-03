@@ -27,12 +27,13 @@ const EditAdmin = () => {
         if(response.errors) {
             setErrors({'serverErrors': response.errors[0]})
         } else  {
-            history.push('/admin')
+            closeModal()
         }
 
     }
 
-    const handleCancel = () => {
+    const handleCancel = (e) => {
+        e.preventDefault()
         closeModal()
     }
 
@@ -47,7 +48,7 @@ const EditAdmin = () => {
                 value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
                 {hasSubmitted && errors.serverErrors && <p className="errors">{errors.serverErrors}</p>}
                 <div className="button-container">
-                <button className='blog-post-button cancel' type='button'>Cancel</button>
+                <button className='blog-post-button cancel' type='button' onClick={handleCancel}>Cancel</button>
                 <button className="blog-post-button submit" type='submit'>Update Password</button>
                 </div>
             </form>
