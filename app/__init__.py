@@ -57,17 +57,21 @@ def https_redirect():
             code = 301
             return redirect(url, code=code)
 
-
 @app.after_request
 def inject_csrf_token(response):
-    response.set_cookie(
-        'csrf_token',
-        generate_csrf(),
-        secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
-        samesite='Strict' if os.environ.get(
-            'FLASK_ENV') == 'production' else None,
-        httponly=True)
+    csrf_token = generate_csrf()
+    if os.environ.get('FLASK_ENV') == 'production':
+        response.set_cookie(
+            'csrf_token',
+            csrf_token,
+            secure=True,
+            samesite='Strict',
+            httponly=True
+        )
+    else:
+        response.set_cookie('csrf_token', csrf_token)
     return response
+
 
 
 @app.route("/api/docs")
