@@ -10,6 +10,10 @@ else:
 
 login_data = dict(username="demolition", password="password", csrfmiddlewaretoken=csrftoken, next='/')
 
+#image used for testing purposes
+files = {'files': ('aurora.png', open('./aurora.png', 'rb'))}
+print(files['files'])
+
 #Test that the api is callable with the /api/docs route
 def test_can_call_endpoint():
     response = requests.get(f'{ENDPOINT}/api/docs')
@@ -77,3 +81,57 @@ def get_topic_payload():
         'topic': 'New topic',
         'color': '#000000'
     }
+
+
+#################################Test Testimonials Functions###################################
+#helper to get testimonial payload
+def get_testimonial_payload():
+    return {
+        'first_name': 'Emily',
+        'last_name': 'Morgan',
+        'stars': 4,
+        'body': 'test body',
+        'profile_pic': files
+    }
+
+#helper function to create a testimonial
+def create_testimonial(payload):
+    return client.post(f'{ENDPOINT}/api/testimonial/new', payload)
+
+#helper function to get a testimonial by id
+def get_testimonial(id):
+    return client.get(f'{ENDPOINT}/api/testimonial/{id}')
+
+#test get all testimonials
+def test_get_testimonials():
+    response = client.get(f'{ENDPOINT}/api/testimonial')
+    assert response.status_code == 200
+
+#test create a testimonial
+def test_create_testimonial():
+    payload = get_testimonial_payload()
+    response = create_testimonial(payload)
+    assert response.status_code == 201
+    data = response.json()
+    id = data['id']
+    response_after = get_testimonial(id)
+    assert response_after.status_code == 200
+    new_data = response_after.json()
+    first_name = payload['first_name']
+    last_name = payload['last_name']
+    assert new_data['first_name'] == first_name
+    assert new_data['last_name'] == f'{last_name[0]}.'
+    client.delete(f'{ENDPOINT}/api/testimonial/{id}/delete')
+
+
+#test delete a testimonial
+def test_delete_testimonial():
+    payload = get_testimonial_payload()
+    response = create_testimonial(payload)
+    data = response.json()
+    id = data['id']
+    print('Data', data)
+    response = client.delete(f'{ENDPOINT}/api/testimonial/{id}/delete')
+    assert response.status_code == 200
+    response2 = get_testimonial(id)
+    assert response2.status_code == 404

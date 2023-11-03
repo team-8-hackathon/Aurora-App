@@ -24,11 +24,6 @@ def seed_user():
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    if environment == 'production':
-        unseed_blog()
-        unseed_topics()
-        unseed_admin()
-        unseed_testimonials()
     seed_admin()
     seed_topics()
     seed_blog()
