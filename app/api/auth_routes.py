@@ -28,6 +28,13 @@ def authenticate():
     return {'errors': ['Unauthorized']}
 
 
+@auth_routes.route('/login', methods=['GET'])
+def login2():
+    print("this is awesome")
+
+    return {'errors': "hellooooooooooooo"}, 401
+
+
 @auth_routes.route('/login', methods=['POST'])
 def login():
     """
@@ -36,6 +43,7 @@ def login():
     form = LoginForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
+    print("HI")
     form['csrf_token'].data = request.cookies['csrf_token']
     print("auth_route")
     if form.validate_on_submit():
