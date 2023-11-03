@@ -2,9 +2,11 @@ from flask import Blueprint, jsonify, session, request
 from app.models import Admin, db
 from app.forms import LoginForm
 from flask_login import current_user, login_user, logout_user, login_required
+from app.logger import get_logger
 
 auth_routes = Blueprint('auth', __name__)
 
+log = get_logger(__name__)
 
 def validation_errors_to_error_messages(validation_errors):
     """
@@ -43,7 +45,7 @@ def login():
     form = LoginForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
-    print("HI")
+    # log.debug("log route /login")
     form['csrf_token'].data = request.cookies['csrf_token']
     print("auth_route")
     if form.validate_on_submit():

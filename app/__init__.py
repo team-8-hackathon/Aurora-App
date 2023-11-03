@@ -1,4 +1,5 @@
 import os
+from .logger import get_logger
 from flask import Flask, request, session, redirect, send_from_directory
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
@@ -14,6 +15,8 @@ from .api.topic_routes import topic_routes
 from .api.blog_routes import blog_routes
 from .api.auth_routes import auth_routes
 
+log = get_logger(__name__)
+
 if os.environ.get('FLASK_ENV') == 'production':
     app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
 else:
@@ -25,7 +28,7 @@ app.debug = True
 # Include CSRF protection
 csrf = CSRFProtect(app)
 
-    
+
 # Setup login manager
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
@@ -67,6 +70,7 @@ def https_redirect():
 @app.after_request
 def inject_csrf_token(response):
     csrf_token = generate_csrf()
+    # log.debug(csrf_token)
     if os.environ.get('FLASK_ENV') == 'production':
         response.set_cookie(
             'csrf_token',
