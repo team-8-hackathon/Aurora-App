@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/session";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
