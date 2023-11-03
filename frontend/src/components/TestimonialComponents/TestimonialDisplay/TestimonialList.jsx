@@ -14,7 +14,7 @@ const TestimonialList = () => {
   useEffect(() => {
     dispatch(thunkGetAllTestimonials());
   }, [dispatch]);
-  
+
   if(!testimonials) return null;
 
     function detectMob() {

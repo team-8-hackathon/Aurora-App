@@ -15,7 +15,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 24px;
 }
 .top_signup_icon {
     width: 72px;
@@ -219,4 +218,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media(max-width: 1450px) {
+    .bot_signup, .top_signup {
+        width: 45em;
+        margin-bottom: 2em;
+    }
 }
