@@ -14,12 +14,12 @@ from .api.topic_routes import topic_routes
 from .api.blog_routes import blog_routes
 from .api.auth_routes import auth_routes
 
-# if os.environ.get('FLASK_ENV') == 'production':
-#     app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
-# else:
-#     app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+if os.environ.get('FLASK_ENV') == 'production':
+    app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
+else:
+    app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
     
-app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
+# app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
 
 # Setup login manager
 login = LoginManager(app)
@@ -114,3 +114,4 @@ def react_root(path):
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+
