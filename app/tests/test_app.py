@@ -11,8 +11,11 @@ else:
 login_data = dict(username="demolition", password="password", csrfmiddlewaretoken=csrftoken, next='/')
 
 #image used for testing purposes
-files = {'files': ('aurora.png', open('./aurora.png', 'rb'))}
-print(files['files'])
+files = {'thumbnail': ('ew1.png', open('./ew1.png', 'rb'), 'image/png')}
+
+headers = {
+    'Content-Type': 'multipart/form-data'  # Specify the content type
+}
 
 #Test that the api is callable with the /api/docs route
 def test_can_call_endpoint():
@@ -83,55 +86,76 @@ def get_topic_payload():
     }
 
 
-#################################Test Testimonials Functions###################################
-#helper to get testimonial payload
-def get_testimonial_payload():
+#################################Test Blog Functions###################################
+def test_get_blogs():
+    response = client.get(f'{ENDPOINT}/api/blogs')
+    assert response.status_code == 200
+    data = response.json()
+    assert 'blogs' in data
+
+#helper function to get a blog by id
+def get_blog(id):
+    return client.get(f'{ENDPOINT}/api/blogs/{id}')
+
+#helper function to get a blog payload
+def blog_payload():
     return {
-        'first_name': 'Emily',
-        'last_name': 'Morgan',
-        'stars': 4,
-        'body': 'test body',
-        'profile_pic': files
+        'thumbnail': files,
+        'title': "testing blog",
+        "body": "This is a test body",
+        "topic_id": 1
+    }
+def blog_payload_edited():
+    return {
+        'thumbnail': files,
+        'title': "edited testing blog",
+        "body": "edited This is a test body",
+        "topic_id": 2
     }
 
-#helper function to create a testimonial
-def create_testimonial(payload):
-    return client.post(f'{ENDPOINT}/api/testimonial/new', payload)
+#helper function to create a blog
+def create_blog(payload):
+    return client.post(f'{ENDPOINT}/api/blogs/create',files=files, data=payload)
 
-#helper function to get a testimonial by id
-def get_testimonial(id):
-    return client.get(f'{ENDPOINT}/api/testimonial/{id}')
+def test_create_blog():
+    payload = blog_payload()
+    response = create_blog(payload)
+    data = response.json()
+    assert 'id' in data
+    id = data['id']
+    res = get_blog(id)
+    assert res.status_code == 200
+    blog = res.json()
+    assert 'body' in blog
+    assert 'thumbnail' in blog
+    assert 'title' in blog
+    assert 'topic_id' in blog
 
-#test get all testimonials
-def test_get_testimonials():
-    response = client.get(f'{ENDPOINT}/api/testimonial')
-    assert response.status_code == 200
+    client.delete(f'{ENDPOINT}/api/blogs/{id}/delete')
 
-#test create a testimonial
-def test_create_testimonial():
-    payload = get_testimonial_payload()
-    response = create_testimonial(payload)
-    assert response.status_code == 201
+def test_delete_blog():
+    payload = blog_payload()
+    response = create_blog(payload)
     data = response.json()
     id = data['id']
-    response_after = get_testimonial(id)
-    assert response_after.status_code == 200
-    new_data = response_after.json()
-    first_name = payload['first_name']
-    last_name = payload['last_name']
-    assert new_data['first_name'] == first_name
-    assert new_data['last_name'] == f'{last_name[0]}.'
-    client.delete(f'{ENDPOINT}/api/testimonial/{id}/delete')
+    delete_response = client.delete(f'{ENDPOINT}/api/blogs/{id}/delete')
+    assert delete_response.status_code == 200
+    data = delete_response.json()
+    assert 'message' in data
+    response = get_blog(id)
+    assert response.status_code == 404
 
 
-#test delete a testimonial
-def test_delete_testimonial():
-    payload = get_testimonial_payload()
-    response = create_testimonial(payload)
+def test_edit_blog():
+    payload = blog_payload()
+    response = create_blog(payload)
     data = response.json()
     id = data['id']
-    print('Data', data)
-    response = client.delete(f'{ENDPOINT}/api/testimonial/{id}/delete')
-    assert response.status_code == 200
-    response2 = get_testimonial(id)
-    assert response2.status_code == 404
+    edited_payload = blog_payload_edited()
+    edit_response = client.put(f'{ENDPOINT}/api/blogs/{id}/edit', edited_payload)
+    edited_data = edit_response.json()
+    assert edited_data['title'] == edited_payload['title']
+    assert edited_data['body'] == edited_payload['body']
+    assert edited_data['topic_id'] == edited_payload['topic_id']
+    client.delete(f'{ENDPOINT}/api/blogs/{id}/delete')
+
