@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - test
+      - dev
 
 name: Build & Deploy (Docker)
 
