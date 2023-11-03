@@ -72,7 +72,7 @@ def inject_csrf_token(response):
             'csrf_token',
             csrf_token,
             secure=True,
-            samesite='none',
+            samesite='Strict', ##
             httponly=True
         )
     else:
