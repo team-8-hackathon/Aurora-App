@@ -3,6 +3,7 @@ import requests
 ENDPOINT = 'http://localhost:5000/'
 client = requests.session()
 client.get(f'{ENDPOINT}/api/docs')
+print(client.cookies['csrf_token'])
 if 'csrftoken' in client.cookies:
     csrftoken = client.cookies['csrftoken']
 else:
@@ -23,7 +24,7 @@ def test_can_call_endpoint():
     assert response.status_code == 200
 
 
-#################################Test auth functions:#################################################
+# #################################Test auth functions:#################################################
 def test_logout():
     #Start test suite logged out
     
@@ -159,3 +160,10 @@ def test_edit_blog():
     assert edited_data['topic_id'] == edited_payload['topic_id']
     client.delete(f'{ENDPOINT}/api/blogs/{id}/delete')
 
+###############################Test Splash Page Routes ###############
+
+def test_get_all_splash():
+    response = requests.get(f'{ENDPOINT}/api/splash/')
+    assert response.status_code == 200
+    data = response.json()
+    assert 'paragraphs' in data
