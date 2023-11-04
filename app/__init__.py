@@ -13,6 +13,7 @@ from .api.subs_routes import subs_routes
 from .api.topic_routes import topic_routes
 from .api.blog_routes import blog_routes
 from .api.auth_routes import auth_routes
+from .api.splash_routes import splash_routes
 
 if os.environ.get('FLASK_ENV') == 'production':
     app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
@@ -37,6 +38,7 @@ app.register_blueprint(topic_routes, url_prefix='/api/topics')
 app.register_blueprint(blog_routes, url_prefix='/api/blogs')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(subs_routes, url_prefix='/api/subs')
+app.register_blueprint(splash_routes, url_prefix='/api/splash')
 
 
 db.init_app(app)
