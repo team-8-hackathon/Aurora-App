@@ -22,6 +22,7 @@ import SubsList from "./components/Admin/subs_list"
 import AdminInfo from "./components/Admin/AdminInfo";
 import TestimonialDisplay from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList"
 import NotFoundPage from "./components/UtilityComponents/404Page";
+import LoginModal from "./components/auth/LoginModal";
 
 
 
@@ -43,6 +44,9 @@ function App() {
             <Footer />
           </Route>
           {/* Password protected admin routes */}
+          <Route path='/login'>
+            <LoginModal />
+          </Route>
           <Route path="/admin">
             <ProtectedRoute>
               <AdminNavBar />

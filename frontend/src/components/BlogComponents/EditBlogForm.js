@@ -108,7 +108,7 @@ const EditBlogForm = () => {
 
                 <label htmlFor="topic">Topic</label>
                 {hasSubmitted && errors.topic && <p className="errors">{errors.topic}</p>}
-                <select defaultValue={oldTopic} onChange={e => setTopic(e.target.value)}>
+                <select defaultValue={oldTopic.id} onChange={e => setTopic(e.target.value)}>
                     <option id="select-topic" >Select a Topic...</option>
                     {topics.map(currTopic => (
                         <option key={currTopic.id} value={currTopic.id} >{currTopic.topic}</option>

@@ -13,12 +13,15 @@ from .api.subs_routes import subs_routes
 from .api.topic_routes import topic_routes
 from .api.blog_routes import blog_routes
 from .api.auth_routes import auth_routes
+from .api.splash_routes import splash_routes
 
-if os.environ.get('FLASK_ENV') == 'production':
-    app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
-else:
-    app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+# if os.environ.get('FLASK_ENV') == 'production':
+#     app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
+# else:
+#     app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
     
+app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
+
 # Setup login manager
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
@@ -37,6 +40,7 @@ app.register_blueprint(topic_routes, url_prefix='/api/topics')
 app.register_blueprint(blog_routes, url_prefix='/api/blogs')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(subs_routes, url_prefix='/api/subs')
+app.register_blueprint(splash_routes, url_prefix='/api/splash')
 
 
 db.init_app(app)
@@ -81,25 +85,33 @@ def api_help():
 
 
 
+# @app.route('/', defaults={'path': ''})
+# @app.route('/<path:path>')
+# def react_root(path):
+
+#     if path == 'favicon.ico':
+#         return send_from_directory(app.static_folder, 'favicon.ico')
+
+
+#     elif path.startswith('static/'):
+#         return send_from_directory(app.static_folder, path)
+
+
+#     else:
+#         return send_from_directory(app.static_folder, 'index.html')
+
+
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
-
-    separated_path = path.split('/')[-1]
-
-
-    print("********************************", separated_path)
+    """
+    This route will direct to the public directory in our
+    react builds in the production environment for favicon
+    or index.html requests
+    """
     if path == 'favicon.ico':
-        return send_from_directory(app.static_folder, 'favicon.ico')
-
-
-    elif path.startswith('static/'):
-        return send_from_directory(app.static_folder, path)
-
-
-    else:
-        return send_from_directory(app.static_folder, 'index.html')
-
+        return app.send_from_directory('build', 'favicon.ico')
+    return app.send_static_file('index.html')
 
 @app.errorhandler(404)
 def not_found(e):
