@@ -25,7 +25,7 @@ LIST_ID = os.environ.get("LIST_ID")
 def get_all_subs():
     # selected_key = random.choice(api_keys)
     API_KEY = os.environ.get('MC_KEY')
-    Subs = get_subscribers(API_KEY, SERVER_PREFIX, LIST_ID);
+    Subs = get_subscribers(API_KEY, SERVER_PREFIX, LIST_ID)
     return Subs
 
 #Delete a subscriber
