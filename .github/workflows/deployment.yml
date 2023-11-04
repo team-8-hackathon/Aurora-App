@@ -69,6 +69,33 @@ jobs:
             echo "DATABASE_ENV_VAR is set!"
         fi
 
+    - name: Check if MC_KEY is set
+      run: |
+        if [[ -z "${{ secrets.MC_KEY }}" ]]; then
+          echo "MC_KEY is not set!"
+          exit 1
+        else
+          echo "MC_KEY is set!"
+        fi
+
+    - name: Check if SERVER_PREFIX is set
+      run: |
+        if [[ -z "${{ secrets.SERVER_PREFIX }}" ]]; then
+          echo "SERVER_PREFIX is not set!"
+          exit 1
+        else
+          echo "SERVER_PREFIX is set!"
+        fi
+
+    - name: Check if LIST_ID is set
+      run: |
+        if [[ -z "${{ secrets.LIST_ID }}" ]]; then
+          echo "LIST_ID is not set!"
+          exit 1
+        else
+          echo "LIST_ID is set!"
+        fi
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -114,6 +141,10 @@ jobs:
         MC_KEY: ${{ secrets.MC_KEY }}
         SERVER_PREFIX: ${{ secrets.SERVER_PREFIX }}
         LIST_ID: ${{ secrets.LIST_ID }}
+        S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        S3_SECRET: ${{ secrets.S3_SECRET }}
+        S3_KEY: ${{ secrets.S3_KEY }}
+
       run: |
 
 
@@ -124,4 +155,4 @@ jobs:
         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
         
         
-        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} "export PRIVATE_KEY=\"${{ secrets.SSH_CICD_PRIVATE_KEY }}\" && export ECR_REGISTRY=\"${{ steps.login-ecr.outputs.registry }}\" && export MC_KEY=\"${{ secrets.MC_KEY }}\" && export SERVER_PREFIX=\"${{ secrets.SERVER_PREFIX }}\" && export LIST_ID=\"${{ secrets.LIST_ID }}\" && export GITSHA=\"${{ steps.build-image.outputs.github_sha }}\" && export DATABASE_URL=\"${{ secrets.DATABASE_ENV_VAR }}\" && export SECRET_KEY=\"${{ secrets.SECRET_ENV_VAR }}\" && (docker stop hackathon_app || exit 0) && (docker rm hackathon_app || exit 0) && docker pull ${ECR_REGISTRY}/beta8:${GITSHA} && cd /tmp && docker-compose up -d && docker exec -i hackathon_app /bin/bash -c 'flask db upgrade && flask seed all'"
+        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} "export PRIVATE_KEY=\"${{ secrets.SSH_CICD_PRIVATE_KEY }}\" && export ECR_REGISTRY=\"${{ steps.login-ecr.outputs.registry }}\" && export S3_BUCKET=\"${{ secrets.S3_BUCKET }}\" && export S3_SECRET=\"${{ secrets.S3_SECRET }}\" && export S3_KEY=\"${{ secrets.S3_KEY }}\" && export MC_KEY=\"${{ secrets.MC_KEY }}\" && export SERVER_PREFIX=\"${{ secrets.SERVER_PREFIX }}\" && export LIST_ID=\"${{ secrets.LIST_ID }}\" && export GITSHA=\"${{ steps.build-image.outputs.github_sha }}\" && export DATABASE_URL=\"${{ secrets.DATABASE_ENV_VAR }}\" && export SECRET_KEY=\"${{ secrets.SECRET_ENV_VAR }}\" && (docker stop hackathon_app || exit 0) && (docker rm hackathon_app || exit 0) && docker pull ${ECR_REGISTRY}/beta8:${GITSHA} && cd /tmp && docker-compose up -d && docker exec -i hackathon_app /bin/bash -c 'flask db upgrade && flask seed all'"
