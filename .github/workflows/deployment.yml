@@ -113,7 +113,6 @@ jobs:
         DATABASE_URL: ${{ secrets.DATABASE_ENV_VAR }}
       run: |
 
-
         echo "$PRIVATE_KEY" > private_key.pem 
 
         chmod 600 private_key.pem

@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 
-import TestimonialForm from "./components/TestimonialComponents/TestimonialForms/Testimonial_form";
-import TestimonialIndex from "./components/TestimonialComponents/TestimonialIndex";
+// import TestimonialForm from "./components/TestimonialComponents/TestimonialForms/Testimonial_form";
+// import TestimonialIndex from "./components/TestimonialComponents/TestimonialIndex";
 import SplashPage from "./components/SplashPage/SplashPage"
 import SplashNavBar from "./components/Navbar/SplashNavBar";
 import Footer from "./components/Footer/footer";
@@ -20,7 +20,7 @@ import TopicForm from "./components/Topics/TopicForm"
 import AdminBlogs from "./components/Admin/blog_index"
 import SubsList from "./components/Admin/subs_list"
 import AdminInfo from "./components/Admin/AdminInfo";
-import TestimonialDisplay from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList"
+// import TestimonialDisplay from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList"
 import NotFoundPage from "./components/UtilityComponents/404Page";
 import LoginModal from "./components/auth/LoginModal";
 
@@ -73,7 +73,7 @@ function App() {
                   <SubsList />
                 </Route>
                 <Route exact path="/admin/testimonials">
-                  <TestimonialIndex />
+                  {/* <TestimonialIndex /> */}
                 </Route>
                 <Route exact path="/admin/admin-info">
                   <AdminInfo />
@@ -92,10 +92,10 @@ function App() {
                 <BrowseBlogs />
               </Route>
               <Route path="/testimonials/new">
-                <TestimonialForm />
+                {/* <TestimonialForm /> */}
               </Route>
               <Route path="/testimonials/list">
-                <TestimonialDisplay/>
+                {/* <TestimonialDisplay/> */}
               </Route>
               <Route>
                 <NotFoundPage />
