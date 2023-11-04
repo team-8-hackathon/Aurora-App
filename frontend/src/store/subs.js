@@ -22,14 +22,14 @@ const actionGetAllSubs = (subs) => ({
       return error;
     }
   };
-  
+
   export const thunkDeleteSub = (id) => async (dispatch) => {
     const response = await fetch(`/api/subs/${id}/delete`, {
         method: "DELETE"
     })
 
     if (response.ok) {
-        dispatch(thunkGetAllSubs());  
+        dispatch(thunkGetAllSubs());
         return { success: true };
     } else {
         const errors = await response.json();
@@ -44,7 +44,7 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_ALL_SUBS:
             return { ...state, subs: action.subs }
-        
+
         default:
             return state;
     }

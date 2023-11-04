@@ -13,11 +13,13 @@ const SplashPage = () => {
     const allParagraphs = useSelector(state => state.splashpage)
     const allParagraphsArr = Object.values(allParagraphs)
 
+    // console.log('Paragraphs Array', allParagraphsArr[0])
+
     useEffect(() => {
         dispatch(thunkGetAllParagraphs())
     }, [dispatch])
 
-    if (!allParagraphs) return <h1>Loading...</h1>;
+    if (!allParagraphsArr.length) return <h1>Loading...</h1>;
 
     const scrollToTarget = () => {
         const targetElement = document.getElementById('splash-page-top-signup');
@@ -32,8 +34,8 @@ const SplashPage = () => {
                         <img src={`${process.env.PUBLIC_URL}/images/icon+wordmark.png`} alt="Company Logo" className="splash-page-nav-logo" />
                     </Link>
                     <div className='top-section-about-aurora'>
-                        <p className='aurora-caption'>Feel better with Aurora</p>
-                        <p className='aurora-intro'>Aurora is an AI emotional wellness companion offering a unique blend of personalized support through conversation, mood tracking, and mindset tools, all in a safe space for self-exploration and growth</p>
+                        <p className='aurora-caption'>{allParagraphsArr[0].header}</p>
+                        <p className='aurora-intro'>{allParagraphsArr[0].paragraph}</p>
                         <button className='learn-more-button' onClick={scrollToTarget}>Learn more</button>
                     </div>
                 </div>
