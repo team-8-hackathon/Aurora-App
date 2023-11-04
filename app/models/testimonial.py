@@ -16,6 +16,7 @@ class Testimonial(db.Model):
     last_name = db.Column(db.String(200), nullable=False)
     stars = db.Column(db.Integer, nullable=False)
     body = db.Column(db.String(1000), nullable=False)
+    favorited = db.Column(db.Boolean, default=False)
 
     created_at = db.Column(db.DateTime, default=datetime.now)
 
@@ -35,5 +36,6 @@ class Testimonial(db.Model):
             'last_name': self.last_name[0].upper() + '.',
             'stars': self.stars,
             'body': self.body,
+            'favorited': self.favorited,
             'created_at': self.created_at,
         }
