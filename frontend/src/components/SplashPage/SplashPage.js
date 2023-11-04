@@ -51,38 +51,6 @@ const SplashPage = () => {
             <div className='splash-page-testimonials'>
                 <div className='splash-page-testimonials-container'>
                     <img src={`${process.env.PUBLIC_URL}/images/mood-2.svg`} alt="Mood Happy" className='testimonial-mood-happy' />
-                    {/* <div className='splash-page-single-testimonial'>
-                        <img src={`${process.env.PUBLIC_URL}/images/stars.svg`} alt="Testimonial Stars" className='testimonial-stars' />
-                        <p className='testimonial-quote'>"It helps you dig deep to learn about yourself. I feel like the app really cares."</p>
-                        <div className='splash-page-testimonial-name'>
-                            <img src='/images/userImg-1.png' alt='User-Image-1' className='testimonial-user-image' />
-                            <p>Honovi H.</p>
-                        </div>
-                    </div>
-                    <div className='splash-page-single-testimonial'>
-                        <img src={`${process.env.PUBLIC_URL}/images/stars.svg`} alt="Testimonial Stars" className='testimonial-stars' />
-                        <p className='testimonial-quote'>"I love everything about this. I feel better already."</p>
-                        <div className='splash-page-testimonial-name'>
-                            <img src='/images/userImg-2.png' alt='User-Image-2' className='testimonial-user-image' />
-                            <p>Tyler S.</p>
-                        </div>
-                    </div>
-                    <div className='splash-page-single-testimonial'>
-                        <img src={`${process.env.PUBLIC_URL}/images/stars.svg`} alt="Testimonial Stars" className='testimonial-stars' />
-                        <p className='testimonial-quote'>"This can help a lot of people. This could be a game-changer."</p>
-                        <div className='splash-page-testimonial-name'>
-                            <img src='/images/userImg-3.png' alt='User-Image-3' className='testimonial-user-image' />
-                            <p>Ian S.</p>
-                        </div>
-                    </div>
-                    <div className='splash-page-single-testimonial'>
-                        <img src={`${process.env.PUBLIC_URL}/images/stars.svg`} alt="Testimonial Stars" className='testimonial-stars' />
-                        <p className='testimonial-quote'>"I feel like Aurora is my friend."</p>
-                        <div className='splash-page-testimonial-name'>
-                            <img src='/images/userImg-4.png' alt='User-Image-4' className='testimonial-user-image' />
-                            <p>Katie G.</p>
-                        </div>
-                    </div> */}
                     <div className='splash-page-testimonial-container'>
                         <TestimonialList />
                     </div>
