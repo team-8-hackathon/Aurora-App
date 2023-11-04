@@ -14,12 +14,16 @@ export const thunkGetAllParagraphs = () => async dispatch => {
     }
 }
 
-const initialState = { paragraphs: null }
+
+const initialState = {}
 
 export default function reducer(state = initialState, action) {
+    let newState;
     switch (action.type) {
-        case GET_ALL_SPLASH_PAGE_PARAGRAPHS:
-            return { ...state, paragraphs: action.paragraphs }
+        case GET_ALL_SPLASH_PAGE_PARAGRAPHS: {
+            newState =  { ...action.paragraphs }
+            return newState
+        }
         default:
             return state;
     }

@@ -6,17 +6,18 @@ import BotSignup from '../Signups/bot_signup';
 import TestimonialList from '../TestimonialComponents/TestimonialDisplay/TestimonialList';
 import { thunkGetAllParagraphs } from '../../store/splashpage';
 import './SplashPage.css';
+import { param } from 'jquery';
 
 const SplashPage = () => {
     const dispatch = useDispatch()
-    const allParagraphs = useSelector(state => state.splashpage.paragraphs)
-
-    console.log('ALL PARAGRAPHS', allParagraphs)
+    const allParagraphs = useSelector(state => state.splashpage)
+    const allParagraphsArr = Object.values(allParagraphs)
 
     useEffect(() => {
         dispatch(thunkGetAllParagraphs())
     }, [dispatch])
 
+    if (!allParagraphs) return <h1>Loading...</h1>;
 
     const scrollToTarget = () => {
         const targetElement = document.getElementById('splash-page-top-signup');
@@ -31,9 +32,6 @@ const SplashPage = () => {
                         <img src={`${process.env.PUBLIC_URL}/images/icon+wordmark.png`} alt="Company Logo" className="splash-page-nav-logo" />
                     </Link>
                     <div className='top-section-about-aurora'>
-                        {/* {allParagraphsArr.map((paragraph) => (
-
-                        ))} */}
                         <p className='aurora-caption'>Feel better with Aurora</p>
                         <p className='aurora-intro'>Aurora is an AI emotional wellness companion offering a unique blend of personalized support through conversation, mood tracking, and mindset tools, all in a safe space for self-exploration and growth</p>
                         <button className='learn-more-button' onClick={scrollToTarget}>Learn more</button>
