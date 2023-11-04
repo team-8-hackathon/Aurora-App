@@ -106,10 +106,10 @@ jobs:
         PRIVATE_KEY: ${{ secrets.SSH_CICD_PRIVATE_KEY }}
         HOSTNAME: ${{ secrets.HOSTNAME }}
         USER_NAME: ${{ secrets.USERNAME }}
-        ECR_REGISTRY_NEW: ${{ steps.login-ecr.outputs.registry }}
-        SHA_REPLACEMENT: ${{ steps.build-image.outputs.github_sha }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        GITSHA: ${{ steps.build-image.outputs.github_sha }}
+        SECRET_KEY: ${{ secrets.SECRET_ENV_VAR }}
+        DATABASE_URL: ${{ secrets.DATABASE_ENV_VAR }}
       run: |
 
 
@@ -117,30 +117,7 @@ jobs:
 
         chmod 600 private_key.pem
         
-
-        sed -i -e 's/GITHUB_SHA/'"$SHA_REPLACEMENT"'/' ${{ github.workspace }}/docker-compose.yml
-
-        
-
-        sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY_NEW"'/' ${{ github.workspace }}/docker-compose.yml
-
-        sed -i -e 's/SECRET_ENV_VAR/'"$SECRET_KEY"'/' docker-compose.yml
-
-        sed -i -e 's/DATABASE_ENV_VAR/'"$DATABASE_URL"'/' docker-compose.yml
-
-        
         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
         
         
-        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} cd /tmp && docker-compose up -d
-
-        #ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} 
-        
-        #cd /tmp
-        
-
-        #docker-compose -p backend-flask up -d
-        
-
-
-# ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} cd /tmp && docker-compose -p backend-flask up -d
+        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} "export PRIVATE_KEY=\"${{ secrets.SSH_CICD_PRIVATE_KEY }}\" && export ECR_REGISTRY=\"${{ steps.login-ecr.outputs.registry }}\" && export GITSHA=\"${{ steps.build-image.outputs.github_sha }}\" && export DATABASE_URL=\"${{ secrets.DATABASE_ENV_VAR }}\" && export SECRET_KEY=\"${{ secrets.SECRET_ENV_VAR }}\" && (docker stop hackathon_app || exit 0) && (docker rm hackathon_app || exit 0) && docker pull ${ECR_REGISTRY}/beta8:${GITSHA} && cd /tmp && docker-compose up -d && docker exec -i hackathon_app /bin/bash -c 'flask db upgrade && flask seed all'"
