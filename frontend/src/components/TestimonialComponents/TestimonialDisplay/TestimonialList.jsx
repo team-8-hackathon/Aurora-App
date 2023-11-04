@@ -9,7 +9,9 @@ import "./display.css";
 
 const TestimonialList = () => {
   const dispatch = useDispatch();
-  const testimonials = useSelector((state) => state.testimonial.allTestimonials);
+  let testimonials = useSelector((state) => state.testimonial.allTestimonials);
+
+  testimonials = testimonials?.filter(test => test.favorited)
 
   useEffect(() => {
     dispatch(thunkGetAllTestimonials());
