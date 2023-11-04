@@ -13,5 +13,4 @@ def get_all_splash():
     """
     splashes = SplashParagraph.query.all()
 
-    return {'paragraphs': [splash.to_dict() for splash in splashes]}
-
+    return [splash.to_dict() for splash in splashes]

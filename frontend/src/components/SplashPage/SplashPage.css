@@ -155,15 +155,16 @@ margin-top: -5em;
 
 .screen-content {
     font-size: 2.5em;
-    width: 45%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    gap: 1rem
 }
 
-.screen-content-text {
-    width: 120%
+.screen-content-paragraph {
+    font-size: 20px;
 }
 
 .screens-mood {
@@ -198,6 +199,7 @@ margin-top: -5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 2em;
     width: 40%;
 }
 

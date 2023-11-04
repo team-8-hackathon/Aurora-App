@@ -13,7 +13,7 @@ const SplashPage = () => {
     const allParagraphs = useSelector(state => state.splashpage)
     const allParagraphsArr = Object.values(allParagraphs)
 
-    // console.log('Paragraphs Array', allParagraphsArr[0])
+    console.log('Paragraphs Array', allParagraphsArr)
 
     useEffect(() => {
         dispatch(thunkGetAllParagraphs())
@@ -76,13 +76,15 @@ const SplashPage = () => {
                     <img src='/images/screen1.png' alt='Screen 1' className='splash-page-screen-photo' />
                     <div className='screen-content'>
                         <img src={`${process.env.PUBLIC_URL}/images/mood-joy.svg`} alt="Mood Joy" className='screens-mood' />
-                        <p className='screen-content-text'>Get tailored support based on what's important to you.</p>
+                        <div className='screen-content-text'>{allParagraphsArr[2].header}</div>
+                        <div className='screen-content-paragraph'>{allParagraphsArr[2].paragraph}</div>
                     </div>
                 </div>
                 <div className='splash-page-screen-content-container'>
                     <div className='screen-content'>
                         <img src={`${process.env.PUBLIC_URL}/images/mood-afraid.svg`} alt="Mood Afraid" className='screens-mood' />
-                        <p className='screen-content-text'>Learn to identify and name emotions for improved self-awareness.</p>
+                        <div className='screen-content-text'>{allParagraphsArr[3].header}</div>
+                        <div className='screen-content-paragraph'>{allParagraphsArr[3].paragraph}</div>
                     </div>
                     <img src='/images/screen2.png' alt='Screen 2' className='splash-page-screen-photo' />
                 </div>
@@ -90,19 +92,16 @@ const SplashPage = () => {
                     <img src='/images/screen3.png' alt='Screen 3' className='splash-page-screen-photo' />
                     <div className='screen-content'>
                         <img src={`${process.env.PUBLIC_URL}/images/mood-sad.svg`} alt="Mood Sad" className='screens-mood' />
-                        <p className='screen-content-text'>Need someone to talk to? Chat with Aurora anytime, anywhere.</p>
+                        <div className='screen-content-text'>{allParagraphsArr[4].header}</div>
+                        <div className='screen-content-paragraph'>{allParagraphsArr[4].paragraph}</div>
                     </div>
                 </div>
             </div>
             <div className='splash-page-meet-the-founder-container'>
                 <img src='/images/christinaImg.png' alt='Founder Image' className='founder-image' />
                 <div className='meet-the-founder-content'>
-                    <p className='meet-the-founder-header'>Meet the Founder</p>
-                    <p className='meet-the-founder-paragraph'>Hi there! I'm Christina, a product designer with a passion for personal growth and mental well-being.
-                    </p>
-                    <p className='meet-the-founder-paragraph'>
-                        I believe everyone should have access to knowledge and tools that lead to joy and fufillment in life. And that's the heart behind Aurora. I hope you lover her as much as I do 💛.
-                    </p>
+                    <div className='meet-the-founder-header'>{allParagraphsArr[1].header}</div>
+                    <div className='meet-the-founder-paragraph'>{allParagraphsArr[1].paragraph}</div>
                 </div>
             </div>
             <div id="splash-page-bottom-signup">
