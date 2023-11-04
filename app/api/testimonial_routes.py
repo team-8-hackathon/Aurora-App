@@ -29,12 +29,14 @@ def create_testimonial():
   Create a new testimonial
   """
   form = TestimonialForm()
+  print('------------------dataform:',form.data)
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     first_name = form.data['first_name']
     last_name = form.data['last_name']
     stars = form.data['stars']
     body = form.data['body']
+    favorited = form.data['favorited']
     if form.data['profile_pic']:
       profile_pic = form.data['profile_pic']
       profile_pic.filename = get_unique_filename(profile_pic.filename)
@@ -43,17 +45,17 @@ def create_testimonial():
          return {"errors": upload}
       url = str(upload['url'])
 
-      testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body, profile_pic=url)
+      testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body, profile_pic=url, favorited=favorited)
       db.session.add(testimonial)
       db.session.commit()
       return testimonial.to_dict(), 201
-    testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body)
+    testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body, favorited=favorited)
     db.session.add(testimonial)
     db.session.commit()
     return testimonial.to_dict(), 201
     # return testimonial.to_dict(), 201
 
-  return {"ERRORS ": validation_errors_to_error_messages(form.errors)}, 401
+  return {"ERRORS Tester ": validation_errors_to_error_messages(form.errors)}, 401
 
 
 @testimonial_routes.route('/<int:id>/edit', methods=["PUT"])
@@ -62,15 +64,19 @@ def edit_testimonial(id):
    """
    Edit a testimonial by its id
    """
-
+   print('---------------route before')
    testimonial = Testimonial.query.get(id)
+   print('---------------route after')
    if not testimonial:
       return {'errors': 'Testimonial not found'}, 404
    
    form = EditTestimonial()
-
-   if(testimonial.validate_on_submit()):
-      testimonial.favorite = form.data['favorite']
+   form['csrf_token'].data = request.cookies['csrf_token']
+   print('-----------------favorited before :')
+   if(form.validate_on_submit()):
+      favorited = form.data['favorited']
+      print('-----------------favorited:',favorited)
+      testimonial.favorited = favorited
       db.session.commit()
       return testimonial.to_dict(), 201
    

@@ -72,10 +72,18 @@ border-radius: 10px;
   gap: 0.4rem;
 }
 
-/* .star {
-  height: 30px;
-  width: 30px;
-} */
+.heart-btn {
+  height: 25px;
+  width: 25px;
+
+}
+.heart-filled {
+  color: red;
+}
+
+.heart-btn:hover {
+  cursor: pointer;
+}
 
 .testimonial-body {
   font-size: 20px;
@@ -95,7 +103,7 @@ border-radius: 10px;
   height: 4rem;
   margin-left: -70px;
 }
-.scribble-box{
+.scribble-box {
   z-index: 10;
   position: relative;
 }
@@ -116,23 +124,9 @@ border-radius: 10px;
 
 .swiper-slide {
   display: flex;
-  gap: 0rem
+  gap: 0rem;
 }
 
-.swiper-wrapper {
-}
-.swiper-initialized {
-}
-.swiper-horizontal {
-}
-
-.swiper-button-prev {
-  /* position: absolute; */
-  /* left: 2em; */
-}
-
-.swiper-button-next {
-}
 /* Add space between Swiper slides */
 .swiper-slide {
   margin-right: 10px; /* Adjust the value to control the spacing */
