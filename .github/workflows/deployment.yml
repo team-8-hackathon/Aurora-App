@@ -111,6 +111,9 @@ jobs:
         GITSHA: ${{ steps.build-image.outputs.github_sha }}
         SECRET_KEY: ${{ secrets.SECRET_ENV_VAR }}
         DATABASE_URL: ${{ secrets.DATABASE_ENV_VAR }}
+        MC_KEY: ${{ secrets.MC_KEY }}
+        SERVER_PREFIX: ${{ secrets.SERVER_PREFIX }}
+        LIST_ID: ${{ secrets.LIST_ID }}
       run: |
 
 
@@ -121,4 +124,4 @@ jobs:
         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
         
         
-        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} "export PRIVATE_KEY=\"${{ secrets.SSH_CICD_PRIVATE_KEY }}\" && export ECR_REGISTRY=\"${{ steps.login-ecr.outputs.registry }}\" && export GITSHA=\"${{ steps.build-image.outputs.github_sha }}\" && export DATABASE_URL=\"${{ secrets.DATABASE_ENV_VAR }}\" && export SECRET_KEY=\"${{ secrets.SECRET_ENV_VAR }}\" && (docker stop hackathon_app || exit 0) && (docker rm hackathon_app || exit 0) && docker pull ${ECR_REGISTRY}/beta8:${GITSHA} && cd /tmp && docker-compose up -d && docker exec -i hackathon_app /bin/bash -c 'flask db upgrade && flask seed all'"
+        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} "export PRIVATE_KEY=\"${{ secrets.SSH_CICD_PRIVATE_KEY }}\" && export ECR_REGISTRY=\"${{ steps.login-ecr.outputs.registry }}\" && export MC_KEY=\"${{ secrets.MC_KEY }}\" && export SERVER_PREFIX=\"${{ secrets.SERVER_PREFIX }}\" && export LIST_ID=\"${{ secrets.LIST_ID }}\" && export GITSHA=\"${{ steps.build-image.outputs.github_sha }}\" && export DATABASE_URL=\"${{ secrets.DATABASE_ENV_VAR }}\" && export SECRET_KEY=\"${{ secrets.SECRET_ENV_VAR }}\" && (docker stop hackathon_app || exit 0) && (docker rm hackathon_app || exit 0) && docker pull ${ECR_REGISTRY}/beta8:${GITSHA} && cd /tmp && docker-compose up -d && docker exec -i hackathon_app /bin/bash -c 'flask db upgrade && flask seed all'"
