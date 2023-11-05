@@ -52,7 +52,7 @@ const BlogForm = () => {
         if (!title || !title.length) validationErrors.title = "Blog title is required"
         if (!thumbnail) validationErrors.thumbnail = "Blog thumbnail is required"
         if (!body || !body.length) validationErrors.body = "Blog body is required"
-        if (!topic || !topic.length) validationErrors.topic = "Blog Topic is required"
+        if (!topic || !topic.length) validationErrors.topic = "Blog topic is required"
 
         setErrors(validationErrors)
     }, [title, thumbnail, body, topic])
