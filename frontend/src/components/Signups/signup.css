@@ -8,7 +8,6 @@
     gap: 48px;
     border-radius: 16px;
     background: var(--color-brand-sky, #B1CBE2);
-
 }
 .top_signup_box1 {
     display: flex;
@@ -223,4 +222,9 @@
         width: 45em;
         margin-bottom: 2em;
     }
+}
+
+.topContent input:focus,
+.bottomContent input:focus {
+    outline: none;
 }

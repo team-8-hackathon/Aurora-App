@@ -8,8 +8,10 @@
     gap: 1rem;
 }
 
-.blog-body p {
-    font-weight: normal !important;
+.blog-body p,
+.blog-body {
+    font-weight:  300 !important;
+    font-size: 18px !important;
 }
 
 .blog-body h2 {
