@@ -22,10 +22,16 @@ const BlogForm = () => {
     const [body, setBody] = useState('')
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [errors, setErrors] = useState({})
+    const [previewImage, setPreviewImage] = useState()
     const topics = useSelector(state => state.topic.topics)
 
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const getFile = (e) => {
+        setPreviewImage(URL.createObjectURL(e.target.files[0]))
+        setThumbnail(e.target.files[0])
+    }
 
     const editor = useEditor({
         extensions: [StarterKit, Underline, Image, Highlight, TextAlign.configure({
@@ -46,7 +52,7 @@ const BlogForm = () => {
         if (!title || !title.length) validationErrors.title = "Blog title is required"
         if (!thumbnail) validationErrors.thumbnail = "Blog thumbnail is required"
         if (!body || !body.length) validationErrors.body = "Blog body is required"
-        if (!topic || !topic.length) validationErrors.topic = "Blog Topic is required"
+        if (!topic || !topic.length) validationErrors.topic = "Blog topic is required"
 
         setErrors(validationErrors)
     }, [title, thumbnail, body, topic])
@@ -99,7 +105,8 @@ const BlogForm = () => {
 
                 <label className="file-upload">
                 {hasSubmitted && errors.thumbnail && <p className="errors">{errors.thumbnail}</p>}
-                <input id="file-upload" name="thumbnail" type='file' accept='image/*' onChange={e => setThumbnail(e.target.files[0])} /><AiFillFileImage style={{'color': '#00283d', 'fontSize': '1.5rem'}} />&nbsp;&nbsp;{!thumbnail && <p>Add thumbnail</p>}{thumbnail && <p>{thumbnail.name}</p>}</label>
+                <input id="file-upload" name="thumbnail" type='file' accept='image/*' onChange={getFile} /><AiFillFileImage style={{'color': '#00283d', 'fontSize': '1.5rem'}} />&nbsp;&nbsp;{!thumbnail && <p>Add thumbnail</p>}{thumbnail && <p>{thumbnail.name}</p>}</label>
+                {previewImage && <img className="blog-preview-image" src={previewImage} alt='thumbnail'/>}
 
                 {hasSubmitted && errors.body && <p className="errors">{errors.body}</p>}
                 <div className="text-editor-container">

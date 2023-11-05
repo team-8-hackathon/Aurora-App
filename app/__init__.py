@@ -13,13 +13,12 @@ from .api.subs_routes import subs_routes
 from .api.topic_routes import topic_routes
 from .api.blog_routes import blog_routes
 from .api.auth_routes import auth_routes
+from .api.splash_routes import splash_routes
 
-# if os.environ.get('FLASK_ENV') == 'production':
-#     app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
-# else:
-#     app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
-    
-app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
+if os.environ.get('FLASK_ENV') == 'production':
+    app = Flask(__name__, static_folder='/var/www/app/static', static_url_path='')
+else:
+    app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
 # Setup login manager
 login = LoginManager(app)
@@ -39,6 +38,7 @@ app.register_blueprint(topic_routes, url_prefix='/api/topics')
 app.register_blueprint(blog_routes, url_prefix='/api/blogs')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(subs_routes, url_prefix='/api/subs')
+app.register_blueprint(splash_routes, url_prefix='/api/splash')
 
 
 db.init_app(app)
@@ -63,7 +63,7 @@ def inject_csrf_token(response):
     response.set_cookie(
         'csrf_token',
         generate_csrf(),
-        secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
+        secure=False if os.environ.get('FLASK_ENV') == 'production' else False,
         samesite='Strict' if os.environ.get(
             'FLASK_ENV') == 'production' else None,
         httponly=True)
@@ -114,3 +114,4 @@ def react_root(path):
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+

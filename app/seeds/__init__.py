@@ -4,6 +4,7 @@ from .admin import seed_admin, unseed_admin
 from .topic import seed_topics, unseed_topics
 from .blog import seed_blog, unseed_blog
 from .testimonial import seed_testimonials, unseed_testimonials
+from .splashparagraph import seed_splashparagraphs, unseed_paragraphs
 
 seed_commands = AppGroup('seed')
 
@@ -24,6 +25,7 @@ def seed():
     seed_topics()
     seed_blog()
     seed_testimonials()
+    seed_splashparagraphs()
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
@@ -32,3 +34,4 @@ def undo():
     unseed_blog()
     unseed_topics()
     unseed_testimonials()
+    unseed_paragraphs()

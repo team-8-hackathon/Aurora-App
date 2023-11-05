@@ -3,6 +3,11 @@
     font-size: small;
 }
 
+.blog-preview-image {
+    width: 550px;
+    border-radius: 2rem;
+}
+
 .text-editor-container {
     border: 1px solid #00283d;
     border-radius: 0.25rem;
