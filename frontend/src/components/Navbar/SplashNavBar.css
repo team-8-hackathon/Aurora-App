@@ -63,13 +63,14 @@
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    white-space: nowrap;
 }
 
 .dropdown-item:last-child {
     border-bottom: none;
 }
 
-.dropdown-item:hover {
+/* .dropdown-item:hover {
     background-color: #fcf3ea;
-}
+} */

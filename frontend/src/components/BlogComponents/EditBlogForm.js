@@ -48,7 +48,9 @@ const EditBlogForm = () => {
     useEffect(() => {
         const validationErrors = {}
         if (!title || !title.length) validationErrors.title = "Blog title is required"
+        if (title.length > 500 ) validationErrors.title = "Blog title must be shorter than 500 characters"
         if (!body || !body.length) validationErrors.body = "Blog body is required"
+        if (body.length > 10000 ) validationErrors.body = "Blog body must be shorter than 10000 characters"
         if (!topic || isNaN(topic)) validationErrors.topic = "Blog Topic is required"
         setErrors(validationErrors)
     }, [title, thumbnail, body, topic])
@@ -108,7 +110,7 @@ const EditBlogForm = () => {
 
                 <label htmlFor="topic">Topic</label>
                 {hasSubmitted && errors.topic && <p className="errors">{errors.topic}</p>}
-                <select defaultValue={oldTopic} onChange={e => setTopic(e.target.value)}>
+                <select defaultValue={oldTopic.id} onChange={e => setTopic(e.target.value)}>
                     <option id="select-topic" >Select a Topic...</option>
                     {topics.map(currTopic => (
                         <option key={currTopic.id} value={currTopic.id} >{currTopic.topic}</option>

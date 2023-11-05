@@ -17,6 +17,7 @@ const TopicForm = () => {
     useEffect(() => {
         const validationErrors = {}
         if (!topic || !topic.length) validationErrors.topic = "Topic is required";
+        if (topic.length > 255) validationErrors.topic = "Topic must be shorter than 255 characters"
         setErrors(validationErrors);
     }, [topic]);
 

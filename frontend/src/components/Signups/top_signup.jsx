@@ -7,6 +7,7 @@ import "./signup.css"
 const TopSignup = () => {
   const handleFormChange = (event) => {
 };
+
   return (
     <div id="mc_embed_shell">
 
@@ -48,8 +49,6 @@ const TopSignup = () => {
                 />
               <span id="mce-EMAIL-HELPERTEXT" className="helper_text"></span>
             </div>
-
-            <h3 className="top_signup_text3">Show me an example</h3>
 
             <div id="mce-responses" className="clear foot">
               <div

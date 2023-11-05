@@ -16,16 +16,19 @@ const TestimonialIndex = () => {
     if (!allTestimonials) return null;
     if (!allTestimonials.length) return <EmptyTestimonials />
     return (
-        <div className="browse-blogs-container">
-            <h4 className="topic-title">All Testimonials</h4>
-            <ul className="testimonial-index-container">
-
-                {allTestimonials.map(test => (
-                    <TestimonialItem testimonial={test} type='admin' key={test.id} />
-                ))}
-            </ul>
-        </div>
-    )
+      <div className="browse-blogs-container">
+        <h4 className="topic-title">Testimonials</h4>
+        <ul className="testimonial-index-container">
+          {allTestimonials.map((test) => (
+            <TestimonialItem
+              testimonial={test}
+              type="admin"
+              key={test.id}
+            />
+          ))}
+        </ul>
+      </div>
+    );
 }
 
 export default TestimonialIndex;

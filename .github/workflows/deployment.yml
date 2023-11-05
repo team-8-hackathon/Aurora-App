@@ -1,153 +1,159 @@
-# on:
-#   push:
-#     branches:
-#       - dev
 
-# name: Build & Deploy (Docker)
+on:
+  push:
+    branches:
+      - dev
 
-# jobs:
-#   build:
-#     name: Build & Deploy
-#     runs-on: ubuntu-latest
+name: Build & Deploy (Docker)
 
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v2
+jobs:
+  build:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
 
-#     - name: Check if AWS_REGION is set
-#       run: |
-#         if [[ -z "${{ secrets.AWS_REGION }}" ]]; then
-#           echo "AWS_REGION is not set!"
-#           exit 1
-#         else
-#           echo "AWS_REGION is set!"
-#         fi
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
-#     - name: Check if SSH_CICD_PRIVATE_KEY is set
-#       run: |
-#         if [[ -z "${{ secrets.SSH_CICD_PRIVATE_KEY }}" ]]; then
-#           echo "SSH_PRIVATE_KEY is not set!"
-#           exit 1
-#         else
-#           echo "SSH_PRIVATE_KEY is set!"
-#         fi
+    - name: Check if AWS_REGION is set
+      run: |
+        if [[ -z "${{ secrets.AWS_REGION }}" ]]; then
+          echo "AWS_REGION is not set!"
+          exit 1
+        else
+          echo "AWS_REGION is set!"
+        fi
 
-#     - name: Check if HOSTNAME is set
-#       run: |
-#         if [[ -z "${{ secrets.HOSTNAME }}" ]]; then
-#           echo "HOSTNAME is not set!"
-#           exit 1
-#         else
-#           echo "HOSTNAME is set!"
-#         fi
+    - name: Check if SSH_CICD_PRIVATE_KEY is set
+      run: |
+        if [[ -z "${{ secrets.SSH_CICD_PRIVATE_KEY }}" ]]; then
+          echo "SSH_PRIVATE_KEY is not set!"
+          exit 1
+        else
+          echo "SSH_PRIVATE_KEY is set!"
+        fi
 
-#     - name: Check if USERNAME is set
-#       run: |
-#         if [[ -z "${{ secrets.USERNAME }}" ]]; then
-#           echo "USERNAME is not set!"
-#           exit 1
-#         else
-#           echo "USERNAME is set!"
-#         fi
+    - name: Check if HOSTNAME is set
+      run: |
+        if [[ -z "${{ secrets.HOSTNAME }}" ]]; then
+          echo "HOSTNAME is not set!"
+          exit 1
+        else
+          echo "HOSTNAME is set!"
+        fi
 
-#     - name: Check if SECRET_ENV_VAR is set
-#       run: |
-#         if [[ -z "${{ secrets.SECRET_ENV_VAR }}" ]]; then
-#             echo "SECRET_ENV_VAR is not set!"
-#             exit 1
-#         else
-#             echo "SECRET_ENV_VAR is set!"
-#         fi
+    - name: Check if USERNAME is set
+      run: |
+        if [[ -z "${{ secrets.USERNAME }}" ]]; then
+          echo "USERNAME is not set!"
+          exit 1
+        else
+          echo "USERNAME is set!"
+        fi
 
-#     - name: Check if DATABASE_ENV_VAR is set
-#       run: |
-#         if [[ -z "${{ secrets.DATABASE_ENV_VAR }}" ]]; then
-#             echo "DATABASE_ENV_VAR is not set!"
-#             exit 1
-#         else
-#             echo "DATABASE_ENV_VAR is set!"
-#         fi
+    - name: Check if SECRET_ENV_VAR is set
+      run: |
+        if [[ -z "${{ secrets.SECRET_ENV_VAR }}" ]]; then
+            echo "SECRET_ENV_VAR is not set!"
+            exit 1
+        else
+            echo "SECRET_ENV_VAR is set!"
+        fi
 
-#     - name: Configure AWS credentials
-#       uses: aws-actions/configure-aws-credentials@v1
-#       with:
-#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#         aws-region: ${{ secrets.AWS_REGION }}
+    - name: Check if DATABASE_ENV_VAR is set
+      run: |
+        if [[ -z "${{ secrets.DATABASE_ENV_VAR }}" ]]; then
+            echo "DATABASE_ENV_VAR is not set!"
+            exit 1
+        else
+            echo "DATABASE_ENV_VAR is set!"
+        fi
 
-#     - name: Login to Amazon ECR
-#       id: login-ecr
-#       uses: aws-actions/amazon-ecr-login@v1
+    - name: Check if MC_KEY is set
+      run: |
+        if [[ -z "${{ secrets.MC_KEY }}" ]]; then
+          echo "MC_KEY is not set!"
+          exit 1
+        else
+          echo "MC_KEY is set!"
+        fi
 
-#     - name: Build, tag, and push the image to Amazon ECR
-#       id: build-image
-#       env:
-#         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-#         ECR_REPOSITORY: beta8
-#       run: |
-#         # Build a Docker container and push it to ECR 
-#         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
-#         echo "Pushing image to ECR..."
-#         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
-        
-#         echo "github_sha=$GITHUB_SHA" >> $GITHUB_OUTPUT
+    - name: Check if SERVER_PREFIX is set
+      run: |
+        if [[ -z "${{ secrets.SERVER_PREFIX }}" ]]; then
+          echo "SERVER_PREFIX is not set!"
+          exit 1
+        else
+          echo "SERVER_PREFIX is set!"
+        fi
 
-#     - name: Check if ECR_REGISTRY is set
-#       run: |
-#         if [[ -z "${{ steps.login-ecr.outputs.registry }}" ]]; then
-#           echo "ECR_REGISTRY is not set!"
-#           exit 1
-#         else
-#           echo "ECR_REGISTRY is set!"
-#         fi
-
-#     - name: Deploy on AWS EC2
-#       env:
-#         PRIVATE_KEY: ${{ secrets.SSH_CICD_PRIVATE_KEY }}
-#         HOSTNAME: ${{ secrets.HOSTNAME }}
-#         USER_NAME: ${{ secrets.USERNAME }}
-#         ECR_REGISTRY_NEW: ${{ steps.login-ecr.outputs.registry }}
-#         SHA_REPLACEMENT: ${{ steps.build-image.outputs.github_sha }}
-#         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-#         DATABASE_URL: ${{ secrets.DATABASE_URL }}
-#       run: |
-
-
-#         echo "$PRIVATE_KEY" > private_key.pem 
-
-#         chmod 600 private_key.pem
+    - name: Check if LIST_ID is set
+      run: |
+        if [[ -z "${{ secrets.LIST_ID }}" ]]; then
+          echo "LIST_ID is not set!"
+          exit 1
+        else
+          echo "LIST_ID is set!"
+        fi
         
 
-#         sed -i -e 's/GITHUB_SHA/'"$SHA_REPLACEMENT"'/' ${{ github.workspace }}/docker-compose.yml
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
 
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build, tag, and push the image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: beta8
+      run: |
+        # Build a Docker container and push it to ECR 
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
+        echo "Pushing image to ECR..."
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
         
+        echo "github_sha=$GITHUB_SHA" >> $GITHUB_OUTPUT
 
-#         sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY_NEW"'/' ${{ github.workspace }}/docker-compose.yml
+    - name: Check if ECR_REGISTRY is set
+      run: |
+        if [[ -z "${{ steps.login-ecr.outputs.registry }}" ]]; then
+          echo "ECR_REGISTRY is not set!"
+          exit 1
+        else
+          echo "ECR_REGISTRY is set!"
+        fi
 
-#         sed -i -e 's/SECRET_ENV_VAR/'"$SECRET_KEY"'/' docker-compose.yml
+    - name: Deploy on AWS EC2
+      env:
+        PRIVATE_KEY: ${{ secrets.SSH_CICD_PRIVATE_KEY }}
+        HOSTNAME: ${{ secrets.HOSTNAME }}
+        USER_NAME: ${{ secrets.USERNAME }}
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        GITSHA: ${{ steps.build-image.outputs.github_sha }}
+        SECRET_KEY: ${{ secrets.SECRET_ENV_VAR }}
+        DATABASE_URL: ${{ secrets.DATABASE_ENV_VAR }}
+        MC_KEY: ${{ secrets.MC_KEY }}
+        SERVER_PREFIX: ${{ secrets.SERVER_PREFIX }}
+        LIST_ID: ${{ secrets.LIST_ID }}
+        S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        S3_SECRET: ${{ secrets.S3_SECRET }}
+        S3_KEY: ${{ secrets.S3_KEY }}
 
-#         sed -i -e 's/DATABASE_ENV_VAR/'"$DATABASE_URL"'/' docker-compose.yml
+      run: |
 
+
+        echo "$PRIVATE_KEY" > private_key.pem 
+
+        chmod 600 private_key.pem
         
-#         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
+        scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp
         
         
-#         ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} cd /tmp && docker-compose up -d
-
-#         #ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} 
-        
-#         #cd /tmp
-        
-#         #if docker ps -a --filter "name=backend-flask" --format "{{.Names}}" | grep -q "backend-flask"; then
-#          #   echo "Stopping and removing existing backend-flask container..."
-#           #  docker stop backend-flask
-#            # docker rm backend-flask
-#         #else
-#          #   echo "No existing backend-flask container found."
-#         #fi
-
-#         #docker-compose -p backend-flask up -d
-        
-
-
-# # ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} cd /tmp && docker-compose -p backend-flask up -d
+        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} "export PRIVATE_KEY=\"${{ secrets.SSH_CICD_PRIVATE_KEY }}\" && export ECR_REGISTRY=\"${{ steps.login-ecr.outputs.registry }}\" && export S3_BUCKET=\"${{ secrets.S3_BUCKET }}\" && export S3_SECRET=\"${{ secrets.S3_SECRET }}\" && export S3_KEY=\"${{ secrets.S3_KEY }}\" && export MC_KEY=\"${{ secrets.MC_KEY }}\" && export SERVER_PREFIX=\"${{ secrets.SERVER_PREFIX }}\" && export LIST_ID=\"${{ secrets.LIST_ID }}\" && export GITSHA=\"${{ steps.build-image.outputs.github_sha }}\" && export DATABASE_URL=\"${{ secrets.DATABASE_ENV_VAR }}\" && export SECRET_KEY=\"${{ secrets.SECRET_ENV_VAR }}\" && (docker stop hackathon_app || exit 0) && (docker rm hackathon_app || exit 0) && docker pull ${ECR_REGISTRY}/beta8:${GITSHA} && cd /tmp && docker-compose up -d && docker exec -i hackathon_app /bin/bash -c 'flask db upgrade && flask seed all'"

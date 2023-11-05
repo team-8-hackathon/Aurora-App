@@ -44,22 +44,25 @@ export const thunkDeleteTestimonial = (testimonialId) => async (dispatch) => {
 }
 
 export const thunkGetAllTestimonials = () => async (dispatch) => {
-  const response = await fetch(`/api/testimonial`);
+  const response = await fetch(`/api/testimonial/`);
   if(response.ok){
     const data = await response.json();
     dispatch(loadTestimonials(data.testimonials))
     return data;
+  } else {
+    const errors = await response.json()
+    return errors
   }
 }
 
 export const thunkEditTestimonial = (data ,testId) => async (dispath) => {
-  const response = await fetch(`api/testimonial/${testId}/edit`, {
+  const response = await fetch(`/api/testimonial/${testId}/edit`, {
     method: "PUT",
     body: data
   });
   if(response.ok) {
     const updatedTest = await response.json();
-    dispath(thunkGetAllTestimonials);
+    dispath(thunkGetAllTestimonials());
     return updatedTest;
   } else {
     const errors = await response.json();

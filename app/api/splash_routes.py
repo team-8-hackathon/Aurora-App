@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.forms import SplashParagraphForm
 from app.models import SplashParagraph, db
+from app.api.auth_routes import validation_errors_to_error_messages
 
 splash_routes = Blueprint('splash', __name__)
 
@@ -14,7 +15,6 @@ def get_all_splash():
     splashes = SplashParagraph.query.all()
 
     return [splash.to_dict() for splash in splashes]
-
 
 #Edit splash page paragraphs
 @splash_routes.route('/<int:id>', methods=['PUT'])
@@ -41,3 +41,4 @@ def edit_splash_page(id):
         return section.to_dict()
 
     return {'errors': form.errors}, 401
+
