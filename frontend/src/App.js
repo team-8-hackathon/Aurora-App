@@ -23,6 +23,7 @@ import AdminInfo from "./components/Admin/AdminInfo";
 import TestimonialDisplay from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList"
 import NotFoundPage from "./components/UtilityComponents/404Page";
 import LoginModal from "./components/auth/LoginModal";
+import EditSplashPage from './components/SplashPage/EditSplashPage';
 
 
 
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route path="/admin">
             <ProtectedRoute>
+              <Route exact path='/admin/editsplashpage'>
+                <SplashPage type='admin'/>
+              </Route>
               <AdminNavBar />
               <Switch>
                 <Route exact path="/admin">
@@ -95,7 +99,7 @@ function App() {
                 <TestimonialForm />
               </Route>
               <Route path="/testimonials/list">
-                <TestimonialDisplay/>
+                <TestimonialDisplay />
               </Route>
               <Route>
                 <NotFoundPage />

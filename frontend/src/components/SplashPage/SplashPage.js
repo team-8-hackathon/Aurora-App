@@ -7,11 +7,12 @@ import TestimonialList from '../TestimonialComponents/TestimonialDisplay/Testimo
 import { thunkGetAllParagraphs } from '../../store/splashpage';
 import './SplashPage.css';
 import { param } from 'jquery';
+import OpenModalButton from '../UtilityComponents/OpenModalButton';
+import RenderEditButton from './RenderEditButton';
 
-const SplashPage = () => {
+const SplashPage = ({ type }) => {
     const dispatch = useDispatch()
     const allParagraphs = useSelector(state => state.splashpage)
-    const allParagraphsArr = Object.values(allParagraphs)
 
     // console.log('Paragraphs Array', allParagraphsArr)
 
@@ -19,6 +20,9 @@ const SplashPage = () => {
         dispatch(thunkGetAllParagraphs())
     }, [dispatch])
 
+    if (!allParagraphs) return null
+
+    const allParagraphsArr = Object.values(allParagraphs)
     if (!allParagraphsArr.length) return <h1>Loading...</h1>;
 
     const scrollToTarget = () => {
@@ -34,8 +38,9 @@ const SplashPage = () => {
                         <img src={`${process.env.PUBLIC_URL}/images/icon+wordmark.png`} alt="Company Logo" className="splash-page-nav-logo" />
                     </Link>
                     <div className='top-section-about-aurora'>
-                        <p className='aurora-caption'>{allParagraphsArr[0].header}</p>
-                        <p className='aurora-intro'>{allParagraphsArr[0].paragraph}</p>
+                        <p className='aurora-caption'>{allParagraphsArr[0]?.header}</p>
+                        <p className='aurora-intro'>{allParagraphsArr[0]?.paragraph}</p>
+                        {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[0]}/>}
                         <button className='learn-more-button' onClick={scrollToTarget}>Learn more</button>
                     </div>
                 </div>
@@ -76,15 +81,17 @@ const SplashPage = () => {
                     <img src='/images/screen1.png' alt='Screen 1' className='splash-page-screen-photo' />
                     <div className='screen-content'>
                         <img src={`${process.env.PUBLIC_URL}/images/mood-joy.svg`} alt="Mood Joy" className='screens-mood' />
-                        <div className='screen-content-text'>{allParagraphsArr[2].header}</div>
-                        <div className='screen-content-paragraph'>{allParagraphsArr[2].paragraph}</div>
+                        <div className='screen-content-text'>{allParagraphsArr[2]?.header}</div>
+                        <div className='screen-content-paragraph'>{allParagraphsArr[2]?.paragraph}</div>
+                        {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[2]}/>}
                     </div>
                 </div>
                 <div className='splash-page-screen-content-container'>
                     <div className='screen-content'>
                         <img src={`${process.env.PUBLIC_URL}/images/mood-afraid.svg`} alt="Mood Afraid" className='screens-mood' />
-                        <div className='screen-content-text'>{allParagraphsArr[3].header}</div>
-                        <div className='screen-content-paragraph'>{allParagraphsArr[3].paragraph}</div>
+                        <div className='screen-content-text'>{allParagraphsArr[3]?.header}</div>
+                        <div className='screen-content-paragraph'>{allParagraphsArr[3]?.paragraph}</div>
+                        {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[3]}/>}
                     </div>
                     <img src='/images/screen2.png' alt='Screen 2' className='splash-page-screen-photo' />
                 </div>
@@ -92,16 +99,18 @@ const SplashPage = () => {
                     <img src='/images/screen3.png' alt='Screen 3' className='splash-page-screen-photo' />
                     <div className='screen-content'>
                         <img src={`${process.env.PUBLIC_URL}/images/mood-sad.svg`} alt="Mood Sad" className='screens-mood' />
-                        <div className='screen-content-text'>{allParagraphsArr[4].header}</div>
-                        <div className='screen-content-paragraph'>{allParagraphsArr[4].paragraph}</div>
+                        <div className='screen-content-text'>{allParagraphsArr[4]?.header}</div>
+                        <div className='screen-content-paragraph'>{allParagraphsArr[4]?.paragraph}</div>
+                        {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[4]}/>}
                     </div>
                 </div>
             </div>
             <div className='splash-page-meet-the-founder-container'>
                 <img src='/images/christinaImg.png' alt='Founder Image' className='founder-image' />
                 <div className='meet-the-founder-content'>
-                    <div className='meet-the-founder-header'>{allParagraphsArr[1].header}</div>
-                    <div className='meet-the-founder-paragraph'>{allParagraphsArr[1].paragraph}</div>
+                    <div className='meet-the-founder-header'>{allParagraphsArr[1]?.header}</div>
+                    <div className='meet-the-founder-paragraph'>{allParagraphsArr[1]?.paragraph}</div>
+                    {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[1]}/>}
                 </div>
             </div>
             <div id="splash-page-bottom-signup">
