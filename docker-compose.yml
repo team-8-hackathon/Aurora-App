@@ -8,3 +8,10 @@ services:
     environment:
       - SECRET_KEY=$SECRET_KEY
       - DATABASE_URL=$DATABASE_URL
+      - MC_KEY=$MC_KEY
+      - SERVER_PREFIX=$SERVER_PREFIX
+      - LIST_ID=$LIST_ID
+      - S3_BUCKET=$S3_BUCKET
+      - S3_SECRET=$S3_SECRET
+      - S3_KEY=$S3_KEY
+
