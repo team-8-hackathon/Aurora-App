@@ -41,22 +41,22 @@ def seed_blog():
 
     <p>Emotional wellness is primarily concerned with the management of our emotions and the ability to navigate our feelings in a healthy way. It encompasses:</p>
 
-    <ol>
+    <ul>
         <li><strong>Self-Awareness:</strong> Emotional wellness begins with recognizing and understanding our emotions. It's about being in touch with how you feel and why.</li>
         <li><strong>Expression:</strong> It involves the healthy expression of emotions. This means finding appropriate outlets to communicate our feelings, whether through talking, writing, or artistic expression.</li>
         <li><strong>Resilience:</strong> Emotionally well individuals are better equipped to bounce back from adversity. They can cope with setbacks and maintain a positive outlook on life.</li>
         <li><strong>Stress Management:</strong> Effective stress management is a key component of emotional wellness. Techniques like meditation, deep breathing, and relaxation exercises help in managing emotional stress.</li>
-    </ol>
+    </ul>
 
     <h2>Mental Health:</h2>
 
     <p>On the other hand, mental health is a broader term that encompasses our emotional well-being but goes beyond it. It includes:</p>
 
-    <ol>
+    <ul>
         <li><strong>Cognition:</strong> Mental health concerns the way we think and our cognitive abilities. It addresses issues such as memory, problem-solving, and decision-making.</li>
         <li><strong>Diagnosable Conditions:</strong> Mental health can encompass diagnosed conditions such as depression, anxiety disorders, bipolar disorder, and schizophrenia.</li>
         <li><strong>Treatment and Support:</strong> Mental health often requires professional treatment and support. This can include therapy, counseling, medication, or a combination of these approaches.</li>
-    </ol>
+    </ul>
 
     <h2>The Relationship:</h2>
 
@@ -68,7 +68,7 @@ def seed_blog():
 
     <p>Taking care of our emotional wellness through self-awareness, expression, and resilience can contribute to better mental health, and seeking professional support when necessary is an essential step in maintaining both emotional and mental well-being.</p>
 
-    <p><em>Remember, it's perfectly okay to seek help and support for both your emotional wellness and mental health when needed.</em></p>
+    <p>Remember, it's perfectly okay to seek help and support for both your emotional wellness and mental health when needed.</p>
 
 """
     for i in range(2):

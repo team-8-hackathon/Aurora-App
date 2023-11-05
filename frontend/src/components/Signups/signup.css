@@ -121,8 +121,6 @@
     gap: 48px;
     border-radius: 16px;
     background: var(--color-brand-sky, #B1CBE2);
-
-
 }
 .bot_signup_box1 {
     display: flex;
@@ -190,27 +188,27 @@
 .bottomContent {
     position: relative;
     width: 100%;
-    height: 741px;
+    height: fit-content;
     flex-shrink: 0;
     max-width: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding-top: 15rem;
 }
 
 .bot_signup_icon {
     width: 471px;
     height: 342px;
     flex-shrink: 0;
+    position: absolute;
+    bottom: 25rem;
     z-index: 1;
     transform: translateY(95px);
     margin-bottom: 30px;
 }
 
 .bot_signup_icon img {
-
     max-width: 100%;
 }
 .bot_signup_container {
