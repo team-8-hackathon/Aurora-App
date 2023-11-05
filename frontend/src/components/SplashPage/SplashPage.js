@@ -5,16 +5,13 @@ import TopSignup from '../Signups/top_signup';
 import BotSignup from '../Signups/bot_signup';
 import TestimonialList from '../TestimonialComponents/TestimonialDisplay/TestimonialList';
 import { thunkGetAllParagraphs } from '../../store/splashpage';
-import './SplashPage.css';
-import { param } from 'jquery';
-import OpenModalButton from '../UtilityComponents/OpenModalButton';
 import RenderEditButton from './RenderEditButton';
+import './SplashPage.css';
 
 const SplashPage = ({ type }) => {
     const dispatch = useDispatch()
     const allParagraphs = useSelector(state => state.splashpage)
 
-    // console.log('Paragraphs Array', allParagraphsArr)
 
     useEffect(() => {
         dispatch(thunkGetAllParagraphs())
@@ -23,6 +20,7 @@ const SplashPage = ({ type }) => {
     if (!allParagraphs) return null
 
     const allParagraphsArr = Object.values(allParagraphs)
+    // console.log('Paragraphs Array', allParagraphsArr[0])
     if (!allParagraphsArr.length) return <h1>Loading...</h1>;
 
     const scrollToTarget = () => {

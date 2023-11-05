@@ -21,7 +21,7 @@ export const thunkGetAllParagraphs = () => async dispatch => {
 }
 
 export const thunkEditParagraph = (paragraphId, updatedParagraph) => async dispatch => {
-    console.log('UPDATEDPARA:', updatedParagraph)
+    // console.log('UPDATEDPARA:', updatedParagraph)
     const response = await fetch(`/api/splash/${paragraphId}`, {
         method: 'PUT',
         body: updatedParagraph
@@ -31,6 +31,7 @@ export const thunkEditParagraph = (paragraphId, updatedParagraph) => async dispa
         const newParagraph = await response.json();
         console.log('NEWPARA:', newParagraph)
         dispatch(editSplashPage(newParagraph))
+        // dispatch(thunkGetAllParagraphs())
     }
 }
 
@@ -42,11 +43,6 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_ALL_SPLASH_PAGE_PARAGRAPHS: {
             newState =  { ...action.paragraphs }
-            return newState
-        }
-        case EDIT_SPLASH_PAGE_PARAGRAPHS: {
-            newState = { ...state }
-            newState.paragraphs[action.paragraphs.id] = action.paragraphs;
             return newState
         }
         default:

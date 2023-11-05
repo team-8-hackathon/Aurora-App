@@ -24,7 +24,7 @@ def edit_splash_page(id):
     """
     section = SplashParagraph.query.get(id)
     if not section:
-        return {"errors": "Blog not found"}, 404
+        return {"errors": "Paragraph not found"}, 404
 
     form = SplashParagraphForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -34,10 +34,10 @@ def edit_splash_page(id):
         paragraph = form.data['paragraph']
 
         section.title = title
-        section.body = header
-        section.topic_id = paragraph
+        section.header = header
+        section.paragraph = paragraph
 
         db.session.commit()
         return section.to_dict()
-    
+
     return {'errors': form.errors}, 401

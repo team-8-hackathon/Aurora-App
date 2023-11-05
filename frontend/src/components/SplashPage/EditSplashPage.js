@@ -19,52 +19,73 @@ const EditSplashPage = ({ section }) => {
 
     const handlesubmit = async e => {
         e.preventDefault();
-        
-        console.log('title:', title);
-        console.log('header:', header);
-        console.log('paragraph:', paragraph);
+
+        // console.log('title:', title);
+        // console.log('header:', header);
+        // console.log('paragraph:', paragraph);
 
         const newSection = new FormData();
-        // console.log('newSection', title, header, paragraph)
-        // console.log('SECTIONID', section.id)
+
         newSection.append('title', title)
         newSection.append('header', header)
         newSection.append('paragraph', paragraph)
 
         await dispatch(thunkEditParagraph(section.id, newSection))
         closeModal()
-        // dispatch(thunkGetAllParagraphs())
+        dispatch(thunkGetAllParagraphs())
     }
 
     return (
-        <div className="edit-splash-page-modal-container">
-            <h3 className="edit-splash-page-header">Edit Splash Page</h3>
-            <form method='PUT' encType="multipart/form-data" onSubmit={handlesubmit}>
-                <textarea
-                    type='text'
-                    rows='1'
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Enter new title here"
-                    name='title'
-                />
-                <textarea
-                    type='text'
-                    rows='3'
-                    value={header}
-                    onChange={(e) => setHeader(e.target.value)}
-                    placeholder="Enter new header here"
-                    name='header'
-                />
-                <textarea
-                    type='text'
-                    rows='8'
-                    value={paragraph}
-                    onChange={(e) => setParagraph(e.target.value)}
-                    placeholder="Enter new paragraph here"
-                    name='paragraph'
-                />
-                <button className="edit-splash-submit-button" type='submit'>Edit</button>
+        <div className="edit-splash-container">
+            <div className="edit-splash-header-container">
+                <p className="edit-splash-header">Edit Splash Page</p>
+            </div>
+            <form className='edit-splash-form-container' method='PUT' encType="multipart/form-data" onSubmit={handlesubmit}>
+                <div className="edit-splash-section-container">
+                    <label className="edit-splash-section-label">
+                        Title
+                    </label>
+                    <textarea
+                        className="edit-splash-body"
+                        type='text'
+                        rows='1'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Enter new title here"
+                        name='title'
+                    />
+                </div>
+                <div className="edit-splash-section-container">
+                    <label className="edit-splash-section-label">
+                        Header
+                    </label>
+                    <textarea
+                        className="edit-splash-body"
+                        type='text'
+                        rows='3'
+                        value={header}
+                        onChange={(e) => setHeader(e.target.value)}
+                        placeholder="Enter new header here"
+                        name='header'
+                    />
+                </div>
+                <div className="edit-splash-section-container">
+                    <label className="edit-splash-section-label">
+                        Paragraph
+                    </label>
+                    <textarea
+                        className="edit-splash-body"
+                        type='text'
+                        rows='8'
+                        value={paragraph}
+                        onChange={(e) => setParagraph(e.target.value)}
+                        placeholder="Enter new paragraph here"
+                        name='paragraph'
+                    />
+                </div>
+                <div className="edit-splash-submit-container">
+                    <button className="edit-splash-submit-button" type='submit'>Edit</button>
+                </div>
             </form>
         </div>
     )
