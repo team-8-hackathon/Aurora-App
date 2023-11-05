@@ -17,19 +17,27 @@ def get_all_splash():
 
 
 #Edit splash page paragraphs
-@splash_routes.route('/<int:splashId>', methods=['PUT'])
-def edit_splash_page(splashId):
+@splash_routes.route('/<int:id>', methods=['PUT'])
+def edit_splash_page(id):
     """
     Update Splash Page Paragraphs
     """
-    splash = SplashParagraph.query.get(splashId)
-    data = request.get_json()
+    section = SplashParagraph.query.get(id)
+    if not section:
+        return {"errors": "Blog not found"}, 404
 
-    if splash:
-        splash.title = data['title']
-        splash.header = data['header']
-        splash.paragraph = data['paragraph']
+    form = SplashParagraphForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        title = form.data['title']
+        header = form.data['header']
+        paragraph = form.data['paragraph']
+
+        section.title = title
+        section.body = header
+        section.topic_id = paragraph
 
         db.session.commit()
-        return splash.to_dict()
-    return {"Message": 'Not updated'}
+        return section.to_dict()
+    
+    return {'errors': form.errors}, 401

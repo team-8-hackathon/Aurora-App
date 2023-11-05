@@ -6,7 +6,7 @@ export const loadSplashPage = (paragraphs) => ({
     paragraphs
 })
 
-export const editSplashPage = (updatedParagraph) => ({
+export const editSplashPage = (paragraphs) => ({
     type: EDIT_SPLASH_PAGE_PARAGRAPHS,
     paragraphs
 })
@@ -21,14 +21,15 @@ export const thunkGetAllParagraphs = () => async dispatch => {
 }
 
 export const thunkEditParagraph = (paragraphId, updatedParagraph) => async dispatch => {
+    console.log('UPDATEDPARA:', updatedParagraph)
     const response = await fetch(`/api/splash/${paragraphId}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedParagraph)
+        body: updatedParagraph
     });
 
     if (response.ok) {
         const newParagraph = await response.json();
+        console.log('NEWPARA:', newParagraph)
         dispatch(editSplashPage(newParagraph))
     }
 }

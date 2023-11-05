@@ -8,7 +8,7 @@ const RenderEditButton = ({ paragraph }) => {
     return (
         <OpenModalButton
         buttonText={<BiEdit />}
-        modalComponent={<EditSplashPage paragraph={paragraph} />}
+        modalComponent={<EditSplashPage section={paragraph} />}
         className="edit-pencil-symbol"
         />
     )
