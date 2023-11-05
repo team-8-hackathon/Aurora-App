@@ -17,21 +17,6 @@ border-radius: 10px;
 
 */
 
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
-/* html { */
-/* Good idea to set to 10 for easy calculations */
-/* font-size: 10px; */
-/* 10px / 16px = 0.625 = 62.5% */
-/* Percentage of user's browsers font-size setting */
-/* font-size: 62.5%;
-  overflow-x: hidden;
-} */
-
 .testimonial-index {
   max-width: 120rem;
   margin: 0 auto;
@@ -48,6 +33,7 @@ border-radius: 10px;
 
 .test-car {
   padding-bottom: 5rem;
+  width: 72em;
 }
 
 .testimonial-item {
@@ -66,16 +52,58 @@ border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
+.testimonial-item-top {
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.test-admin-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  border-radius: 2px;
+
+  background-color: #8dc9a9;
+  bottom: 0.1em;
+  right: 0em;
+  border-radius: 20%;
+  box-shadow: rgba(0, 0, 0, 0.15)
+}
+
 .testimonial-stars {
   display: flex;
   margin-bottom: 0.5em;
   gap: 0.4rem;
 }
 
-/* .star {
-  height: 30px;
-  width: 30px;
-} */
+
+.heart-btn {
+  margin-bottom: 0.2em;
+  padding: 0.5em;
+  font-size: 25px;
+  transition: all 0.3s;
+}
+
+.testimonial-delete-button {
+  font-size: 25px;
+}
+
+.heart-filled {
+  color: red;
+  transition: all 0.3s;
+}
+
+.heart-btn:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.heart-filled:hover {
+  color: #555;
+}
 
 .testimonial-body {
   font-size: 20px;
@@ -89,13 +117,12 @@ border-radius: 10px;
 }
 
 .testimonial-item-profile-img {
-  /* border: 6px solid #003b5a; */
   border-radius: 8px;
   width: 4rem;
   height: 4rem;
   margin-left: -70px;
 }
-.scribble-box{
+.scribble-box {
   z-index: 10;
   position: relative;
 }
@@ -116,23 +143,9 @@ border-radius: 10px;
 
 .swiper-slide {
   display: flex;
-  gap: 0rem
+  gap: 0rem;
 }
 
-.swiper-wrapper {
-}
-.swiper-initialized {
-}
-.swiper-horizontal {
-}
-
-.swiper-button-prev {
-  /* position: absolute; */
-  /* left: 2em; */
-}
-
-.swiper-button-next {
-}
 /* Add space between Swiper slides */
 .swiper-slide {
   margin-right: 10px; /* Adjust the value to control the spacing */

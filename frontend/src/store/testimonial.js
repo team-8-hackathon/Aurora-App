@@ -53,13 +53,14 @@ export const thunkGetAllTestimonials = () => async (dispatch) => {
 }
 
 export const thunkEditTestimonial = (data ,testId) => async (dispath) => {
-  const response = await fetch(`api/testimonial/${testId}/edit`, {
+  console.log(`data: ${data}, id: ${testId}`);
+  const response = await fetch(`/api/testimonial/${testId}/edit`, {
     method: "PUT",
     body: data
   });
   if(response.ok) {
     const updatedTest = await response.json();
-    dispath(thunkGetAllTestimonials);
+    dispath(thunkGetAllTestimonials());
     return updatedTest;
   } else {
     const errors = await response.json();

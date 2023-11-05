@@ -42,6 +42,7 @@ function TestimonialForm() {
       formData.append("profile_pic", profile_pic);
       formData.append("body", body);
       formData.append("stars", stars);
+      // formData.append("favorited", false)
       const response = await dispatch(thunkCreateTestimonial(formData));
       if (response.id) history.push("/");
       else {
