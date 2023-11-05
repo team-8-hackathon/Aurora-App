@@ -13,7 +13,7 @@ const SplashPage = () => {
     const allParagraphs = useSelector(state => state.splashpage)
     const allParagraphsArr = Object.values(allParagraphs)
 
-    console.log('Paragraphs Array', allParagraphsArr)
+    // console.log('Paragraphs Array', allParagraphsArr)
 
     useEffect(() => {
         dispatch(thunkGetAllParagraphs())
