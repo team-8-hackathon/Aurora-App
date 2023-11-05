@@ -1,5 +1,5 @@
 .edit-splash-container {
-    height: 33rem;
+    height: 34rem;
     width: 33rem;
 }
 
@@ -37,7 +37,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    gap: .2rem
+    gap: .5rem
 }
 
 .edit-splash-body {
