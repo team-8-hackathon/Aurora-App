@@ -1,7 +1,7 @@
 .testimonial-index-container {
   display: grid;
   grid-template-columns: repeat(4, 4fr);
-  gap: 1rem;
+  gap: 5rem 1rem;
 }
 
 /* .testimonial-item {
@@ -62,9 +62,9 @@
 .testimonial-delete-button {
   background-color: transparent;
   border: none;
-  position: absolute;
+  /* position: absolute;
   top: 1rem;
-  right: 1rem;
+  right: 1rem; */
 }
 
 .testimonial-delete-button:hover {

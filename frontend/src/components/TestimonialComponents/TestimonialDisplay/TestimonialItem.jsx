@@ -31,7 +31,9 @@ const TestimonialItem = ({ testimonial, type }) => {
   const fillHeart = () => {
     if (testimonial.favorited) {
       return (
-        <IconContext.Provider value={{ className: "heart-btn heart-filled" }}>
+        <IconContext.Provider
+          value={{ className: "heart-btn heart-filled " }}
+        >
           <FaHeart onClick={favoriteTest} />
         </IconContext.Provider>
       );
@@ -50,16 +52,37 @@ const TestimonialItem = ({ testimonial, type }) => {
   return (
     <div className="testimonial-item">
       <div>
-        <div className="testimonial-stars">
-          {starsArr.slice(0, stars).map((star) => (
-            <img
-              src={`/images/stars/${star}star.png`}
-              alt="star"
-              key={star}
-              className="star-item"
-            />
-          ))}
+        <div className="testimonial-item-top">
+          <div className="testimonial-stars">
+            {starsArr.slice(0, stars).map((star) => (
+              <img
+                src={`/images/stars/${star}star.png`}
+                alt="star"
+                key={star}
+                className="star-item"
+              />
+            ))}
+          </div>
+          <div className="test-admin-buttons">
+            {type === "admin" && fillHeart()}
+            {type === "admin" && (
+              <OpenModalButton
+                className="testimonial-delete-button " // edit-delete-button
+                title="Delete"
+                buttonText={<FaTrashAlt />}
+                modalComponent={
+                  <ConfirmModal
+                    modalTitle={
+                      "Are you sure you want to delete this testimonial?"
+                    }
+                    yesHandler={handleDelete}
+                  />
+                }
+              />
+            )}
+          </div>
         </div>
+
         <p className="testimonial-body">"{body}"</p>
       </div>
       <div className="testimonial-item-bottom">
@@ -75,20 +98,6 @@ const TestimonialItem = ({ testimonial, type }) => {
           {first_name}&nbsp;&nbsp;{last_name}
         </p>
       </div>
-      {type === "admin" && fillHeart()}
-      {type === "admin" && (
-        <OpenModalButton
-          className="testimonial-delete-button edit-delete-button"
-          title="Delete"
-          buttonText={<FaTrashAlt />}
-          modalComponent={
-            <ConfirmModal
-              modalTitle={"Are you sure you want to delete this testimonial?"}
-              yesHandler={handleDelete}
-            />
-          }
-        />
-      )}
     </div>
   );
 };

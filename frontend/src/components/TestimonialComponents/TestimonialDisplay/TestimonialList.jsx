@@ -5,6 +5,7 @@ import TestimonialItem from "./TestimonialItem";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle"
 import "./display.css";
+import { Mousewheel } from "swiper/modules";
 
 
 const TestimonialList = () => {
@@ -37,16 +38,15 @@ const TestimonialList = () => {
     <div className="test-car">
       <Swiper
         className="testimonial-list"
+        modules={[Mousewheel]}
         spaceBetween={5}
-        slidesPerView={ detectMob ? 4 : 1}
+        slidesPerView={detectMob ? 4 : 1}
         loop={true}
+        mousewheel
       >
         {testimonials?.map((testimonial, i) => (
           <SwiperSlide>
-            <TestimonialItem
-             testimonial={testimonial}
-             key={testimonial.id}
-            />
+            <TestimonialItem testimonial={testimonial} key={testimonial.id} />
           </SwiperSlide>
         ))}
       </Swiper>
