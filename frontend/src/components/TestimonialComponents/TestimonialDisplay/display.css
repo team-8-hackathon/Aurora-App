@@ -17,21 +17,6 @@ border-radius: 10px;
 
 */
 
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
-/* html { */
-/* Good idea to set to 10 for easy calculations */
-/* font-size: 10px; */
-/* 10px / 16px = 0.625 = 62.5% */
-/* Percentage of user's browsers font-size setting */
-/* font-size: 62.5%;
-  overflow-x: hidden;
-} */
-
 .testimonial-index {
   max-width: 120rem;
   margin: 0 auto;
@@ -94,22 +79,8 @@ border-radius: 10px;
   gap: 0.4rem;
 }
 
-.heart-btn-main {
-  /* background-color: transparent;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  font-size: large; */
-}
 
 .heart-btn {
-  /* height: 25px;
-  width: 25px; */
-  /* background-color: transparent;
-  border: none; */
-  /* position: absolute; */
-  /* top: 1rem;
-  right: 1rem; */
   margin-bottom: 0.2em;
   padding: 0.5em;
   font-size: 25px;
@@ -146,7 +117,6 @@ border-radius: 10px;
 }
 
 .testimonial-item-profile-img {
-  /* border: 6px solid #003b5a; */
   border-radius: 8px;
   width: 4rem;
   height: 4rem;

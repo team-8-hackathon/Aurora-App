@@ -4,18 +4,6 @@
   gap: 5rem 1rem;
 }
 
-/* .testimonial-item {
-  background-color: #8dc9a9;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 10px;
-  position: relative;
-  height: 291px;
-  width: 259px;
-  padding: 1rem;
-  padding-right: 2rem;
-} */
 
 .image-container {
   position: relative;
@@ -48,7 +36,6 @@
 
 .profile-pic {
   width: 92%;
-  /* height: 95%; */
   padding-left: 3px;
   border-radius: 18px;
 }
@@ -63,9 +50,6 @@
   background-color: transparent;
   border: none;
   transition: all 0.3s;
-  /* position: absolute;
-  top: 1rem;
-  right: 1rem; */
 }
 
 .testimonial-delete-button:hover {
