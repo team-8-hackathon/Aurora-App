@@ -29,7 +29,6 @@ def create_testimonial():
   Create a new testimonial
   """
   form = TestimonialForm()
-  print('------------------dataform:',form.data)
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     first_name = form.data['first_name']
@@ -48,14 +47,13 @@ def create_testimonial():
       testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body, profile_pic=url, favorited=favorited)
       db.session.add(testimonial)
       db.session.commit()
-      return testimonial.to_dict(), 201
+      return testimonial.to_dict()
     testimonial = Testimonial(first_name=first_name, last_name=last_name, stars=stars, body=body, favorited=favorited)
     db.session.add(testimonial)
     db.session.commit()
-    return testimonial.to_dict(), 201
-    # return testimonial.to_dict(), 201
+    return testimonial.to_dict()
 
-  return {"ERRORS Tester ": validation_errors_to_error_messages(form.errors)}, 401
+  return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
 @testimonial_routes.route('/<int:id>/edit', methods=["PUT"])
@@ -64,23 +62,19 @@ def edit_testimonial(id):
    """
    Edit a testimonial by its id
    """
-   print('---------------route before')
    testimonial = Testimonial.query.get(id)
-   print('---------------route after')
    if not testimonial:
       return {'errors': 'Testimonial not found'}, 404
    
    form = EditTestimonial()
    form['csrf_token'].data = request.cookies['csrf_token']
-   print('-----------------favorited before :')
    if(form.validate_on_submit()):
       favorited = form.data['favorited']
-      print('-----------------favorited:',favorited)
       testimonial.favorited = favorited
       db.session.commit()
-      return testimonial.to_dict(), 201
+      return testimonial.to_dict()
    
-   return {"Errors": validation_errors_to_error_messages(form.errors)}, 401
+   return {"errors": validation_errors_to_error_messages(form.errors)}, 401
       
 
 @testimonial_routes.route('/<int:id>/delete', methods=['DELETE'])
@@ -91,7 +85,7 @@ def delete_testimonial(id):
     """
     testimonial = Testimonial.query.get(id)
     if not testimonial:
-       return {"ERROR": 'Testimonial not found'}, 404
+       return {"errors": 'Testimonial not found'}, 404
     
     remove_file_from_s3(testimonial.profile_pic)
 
