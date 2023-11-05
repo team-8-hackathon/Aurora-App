@@ -6,7 +6,7 @@ COPY frontend/. .
 
 RUN npm install && npm run build
 
-FROM python:3.9
+FROM python:3.9-slim
 
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
