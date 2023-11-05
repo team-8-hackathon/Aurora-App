@@ -13,8 +13,9 @@ export function SearchProvider({ children }) {
         keys: [{name: 'title', weight: 1}, {name: 'body', weight: 0.1}, {name: 'topic.topic', weight: 0.5}]
     }
     const searchBlogs = (data, query) => {
-        if(!query){
-            setSearchData(data)
+        if(!query || !query.length){
+            console.log('here', data)
+            // setSearchData(data)
             setSearching(false)
             return;
         }
