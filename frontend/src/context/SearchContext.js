@@ -6,7 +6,6 @@ const SearchContext = React.createContext();
 
 export function SearchProvider({ children }) {
     const [searchData, setSearchData] = useState([])
-    const [resultsFound, setResultsFound] = useState(true)
     const [searching, setSearching] = useState(false);
 
     const options = {
@@ -14,8 +13,6 @@ export function SearchProvider({ children }) {
     }
     const searchBlogs = (data, query) => {
         if(!query || !query.length){
-            console.log('here', data)
-            // setSearchData(data)
             setSearching(false)
             return;
         }
@@ -28,17 +25,14 @@ export function SearchProvider({ children }) {
                 finalResult.push(item.item)
             })
             setSearchData(finalResult)
-            setResultsFound(true)
         } else {
             setSearchData([]);
-            setResultsFound(false)
         }
 
     }
     const contextValue = {
         searchData,
         setSearchData,
-        resultsFound,
         searchBlogs,
         searching
     }
