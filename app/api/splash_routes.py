@@ -14,7 +14,7 @@ def get_all_splash():
     """
     splashes = SplashParagraph.query.all()
 
-    return [splash.to_dict() for splash in splashes]
+    return {"paragraphs": [splash.to_dict() for splash in splashes]}
 
 #Edit splash page paragraphs
 @splash_routes.route('/<int:id>', methods=['PUT'])

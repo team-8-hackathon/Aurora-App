@@ -12,7 +12,7 @@ else:
 login_data = dict(username="demolition", password="password", csrfmiddlewaretoken=csrftoken, next='/')
 
 #image used for testing purposes
-files = {'thumbnail': ('ew1.png', open('./ew1.png', 'rb'), 'image/png')}
+files = {'thumbnail': ('ew1.png', open('app/tests/ew1.png', 'rb'), 'image/png')}
 
 headers = {
     'Content-Type': 'multipart/form-data'  # Specify the content type

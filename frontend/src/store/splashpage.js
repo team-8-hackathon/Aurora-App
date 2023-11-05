@@ -16,7 +16,7 @@ export const thunkGetAllParagraphs = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(loadSplashPage(data))
+        dispatch(loadSplashPage(data.paragraphs))
     }
 }
 
