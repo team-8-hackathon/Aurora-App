@@ -6,6 +6,7 @@ import BotSignup from '../Signups/bot_signup';
 import TestimonialList from '../TestimonialComponents/TestimonialDisplay/TestimonialList';
 import { thunkGetAllParagraphs } from '../../store/splashpage';
 import RenderEditButton from './RenderEditButton';
+import parse from 'html-react-parser';
 import './SplashPage.css';
 
 const SplashPage = ({ type }) => {
@@ -20,7 +21,7 @@ const SplashPage = ({ type }) => {
     if (!allParagraphs) return null
 
     const allParagraphsArr = Object.values(allParagraphs)
-    // console.log('Paragraphs Array', allParagraphsArr)
+    // console.log('Paragraphs Array', allParagraphsArr[1].paragraph, typeof(allParagraphsArr[1].paragraph))
     if (!allParagraphsArr.length) return <h1>Loading...</h1>;
 
     const scrollToTarget = () => {
@@ -110,7 +111,7 @@ const SplashPage = ({ type }) => {
                 <img src='/images/christinaImg.png' alt='Founder Image' className='founder-image' />
                 <div className='meet-the-founder-content'>
                     <div className='meet-the-founder-header'>{allParagraphsArr[1]?.header}</div>
-                    <div className='meet-the-founder-paragraph'>{allParagraphsArr[1]?.paragraph}</div>
+                    <div className='meet-the-founder-paragraph'>{allParagraphsArr[1] ? parse(allParagraphsArr[1].paragraph) : ''}</div>
                     {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[1]}/>}
                 </div>
             </div>

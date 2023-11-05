@@ -114,6 +114,8 @@ margin-top: -5em;
     text-align: center;
     font-size: 2em;
     margin-bottom: 2em;
+    font-size: 35px;
+    font-weight: 350;
 }
 
 .splash-page-testimonials-container {
@@ -193,8 +195,13 @@ margin-top: -5em;
     gap: 1rem
 }
 
+.screen-content-text {
+    font-size: 44px;
+}
+
 .screen-content-paragraph {
     font-size: 20px;
+    font-weight: 300;
 }
 
 .screens-mood {
@@ -222,7 +229,7 @@ margin-top: -5em;
 }
 
 .founder-image {
-    height: 30em;
+    height: 40em;
 }
 
 .meet-the-founder-content {
@@ -234,9 +241,9 @@ margin-top: -5em;
 }
 
 .meet-the-founder-header {
-    font-size: 2rem;
+    font-size: 35px
 }
 
 .meet-the-founder-paragraph {
-    font-size: 1rem;
+    font-size: 18px
 }
