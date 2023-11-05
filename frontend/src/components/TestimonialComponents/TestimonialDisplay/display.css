@@ -85,6 +85,7 @@ border-radius: 10px;
   bottom: 0.1em;
   right: 0em;
   border-radius: 20%;
+  box-shadow: rgba(0, 0, 0, 0.15)
 }
 
 .testimonial-stars {
@@ -112,6 +113,7 @@ border-radius: 10px;
   margin-bottom: 0.2em;
   padding: 0.5em;
   font-size: 25px;
+  transition: all 0.3s;
 }
 
 .testimonial-delete-button {
@@ -120,10 +122,16 @@ border-radius: 10px;
 
 .heart-filled {
   color: red;
+  transition: all 0.3s;
 }
 
 .heart-btn:hover {
   cursor: pointer;
+  transform: scale(1.2);
+}
+
+.heart-filled:hover {
+  color: #555;
 }
 
 .testimonial-body {

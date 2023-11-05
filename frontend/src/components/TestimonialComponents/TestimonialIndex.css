@@ -62,6 +62,7 @@
 .testimonial-delete-button {
   background-color: transparent;
   border: none;
+  transition: all 0.3s;
   /* position: absolute;
   top: 1rem;
   right: 1rem; */
@@ -69,6 +70,8 @@
 
 .testimonial-delete-button:hover {
   cursor: pointer;
+  color: #555;
+  transform: scale(1.2);
 }
 
 .star {

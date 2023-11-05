@@ -17,7 +17,7 @@ const TestimonialIndex = () => {
     if (!allTestimonials.length) return <EmptyTestimonials />
     return (
       <div className="browse-blogs-container">
-        <h4 className="topic-title">All Testimonials</h4>
+        <h4 className="topic-title">Testimonials</h4>
         <ul className="testimonial-index-container">
           {allTestimonials.map((test) => (
             <TestimonialItem
