@@ -95,6 +95,7 @@ jobs:
         else
           echo "LIST_ID is set!"
         fi
+        
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
