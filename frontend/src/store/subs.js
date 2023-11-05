@@ -33,7 +33,6 @@ const actionGetAllSubs = (subs) => ({
         return { success: true };
     } else {
         const errors = await response.json();
-        console.log(response)
         return errors;
     }
 };
@@ -44,7 +43,6 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_ALL_SUBS:
             return { ...state, subs: action.subs }
-        
         default:
             return state;
     }
