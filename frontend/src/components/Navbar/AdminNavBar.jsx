@@ -55,6 +55,7 @@ function AdminNavbar() {
                         onMouseLeave={e => setAdminOptionsDropdown(false)}
                     >Admin Options
                         {adminOptionsDropdown && (<div className='admin-options-dropdown-container'>
+                            <Link to='/admin/edit-splash-page' className='admin-options-dropdown-item'>Edit Splash Page</Link>
                             <Link to='/admin/subs' className="admin-options-dropdown-item" >Subscribers</Link>
                             <Link to='/admin/post-blog' className="admin-options-dropdown-item" >Create a Blog</Link>
                             <Link to='/admin/post-topic' className="admin-options-dropdown-item" >Create a Topic</Link>
@@ -99,6 +100,3 @@ function AdminNavbar() {
 }
 
 export default AdminNavbar;
-
-
-

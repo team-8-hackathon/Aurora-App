@@ -50,13 +50,13 @@ function App() {
           </Route>
           <Route path="/admin">
             <ProtectedRoute>
-              <Route exact path='/admin/editsplashpage'>
-                <SplashPage type='admin'/>
-              </Route>
               <AdminNavBar />
               <Switch>
                 <Route exact path="/admin">
                   <AdminBlogs />
+                </Route>
+                <Route exact path='/admin/edit-splash-page'>
+                  <SplashPage type='admin' />
                 </Route>
                 <Route exact path="/admin/post-blog">
                   <BlogForm />

@@ -20,7 +20,7 @@ const SplashPage = ({ type }) => {
     if (!allParagraphs) return null
 
     const allParagraphsArr = Object.values(allParagraphs)
-    // console.log('Paragraphs Array', allParagraphsArr[0])
+    // console.log('Paragraphs Array', allParagraphsArr)
     if (!allParagraphsArr.length) return <h1>Loading...</h1>;
 
     const scrollToTarget = () => {
@@ -36,8 +36,8 @@ const SplashPage = ({ type }) => {
                         <img src={`${process.env.PUBLIC_URL}/images/icon+wordmark.png`} alt="Company Logo" className="splash-page-nav-logo" />
                     </Link>
                     <div className='top-section-about-aurora'>
-                        <p className='aurora-caption'>{allParagraphsArr[0]?.header}</p>
-                        <p className='aurora-intro'>{allParagraphsArr[0]?.paragraph}</p>
+                        <div className='aurora-caption'>{allParagraphsArr[0]?.header}</div>
+                        <div className='aurora-intro'>{allParagraphsArr[0]?.paragraph}</div>
                         {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[0]}/>}
                         <button className='learn-more-button' onClick={scrollToTarget}>Learn more</button>
                     </div>
@@ -50,18 +50,21 @@ const SplashPage = ({ type }) => {
             <div className='splash-page-benefits'>
                 <div className='single-benefit-container'>
                     <img className='benefits-image' src='/images/benefit-1.png' alt='self-awareness' />
-                    <p className='single-benefit-content-bold'>Build deeper self-awareness</p>
-                    <p className='single-benefit-content-small'>With personalized mood tracking</p>
+                    <p className='single-benefit-content-bold'>{allParagraphsArr[5]?.header}</p>
+                    <p className='single-benefit-content-small'>{allParagraphsArr[5]?.paragraph}</p>
+                    {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[5]}/>}
                 </div>
                 <div className='single-benefit-container'>
                     <img className='benefits-image' src='/images/benefit-2.png' alt='self-esteem' />
-                    <p className='single-benefit-content-bold'>Improve your self-esteem</p>
-                    <p className='single-benefit-content-small'>With daily affirmations</p>
+                    <p className='single-benefit-content-bold'>{allParagraphsArr[6]?.header}</p>
+                    <p className='single-benefit-content-small'>{allParagraphsArr[6]?.paragraph}</p>
+                    {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[6]}/>}
                 </div>
                 <div className='single-benefit-container'>
                     <img className='benefits-image' src='/images/benefit-3.png' alt='positive-mindset' />
-                    <p className='single-benefit-content-bold'>Cultivate a positive mindset</p>
-                    <p className='single-benefit-content-small'>With mindset tools</p>
+                    <p className='single-benefit-content-bold'>{allParagraphsArr[7]?.header}</p>
+                    <p className='single-benefit-content-small'>{allParagraphsArr[7]?.paragraph}</p>
+                    {type === "admin" && <RenderEditButton paragraph={allParagraphsArr[7]}/>}
                 </div>
             </div>
             <p className='splash-page-testimonials-header'>What user testers are saying</p>

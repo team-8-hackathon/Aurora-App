@@ -1,5 +1,5 @@
 .edit-splash-container {
-    height: 34rem;
+    height: 36rem;
     width: 33rem;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .edit-splash-header-container {
-    border-bottom: 1px solid rgba(95, 95, 95, 0.565);
+
     display: flex;
     justify-content: center;
     margin-bottom: 1.5rem;
@@ -46,6 +46,8 @@
     resize: none;
     width: 100%;
     margin: auto;
+    padding: .5rem;
+    box-sizing: border-box;
 }
 
 .edit-splash-submit-container {
@@ -55,7 +57,7 @@
 }
 
 .edit-pencil-symbol {
-    width: 35%;
+    width: 20rem;
     background-color: transparent;
     color: #00283d;
     /* border: none; */
