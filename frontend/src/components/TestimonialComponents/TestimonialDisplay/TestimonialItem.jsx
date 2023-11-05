@@ -34,13 +34,15 @@ const TestimonialItem = ({ testimonial, type }) => {
         <IconContext.Provider
           value={{ className: "heart-btn heart-filled " }}
         >
-          <FaHeart onClick={favoriteTest} />
+          <FaHeart onClick={favoriteTest} title="Un-Favorite" />
         </IconContext.Provider>
       );
     } else {
       return (
-        <IconContext.Provider value={{ className: "heart-btn" }}>
-          <FaRegHeart onClick={favoriteTest} />
+        <IconContext.Provider
+          value={{ className: "heart-btn" }}
+        >
+          <FaRegHeart onClick={favoriteTest} title="Favorite" />
         </IconContext.Provider>
       );
     }

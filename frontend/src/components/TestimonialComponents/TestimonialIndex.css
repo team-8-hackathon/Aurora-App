@@ -47,6 +47,7 @@
 }
 
 .testimonial-delete-button {
+  font-size: 20px;
   background-color: transparent;
   border: none;
   transition: all 0.3s;
