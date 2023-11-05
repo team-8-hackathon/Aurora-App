@@ -4,4 +4,8 @@ body {
     color: #00283d;
     /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     font-family: "DM Sans", Times ;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0px;
+    overflow-x: hidden;
 }

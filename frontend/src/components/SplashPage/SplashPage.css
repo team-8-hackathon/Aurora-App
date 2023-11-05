@@ -1,45 +1,67 @@
 .splash-page-top-section {
     display: flex;
-    margin-left: 150px;
+    padding-left: 8.125rem;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 18rem;
 }
 
 .splash-page-nav-logo {
-    width: 50%;
+    width: 20rem;
+    margin-bottom: 4rem;
 }
 
 .aurora-caption {
     font-size: 3.5rem;
-    height: 30px;
+    height: fit-content;
 }
 
 .aurora-intro {
     font-size: 1.5rem;
+    width: 100%;
+    font-weight: 300;
 }
 
 .splash-page-hero-graphic {
-    width: 42em;
+    position: absolute;
+    width: 52em;
     margin-top: -50px;
+    right: 0;
+    top: 0;
 }
+
+/* @media(min-width: 1450px) {
+    .splash-page-hero-graphic {
+        margin-right: 10rem;
+    }
+} */
 
 .top-section-content {
     display: flex;
     flex-direction: column;
-    /* gap: 3em; */
 }
 
 @media (min-width: 1450px) {
     .splash-page-top-section{
-        gap: 22em
+        gap: 10em
     }
 }
 
 .top-section-about-aurora {
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
+    gap: 4rem;
 }
 
-.splash-page-top-signup {
+/* @media(max-width: 1563px) {
+    .top-section-about-aurora {
+        font-size: 3.5rem;
+        width: 100%;
+    }
+} */
+
+#splash-page-top-signup {
 margin-top: -5em;
 }
 
@@ -48,7 +70,13 @@ margin-top: -5em;
     height: 2.5rem;
     width: 8rem;
     border: none;
-    border-radius: 2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: DM Sans;
+    color: var(--primary-70, #00283D);
+    height: 50px;
+    width: 140px;
 }
 
 .splash-page-benefits {
@@ -60,19 +88,21 @@ margin-top: -5em;
 }
 
 .benefits-image {
-    height: 6rem;
+    height: 8rem;
     margin-bottom: 20px;
 }
 
 .single-benefit-content-bold {
-    font-size: 25px;
+    font-size: 30px;
     color: rgb(0, 40, 61);
     margin-bottom: 10px;
+    font-weight: 300;
 }
 
 .single-benefit-content-small {
     color: rgb(0, 40, 61);
     font-size: 20px;
+    font-weight: 200;
 }
 
 .splash-page-testimonials {
@@ -84,11 +114,14 @@ margin-top: -5em;
     text-align: center;
     font-size: 2em;
     margin-bottom: 2em;
+    font-size: 35px;
+    font-weight: 350;
 }
 
 .splash-page-testimonials-container {
     display: flex;
     margin: auto;
+    cursor: pointer;
 }
 
 /* @media (min-width: 1450px) {
@@ -140,6 +173,7 @@ margin-top: -5em;
     flex-direction: column;
     align-items: center;
     margin-bottom: 100px;
+    gap: 3rem;
 }
 
 .splash-page-screen-photo {
@@ -153,15 +187,21 @@ margin-top: -5em;
 
 .screen-content {
     font-size: 2.5em;
-    width: 45%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    gap: 1rem
 }
 
 .screen-content-text {
-    width: 120%
+    font-size: 44px;
+}
+
+.screen-content-paragraph {
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .screens-mood {
@@ -189,20 +229,21 @@ margin-top: -5em;
 }
 
 .founder-image {
-    height: 30em;
+    height: 40em;
 }
 
 .meet-the-founder-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 2em;
     width: 40%;
 }
 
 .meet-the-founder-header {
-    font-size: 2rem;
+    font-size: 35px
 }
 
 .meet-the-founder-paragraph {
-    font-size: 1rem;
+    font-size: 18px
 }
