@@ -18,7 +18,7 @@ def get_testimonials():
 def get_testimonial_by_id(id):
    testimonial = Testimonial.query.get(id)
    if not testimonial:
-      return {"errors", "Testimonial not found"}, 404
+      return {"errors": "Testimonial not found"}, 404
    return testimonial.to_dict()
 
 

@@ -25,11 +25,15 @@ def test_can_call_endpoint():
 
 
 # #################################Test auth functions:#################################################
+def logout():
+    return requests.get(f'{ENDPOINT}/api/auth/logout')
 def test_logout():
     #Start test suite logged out
     
-    response = requests.get(f'{ENDPOINT}/api/auth/logout')
+    response = logout()
     assert response.status_code == 200
+    data = response.json()
+    assert 'message' in data
 
 def test_can_get_auth():
     response = requests.get(f'{ENDPOINT}/api/auth')
@@ -167,3 +171,64 @@ def test_get_all_splash():
     assert response.status_code == 200
     data = response.json()
     assert 'paragraphs' in data
+
+
+##############################Test Testimonial Routes ####################
+
+def test_get_all_tests():
+    response = requests.get(f'{ENDPOINT}/api/testimonial/')
+    assert response.status_code == 200
+    data = response.json()
+    assert 'testimonials' in data
+
+#helper function to define testimonial payload
+def payload_tests():
+    return {
+        'profile_pic': files,
+        'first_name': 'Emily',
+        'last_name': "Morgan",
+        'stars': 3,
+        'body': "testimonial test"
+    }
+
+#helper function to create a testimonial
+def create_testimonial(payload):
+    return client.post(f'{ENDPOINT}/api/testimonial/new', data=payload, files=files)
+
+#helper function to get a testimonial by id
+def get_test(id):
+    return requests.get(f'{ENDPOINT}/api/testimonial/{id}')
+
+def test_create_testimonial():
+    payload = payload_tests()
+    response = create_testimonial(payload)
+    data = response.json()
+    assert 'id' in data
+    id = data['id']
+    res = get_test(id)
+    assert res.status_code == 200
+    test = res.json()
+    assert 'first_name' in test
+    assert 'last_name' in test
+    assert 'profile_pic' in test
+    assert 'stars' in test
+
+    client.delete(f'{ENDPOINT}/api/testimonial/{id}/delete')
+
+
+#test testimonial deletes
+def test_delete_testimonials():
+    payload = payload_tests()
+    response = create_testimonial(payload)
+    data = response.json()
+    id = data['id']
+    delete_response = client.delete(f'{ENDPOINT}/api/testimonial/{id}/delete')
+    assert delete_response.status_code == 200
+    data = delete_response.json()
+    assert 'message' in data
+    response = get_test(id)
+    assert response.status_code == 404
+
+
+
+logout()
