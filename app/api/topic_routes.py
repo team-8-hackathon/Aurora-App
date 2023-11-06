@@ -84,7 +84,6 @@ def edit_topic(id):
     
     form = TopicForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('************************',form.data)
     if form.validate_on_submit():
         topic_name = form.data['topic']
         color = form.data['color']
