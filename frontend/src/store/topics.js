@@ -1,3 +1,5 @@
+import { thunkGetBlogs } from "./blog";
+
 const GET_ALL_TOPICS = "topics/GET_ALL_TOPICS"
 const GET_SINGLE_TOPIC = "topics/GET_SINGLE_TOPIC"
 const DELETE_TOPIC = "topics/DELETE_TOPIC";
@@ -65,7 +67,8 @@ export const thunkDeleteTopic = (topicId) => async (dispatch) => {
     })
 
     if (response.ok) {
-        dispatch(thunkGetAllTopics());  
+        dispatch(thunkGetAllTopics());
+        dispatch(thunkGetBlogs())  
         return { success: true };
     } else {
         const errors = await response.json();
