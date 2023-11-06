@@ -70,16 +70,17 @@
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    white-space: nowrap;
 }
 
 .nav-dropdown-item:last-child {
     border-bottom: none;
 }
 
-.nav-dropdown-item:hover {
+/* .nav-dropdown-item:hover {
     background-color: #fcf3ea;
-}
+} */
 
 .no-topics:hover {
     cursor: default;
