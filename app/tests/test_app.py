@@ -165,6 +165,28 @@ def test_edit_blog():
     client.delete(f'{ENDPOINT}/api/blogs/{id}/delete')
 
 ###############################Test Splash Page Routes ###############
+#Helper to return splash page payload
+def splash_payload():
+    return {
+        'title': 'splash title',
+        'header': 'splash header',
+        'paragraph': 'splash paragraph'
+    }
+
+def edit_splash_payload():
+    return {
+        'title': 'edited splash title',
+        'header': 'edited splash header',
+        'paragraph': 'edited splash paragraph'
+    }
+
+#helper to create a new splash paragraph
+def create_splash(payload):
+    return client.post(f'{ENDPOINT}/api/splash/create',payload)
+
+#helper to get a splash paragraph by its id
+def get_splash(id):
+    return requests.get(f'{ENDPOINT}/api/splash/{id}')
 
 def test_get_all_splash():
     response = requests.get(f'{ENDPOINT}/api/splash/')
@@ -172,6 +194,49 @@ def test_get_all_splash():
     data = response.json()
     assert 'paragraphs' in data
 
+def test_create_splash():
+    payload = splash_payload()
+    response = create_splash(payload)
+    # assert response.status_code == 200
+    data = response.json()
+    print(data)
+    assert 'id' in data
+    id = data['id']
+    response = get_splash(id)
+    assert response.status_code == 200
+    data = response.json()
+    assert 'title' in data
+    assert 'header' in data
+    assert 'paragraph' in data
+
+    client.delete(f'{ENDPOINT}/api/splash/{id}/delete')
+
+
+def test_edit_splash_paragraph():
+    payload = splash_payload()
+    response = create_splash(payload)
+    data = response.json()
+    id = data['id']
+    edited_payload = edit_splash_payload()
+    response = client.put(f'{ENDPOINT}/api/splash/{id}', data=edited_payload)
+    edited = get_splash(id)
+    assert edited.status_code == 200
+    data = edited.json()
+    assert data['title'] == 'edited splash title'
+    assert data['header'] == 'edited splash header'
+    assert data['paragraph'] == 'edited splash paragraph'
+
+    client.delete(f'{ENDPOINT}/api/splash/{id}/delete')
+
+def test_delete_splash():
+    payload = splash_payload()
+    response = create_splash(payload)
+    data = response.json()
+    id = data['id']
+    deleted = client.delete(f'{ENDPOINT}/api/splash/{id}/delete')
+    assert deleted.status_code == 200
+    check_get = get_splash(id)
+    assert check_get.status_code == 404
 
 ##############################Test Testimonial Routes ####################
 

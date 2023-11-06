@@ -3,5 +3,6 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 class SplashParagraphForm(FlaskForm):
-    paragraph = StringField('paragraph')
-    header = StringField('header')
+    title = StringField('title', validators=[DataRequired()])
+    paragraph = StringField('paragraph', validators=[DataRequired()])
+    header = StringField('header', validators=[DataRequired()])
