@@ -73,6 +73,22 @@ export const thunkDeleteTopic = (topicId) => async (dispatch) => {
     }
 };
 
+export const thunkEditTopic = (topicId, data) => async dispatch => {
+    const response = await fetch(`/api/topics/${topicId}/edit`, {
+        method: "PUT",
+        body: data
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(thunkGetAllTopics())
+        return data
+    } else {
+        const errors = await response.json()
+        return errors
+    }
+}
+
 
 
 

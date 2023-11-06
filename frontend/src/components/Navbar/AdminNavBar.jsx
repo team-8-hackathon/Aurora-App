@@ -11,6 +11,7 @@ import OpenModalButton from '../UtilityComponents/OpenModalButton';
 import ConfirmModal from '../UtilityComponents/ConfirmModal';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useModal } from '../../context/Modal';
+import { BiEdit } from 'react-icons/bi';
 
 function AdminNavbar() {
     const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
@@ -77,6 +78,7 @@ function AdminNavbar() {
                                         <a href={`/admin/topics/${topic.id}`} className="admin-navbar-dropdown-item">
                                             {topic.topic}
                                         </a>
+                                        <Link className='topic-delete-button' to={`/admin/topics/${topic.id}/edit`}><BiEdit/></Link>
                                         <OpenModalButton
                                             className='topic-delete-button'
                                             buttonText={<i className='fa fa-trash' />}
