@@ -98,10 +98,9 @@ jobs:
 
     - name: Run pytest tests
       run: |
-          pipenv shell
-
+      
           pip install pytest
-          
+
           pytest app/test
 
     - name: Configure AWS credentials
