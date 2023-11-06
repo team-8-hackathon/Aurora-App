@@ -50,8 +50,10 @@ const BlogForm = () => {
     useEffect(() => {
         const validationErrors = {}
         if (!title || !title.length) validationErrors.title = "Blog title is required"
+        if (title.length > 500 ) validationErrors.title = "Blog title must be shorter than 500 characters"
         if (!thumbnail) validationErrors.thumbnail = "Blog thumbnail is required"
         if (!body || !body.length) validationErrors.body = "Blog body is required"
+        if (body.length > 10000 ) validationErrors.body = "Blog body must be shorter than 10000 characters"
         if (!topic || !topic.length) validationErrors.topic = "Blog topic is required"
 
         setErrors(validationErrors)

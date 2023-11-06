@@ -8,4 +8,5 @@ from .login_form import LoginForm
 from .edit_blog_form import EditBlogForm
 from .splashparagraph_form import SplashParagraphForm
 from .subs_form import SubsForm
+from .edit_testimonial_form import EditTestimonial
 

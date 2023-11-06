@@ -9,7 +9,7 @@ import { useSearch } from '../../context/SearchContext';
 import EmptyBlogs from '../UtilityComponents/EmptyBlogs';
 
 const BrowseBlogs = () => {
-    const { searchData, resultsFound, searching } = useSearch()
+    const { searchData, searching } = useSearch()
     const blogs = useSelector(state => state.blog.blogs);
     const [numArticles, setNumArticles] = useState(6)
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const BrowseBlogs = () => {
     }, [dispatch]);
 
     if (!blogs) return null;
-    if(!blogs.length) return <EmptyBlogs />
+    if (!blogs.length) return <EmptyBlogs />
 
 
     const showMoreArticles = () => {
@@ -30,9 +30,19 @@ const BrowseBlogs = () => {
 
     return (
         <div className='browse-blogs-container'>
-            {!searchData.length && <div className='browse-blogs-container'>
-                {resultsFound && <h4 className='topic-title'>All Blogs</h4>}{!resultsFound && <h4 className='topic-title'>No search results found</h4>}
-                 <div className='blog-container'>{blogs.slice(0, numArticles).map((blog = {}) => (
+            {!searching && <div className='browse-blogs-container'>
+                <h4 className='topic-title'>All Blogs</h4>
+                <div className='blog-container'>
+                    {blogs.map(blog => (
+                        <div key={blog.id}>
+                            <BlogThumbnail topic={blog.topic} blog={blog} type="admin" />
+
+                        </div>))}
+                </div>
+            </div>}
+            {searching && !searchData.length && <div className='browse-blogs-container'>
+                 <h4 className='topic-title'>No search results found</h4>
+                <div className='blog-container'>{blogs.slice(0, numArticles).map((blog = {}) => (
                     <div key={blog.id}>
                         <BlogThumbnail topic={blog.topic} blog={blog} type="admin" />
 
@@ -40,10 +50,9 @@ const BrowseBlogs = () => {
                 </div>
             </div>
             }
-            {!!searchData.length && resultsFound && <div className='browse-blogs-container'>
+            {searching && !!searchData.length && <div className='browse-blogs-container'>
                 {searching && <h4 className='topic-title'>Search Results</h4>}
-                {!searching && <h4 className='topic-title'>All Blogs</h4>}
-                 <div className='blog-container'>{searchData.slice(0, numArticles).map((blog = {}) => (
+                <div className='blog-container'>{searchData.slice(0, numArticles).map((blog = {}) => (
                     <div key={blog.id}>
                         <BlogThumbnail topic={blog.topic} blog={blog} type="admin" />
 
@@ -51,7 +60,7 @@ const BrowseBlogs = () => {
                 </div>
             </div>
             }
-            { numArticles < blogs.length && <button className='show-more-articles-button' onClick={showMoreArticles}>Show more articles</button> }
+            {numArticles < blogs.length && <button className='show-more-articles-button' onClick={showMoreArticles}>Show more articles</button>}
         </div >
     )
 }

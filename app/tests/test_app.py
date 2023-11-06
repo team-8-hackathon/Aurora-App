@@ -12,7 +12,7 @@ else:
 login_data = dict(username="demolition", password="password", csrfmiddlewaretoken=csrftoken, next='/')
 
 #image used for testing purposes
-files = {'thumbnail': ('ew1.png', open('./ew1.png', 'rb'), 'image/png')}
+files = {'thumbnail': ('ew1.png', open('app/tests/ew1.png', 'rb'), 'image/png')}
 
 headers = {
     'Content-Type': 'multipart/form-data'  # Specify the content type
@@ -25,11 +25,15 @@ def test_can_call_endpoint():
 
 
 # #################################Test auth functions:#################################################
+def logout():
+    return requests.get(f'{ENDPOINT}/api/auth/logout')
 def test_logout():
     #Start test suite logged out
     
-    response = requests.get(f'{ENDPOINT}/api/auth/logout')
+    response = logout()
     assert response.status_code == 200
+    data = response.json()
+    assert 'message' in data
 
 def test_can_get_auth():
     response = requests.get(f'{ENDPOINT}/api/auth')
@@ -161,9 +165,137 @@ def test_edit_blog():
     client.delete(f'{ENDPOINT}/api/blogs/{id}/delete')
 
 ###############################Test Splash Page Routes ###############
+#Helper to return splash page payload
+def splash_payload():
+    return {
+        'title': 'splash title',
+        'header': 'splash header',
+        'paragraph': 'splash paragraph'
+    }
+
+def edit_splash_payload():
+    return {
+        'title': 'edited splash title',
+        'header': 'edited splash header',
+        'paragraph': 'edited splash paragraph'
+    }
+
+#helper to create a new splash paragraph
+def create_splash(payload):
+    return client.post(f'{ENDPOINT}/api/splash/create',payload)
+
+#helper to get a splash paragraph by its id
+def get_splash(id):
+    return requests.get(f'{ENDPOINT}/api/splash/{id}')
 
 def test_get_all_splash():
     response = requests.get(f'{ENDPOINT}/api/splash/')
     assert response.status_code == 200
     data = response.json()
     assert 'paragraphs' in data
+
+def test_create_splash():
+    payload = splash_payload()
+    response = create_splash(payload)
+    # assert response.status_code == 200
+    data = response.json()
+    print(data)
+    assert 'id' in data
+    id = data['id']
+    response = get_splash(id)
+    assert response.status_code == 200
+    data = response.json()
+    assert 'title' in data
+    assert 'header' in data
+    assert 'paragraph' in data
+
+    client.delete(f'{ENDPOINT}/api/splash/{id}/delete')
+
+
+def test_edit_splash_paragraph():
+    payload = splash_payload()
+    response = create_splash(payload)
+    data = response.json()
+    id = data['id']
+    edited_payload = edit_splash_payload()
+    response = client.put(f'{ENDPOINT}/api/splash/{id}', data=edited_payload)
+    edited = get_splash(id)
+    assert edited.status_code == 200
+    data = edited.json()
+    assert data['title'] == 'edited splash title'
+    assert data['header'] == 'edited splash header'
+    assert data['paragraph'] == 'edited splash paragraph'
+
+    client.delete(f'{ENDPOINT}/api/splash/{id}/delete')
+
+def test_delete_splash():
+    payload = splash_payload()
+    response = create_splash(payload)
+    data = response.json()
+    id = data['id']
+    deleted = client.delete(f'{ENDPOINT}/api/splash/{id}/delete')
+    assert deleted.status_code == 200
+    check_get = get_splash(id)
+    assert check_get.status_code == 404
+
+##############################Test Testimonial Routes ####################
+
+def test_get_all_tests():
+    response = requests.get(f'{ENDPOINT}/api/testimonial/')
+    assert response.status_code == 200
+    data = response.json()
+    assert 'testimonials' in data
+
+#helper function to define testimonial payload
+def payload_tests():
+    return {
+        'profile_pic': files,
+        'first_name': 'Emily',
+        'last_name': "Morgan",
+        'stars': 3,
+        'body': "testimonial test"
+    }
+
+#helper function to create a testimonial
+def create_testimonial(payload):
+    return client.post(f'{ENDPOINT}/api/testimonial/new', data=payload, files=files)
+
+#helper function to get a testimonial by id
+def get_test(id):
+    return requests.get(f'{ENDPOINT}/api/testimonial/{id}')
+
+def test_create_testimonial():
+    payload = payload_tests()
+    response = create_testimonial(payload)
+    print(response.status_code, response)
+    assert response.status_code == 200
+    data = response.json()
+    assert 'id' in data
+    id = data['id']
+    res = get_test(id)
+    assert res.status_code == 200
+    test = res.json()
+    assert 'first_name' in test
+    assert 'last_name' in test
+    assert 'profile_pic' in test
+    assert 'stars' in test
+
+    client.delete(f'{ENDPOINT}/api/testimonial/{id}/delete')
+
+
+#test testimonial deletes
+def test_delete_testimonials():
+    payload = payload_tests()
+    response = create_testimonial(payload)
+    data = response.json()
+    id = data['id']
+    delete_response = client.delete(f'{ENDPOINT}/api/testimonial/{id}/delete')
+    assert delete_response.status_code == 200
+    data = delete_response.json()
+    assert 'message' in data
+    response = get_test(id)
+    assert response.status_code == 404
+
+
+
+logout()

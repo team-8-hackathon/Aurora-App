@@ -3,30 +3,18 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkDeleteSub } from "../../store/subs";
 
-
 import { DataGrid } from '@mui/x-data-grid';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-
 
 import './subs_list.css'
 
 const GET_ALL_SUBS = "subs/GET_ALL_SUBS"
 
 
-
-
 const SubsList = () => {
   const [subscribers, setSubscribers] = useState([]);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
       const fetchSubscribers = async () => {
@@ -134,9 +122,9 @@ const SubsList = () => {
                   rows={rows}
                   columns={columns}
                   initialState={{
-                  pagination: {
+                    pagination: {
                       paginationModel: { page: 0, pageSize: 10 },
-                  },
+                    },
                   }}
                   pageSizeOptions={[10, 25, 50, 100]}
                   // checkboxSelection

@@ -26,9 +26,13 @@ function TestimonialForm() {
   useEffect(() => {
     const validationErrors = {};
     if (!firstName) validationErrors.firstName = "First name is required";
+    if (firstName.length > 200) validationErrors.firstName = "First name must be shorter than 200 characters"
     if (!lastName) validationErrors.lastName = "Last name is required";
+    if (lastName.length > 200) validationErrors.firstName = "Last name must be shorter than 200 characters"
     if (!stars) validationErrors.stars = "Star rating is required";
+    if (stars < 1 || stars > 5) validationErrors.stars = "Star rating must be 1 to 5 stars"
     if (!body) validationErrors.body = "Testimonial body is required";
+    if (body.length > 1000) validationErrors.body = "Testimonial body must be shorter than 1000 characters"
     setErrors(validationErrors);
   }, [firstName, lastName, stars, body]);
 
@@ -58,7 +62,6 @@ function TestimonialForm() {
     >
       <div>
         <h1>Tell us what you think of Aurora!</h1>
-        {/* <h3>We would love your honest opinion</h3> */}
       </div>
       <div className="test-form-container">
         <div className="test-form-left">
@@ -71,7 +74,6 @@ function TestimonialForm() {
               className="profile-img"
             />
           )}
-          {/* <label for="img">Profile image</label> */}
           <input
             type="file"
             id="img"
@@ -85,27 +87,15 @@ function TestimonialForm() {
           <label htmlFor="img" className="custom-file-upload">
             Upload Image
           </label>
-          {/* <input id="file-upload" type="file" /> */}
           <div className="test-form-stars">
             <StarRating onSetStars={setStars} />
-            {errors.stars && <p className="errors">{errors.stars}</p>}
+            {hasSubmitted && errors.stars && <p className="errors">{errors.stars}</p>}
           </div>
         </div>
-        {/* <label htmlFor="">Name</label> */}
         <div className="test-form-right">
-          {/* <div>
-            <input
-              className="name-input"
-              type="email"
-              value={firstName}
-              // onChange={(e) => setFirstName(e.target.value)}
-              placeholder="Email"
-            />
-          </div> */}
           <div className="test-form-names">
             <div className="name-input-sec">
-              {/* {errors.lastName && <p className="errors">{errors.firstName}</p>} */}
-              {console.log("errors  ", errors, "submitted: ", hasSubmitted)}
+              {hasSubmitted && errors.firstName && <p className="errors">{errors.firstName}</p>}
               <input
                 className="name-input"
                 type="text"
@@ -116,7 +106,7 @@ function TestimonialForm() {
               />
             </div>
             <div name-input-sec>
-              {/* {errors.lastName && <p className="errors">{errors.lastName}</p>} */}
+            {hasSubmitted && errors.lastName && <p className="errors">{errors.lastName}</p>}
               <input
                 className="name-input"
                 type="text"
@@ -128,6 +118,7 @@ function TestimonialForm() {
             </div>
           </div>
           <div>
+          {hasSubmitted && errors.body && <p className="errors">{errors.body}</p>}
             <textarea
               className="testimonial-form-textarea"
               type="text"
@@ -137,7 +128,6 @@ function TestimonialForm() {
               placeholder="Let us know what you think!"
               required
             />
-            {/* {errors.body && <p className="errors">{errors.body}</p>} */}
           </div>
         </div>
       </div>

@@ -23,6 +23,7 @@ import AdminInfo from "./components/Admin/AdminInfo";
 import TestimonialDisplay from "./components/TestimonialComponents/TestimonialDisplay/TestimonialList"
 import NotFoundPage from "./components/UtilityComponents/404Page";
 import LoginModal from "./components/auth/LoginModal";
+import EditSplashPage from './components/SplashPage/EditSplashPage';
 
 
 
@@ -53,6 +54,9 @@ function App() {
               <Switch>
                 <Route exact path="/admin">
                   <AdminBlogs />
+                </Route>
+                <Route exact path='/admin/edit-splash-page'>
+                  <SplashPage type='admin' />
                 </Route>
                 <Route exact path="/admin/post-blog">
                   <BlogForm />
@@ -95,7 +99,7 @@ function App() {
                 <TestimonialForm />
               </Route>
               <Route path="/testimonials/list">
-                <TestimonialDisplay/>
+                <TestimonialDisplay />
               </Route>
               <Route>
                 <NotFoundPage />

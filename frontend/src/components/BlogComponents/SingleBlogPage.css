@@ -6,7 +6,16 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-bottom: 5rem;
+}
+
+.blog-body p,
+.blog-body {
+    font-weight:  300 !important;
+    font-size: 18px !important;
+}
+
+.blog-body h2 {
+    font-size: 35px !important;
 }
 .single-blog-thumbnail {
     width: 100%;
@@ -47,18 +56,17 @@
 
 .topic-button:hover {
     cursor: pointer;
-    box-shadow: 0 0 0.15rem rgba(0, 40, 61, 0.25);
 }
 
 .blog-contents-container {
-    width: 50%;
+    width: 65%;
     margin: auto;
 }
 
 .blog-title {
     text-align: center;
     font-weight: 500;
-    font-size: 2.5rem;
+    font-size: 54px;
     margin-bottom: 1rem;
 }
 
