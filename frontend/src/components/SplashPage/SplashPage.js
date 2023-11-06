@@ -11,7 +11,7 @@ import './SplashPage.css';
 
 const SplashPage = ({ type }) => {
     const dispatch = useDispatch()
-    const allParagraphs = useSelector(state => state.splashpage)
+    const allParagraphs = useSelector(state => state.splashpage.paragraphs)
 
 
     useEffect(() => {

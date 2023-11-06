@@ -23,7 +23,7 @@ def get_single_splash(id):
     """
     splash = SplashParagraph.query.get(id)
     if not splash:
-        return {"errors", "Splash paragraph not found"}, 404
+        return {"errors": "Splash paragraph not found"}, 404
     return splash.to_dict()
 
 #Edit splash page paragraphs
@@ -71,7 +71,7 @@ def create_splash_page():
 
         db.session.add(splash_paragraph)
         db.session.commit()
-    print('*****************', form.data)
+        return splash_paragraph.to_dict()
     return {'errors': form.errors}, 401
 
 @splash_routes.route('/<int:id>/delete', methods=['DELETE'])
@@ -82,6 +82,10 @@ def delete_splash(id):
     """
 
     splash = SplashParagraph.query.get(id)
+
     if not splash:
         return {"errors": "Splash paragraph not found"}, 404
-    return splash.to_dict()
+    
+    db.session.delete(splash)
+    db.session.commit()
+    return {'message': "splash paragraph successfully deleted"}

@@ -267,6 +267,8 @@ def get_test(id):
 def test_create_testimonial():
     payload = payload_tests()
     response = create_testimonial(payload)
+    print(response.status_code, response)
+    assert response.status_code == 200
     data = response.json()
     assert 'id' in data
     id = data['id']
