@@ -25,7 +25,7 @@ The Aurora app is a website designed to inform about the upcoming Aurora Mental 
 
 <br />
 
-### Thirsty was created with the following languages and frameworks:
+### Aurora was created with the following languages and frameworks:
 
 <br />
 
