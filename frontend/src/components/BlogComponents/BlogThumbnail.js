@@ -8,14 +8,25 @@ import './BlogThumbnail.css'
 
 import { FaTrashAlt } from 'react-icons/fa'
 import { BiEdit } from 'react-icons/bi'
+import { useSearch } from "../../context/SearchContext.js";
 
 const BlogThumbnail = ({ topic, blog, type }) => {
     const color = topic.color;
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const { searching, searchData, setSearchData } = useSearch()
+
     const handleDelete = () => {
         dispatch(thunkDeleteBlog(blog.id))
+        if(searching){
+            const idx = searchData.findIndex(itm => itm.id == blog.id)
+            if (idx !== -1) {
+                let newArr = searchData
+                newArr.splice(idx, 1)
+                setSearchData(newArr)
+            }
+        }
     }
 
     const handleEdit = () => {
