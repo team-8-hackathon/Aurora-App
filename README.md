@@ -9,19 +9,19 @@ The Aurora app is a website designed to inform about the upcoming Aurora Mental 
 
 ## Home Page
 
-<!-- ![Alt Text](./frontend/public/images/GIFs/Splash-Page.gif) -->
+![Splash-Page](https://github.com/team-8-hackathon/hackathon/assets/110505182/495d64ab-b2ae-41f5-ab87-9bae7971a835)
 
 <br />
 
 ## Blog Page
 
-<!-- ![Alt Text](./frontend/public/images/GIFs/Blog-Page.gif) -->
+![Blog-Page](https://github.com/team-8-hackathon/hackathon/assets/110505182/04399003-f363-4156-91c4-0f88763465bb)
 
 <br />
 
 ## Admin Dashboard
 
-<!-- ![Alt Text](./frontend/public/images/GIFs/Admin-Dashboard.gif) -->
+![Admin-Dashboard](https://github.com/team-8-hackathon/hackathon/assets/110505182/4b77e506-3152-4d6f-9375-6f016b106b6b)
 
 <br />
 
