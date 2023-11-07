@@ -83,37 +83,17 @@ The Aurora app is a website designed to inform about the upcoming Aurora Mental 
 
 # Team-8-Hackathon
 
-git pull
-pipenv install
-cd frontend
-npm install
-npm install --save font-awesome ### for admin dropdown ####
-pipenv shell
-flask db init
-.env
-flask db upgrade
-flask seed undo
-flask seed all
+## INSTALLATION (LOCAL)
+* `git clone https://github.com/team-8-hackathon/hackathon.git`
+### From the root directory
+* Create a .env file and copy the contents of the .env.example into it, it will be missing secret keys
+* Enter virtual environment shell: `pipenv shell`
+* Install the dependencies: `pipenv install`
+* Start the backend server: `flask run`
+* Initialize the database: `flask db init && flask db upgrade`
+* Seed the database: `flask seed all` to unseed use `flask seed undo`
+### From the frontend directory: `cd frontend/`
+* Install the dependencies: `npm install`
+* Start the server: `npm start`
+* visit http://localhost:3000/
 
-
-flask run from shell (localhost:5000)
-npm start from frontend (localhost:3000)
-
-
-# Team-8-Hackathon
-
-git pull
-pipenv install
-cd frontend
-npm install
-npm install --save font-awesome ### for admin dropdown ####
-pipenv shell
-flask db init
-.env
-flask db upgrade
-flask seed undo
-flask seed all
-
-
-flask run from shell (localhost:5000)
-npm start from frontend (localhost:3000)
