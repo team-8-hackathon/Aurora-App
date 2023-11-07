@@ -10,7 +10,7 @@ import { useSearch } from '../../context/SearchContext';
 import OpenModalButton from '../UtilityComponents/OpenModalButton';
 import ConfirmModal from '../UtilityComponents/ConfirmModal';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { useModal } from '../../context/Modal';
+import { BiEdit } from 'react-icons/bi';
 
 function AdminNavbar() {
     const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
@@ -23,8 +23,8 @@ function AdminNavbar() {
     const allBlogs = useSelector(state => state.blog.blogs)
 
     useEffect(() => {
-        dispatch(thunkGetAllTopics());
-        dispatch(thunkGetBlogs())
+        dispatch(thunkGetAllTopics())
+        
     }, [dispatch]);
 
     const handleLogout = () => {
@@ -33,6 +33,7 @@ function AdminNavbar() {
 
     const handleDeleteTopic = async (topicId) => {
         dispatch(thunkDeleteTopic(topicId))
+        history.push('/admin')
     };
 
     const handleSearch = (e) => {
@@ -77,11 +78,13 @@ function AdminNavbar() {
                                         <a href={`/admin/topics/${topic.id}`} className="admin-navbar-dropdown-item">
                                             {topic.topic}
                                         </a>
+                                        <Link className='topic-delete-button' to={`/admin/topics/${topic.id}/edit`}><BiEdit/></Link>
                                         <OpenModalButton
                                             className='topic-delete-button'
                                             buttonText={<i className='fa fa-trash' />}
                                             modalComponent={<ConfirmModal
                                                 modalTitle={"Are you sure you want to delete this topic?"}
+                                                subTitle={'All blogs in this topic will also be deleted'}
                                                 yesHandler={handleDeleteTopic}
                                                 optionalCBArg={topic.id}
                                             />}

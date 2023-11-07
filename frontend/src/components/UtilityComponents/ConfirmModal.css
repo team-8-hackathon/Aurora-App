@@ -11,7 +11,11 @@
 .form-title {
     font-size: 1.5rem;
     font-weight: 400;
-    margin-bottom: 2rem;
+}
+
+.form-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
 }
 
 #modal-content {
@@ -20,6 +24,7 @@
 }
 
 .modal-button-container {
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     gap: 2rem;

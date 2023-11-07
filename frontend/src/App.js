@@ -24,6 +24,7 @@ import TestimonialDisplay from "./components/TestimonialComponents/TestimonialDi
 import NotFoundPage from "./components/UtilityComponents/404Page";
 import LoginModal from "./components/auth/LoginModal";
 import EditSplashPage from './components/SplashPage/EditSplashPage';
+import EditTopicForm from "./components/Topics/EditTopicForm";
 
 
 
@@ -72,6 +73,9 @@ function App() {
                 </Route>
                 <Route exact path="/admin/post-topic">
                   <TopicForm />
+                </Route>
+                <Route exact path='/admin/topics/:topicId/edit'>
+                  <EditTopicForm />
                 </Route>
                 <Route exact path="/admin/subs">
                   <SubsList />

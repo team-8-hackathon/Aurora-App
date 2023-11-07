@@ -86,8 +86,10 @@ def edit_topic(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         topic_name = form.data['topic']
+        color = form.data['color']
 
         topic.topic = topic_name
+        topic.color = color
         topic.updated_at = datetime.now()  
 
         db.session.commit()
